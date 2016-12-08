@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM实用参数（八）GC日志 | DeleiGuo</title>
+  <meta name="author" content="DeleiGuo">
+  
+  <meta name="description" content="Target、Focus、Patient">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JVM实用参数（八）GC日志"/>
+  <meta property="og:site_name" content="DeleiGuo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class=""><a class="home-link" href="/">
+  <h1 class="site-title animated zoomIn">DeleiGuo</h1>
+  <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
+</a>
+<div class="clearfix"></div>
+</header>
+  <nav id="main-nav" class="navigation main-navigation">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/books">书籍库</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div id="content">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title">JVM实用参数（八）GC日志</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/" target="_blank" rel="external">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x516B;&#xFF09;GC&#x65E5;&#x5FD7;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com" target="_blank" rel="external">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p><strong>&#x8BD1;&#x8005;:</strong> Greenster<br><strong>&#x6821;&#x5BF9;:</strong> &#x6881;&#x6D77;&#x8230;<br>&#x672C;&#x7CFB;&#x5217;&#x7684;&#x6700;&#x540E;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x6709;&#x5173;&#x5783;&#x573E;&#x6536;&#x96C6;&#xFF08;GC&#xFF09;&#x65E5;&#x5FD7;&#x7684;JVM&#x53C2;&#x6570;&#x3002;GC&#x65E5;&#x5FD7;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x51C6;&#x786E;&#x8BB0;&#x5F55;&#x4E86;&#x6BCF;&#x4E00;&#x6B21;&#x7684;GC&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x548C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;GC&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x5806;&#x8BBE;&#x7F6E;&#x548C;GC&#x8BBE;&#x7F6E;&#xFF0C;&#x6216;&#x8005;&#x6539;&#x8FDB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x6A21;&#x5F0F;&#x3002;</p>
+<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>&#x53C2;&#x6570;-XX:+PrintGC&#xFF08;&#x6216;&#x8005;-verbose:gc&#xFF09;&#x5F00;&#x542F;&#x4E86;&#x7B80;&#x5355;GC&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E00;&#x6B21;&#x65B0;&#x751F;&#x4EE3;&#xFF08;young generation&#xFF09;&#x7684;GC&#x548C;&#x6BCF;&#x4E00;&#x6B21;&#x7684;Full GC&#x6253;&#x5370;&#x4E00;&#x884C;&#x4FE1;&#x606F;&#x3002;&#x4E0B;&#x9762;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#xFF1A;</p>
+<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
+[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
+</code></pre>
+<p>&#x6BCF;&#x884C;&#x5F00;&#x59CB;&#x9996;&#x5148;&#x662F;GC&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x53EF;&#x4EE5;&#x662F;&#x201C;GC&#x201D;&#x6216;&#x8005;&#x201C;Full GC&#x201D;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x5728;GC&#x4E4B;&#x524D;&#x548C;GC&#x4E4B;&#x540E;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#xFF0C;&#x518D;&#x7136;&#x540E;&#x662F;&#x5F53;&#x524D;&#x7684;&#x5806;&#x5BB9;&#x91CF;&#xFF0C;&#x6700;&#x540E;&#x662F;GC&#x6301;&#x7EED;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x4EE5;&#x79D2;&#x8BA1;&#xFF09;&#x3002;</p>
+<a id="more"></a>
+<p>&#x7B2C;&#x4E00;&#x884C;&#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;GC&#x5C06;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#x4ECE;246656K&#x51CF;&#x5C11;&#x5230;243120K&#xFF0C;&#x5F53;&#x524D;&#x7684;&#x5806;&#x5BB9;&#x91CF;&#xFF08;&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;GC&#x53D1;&#x751F;&#x65F6;&#xFF09;&#x662F;376320K&#xFF0C;GC&#x6301;&#x7EED;&#x7684;&#x65F6;&#x95F4;&#x662F;0.0929090&#x79D2;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x6A21;&#x5F0F;&#x7684;GC&#x65E5;&#x5FD7;&#x683C;&#x5F0F;&#x662F;&#x4E0E;GC&#x7B97;&#x6CD5;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x65E5;&#x5FD7;&#x4E5F;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x592A;&#x591A;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x751A;&#x81F3;&#x65E0;&#x6CD5;&#x4ECE;&#x65E5;&#x5FD7;&#x4E2D;&#x5224;&#x65AD;&#x662F;&#x5426;GC&#x5C06;&#x4E00;&#x4E9B;&#x5BF9;&#x8C61;&#x4ECE;young generation&#x79FB;&#x5230;&#x4E86;old generation&#x3002;&#x6240;&#x4EE5;&#x8BE6;&#x7EC6;&#x6A21;&#x5F0F;&#x7684;GC&#x65E5;&#x5FD7;&#x66F4;&#x6709;&#x7528;&#x4E00;&#x4E9B;&#x3002;</p>
+<h2 id="XX-PrintGCDetails"><a href="#XX-PrintGCDetails" class="headerlink" title="-XX:PrintGCDetails"></a>-XX:PrintGCDetails</h2><p>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x4F7F;&#x7528;-XX:+PrintGC&#xFF0C;&#x800C;&#x662F;-XX:PrintGCDetails&#xFF0C;&#x5C31;&#x5F00;&#x542F;&#x4E86;&#x8BE6;&#x7EC6;GC&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x65E5;&#x5FD7;&#x683C;&#x5F0F;&#x548C;&#x6240;&#x4F7F;&#x7528;&#x7684;GC&#x7B97;&#x6CD5;&#x6709;&#x5173;&#x3002;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x4F7F;&#x7528;Throughput&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5728;young generation&#x4E2D;&#x751F;&#x6210;&#x7684;&#x65E5;&#x5FD7;&#x3002;&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x9605;&#x8BFB;&#x8FD9;&#x91CC;&#x5C06;&#x4E00;&#x884C;&#x65E5;&#x5FD7;&#x5206;&#x4E3A;&#x591A;&#x884C;&#x5E76;&#x4F7F;&#x7528;&#x7F29;&#x8FDB;&#x3002;</p>
+<pre><code class="lang-bash">[GC
+    [PSYoungGen: 142816K-&gt;10752K(142848K)] 246648K-&gt;243136K(375296K), 0.0935090 secs
+]
+[Times: user=0.55 sys=0.10, real=0.09 secs]
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x53D1;&#x73B0;&#xFF1A;&#x8FD9;&#x662F;&#x4E00;&#x6B21;&#x5728;young generation&#x4E2D;&#x7684;GC&#xFF0C;&#x5B83;&#x5C06;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#x4ECE;246648K&#x51CF;&#x5C11;&#x5230;&#x4E86;243136K&#xFF0C;&#x7528;&#x65F6;0.0935090&#x79D2;&#x3002;&#x6B64;&#x5916;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x66F4;&#x591A;&#x7684;&#x4FE1;&#x606F;&#xFF1A;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF08;&#x5373;PSYoungGen&#xFF09;&#x3001;young generation&#x7684;&#x5927;&#x5C0F;&#x548C;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#xFF08;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x201C;PSYoungGen&#x201D;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5C06;young generation&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#x4ECE;142816K&#x51CF;&#x5C11;&#x5230;10752K&#xFF09;&#x3002;</p>
+<p>&#x65E2;&#x7136;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x4E86;young generation&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5224;&#x5B9A;&#x53D1;&#x751F;&#x4E86;GC&#xFF0C;&#x56E0;&#x4E3A;young generation&#x65E0;&#x6CD5;&#x5206;&#x914D;&#x66F4;&#x591A;&#x7684;&#x5BF9;&#x8C61;&#x7A7A;&#x95F4;&#xFF1A;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x4E86;142848K&#x4E2D;&#x7684;142816K&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF0C;&#x591A;&#x6570;&#x4ECE;young generation&#x79FB;&#x9664;&#x7684;&#x5BF9;&#x8C61;&#x4ECD;&#x7136;&#x5728;&#x5806;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x53EA;&#x662F;&#x88AB;&#x79FB;&#x5230;&#x4E86;old generation&#xFF1A;&#x901A;&#x8FC7;&#x5BF9;&#x6BD4;&#x7EFF;&#x8272;&#x7684;&#x548C;&#x84DD;&#x8272;&#x7684;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5373;&#x4F7F;young generation&#x51E0;&#x4E4E;&#x88AB;&#x5B8C;&#x5168;&#x6E05;&#x7A7A;&#xFF08;&#x4ECE;142816K&#x51CF;&#x5C11;&#x5230;10752K&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x6240;&#x5360;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#x4ECD;&#x7136;&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF08;&#x4ECE;246648K&#x5230;243136K&#xFF09;&#x3002;</p>
+<p>&#x8BE6;&#x7EC6;&#x65E5;&#x5FD7;&#x7684;&#x201C;Times&#x201D;&#x90E8;&#x5206;&#x5305;&#x542B;&#x4E86;GC&#x6240;&#x4F7F;&#x7528;&#x7684;CPU&#x65F6;&#x95F4;&#x4FE1;&#x606F;&#xFF0C;&#x5206;&#x522B;&#x4E3A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x548C;&#x7CFB;&#x7EDF;&#x7A7A;&#x95F4;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x5B83;&#x663E;&#x793A;&#x4E86;GC&#x8FD0;&#x884C;&#x7684;&#x201C;&#x771F;&#x5B9E;&#x201D;&#x65F6;&#x95F4;&#xFF08;0.09&#x79D2;&#x662F;0.0929090&#x79D2;&#x7684;&#x8FD1;&#x4F3C;&#x503C;&#xFF09;&#x3002;&#x5982;&#x679C;CPU&#x65F6;&#x95F4;&#xFF08;&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;0.55&#x79D2;+0.10&#x79D2;&#xFF09;&#x660E;&#x663E;&#x591A;&#x4E8E;&#x201D;&#x771F;&#x5B9E;&#x201C;&#x65F6;&#x95F4;&#xFF08;&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;0.09&#x79D2;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF1A;GC&#x4F7F;&#x7528;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#x8FD0;&#x884C;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x8BDD;CPU&#x65F6;&#x95F4;&#x5C31;&#x662F;&#x6240;&#x6709;GC&#x7EBF;&#x7A0B;&#x6240;&#x82B1;&#x8D39;&#x7684;CPU&#x65F6;&#x95F4;&#x7684;&#x603B;&#x548C;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4F7F;&#x7528;&#x4E86;8&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E00;&#x4E0B;Full GC&#x7684;&#x8F93;&#x51FA;&#x65E5;&#x5FD7;</p>
+<pre><code class="lang-bash">[Full GC
+    [PSYoungGen: 10752K-&gt;9707K(142848K)]
+    [ParOldGen: 232384K-&gt;232244K(485888K)] 243136K-&gt;241951K(628736K)
+    [PSPermGen: 3162K-&gt;3161K(21504K)], 1.5265450 secs
+]
+</code></pre>
+<p>&#x9664;&#x4E86;&#x5173;&#x4E8E;young generation&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x65E5;&#x5FD7;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;old generation&#x548C;permanent generation&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E09;&#x4E2A;generations&#xFF0C;&#x4E00;&#x6837;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x3001;&#x5806;&#x7A7A;&#x95F4;&#x7684;&#x5927;&#x5C0F;&#x3001;GC&#x524D;&#x540E;&#x7684;&#x5806;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x663E;&#x793A;&#x5806;&#x7A7A;&#x95F4;&#x7684;&#x5927;&#x5C0F;&#x7B49;&#x4E8E;young generation&#x548C;old generation&#x5404;&#x81EA;&#x5806;&#x7A7A;&#x95F4;&#x7684;&#x548C;&#x3002;&#x4EE5;&#x4E0A;&#x9762;&#x4E3A;&#x4F8B;&#xFF0C;&#x5806;&#x7A7A;&#x95F4;&#x603B;&#x5171;&#x5360;&#x7528;&#x4E86;241951K&#xFF0C;&#x5176;&#x4E2D;9707K&#x5728;young generation&#xFF0C;232244K&#x5728;old generation&#x3002;Full GC&#x6301;&#x7EED;&#x4E86;&#x5927;&#x7EA6;1.53&#x79D2;&#xFF0C;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;CPU&#x6267;&#x884C;&#x65F6;&#x95F4;&#x4E3A;10.96&#x79D2;&#xFF0C;&#x8BF4;&#x660E;GC&#x4F7F;&#x7528;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#xFF08;&#x548C;&#x4E4B;&#x524D;&#x4E00;&#x6837;8&#x4E2A;&#x7EBF;&#x7A0B;&#xFF09;&#x3002;</p>
+<p>&#x5BF9;&#x4E0D;&#x540C;generation&#x8BE6;&#x7EC6;&#x7684;&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5206;&#x6790;GC&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;generation&#x7684;&#x65E5;&#x5FD7;&#x663E;&#x793A;&#x5728;GC&#x4E4B;&#x524D;&#xFF0C;&#x5806;&#x7A7A;&#x95F4;&#x51E0;&#x4E4E;&#x88AB;&#x5360;&#x6EE1;&#xFF0C;&#x90A3;&#x4E48;&#x5F88;&#x6709;&#x53EF;&#x80FD;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;generation&#x89E6;&#x53D1;&#x4E86;GC&#x3002;&#x4F46;&#x662F;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x4E09;&#x4E2A;generation&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x90FD;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#x89E6;&#x53D1;&#x4E86;GC&#x5462;&#x3002;&#x5BF9;&#x4E8E;Throughput&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5728;&#x67D0;&#x4E00;&#x4E2A;generation&#x88AB;&#x8FC7;&#x5EA6;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#xFF0C;GC ergonomics&#xFF08;&#x53C2;&#x8003;&#x672C;&#x7CFB;&#x5217;&#x7B2C;6&#x8282;&#xFF09;&#x51B3;&#x5B9A;&#x8981;&#x542F;&#x52A8;GC&#x3002;</p>
+<p>Full GC&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x663E;&#x5F0F;&#x7684;&#x8BF7;&#x6C42;&#x800C;&#x89E6;&#x53D1;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x901A;&#x8FC7;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;&#x5916;&#x90E8;&#x7684;JVM&#x63A5;&#x53E3;&#x3002;&#x8FD9;&#x6837;&#x89E6;&#x53D1;&#x7684;GC&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5728;&#x65E5;&#x5FD7;&#x91CC;&#x5206;&#x8FA8;&#x51FA;&#x6765;&#xFF0C;&#x56E0;&#x4E3A;&#x8F93;&#x51FA;&#x7684;&#x65E5;&#x5FD7;&#x662F;&#x4EE5;&#x201C;Full GC(System)&#x201D;&#x5F00;&#x5934;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x201C;Full GC&#x201D;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;Serial&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x8BE6;&#x7EC6;&#x7684;GC&#x65E5;&#x5FD7;&#x548C;Throughput&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x662F;&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#x7684;&#x3002;&#x552F;&#x4E00;&#x7684;&#x533A;&#x522B;&#x662F;&#x4E0D;&#x540C;&#x7684;generation&#x65E5;&#x5FD7;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x4E86;&#x4E0D;&#x540C;&#x7684;GC&#x7B97;&#x6CD5;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;old generation&#x7684;&#x65E5;&#x5FD7;&#x53EF;&#x80FD;&#x4EE5;Tenured&#x5F00;&#x5934;&#xFF0C;&#x800C;&#x4E0D;&#x662F;ParOldGen&#xFF09;&#x3002;&#x4F7F;&#x7528;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4F5C;&#x4E3A;&#x4E00;&#x884C;&#x65E5;&#x5FD7;&#x7684;&#x5F00;&#x5934;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x4ECE;&#x65E5;&#x5FD7;&#x5C31;&#x5224;&#x65AD;&#x51FA;JVM&#x7684;GC&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;CMS&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;young generation&#x7684;&#x8BE6;&#x7EC6;&#x65E5;&#x5FD7;&#x4E5F;&#x548C;Throughput&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;old generation&#x7684;&#x65E5;&#x5FD7;&#x5374;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x3002;&#x5BF9;&#x4E8E;CMS&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5728;old generation&#x4E2D;&#x7684;GC&#x662F;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x65F6;&#x95F4;&#x7247;&#x5185;&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x7684;&#x3002;GC&#x65E5;&#x5FD7;&#x81EA;&#x7136;&#x4E5F;&#x548C;Full GC&#x7684;&#x65E5;&#x5FD7;&#x4E0D;&#x540C;&#x3002;&#x800C;&#x4E14;&#x5728;&#x4E0D;&#x540C;&#x65F6;&#x95F4;&#x7247;&#x7684;&#x65E5;&#x5FD7;&#x5939;&#x6742;&#x7740;&#x5728;&#x6B64;&#x671F;&#x95F4;young generation&#x7684;GC&#x65E5;&#x5FD7;&#x3002;&#x4F46;&#x662F;&#x4E86;&#x89E3;&#x4E86;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;GC&#x65E5;&#x5FD7;&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;&#xFF0C;&#x4E5F;&#x4E0D;&#x96BE;&#x7406;&#x89E3;&#x5728;&#x4E0D;&#x540C;&#x65F6;&#x95F4;&#x7247;&#x5185;&#x7684;&#x65E5;&#x5FD7;&#x3002;&#x53EA;&#x662F;&#x5728;&#x89E3;&#x91CA;GC&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x65F6;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF0C;&#x7531;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x65F6;&#x95F4;&#x7247;&#x5185;&#x7684;GC&#x90FD;&#x662F;&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x548C;&#x90A3;&#x79CD;&#x72EC;&#x5360;&#x5F0F;&#x7684;GC&#x76F8;&#x6BD4;&#xFF0C;GC&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x66F4;&#x957F;&#x4E00;&#x4E9B;&#x5E76;&#x4E0D;&#x8BF4;&#x660E;&#x4E00;&#x5B9A;&#x6709;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6B63;&#x5982;&#x6211;&#x4EEC;&#x5728;&#x7B2C;7&#x8282;&#x4E2D;&#x6240;&#x4E86;&#x89E3;&#x7684;&#xFF0C;&#x5373;&#x4F7F;CMS&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x6CA1;&#x6709;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;CMS&#x5468;&#x671F;&#xFF0C;Full GC&#x4E5F;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x751F;&#x3002;&#x5982;&#x679C;&#x53D1;&#x751F;&#x4E86;GC&#xFF0C;&#x5728;&#x65E5;&#x5FD7;&#x4E2D;&#x4F1A;&#x5305;&#x542B;&#x89E6;&#x53D1;Full GC&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x4F8B;&#x5982;&#x4F17;&#x6240;&#x5468;&#x77E5;&#x7684;&#x201D;concurrent mode failure&#x201C;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FC7;&#x4E8E;&#x5197;&#x957F;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;CMS&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x7684;&#x65E5;&#x5FD7;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;CMS&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x7684;&#x4F5C;&#x8005;&#x505A;&#x4E86;&#x8BE6;&#x7EC6;&#x7684;&#x8BF4;&#x660E;&#xFF08;&#x5728;&#x8FD9;&#x91CC;&#xFF09;&#xFF0C;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x9605;&#x8BFB;&#x3002;</p>
+<h2 id="XX-PrintGCTimeStamps&#x548C;-XX-PrintGCDateStamps"><a href="#XX-PrintGCTimeStamps&#x548C;-XX-PrintGCDateStamps" class="headerlink" title="-XX:+PrintGCTimeStamps&#x548C;-XX:+PrintGCDateStamps"></a>-XX:+PrintGCTimeStamps&#x548C;-XX:+PrintGCDateStamps</h2><p>&#x4F7F;&#x7528;-XX:+PrintGCTimeStamps&#x53EF;&#x4EE5;&#x5C06;&#x65F6;&#x95F4;&#x548C;&#x65E5;&#x671F;&#x4E5F;&#x52A0;&#x5230;GC&#x65E5;&#x5FD7;&#x4E2D;&#x3002;&#x8868;&#x793A;&#x81EA;JVM&#x542F;&#x52A8;&#x81F3;&#x4ECA;&#x7684;&#x65F6;&#x95F4;&#x6233;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x6BCF;&#x4E00;&#x884C;&#x4E2D;&#x3002;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-bash">0.185: [GC 66048K-&gt;53077K(251392K), 0.0977580 secs]
+0.323: [GC 119125K-&gt;114661K(317440K), 0.1448850 secs]
+0.603: [GC 246757K-&gt;243133K(375296K), 0.2860800 secs]
+</code></pre>
+<p>&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;-XX:+PrintGCDateStamps&#xFF0C;&#x6BCF;&#x4E00;&#x884C;&#x5C31;&#x6DFB;&#x52A0;&#x4E0A;&#x4E86;&#x7EDD;&#x5BF9;&#x7684;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x3002;</p>
+<pre><code class="lang-bash">2014-01-03T12:08:38.102-0100: [GC 66048K-&gt;53077K(251392K), 0.0959470 secs]
+2014-01-03T12:08:38.239-0100: [GC 119125K-&gt;114661K(317440K), 0.1421720 secs]
+2014-01-03T12:08:38.513-0100: [GC 246757K-&gt;243133K(375296K), 0.2761000 secs]
+</code></pre>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x4E5F;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x3002;&#x63A8;&#x8350;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x5728;&#x5173;&#x8054;&#x4E0D;&#x540C;&#x6765;&#x6E90;&#x7684;GC&#x65E5;&#x5FD7;&#x65F6;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
+<h2 id="Xloggc"><a href="#Xloggc" class="headerlink" title="-Xloggc"></a>-Xloggc</h2><p>&#x7F3A;&#x7701;&#x7684;GC&#x65E5;&#x5FD7;&#x65F6;&#x8F93;&#x51FA;&#x5230;&#x7EC8;&#x7AEF;&#x7684;&#xFF0C;&#x4F7F;&#x7528;-Xloggc:&#x4E5F;&#x53EF;&#x4EE5;&#x8F93;&#x51FA;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x9690;&#x5F0F;&#x7684;&#x8BBE;&#x7F6E;&#x4E86;&#x53C2;&#x6570;-XX:+PrintGC&#x548C;-XX:+PrintGCTimeStamps&#xFF0C;&#x4F46;&#x4E3A;&#x4E86;&#x4EE5;&#x9632;&#x5728;&#x65B0;&#x7248;&#x672C;&#x7684;JVM&#x4E2D;&#x6709;&#x4EFB;&#x4F55;&#x53D8;&#x5316;&#xFF0C;&#x6211;&#x4ECD;&#x5EFA;&#x8BAE;&#x663E;&#x793A;&#x7684;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x3002;</p>
+<h2 id="&#x53EF;&#x7BA1;&#x7406;&#x7684;JVM&#x53C2;&#x6570;"><a href="#&#x53EF;&#x7BA1;&#x7406;&#x7684;JVM&#x53C2;&#x6570;" class="headerlink" title="&#x53EF;&#x7BA1;&#x7406;&#x7684;JVM&#x53C2;&#x6570;"></a>&#x53EF;&#x7BA1;&#x7406;&#x7684;JVM&#x53C2;&#x6570;</h2><p>&#x4E00;&#x4E2A;&#x5E38;&#x5E38;&#x88AB;&#x8BA8;&#x8BBA;&#x7684;&#x95EE;&#x9898;&#x662F;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;GC&#x65E5;&#x5FD7;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x5F00;&#x542F;&#x3002;&#x56E0;&#x4E3A;&#x5B83;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x5F00;&#x9500;&#x901A;&#x5E38;&#x90FD;&#x975E;&#x5E38;&#x6709;&#x9650;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x7684;&#x7B54;&#x6848;&#x662F;&#x9700;&#x8981;&#x5F00;&#x542F;&#x3002;&#x4F46;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x5728;&#x542F;&#x52A8;JVM&#x65F6;&#x5C31;&#x5FC5;&#x987B;&#x6307;&#x5B9A;GC&#x65E5;&#x5FD7;&#x53C2;&#x6570;&#x3002;</p>
+<p>HotSpot JVM&#x6709;&#x4E00;&#x7C7B;&#x7279;&#x522B;&#x7684;&#x53C2;&#x6570;&#x53EB;&#x505A;&#x53EF;&#x7BA1;&#x7406;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4FEE;&#x6539;&#x4ED6;&#x4EEC;&#x7684;&#x503C;&#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x6240;&#x8BA8;&#x8BBA;&#x7684;&#x6240;&#x6709;&#x53C2;&#x6570;&#x4EE5;&#x53CA;&#x4EE5;&#x201C;PrintGC&#x201D;&#x5F00;&#x5934;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x53EF;&#x7BA1;&#x7406;&#x7684;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x6837;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x90FD;&#x53EF;&#x4EE5;&#x5F00;&#x542F;&#x6216;&#x662F;&#x5173;&#x95ED;GC&#x65E5;&#x5FD7;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;JDK&#x81EA;&#x5E26;&#x7684;jinfo&#x5DE5;&#x5177;&#x6765;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x901A;&#x8FC7;JMX&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528;HotSpotDiagnostic MXBean&#x7684;setVMOption&#x65B9;&#x6CD5;&#x6765;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x3002;</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/tec/">TEC-技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JVM/">#JVM</a>
+  </div>
+
+
+        <br/>
+<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/" target="_blank" title="JVM实用参数（八）GC日志">DeleiGuo:JVM实用参数（八）GC日志</a></b>.</code></pre>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.deleiguo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+  
+    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Team/">Team</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+    <ul class="entry">
+        <ul>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.hollischuang.com" target="_blank">HollisChuang's Blog</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank">并发编程网-ifeve.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank">酷勤网</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank">grepcode.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.importnew.com" target="_blank">ImportNew</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.jobbole.com" target="_blank">伯乐在线</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://wiki.jikexueyuan.com" target="_blank">极客学院wiki</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://hao.shejidaren.com/index.html" target="_blank">设计导航</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer">
+      <div class="inner">
+          <p style="color:#333">
+              I know no such things as genius,it is nothing but labor and diligence.<br/>
+              -哪有什么天才之说，不过是勤奋
+          </p>
+          <br/>
+          <div class="alignleft">
+  
+  &copy; 2016 DeleiGuo
+  
+  &nbsp;&nbsp;
+  湘ICP备16012107号-1
+  &nbsp;&nbsp;
+  Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
+</div>
+<div class="alignright">
+  <a href="https://github.com/delei"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</div>
+<div class="clearfix"></div>
+
+      </div>
+  </footer>
+  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/images/scrollup.png"/></a>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="/js/totop.js"></script>
+
+
+
+<script type="text/javascript">
+(function($){
+  hljs.initHighlightingOnLoad();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

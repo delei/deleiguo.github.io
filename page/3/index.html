@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 3 页 | DeleiGuo</title>
+  <meta name="author" content="DeleiGuo">
+  
+  <meta name="description" content="Target、Focus、Patient">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="DeleiGuo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class=""><a class="home-link" href="/">
+  <h1 class="site-title animated zoomIn">DeleiGuo</h1>
+  <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
+</a>
+<div class="clearfix"></div>
+</header>
+  <nav id="main-nav" class="navigation main-navigation">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/books">书籍库</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div id="content">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-4-heap-tuning/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-4-heap-tuning/">JVM实用参数（四）内存调优</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x56DB;&#xFF09;&#x5185;&#x5B58;&#x8C03;&#x4F18;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x90D1;&#x65ED;&#x4E1C;<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x6881;&#x6D77;&#x8230;</p>
+<p>&#x7406;&#x60F3;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;JVM&#x7684;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5F97;&#x5F88;&#x597D;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x8BBE;&#x7F6E;&#x4EFB;&#x4F55;JVM&#x53C2;&#x6570;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x7531;&#x4E8E;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF08;&#x5F88;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x7ECF;&#x5E38;&#x51FA;&#x73B0;&#xFF09;&#xFF0C;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x7684;JVM&#x53C2;&#x6570;&#x77E5;&#x8BC6;&#x4F1A;&#x662F;&#x6211;&#x4EEC;&#x5DE5;&#x4F5C;&#x4E2D;&#x5F97;&#x597D;&#x4F19;&#x4F34;&#x3002;&#x5728;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x53C2;&#x6570;&#x3002;&#x77E5;&#x9053;&#x5E76;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x5C06;&#x5BF9;&#x5F00;&#x53D1;&#x8005;&#x548C;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-4-heap-tuning/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM实用参数（五）新生代垃圾回收</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E94;&#xFF09;&#x65B0;&#x751F;&#x4EE3;&#x5783;&#x573E;&#x56DE;&#x6536;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x4E25;&#x4EAE;<br>&#x672C;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5173;&#x6CE8;&#x5806;(heap) &#x4E2D;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x533A;&#x57DF;&#xFF0C;&#x65B0;&#x751F;&#x4EE3;(young generation)&#x3002;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x4F1A;&#x8BA8;&#x8BBA;&#x4E3A;&#x4EC0;&#x4E48;&#x8C03;&#x6574;&#x65B0;&#x751F;&#x4EE3;&#x7684;&#x53C2;&#x6570;&#x4F1A;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x6027;&#x80FD;&#x5982;&#x6B64;&#x91CD;&#x8981;&#xFF0C;&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x5C06;&#x5B66;&#x4E60;&#x65B0;&#x751F;&#x4EE3;&#x76F8;&#x5173;&#x7684;JVM&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x5355;&#x7EAF;&#x4ECE;JVM&#x7684;&#x529F;&#x80FD;&#x8003;&#x8651;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x65B0;&#x751F;&#x4EE3;&#xFF0C;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x6574;&#x4E2A;&#x5806;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;&#x65B0;&#x751F;&#x4EE3;&#x5B58;&#x5728;&#x7684;&#x552F;&#x4E00;&#x7406;&#x7531;&#x662F;&#x4F18;&#x5316;&#x5783;&#x573E;&#x56DE;&#x6536;(GC)&#x7684;&#x6027;&#x80FD;&#x3002;&#x66F4;&#x5177;&#x4F53;&#x8BF4;&#xFF0C;&#x628A;&#x5806;&#x5212;&#x5206;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x6709;2&#x4E2A;&#x597D;&#x5904;&#xFF1A;&#x7B80;&#x5316;&#x4E86;&#x65B0;&#x5BF9;&#x8C61;&#x7684;&#x5206;&#x914D;(&#x53EA;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x5206;&#x914D;&#x5185;&#x5B58;),&#x53EF;&#x4EE5;&#x66F4;&#x6709;&#x6548;&#x7684;&#x6E05;&#x9664;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x7684;&#x5BF9;&#x8C61;(&#x5373;&#x6B7B;&#x5BF9;&#x8C61;)(&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;GC&#x7B97;&#x6CD5;)</p>
+<p>&#x901A;&#x8FC7;&#x5E7F;&#x6CDB;&#x7814;&#x7A76;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x5171;&#x540C;&#x7279;&#x70B9;&#xFF1A;&#x5F88;&#x591A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x90FD;&#x5F88;&#x77ED;&#x3002;&#x540C;&#x65F6;&#x7814;&#x7A76;&#x53D1;&#x73B0;&#xFF0C;&#x65B0;&#x751F;&#x5BF9;&#x8C61;&#x5F88;&#x5C11;&#x5F15;&#x7528;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x957F;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x7ED3;&#x5408;&#x8FD9;2&#x4E2A;&#x7279;&#x70B9;&#xFF0C;&#x5F88;&#x660E;&#x663E; GC &#x4F1A;&#x9891;&#x7E41;&#x8BBF;&#x95EE;&#x65B0;&#x751F;&#x5BF9;&#x8C61;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x5806;&#x4E2D;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x3002;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#xFF0C;GC&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x6807;&#x8BB0;&#x56DE;&#x6536;&#x201D;&#x6B7B;&#x5BF9;&#x8C61;&#x201D;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x626B;&#x63CF;&#x6574;&#x4E2A;Heap&#x4E2D;&#x7684;&#x5B58;&#x6D3B;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x201D;&#x8001;&#x5BF9;&#x8C61;&#x201D;&#x3002;</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-follow-dns/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/linux-follow-dns/">Linux 跟踪域名解析过程</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="&#x547D;&#x4EE4;&#x4E00;-nslookup"><a href="#&#x547D;&#x4EE4;&#x4E00;-nslookup" class="headerlink" title="&#x547D;&#x4EE4;&#x4E00;:nslookup"></a>&#x547D;&#x4EE4;&#x4E00;:nslookup</h2><blockquote>
+<p>linux and windows</p>
+</blockquote>
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="&#x547D;&#x4EE4;&#x4E8C;-dig"><a href="#&#x547D;&#x4EE4;&#x4E8C;-dig" class="headerlink" title="&#x547D;&#x4EE4;&#x4E8C;:dig"></a>&#x547D;&#x4EE4;&#x4E8C;:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>&#x589E;&#x52A0;+trace&#x53C2;&#x6570;&#x8DDF;&#x8E2A;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-08-17T08:01:10.000Z"><a href="/2016/08/17/jvm-type-and-mode/">2016-08-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/08/17/jvm-type-and-mode/">JVM类型与模式[JAVA -VERSION]</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h1><p>&#x57FA;&#x672C;&#x4E0A;&#x4E00;&#x5F00;&#x59CB;&#x5B66;&#x4E60;Java&#xFF0C;&#x5C31;&#x63A5;&#x89E6;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;Java&#x7684;&#x547D;&#x4EE4;:<code>java -version</code><br>&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5C31;&#x662F;&#x7528;&#x6765;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x670D;&#x52A1;&#x5668;&#x7684;JDK&#x73AF;&#x5883;&#x7248;&#x672C;&#xFF0C;&#x4EE5;&#x6B64;&#x9A8C;&#x8BC1;&#x670D;&#x52A1;&#x5668;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x5DF2;&#x6B63;&#x786E;&#x7684;&#x8BBE;&#x7F6E;&#x597D;JDK&#x3002;<br>&#x6700;&#x5E38;&#x89C1;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x822C;&#x6709;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li><p><strong>Sun JDK</strong>:</p>
+<pre><code>delei@DeleitekiMBP:~$ java -version
+java version &quot;1.7.0_79&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+</code></pre></li>
+<li><p><strong>Open JDK</strong>:</p>
+<pre><code>root@ubuntu-server:~# java -version
+java version &quot;1.7.0_95&quot;
+OpenJDK Runtime Environment (IcedTea 2.6.4) (7u95-2.6.4-0ubuntu0.15.10.1)
+OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
+</code></pre></li>
+</ul>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/08/17/jvm-type-and-mode/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/2/" class="alignleft prev">上一页</a>
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.deleiguo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+  
+    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Team/">Team</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+    <ul class="entry">
+        <ul>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.hollischuang.com" target="_blank">HollisChuang's Blog</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank">并发编程网-ifeve.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank">酷勤网</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank">grepcode.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.importnew.com" target="_blank">ImportNew</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.jobbole.com" target="_blank">伯乐在线</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://wiki.jikexueyuan.com" target="_blank">极客学院wiki</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://hao.shejidaren.com/index.html" target="_blank">设计导航</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer">
+      <div class="inner">
+          <p style="color:#333">
+              I know no such things as genius,it is nothing but labor and diligence.<br/>
+              -哪有什么天才之说，不过是勤奋
+          </p>
+          <br/>
+          <div class="alignleft">
+  
+  &copy; 2016 DeleiGuo
+  
+  &nbsp;&nbsp;
+  湘ICP备16012107号-1
+  &nbsp;&nbsp;
+  Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
+</div>
+<div class="alignright">
+  <a href="https://github.com/delei"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</div>
+<div class="clearfix"></div>
+
+      </div>
+  </footer>
+  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/images/scrollup.png"/></a>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="/js/totop.js"></script>
+
+
+
+<script type="text/javascript">
+(function($){
+  hljs.initHighlightingOnLoad();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

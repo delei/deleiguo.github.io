@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM类型与模式[JAVA -VERSION] | DeleiGuo</title>
+  <meta name="author" content="DeleiGuo">
+  
+  <meta name="description" content="Target、Focus、Patient">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JVM类型与模式[JAVA -VERSION]"/>
+  <meta property="og:site_name" content="DeleiGuo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class=""><a class="home-link" href="/">
+  <h1 class="site-title animated zoomIn">DeleiGuo</h1>
+  <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
+</a>
+<div class="clearfix"></div>
+</header>
+  <nav id="main-nav" class="navigation main-navigation">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/books">书籍库</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div id="content">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-08-17T08:01:10.000Z"><a href="/2016/08/17/jvm-type-and-mode/">2016-08-17</a></time>
+      
+      
+  
+    <h1 class="title">JVM类型与模式[JAVA -VERSION]</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h1><p>&#x57FA;&#x672C;&#x4E0A;&#x4E00;&#x5F00;&#x59CB;&#x5B66;&#x4E60;Java&#xFF0C;&#x5C31;&#x63A5;&#x89E6;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;Java&#x7684;&#x547D;&#x4EE4;:<code>java -version</code><br>&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5C31;&#x662F;&#x7528;&#x6765;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x670D;&#x52A1;&#x5668;&#x7684;JDK&#x73AF;&#x5883;&#x7248;&#x672C;&#xFF0C;&#x4EE5;&#x6B64;&#x9A8C;&#x8BC1;&#x670D;&#x52A1;&#x5668;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x5DF2;&#x6B63;&#x786E;&#x7684;&#x8BBE;&#x7F6E;&#x597D;JDK&#x3002;<br>&#x6700;&#x5E38;&#x89C1;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x822C;&#x6709;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li><p><strong>Sun JDK</strong>:</p>
+<pre><code>delei@DeleitekiMBP:~$ java -version
+java version &quot;1.7.0_79&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+</code></pre></li>
+<li><p><strong>Open JDK</strong>:</p>
+<pre><code>root@ubuntu-server:~# java -version
+java version &quot;1.7.0_95&quot;
+OpenJDK Runtime Environment (IcedTea 2.6.4) (7u95-2.6.4-0ubuntu0.15.10.1)
+OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
+</code></pre></li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>&#x7B2C;&#x4E00;&#x884C;:JDK&#x7684;&#x7248;&#x672C;&#x53F7;<br>&#x7B2C;&#x4E8C;&#x884C;&#xFF1A;JDK&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;</p>
+</blockquote>
+<p>&#x4F46;&#x7B2C;&#x4E09;&#x884C;&#x662F;&#x6307;&#x7684;&#x4EC0;&#x4E48;&#xFF0C;&#x5728;&#x4E00;&#x5F00;&#x59CB;&#x6CA1;&#x7559;&#x610F;&#x4E5F;&#x4E0D;&#x7406;&#x89E3;&#x8FD9;&#x4E00;&#x884C;&#x5305;&#x542B;&#x7740;&#x54EA;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5;Sun JDK&#x4E3A;&#x4F8B;&#x6765;&#x7A0D;&#x5FAE;&#x6DF1;&#x5165;&#x770B;&#x4E00;&#x4E0B;.</p>
+<pre><code>  Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+</code></pre><ul>
+<li><p>Java HotSpot(TM)</p>
+<ul>
+<li>&#x8FD9;&#x662F;&#x4ECE;Sun&#x516C;&#x53F8;&#x5F00;&#x59CB;&#xFF0C;&#x5230;Oracle&#x540E;&#x4E00;&#x76F4;&#x4F7F;&#x7528;&#x7684;&#x865A;&#x62DF;&#x673A;;</li>
+<li>&#x5176;&#x5B9E;JVM&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x89C4;&#x8303;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x865A;&#x62DF;&#x673A;&#xFF1B;</li>
+<li>&#x76EE;&#x524D;&#x5E02;&#x9762;&#x4E0A;&#x5E38;&#x7528;&#x7684;&#x5546;&#x4E1A;&#x865A;&#x62DF;&#x673A;&#x6709;&#xFF1A;HotSpot(Oracle &#x548C; openjdk),IBM&#x7684;J9 vm&#xFF0C;Azul Systems &#x7684;Zing&#x7B49; <a href="http://www.zhihu.com/question/29265430?sort=created" target="_blank" rel="external">zhihu</a>;</li>
+<li>&#x5176;&#x4ED6;&#x865A;&#x62DF;&#x673A;&#xFF1A;<a href="https://en.wikipedia.org/wiki/Comparison_of_Java_virtual_machines" target="_blank" rel="external">wikipedia</a></li>
+</ul>
+</li>
+<li><p>64-Bit</p>
+<ul>
+<li>&#x5982;&#x679C;&#x5B89;&#x88C5;&#x7684;&#x662F;64&#x4F4D;&#x7684;&#x5219;&#x662F;64-bit,&#x5982;&#x679C;&#x5B89;&#x88C5;&#x662F;32&#x4F4D;&#xFF0C;&#x5219;&#x4E3A;32-bit&#x3002;</li>
+<li>&#x8FD9;&#x91CC;&#x4E0D;&#x662F;&#x670D;&#x52A1;&#x5668;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x800C;&#x662F;&#x6307;&#x7684;&#x5F53;&#x524D;&#x5B89;&#x88C5;JDK</li>
+</ul>
+</li>
+<li><p>Server VM</p>
+<ul>
+<li>Server VM</li>
+<li>Client VM</li>
+</ul>
+</li>
+<li><p>mixed mode</p>
+<ul>
+<li>mixed mode:&#x6DF7;&#x5408;&#x6A21;&#x5F0F;</li>
+<li>class data sharing&#xFF1A;&#x7C7B;&#x6570;&#x636E;&#x5171;&#x4EAB;</li>
+<li>interpreted mode:&#x89E3;&#x91CA;&#x6A21;&#x5F0F;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="JVM&#x7C7B;&#x578B;"><a href="#JVM&#x7C7B;&#x578B;" class="headerlink" title="JVM&#x7C7B;&#x578B;"></a>JVM&#x7C7B;&#x578B;</h1><p>&#x9996;&#x5148;&#x8981;&#x77E5;&#x9053;&#x7684;&#x7684;&#x662F;Server VM&#x548C;Client VM&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x865A;&#x62DF;&#x673A;&#x3002;<br>&#x5982;&#x679C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;64&#x4F4D;&#x7684;&#xFF0C;&#x53EA;&#x80FD;&#x662F;Server VM&#xFF0C;Client VM&#x53EA;&#x6709;&#x5728;32&#x4F4D;&#x4E0A;&#x624D;&#x6709;&#x3002;<a href="http://docs.oracle.com/javase/7/docs/technotes/guides/vm/server-class.html" target="_blank" rel="external">Oracle&#x5B98;&#x65B9;</a></p>
+<p>Server VM&#x548C;Client VM&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;&#x5728;&#x5B98;&#x7F51;&#x7684;FAQ&#x4E2D;&#x6709;&#x5982;&#x4E0B;&#x7684;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<p><strong>JIT Compiler</strong><br>1.<strong>What&#x2019;s the difference between the -client and -server systems?</strong></p>
+<pre><code class="lang-XML">These two systems are different binaries. They are essentially two different compilers (JITs)interfacing to the same runtime system. The client system is optimal for applications which need fast startup times or small footprints, the server system is optimal for applications where the overall performance is most important. In general the client system is better suited for interactive applications such as GUIs. Some of the other differences include the compilation policy,heap defaults, and inlining policy.
+</code></pre>
+<blockquote>
+<p> &#x5927;&#x81F4;&#x7FFB;&#x8BD1;&#xFF1A;<br> &#x8FD9;&#x4E24;&#x4E2A;JVM&#x91C7;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x3002;<br> Client JVM&#x9002;&#x5408;&#x5FEB;&#x901F;&#x542F;&#x52A8;&#x548C;&#x8F83;&#x5C0F;&#x5185;&#x5B58;&#x7684;&#xFF0C;&#x5B83;&#x9002;&#x5408;&#x5F3A;&#x8C03;&#x4EA4;&#x4E92;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x6BD4;&#x5982;GUI(&#x684C;&#x9762;&#x7EA7;&#x5E94;&#x7528;&#x754C;&#x9762;)&#xFF1B;<br> Server JVM&#x5219;&#x662F;&#x504F;&#x91CD;&#x6267;&#x884C;&#x65F6;&#x5019;&#x7684;&#x6548;&#x7387;&#x7684;&#x3002;<br> &#x5176;&#x4ED6;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x65B9;&#x201D;&#x7F16;&#x8BD1;&#x7B56;&#x7565;&#x201D;&#x3001;&#x201D;&#x9ED8;&#x8BA4;&#x5806;&#x5927;&#x5C0F;&#x201D;&#x3001;&#x201D;&#x5185;&#x5D4C;&#x7B56;&#x7565;&#x201D;</p>
+</blockquote>
+<p>2.<strong>Where do I get the server and client systems?</strong></p>
+<pre><code>Client and server systems are both downloaded with the 32-bit Solaris and Linux downloads. For 32-bit Windows, if you download the JRE, you get only the client, you&apos;ll need to download the SDK to get both systems.
+
+For 64-bit, only the server system is included. On Solaris, the 64-bit JRE is an overlay on top of the 32-bit distribution. However, on Linux and Windows, it&apos;s a completely separate distribution.
+</code></pre><blockquote>
+<p> &#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x7FFB;&#x8BD1;&#xFF1A;<br> &#x5728;32&#x4F4D;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x8F7D;JRE,&#x5219;&#x53EA;&#x6709;client&#xFF1B;<br> &#x4ECE;Java SE 5.0&#x5F00;&#x59CB;&#xFF0C;&#x5728;64&#x4F4D;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x65F6;&#x5019;Server&#xFF0C;32&#x4F4D;&#x7684;&#x9ED8;&#x8BA4;</p>
+</blockquote>
+<p>&#x4EE5;&#x4E0A;&#x662F;&#x4ECE;&#x5B98;&#x65B9;&#x5F97;&#x5230;&#x7684;&#x539F;&#x7406;/&#x89C4;&#x8303;&#x4F7F;&#x7528;&#x4E0A;&#x7684;&#x4E00;&#x4E9B;&#x8BF4;&#x660E;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x5728;&#x5B9E;&#x9645;&#x5F53;&#x4E2D;&#xFF0C;&#x5982;&#x4F55;&#x5207;&#x6362;Server VM&#x548C;Client VM&#xFF1A;</p>
+<ul>
+<li>&#x60F3;&#x8981;&#x5728;windows&#x7CFB;&#x7EDF;&#x4E2D;&#x8FDB;&#x884C;&#x5207;&#x6362;&#xFF0C;&#x9700;&#x8981;&#x4E0B;&#x8F7D;JDK&#x800C;&#x4E0D;&#x662F;JRE;</li>
+<li>&#x5728;Windows &#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x627E;&#x5230;JDK(%JAVA_HOME%)&#x5B89;&#x88C5;&#x7684;&#x76EE;&#x5F55;<code>/jre/lib</code>&#xFF0C;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x6709;<code>server</code>&#x548C;<code>client</code>&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x76EE;&#x5F55;;</li>
+</ul>
+<ol>
+<li><p>&#x547D;&#x4EE4;&#x5207;&#x6362;(&#x63A8;&#x8350;)<br>&#x5728;CMD/&#x7EC8;&#x7AEF;&#x547D;&#x4EE4;&#x4E2D;&#xFF0C;&#x6267;&#x884C;<code>java -server -version</code>&#x548C;<code>java -client -version</code>&#x5373;&#x53EF;&#x5207;&#x6362;;</p>
+</li>
+<li><p>&#x4FEE;&#x6539;&#x6587;&#x4EF6;(&#x6C38;&#x4E45;&#x5207;&#x6362;)<br>&#x5728;<code>jre/lib/i386/</code>(32&#x4F4D;&#x7684;JDK&#x6709;i386&#x6587;&#x4EF6;&#x5939;)&#xFF0C;&#x7F16;&#x8F91;&#x4FEE;&#x6539;jvm.cfg&#x6587;&#x4EF6;</p>
+</li>
+</ol>
+<pre><code># List of JVMs that can be used as an option to java, javac, etc.
+# Order is important -- first in this list is the default JVM.
+# NOTE that this both this file and its format are UNSUPPORTED and
+# WILL GO AWAY in a future release.
+#
+# You may also select a JVM in an arbitrary location with the
+# &quot;-XXaltjvm=&lt;jvm_dir&gt;&quot; option, but that too is unsupported
+# and may not be available in a future release.
+#
+-client KNOWN
+-server KNOWN
+-hotspot ALIASED_TO -client
+-classic WARN
+-native ERROR
+-green ERROR
+</code></pre><p> <code># Order is important -- first in this list is the default JVM.</code><br> &#x7B2C;&#x4E00;&#x884C;&#x7684;&#x914D;&#x7F6E;&#x5219;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;JVM&#xFF0C;&#x8FD9;&#x91CC;&#x7B2C;&#x4E00;&#x884C;&#x662F;-client&#xFF0C;&#x6240;&#x6709;&#x9ED8;&#x8BA4;&#x662F;Client VM;<br> &#x8981;&#x60F3;&#x7528;Server VM&#xFF0C;&#x5219;&#x5C06;&#x7B2C;&#x4E8C;&#x884C;&#x4E0E;&#x7B2C;&#x4E09;&#x884C;&#x8C03;&#x6362;&#x4F4D;&#x7F6E;&#x4FDD;&#x5B58;&#x5373;&#x53EF;;</p>
+<p><strong>&#x5E94;&#x7528;&#x573A;&#x666F;</strong></p>
+<ol>
+<li>&#x6211;&#x4EEC;&#x65F6;&#x5E38;&#x4F1A;&#x5728;&#x5F00;&#x53D1;/&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x5BF9;web &#x670D;&#x52A1;&#x5668;&#x8C03;&#x6574;JVM&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x76EE;&#x524D;&#x670D;&#x52A1;&#x5668;&#x90FD;&#x662F;64&#x4F4D;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x7528;java -version&#x6765;&#x67E5;&#x770B;&#x73AF;&#x5883;;</li>
+<li>&#x6839;&#x636E;&#x5E94;&#x7528;&#x7684;&#x573A;&#x666F;&#x9700;&#x8981;&#xFF0C;&#x5728;jvm&#x4E2D;&#x52A0;&#x4E0A;<code>-server</code> &#x53C2;&#x6570;;</li>
+</ol>
+<hr>
+<h1 id="JVM&#x8FD0;&#x884C;&#x6A21;&#x5F0F;"><a href="#JVM&#x8FD0;&#x884C;&#x6A21;&#x5F0F;" class="headerlink" title="JVM&#x8FD0;&#x884C;&#x6A21;&#x5F0F;"></a>JVM&#x8FD0;&#x884C;&#x6A21;&#x5F0F;</h1><p>&#x5728;CMD/&#x7EC8;&#x7AEF;&#x547D;&#x4EE4;&#x4E2D;&#xFF0C;&#x6267;&#x884C;<code>java -X</code></p>
+<pre><code>root@ubuntu-server:~# java -X
+    -Xmixed           mixed mode execution (default)
+    -Xint             interpreted mode execution only
+</code></pre><p>&#x5728;&#x6B64;&#x53EF;&#x4EE5;&#x77E5;&#x9053;mixed&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x6A21;&#x5F0F;&#xFF1B;<br>JVM&#x6A21;&#x5F0F;&#x6709;&#xFF1A;-Xint, -Xcomp, &#x548C; -Xmixed</p>
+<ul>
+<li><p><strong> -Xint</strong><br>&#x5728;&#x89E3;&#x91CA;&#x6A21;&#x5F0F;(interpreted mode)&#x4E0B;&#xFF0C;-Xint&#x6807;&#x8BB0;&#x4F1A;&#x5F3A;&#x5236;JVM&#x6267;&#x884C;&#x6240;&#x6709;&#x7684;&#x5B57;&#x8282;&#x7801;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x4F1A;&#x964D;&#x4F4E;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x901A;&#x5E38;&#x4F4E;10&#x500D;&#x6216;&#x66F4;&#x591A;&#x3002;</p>
+</li>
+<li><p><strong> -Xcomp</strong><br>-Xcomp&#x53C2;&#x6570;&#x4E0E;&#x5B83;&#xFF08;-Xint&#xFF09;&#x6B63;&#x597D;&#x76F8;&#x53CD;&#xFF0C;JVM&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x65F6;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x7684;&#x5B57;&#x8282;&#x7801;&#x7F16;&#x8BD1;&#x6210;&#x672C;&#x5730;&#x4EE3;&#x7801;&#xFF0C;&#x4ECE;&#x800C;&#x5E26;&#x6765;&#x6700;&#x5927;&#x7A0B;&#x5EA6;&#x7684;&#x4F18;&#x5316;&#x3002;&#x8FD9;&#x542C;&#x8D77;&#x6765;&#x4E0D;&#x9519;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x5B8C;&#x5168;&#x7ED5;&#x5F00;&#x4E86;&#x7F13;&#x6162;&#x7684;&#x89E3;&#x91CA;&#x5668;</p>
+</li>
+<li><p><strong>-Xmixed</strong><br>&#x6DF7;&#x5408;&#x6A21;&#x5F0F;(mixed mode)&#xFF0C;&#x662F;JVM&#x7684;&#x9ED8;&#x8BA4;&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#x3002;&#x5B83;&#x4F1A;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x7F16;&#x8BD1;&#x6A21;&#x5F0F;&#x548C;&#x89E3;&#x91CA;&#x6A21;&#x5F0F;&#x3002;&#x5BF9;&#x4E8E;&#x5B57;&#x8282;&#x7801;&#x4E2D;&#x591A;&#x6B21;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x90E8;&#x5206;&#xFF0C;JVM&#x4F1A;&#x5C06;&#x5176;&#x7F16;&#x8BD1;&#x6210;&#x672C;&#x5730;&#x4EE3;&#x7801;&#x4EE5;&#x63D0;&#x9AD8;&#x6267;&#x884C;&#x6548;&#x7387;&#xFF1B;&#x800C;&#x88AB;&#x8C03;&#x7528;&#x5F88;&#x5C11;&#xFF08;&#x751A;&#x81F3;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#xFF09;&#x7684;&#x65B9;&#x6CD5;&#x5728;&#x89E3;&#x91CA;&#x6A21;&#x5F0F;&#x4E0B;&#x4F1A;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x4ECE;&#x800C;&#x51CF;&#x5C11;&#x7F16;&#x8BD1;&#x548C;&#x4F18;&#x5316;&#x6210;&#x672C;&#x3002;JIT&#x7F16;&#x8BD1;&#x5668;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x7684;&#x4F18;&#x5316;&#x6BCF;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x4E3B;&#x52A8;&#x7684;&#x4F18;&#x5316;&#x5E94;&#x7528;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x8FD9;&#x4E9B;&#x4F18;&#x5316;&#x6280;&#x672F;&#xFF0C;&#x6BD4;&#x5982;&#x79EF;&#x6781;&#x7684;&#x5206;&#x652F;&#x9884;&#x6D4B;&#xFF08;optimistic branch prediction&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5148;&#x5206;&#x6790;&#x5E94;&#x7528;&#x5C31;&#x4E0D;&#x80FD;&#x6709;&#x6548;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x6837;&#x5C06;&#x9891;&#x7E41;&#x8C03;&#x7528;&#x7684;&#x90E8;&#x5206;&#x63D0;&#x53D6;&#x51FA;&#x6765;&#xFF0C;&#x7F16;&#x8BD1;&#x6210;&#x672C;&#x5730;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x6784;&#x5EFA;&#x67D0;&#x79CD;&#x70ED;&#x70B9;&#xFF08;&#x5373;HotSpot&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;HotSpot JVM&#x540D;&#x5B57;&#x7684;&#x7531;&#x6765;&#xFF09;&#x3002;&#x4F7F;&#x7528;&#x6DF7;&#x5408;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x6700;&#x597D;&#x7684;&#x6267;&#x884C;&#x6548;&#x7387;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5728;CMD/&#x7EC8;&#x7AEF;&#x547D;&#x4EE4;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x6765;&#x5207;&#x6362;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<pre><code>root@ubuntu-server:~# java -Xint -version
+java version &quot;1.7.0_95&quot;
+OpenJDK Runtime Environment (IcedTea 2.6.4) (7u95-2.6.4-0ubuntu0.15.10.1)
+OpenJDK 64-Bit Server VM (build 24.95-b01, interpreted mode)
+
+root@ubuntu-server:~# java -Xcomp -version
+java version &quot;1.7.0_95&quot;
+OpenJDK Runtime Environment (IcedTea 2.6.4) (7u95-2.6.4-0ubuntu0.15.10.1)
+OpenJDK 64-Bit Server VM (build 24.95-b01, compiled mode)
+</code></pre><p><strong> &#x4EE3;&#x7801;&#x9A8C;&#x8BC1;</strong><br>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;Java&#x4EE3;&#x7801;&#x6765;&#x9A8C;&#x8BC1;&#x4E0B;&#x4E0D;&#x540C;mode&#x4E0B;&#x7684;&#x6267;&#x884C;&#x8017;&#x65F6;(Server VM)</p>
+<pre><code class="lang-JAVA">public class JVMModeTest {
+
+    private static void test() {//&#x5FAA;&#x73AF;++
+        for (int i =0;i&lt;1000000000;i++) {
+        }
+    }
+
+    public static void main(String[] args) {
+        long start = System.currentTimeMillis();
+        test();
+        long end = System.currentTimeMillis();
+        System.out.println(end-start);//&#x6253;&#x5370;&#x6267;&#x884C;&#x8017;&#x65F6;
+    }
+
+}
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>root@ubuntu-server:~/work/java$ java -Xcomp JVMModeTest
+2
+root@ubuntu-server:~/work/java$ java -Xint JVMModeTest
+28562
+root@ubuntu-server:~/work/java$ java -Xmixed JVMModeTest
+18
+</code></pre><blockquote>
+<p>&#x5F15;&#x7528;&#x539F;&#x6587;&#xFF1A;<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#xFF1A;JVM&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x4E0E;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF08;&#x7B2C;2&#x7248;&#xFF09;</a></p>
+</blockquote>
+<p>&#x7531;&#x4E8E;&#x5373;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x672C;&#x5730;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x5360;&#x7528;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x8981;&#x7F16;&#x8BD1;&#x51FA;&#x4F18;&#x5316;&#x7A0B;&#x5EA6;&#x66F4;&#x9AD8;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6240;&#x82B1;&#x8D39;&#x7684;&#x65F6;&#x95F4;&#x53EF;&#x80FD;&#x66F4;&#x957F;&#xFF1B;&#x800C;&#x4E14;&#x60F3;&#x8981;&#x7F16;&#x8BD1;&#x51FA;&#x4F18;&#x5316;&#x7A0B;&#x5EA6;&#x66F4;&#x9AD8;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x89E3;&#x91CA;&#x5668;&#x53EF;&#x80FD;&#x8FD8;&#x8981;&#x66FF;&#x7F16;&#x8BD1;&#x5668;&#x6536;&#x96C6;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x5BF9;&#x89E3;&#x91CA;&#x6267;&#x884C;&#x7684;&#x901F;&#x5EA6;&#x4E5F;&#x6709;&#x5F71;&#x54CD;&#x3002;&#x4E3A;&#x4E86;&#x5728;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x4E0E;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x4E4B;&#x95F4;&#x8FBE;&#x5230;&#x6700;&#x4F73;&#x5E73;&#x8861;&#xFF0C;HotSpot&#x865A;&#x62DF;&#x673A;&#x8FD8;&#x4F1A;&#x9010;&#x6E10;&#x542F;&#x7528;&#x5206;&#x5C42;&#x7F16;&#x8BD1;&#xFF08;Tiered Compilation&#xFF09;[4]&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x5206;&#x5C42;&#x7F16;&#x8BD1;&#x7684;&#x6982;&#x5FF5;&#x5728;JDK 1.6&#x65F6;&#x671F;&#x51FA;&#x73B0;&#xFF0C;&#x540E;&#x6765;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x6539;&#x8FDB;&#x9636;&#x6BB5;&#xFF0C;&#x6700;&#x7EC8;&#x5728;JDK 1.7&#x7684;Server&#x6A21;&#x5F0F;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x7B56;&#x7565;&#x88AB;&#x5F00;&#x542F;&#x3002;&#x5206;&#x5C42;&#x7F16;&#x8BD1;&#x6839;&#x636E;&#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x3001;&#x4F18;&#x5316;&#x7684;&#x89C4;&#x6A21;&#x4E0E;&#x8017;&#x65F6;&#xFF0C;&#x5212;&#x5206;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x8BD1;&#x5C42;&#x6B21;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li><p>&#x7B2C;0&#x5C42;&#xFF0C;&#x7A0B;&#x5E8F;&#x89E3;&#x91CA;&#x6267;&#x884C;&#xFF0C;&#x89E3;&#x91CA;&#x5668;&#x4E0D;&#x5F00;&#x542F;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x529F;&#x80FD;&#xFF08;Profiling&#xFF09;&#xFF0C;&#x53EF;&#x89E6;&#x53D1;&#x7B2C;1&#x5C42;&#x7F16;&#x8BD1;&#x3002;</p>
+</li>
+<li><p>&#x7B2C;1&#x5C42;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;C1&#x7F16;&#x8BD1;&#xFF0C;&#x5C06;&#x5B57;&#x8282;&#x7801;&#x7F16;&#x8BD1;&#x4E3A;&#x672C;&#x5730;&#x4EE3;&#x7801;&#xFF0C;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x3001;&#x53EF;&#x9760;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x5982;&#x6709;&#x5FC5;&#x8981;&#x5C06;&#x52A0;&#x5165;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+</li>
+<li><p>&#x7B2C;2&#x5C42;&#xFF08;&#x6216;2&#x5C42;&#x4EE5;&#x4E0A;&#xFF09;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;C2&#x7F16;&#x8BD1;&#xFF0C;&#x4E5F;&#x662F;&#x5C06;&#x5B57;&#x8282;&#x7801;&#x7F16;&#x8BD1;&#x4E3A;&#x672C;&#x5730;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x542F;&#x7528;&#x4E00;&#x4E9B;&#x7F16;&#x8BD1;&#x8017;&#x65F6;&#x8F83;&#x957F;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x751A;&#x81F3;&#x4F1A;&#x6839;&#x636E;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x4E0D;&#x53EF;&#x9760;&#x7684;&#x6FC0;&#x8FDB;&#x4F18;&#x5316;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5B9E;&#x65BD;&#x5206;&#x5C42;&#x7F16;&#x8BD1;&#x540E;&#xFF0C;Client Compiler&#x548C;Server Compiler&#x5C06;&#x4F1A;&#x540C;&#x65F6;&#x5DE5;&#x4F5C;&#xFF0C;&#x8BB8;&#x591A;&#x4EE3;&#x7801;&#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x591A;&#x6B21;&#x7F16;&#x8BD1;&#xFF0C;&#x7528;Client Compiler&#x83B7;&#x53D6;&#x66F4;&#x9AD8;&#x7684;&#x7F16;&#x8BD1;&#x901F;&#x5EA6;&#xFF0C;&#x7528;Server Compiler&#x6765;&#x83B7;&#x53D6;&#x66F4;&#x597D;&#x7684;&#x7F16;&#x8BD1;&#x8D28;&#x91CF;&#xFF0C;&#x5728;&#x89E3;&#x91CA;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x65E0;&#x987B;&#x518D;&#x627F;&#x62C5;&#x6536;&#x96C6;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4FE1;&#x606F;&#x7684;&#x4EFB;&#x52A1;</p>
+<p>&#x6CE8;&#xFF1A;<br>[1] &#x5728;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x4E60;&#x60EF;&#x5C06;Client Compiler&#x79F0;&#x4E3A;C1&#xFF0C;&#x5C06;Server Compiler&#x79F0;&#x4E3A;C2&#x3002;</p>
+<hr>
+<h1 id="&#x53C2;&#x8003;-&#x5F15;&#x7528;"><a href="#&#x53C2;&#x8003;-&#x5F15;&#x7528;" class="headerlink" title="&#x53C2;&#x8003;/&#x5F15;&#x7528;"></a>&#x53C2;&#x8003;/&#x5F15;&#x7528;</h1><p><a href="http://my.oschina.net/itblog/blog/507822" target="_blank" rel="external">http://my.oschina.net/itblog/blog/507822</a><br><a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" rel="external">http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</a><br><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#xFF1A;JVM&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x4E0E;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF08;&#x7B2C;2&#x7248;&#xFF09;</a></p>
+<p><a href="http://www.oracle.com/technetwork/java/hotspotfaq-138619.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/hotspotfaq-138619.html</a><br><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/vm/server-class.html" target="_blank" rel="external">http://docs.oracle.com/javase/7/docs/technotes/guides/vm/server-class.html</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/tec/">TEC-技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JVM/">#JVM</a>
+  </div>
+
+
+        <br/>
+<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2016/08/17/jvm-type-and-mode/" target="_blank" title="JVM类型与模式[JAVA -VERSION]">DeleiGuo:JVM类型与模式[JAVA -VERSION]</a></b>.</code></pre>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.deleiguo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+  
+    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Team/">Team</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+    <ul class="entry">
+        <ul>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.hollischuang.com" target="_blank">HollisChuang's Blog</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank">并发编程网-ifeve.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank">酷勤网</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank">grepcode.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.importnew.com" target="_blank">ImportNew</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.jobbole.com" target="_blank">伯乐在线</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://wiki.jikexueyuan.com" target="_blank">极客学院wiki</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://hao.shejidaren.com/index.html" target="_blank">设计导航</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer">
+      <div class="inner">
+          <p style="color:#333">
+              I know no such things as genius,it is nothing but labor and diligence.<br/>
+              -哪有什么天才之说，不过是勤奋
+          </p>
+          <br/>
+          <div class="alignleft">
+  
+  &copy; 2016 DeleiGuo
+  
+  &nbsp;&nbsp;
+  湘ICP备16012107号-1
+  &nbsp;&nbsp;
+  Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
+</div>
+<div class="alignright">
+  <a href="https://github.com/delei"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</div>
+<div class="clearfix"></div>
+
+      </div>
+  </footer>
+  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/images/scrollup.png"/></a>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="/js/totop.js"></script>
+
+
+
+<script type="text/javascript">
+(function($){
+  hljs.initHighlightingOnLoad();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

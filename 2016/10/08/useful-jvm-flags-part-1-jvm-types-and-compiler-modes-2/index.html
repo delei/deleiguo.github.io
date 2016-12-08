@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM实用参数（一）JVM类型以及编译器模式 | DeleiGuo</title>
+  <meta name="author" content="DeleiGuo">
+  
+  <meta name="description" content="Target、Focus、Patient">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JVM实用参数（一）JVM类型以及编译器模式"/>
+  <meta property="og:site_name" content="DeleiGuo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class=""><a class="home-link" href="/">
+  <h1 class="site-title animated zoomIn">DeleiGuo</h1>
+  <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
+</a>
+<div class="clearfix"></div>
+</header>
+  <nav id="main-nav" class="navigation main-navigation">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/books">书籍库</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div id="content">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title">JVM实用参数（一）JVM类型以及编译器模式</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" rel="external">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E00;&#xFF09;JVM&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5F0F;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com" target="_blank" rel="external">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x8D75;&#x5CF0;&#xFF0C;iDestiny<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x90ED;&#x857E;</p>
+<p>&#x73B0;&#x5728;&#x7684;JVM&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#xFF08;&#x548C;&#x5176;&#x5B83;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x8BED;&#x8A00;&#xFF09;&#x65F6;&#x5728;&#x9AD8;&#x6548;&#x6027;&#x548C;&#x7A33;&#x5B9A;&#x6027;&#x65B9;&#x9762;&#x505A;&#x7684;&#x975E;&#x5E38;&#x51FA;&#x8272;&#x3002;&#x81EA;&#x9002;&#x5E94;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3001;&#x5783;&#x573E;&#x6536;&#x96C6;&#x3001;&#x53CA;&#x65F6;&#x7F16;&#x8BD1;&#x3001;&#x52A8;&#x6001;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x9501;&#x4F18;&#x5316;&#x2014;&#x2014;&#x8FD9;&#x91CC;&#x4EC5;&#x4EC5;&#x5217;&#x4E3E;&#x4E86;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x4F1A;&#x53D1;&#x751F;&#x7684;&#x795E;&#x5947;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x4F46;&#x4ED6;&#x4EEC;&#x51E0;&#x4E4E;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4E0E;&#x666E;&#x901A;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x76F8;&#x5173;&#x3002;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;JVM&#x4F1A;&#x4E0D;&#x65AD;&#x7684;&#x8BA1;&#x7B97;&#x5E76;&#x4F18;&#x5316;&#x5E94;&#x7528;&#x6216;&#x8005;&#x5E94;&#x7528;&#x7684;&#x67D0;&#x4E9B;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x867D;&#x7136;&#x6709;&#x4E86;&#x8FD9;&#x79CD;&#x7A0B;&#x5EA6;&#x7684;&#x81EA;&#x52A8;&#x5316;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x6709;&#x8FD9;&#x4E48;&#x591A;&#x81EA;&#x52A8;&#x5316;&#xFF09;&#xFF0C;&#x4F46;&#x662F;JVM&#x4ECD;&#x7136;&#x63D0;&#x4F9B;&#x4E86;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x5916;&#x90E8;&#x76D1;&#x63A7;&#x548C;&#x624B;&#x52A8;&#x8C03;&#x4F18;&#x5DE5;&#x5177;&#x3002;&#x5728;&#x6709;&#x9519;&#x8BEF;&#x6216;&#x4F4E;&#x6027;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;JVM&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x8BA9;&#x4E13;&#x5BB6;&#x8C03;&#x8BD5;&#x3002;&#x987A;&#x4FBF;&#x8BF4;&#x4E00;&#x53E5;&#xFF0C;&#x9664;&#x4E86;&#x8FD9;&#x4E9B;&#x9690;&#x85CF;&#x5728;&#x5F15;&#x64CE;&#x4E2D;&#x7684;&#x795E;&#x5947;&#x529F;&#x80FD;&#xFF0C;&#x5141;&#x8BB8;&#x5927;&#x8303;&#x56F4;&#x7684;&#x624B;&#x52A8;&#x8C03;&#x4F18;&#x4E5F;&#x662F;&#x73B0;&#x4EE3;JVM&#x7684;&#x4F18;&#x52BF;&#x4E4B;&#x4E00;&#x3002;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x5728;JVM&#x542F;&#x52A8;&#x65F6;&#x4F20;&#x5165;&#x5230;JVM&#x4E2D;&#x3002;&#x4E00;&#x4E9B;JVM&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x767E;&#x4E2A;&#x8FD9;&#x6837;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#x5F88;&#x5BB9;&#x6613;&#x8FF7;&#x5931;&#x3002;&#x8FD9;&#x7CFB;&#x5217;&#x535A;&#x5BA2;&#x7684;&#x76EE;&#x6807;&#x662F;&#x7740;&#x91CD;&#x8BB2;&#x89E3;&#x65E5;&#x5E38;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x4EE5;&#x53CA;&#x4ED6;&#x4EEC;&#x7684;&#x9002;&#x7528;&#x573A;&#x5408;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x4E13;&#x6CE8;&#x4E8E;Java6&#x7684;Sun/Oracle HotSpot JVM&#xFF0C;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4E5F;&#x4F1A;&#x9002;&#x7528;&#x4E8E;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x6D41;&#x884C;&#x7684;JVM&#x91CC;&#x3002;</p>
+<p><strong>-server and -client</strong></p>
+<a id="more"></a>
+<p>&#x6709;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684; HotSpot JVM&#xFF0C;&#x5373;&#x201D;server&#x201D;&#x548C;&#x201D;client&#x201D;&#x3002;&#x670D;&#x52A1;&#x7AEF;&#x7684;VM&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x4E3A;&#x5806;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x66F4;&#x5927;&#x7684;&#x7A7A;&#x95F4;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x4EE5;&#x66F4;&#x5927;&#x7A0B;&#x5EA6;&#x5730;&#x4F18;&#x5316;&#x4EE3;&#x7801;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x7684;VM&#x66F4;&#x52A0;&#x4FDD;&#x5B88;&#x4E00;&#x4E9B;&#xFF08;&#x6821;&#x5BF9;&#x6CE8;&#xFF1A;&#x8FD9;&#x91CC;&#x4F5C;&#x8005;&#x6307;&#x5BA2;&#x6237;&#x7AEF;&#x865A;&#x62DF;&#x673A;&#x6709;&#x8F83;&#x5C0F;&#x7684;&#x9ED8;&#x8BA4;&#x5806;&#x5927;&#x5C0F;&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x7F29;&#x77ED;JVM&#x7684;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x548C;&#x5360;&#x7528;&#x66F4;&#x5C11;&#x7684;&#x5185;&#x5B58;&#x3002;&#x6709;&#x4E00;&#x4E2A;&#x53EB;&#x201D;JVM&#x529F;&#x6548;&#x5B66;&#x201D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5B83;&#x4F1A;&#x5728;JVM&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x6839;&#x636E;&#x53EF;&#x7528;&#x7684;&#x786C;&#x4EF6;&#x548C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6765;&#x81EA;&#x52A8;&#x7684;&#x9009;&#x62E9;JVM&#x7684;&#x7C7B;&#x578B;&#x3002;&#x5177;&#x4F53;&#x7684;&#x6807;&#x51C6;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x627E;&#x5230;&#x3002;&#x4ECE;&#x6807;&#x51C6;&#x8868;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;VM&#x53EA;&#x5728;32&#x4F4D;&#x7CFB;&#x7EDF;&#x4E2D;&#x53EF;&#x7528;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x559C;&#x6B22;&#x9884;&#x9009;&#xFF08;&#x6821;&#x5BF9;&#x6CE8;&#xFF1A;&#x6307;JVM&#x81EA;&#x52A8;&#x9009;&#x62E9;&#x7684;JVM&#x7C7B;&#x578B;&#xFF09;&#x7684;JVM&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;-server&#x548C;-client&#x53C2;&#x6570;&#x6765;&#x8BBE;&#x7F6E;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x7AEF;&#x6216;&#x5BA2;&#x6237;&#x7AEF;&#x7684;VM&#x3002;&#x867D;&#x7136;&#x5F53;&#x521D;&#x670D;&#x52A1;&#x7AEF;VM&#x7684;&#x76EE;&#x6807;&#x662F;&#x957F;&#x65F6;&#x95F4;&#x8FD0;&#x884C;&#x7684;&#x670D;&#x52A1;&#x8FDB;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x73B0;&#x5728;&#x770B;&#x6765;&#xFF0C;&#x5728;&#x8FD0;&#x884C;&#x72EC;&#x7ACB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65F6;&#x5B83;&#x6BD4;&#x5BA2;&#x6237;&#x7AEF;VM&#x6709;&#x66F4;&#x51FA;&#x8272;&#x7684;&#x6027;&#x80FD;&#x3002;&#x5F53;&#x5E94;&#x7528;&#x7684;&#x6027;&#x80FD;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x65F6;&#xFF0C;&#x6211;&#x63A8;&#x8350;&#x4F7F;&#x7528;-server&#x53C2;&#x6570;&#x6765;&#x9009;&#x62E9;&#x670D;&#x52A1;&#x7AEF;VM&#x3002;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x5728;&#x4E00;&#x4E2A;32&#x4F4D;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;HotSpot JDK&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x7AEF;VM&#xFF0C;&#x4F46;&#x662F;32&#x4F4D;&#x7684;JRE&#x53EA;&#x80FD;&#x8FD0;&#x884C;&#x5BA2;&#x6237;&#x7AEF;VM&#x3002;</p>
+<p><strong>-version and -showversion</strong></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x201C;java&#x201D;&#x547D;&#x4EE4;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x624D;&#x80FD;&#x77E5;&#x9053;&#x6211;&#x4EEC;&#x5B89;&#x88C5;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x7248;&#x672C;&#x7684;Java&#x548C;JVM&#x7C7B;&#x578B;&#x5462;&#xFF1F;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B89;&#x88C5;&#x591A;&#x4E2A;Java&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6CE8;&#x610F;&#x7684;&#x8BDD;&#x6709;&#x8FD0;&#x884C;&#x9519;&#x8BEF;JVM&#x7684;&#x98CE;&#x9669;&#x3002;&#x5728;&#x4E0D;&#x540C;&#x7684;Linux&#x7248;&#x672C;&#x4E0A;&#x9884;&#x88C5;JVM&#x8FD9;&#x65B9;&#x9762;&#xFF0C;&#x6211;&#x627F;&#x8BA4;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x53D8;&#x7684;&#x6BD4;&#x4EE5;&#x524D;&#x597D;&#x5F88;&#x591A;&#x4E86;&#x3002;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;-version&#x53C2;&#x6570;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6253;&#x5370;&#x51FA;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;JVM&#x7684;&#x4FE1;&#x606F;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-bash">$ java -version
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Client VM (build 19.1-b02, mixed mode, sharing)
+</code></pre>
+<p>&#x8F93;&#x51FA;&#x663E;&#x793A;&#x7684;&#x662F;Java&#x7248;&#x672C;&#x53F7;(1.6.0_24)&#x548C;JRE&#x786E;&#x5207;&#x7684;build&#x53F7;(1.6.0_24-b07)&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x5230;JVM&#x7684;&#x540D;&#x5B57;(HotSpot)&#x3001;&#x7C7B;&#x578B;(client)&#x548C;build ID&#xFF08;19.1-b02) &#xFF09;&#x3002;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x77E5;&#x9053;JVM&#x4EE5;&#x6DF7;&#x5408;&#x6A21;&#x5F0F;(mixed mode)&#x5728;&#x8FD0;&#x884C;&#xFF0C;&#x8FD9;&#x662F;HotSpot&#x9ED8;&#x8BA4;&#x7684;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#xFF0C;&#x610F;&#x5473;&#x7740;JVM&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x7684;&#x628A;&#x5B57;&#x8282;&#x7801;&#x7F16;&#x8BD1;&#x4E3A;&#x672C;&#x5730;&#x4EE3;&#x7801;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7C7B;&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;class data sharing&#xFF09;&#x662F;&#x5F00;&#x542F;&#x7684;&#xFF0C;&#x7C7B;&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF08;class data sharing&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x5728;&#x53EA;&#x8BFB;&#x7F13;&#x5B58;&#xFF08;&#x5728;jsa&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x201D;Java Shared Archive&#x201D;&#xFF09;&#x4E2D;&#x5B58;&#x50A8;JRE&#x7684;&#x7CFB;&#x7EDF;&#x7C7B;&#xFF0C;&#x88AB;&#x6240;&#x6709;Java&#x8FDB;&#x7A0B;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7528;&#x6765;&#x5F53;&#x505A;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x3002;&#x7C7B;&#x6570;&#x636E;&#x5171;&#x4EAB;(Class data sharing)&#x53EF;&#x80FD;&#x5728;&#x7ECF;&#x5E38;&#x4ECE;jar&#x6587;&#x6863;&#x4E2D;&#x8BFB;&#x6240;&#x6709;&#x7684;&#x7C7B;&#x6570;&#x636E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x663E;&#x793A;&#x51FA;&#x6027;&#x80FD;&#x4F18;&#x52BF;&#x3002;</p>
+<p>-version&#x53C2;&#x6570;&#x5728;&#x6253;&#x5370;&#x5B8C;&#x4E0A;&#x8FF0;&#x4FE1;&#x606F;&#x540E;&#x7ACB;&#x5373;&#x7EC8;&#x6B62;JVM&#x3002;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x7684;&#x53C2;&#x6570;-showversion&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8F93;&#x51FA;&#x76F8;&#x540C;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;-showversion&#x7D27;&#x63A5;&#x7740;&#x4F1A;&#x5904;&#x7406;&#x5E76;&#x6267;&#x884C;Java&#x7A0B;&#x5E8F;&#x3002;&#x56E0;&#x6B64;&#xFF0C;-showversion&#x5BF9;&#x51E0;&#x4E4E;&#x6240;&#x6709;Java&#x5E94;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;&#x8865;&#x5145;&#x3002;&#x4F60;&#x6C38;&#x8FDC;&#x4E0D;&#x77E5;&#x9053;&#x4F60;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#xFF0C;&#x7A81;&#x7136;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x7684;Java&#x5E94;&#x7528;&#xFF08;&#x5D29;&#x6E83;&#x65F6;&#xFF09;&#x4F7F;&#x7528;&#x7684;JVM&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x3002;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x6DFB;&#x52A0;-showversion&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x4FDD;&#x8BC1;&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x65F6;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x3002;</p>
+<p><strong>-Xint, -Xcomp, &#x548C; -Xmixed</strong></p>
+<p>-Xint&#x548C;-Xcomp&#x53C2;&#x6570;&#x548C;&#x6211;&#x4EEC;&#x7684;&#x65E5;&#x5E38;&#x5DE5;&#x4F5C;&#x4E0D;&#x662F;&#x5F88;&#x76F8;&#x5173;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x975E;&#x5E38;&#x6709;&#x5174;&#x8DA3;&#x901A;&#x8FC7;&#x5B83;&#x6765;&#x4E86;&#x89E3;&#x4E0B;JVM&#x3002;&#x5728;&#x89E3;&#x91CA;&#x6A21;&#x5F0F;(interpreted mode)&#x4E0B;&#xFF0C;-Xint&#x6807;&#x8BB0;&#x4F1A;&#x5F3A;&#x5236;JVM&#x6267;&#x884C;&#x6240;&#x6709;&#x7684;&#x5B57;&#x8282;&#x7801;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x4F1A;&#x964D;&#x4F4E;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x901A;&#x5E38;&#x4F4E;10&#x500D;&#x6216;&#x66F4;&#x591A;&#x3002;-Xcomp&#x53C2;&#x6570;&#x4E0E;&#x5B83;&#xFF08;-Xint&#xFF09;&#x6B63;&#x597D;&#x76F8;&#x53CD;&#xFF0C;JVM&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x65F6;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x7684;&#x5B57;&#x8282;&#x7801;&#x7F16;&#x8BD1;&#x6210;&#x672C;&#x5730;&#x4EE3;&#x7801;&#xFF0C;&#x4ECE;&#x800C;&#x5E26;&#x6765;&#x6700;&#x5927;&#x7A0B;&#x5EA6;&#x7684;&#x4F18;&#x5316;&#x3002;&#x8FD9;&#x542C;&#x8D77;&#x6765;&#x4E0D;&#x9519;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x5B8C;&#x5168;&#x7ED5;&#x5F00;&#x4E86;&#x7F13;&#x6162;&#x7684;&#x89E3;&#x91CA;&#x5668;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x5728;&#x4F7F;&#x7528;-Xcomp&#x4E5F;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x635F;&#x5931;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x6BD4;&#x4F7F;&#x7528;-Xint&#x635F;&#x5931;&#x7684;&#x5C11;&#xFF0C;&#x539F;&#x56E0;&#x662F;-xcomp&#x6CA1;&#x6709;&#x8BA9;JVM&#x542F;&#x7528;JIT&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x5168;&#x90E8;&#x529F;&#x80FD;&#x3002;JIT&#x7F16;&#x8BD1;&#x5668;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x7684;&#x4F18;&#x5316;&#x6BCF;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x4E3B;&#x52A8;&#x7684;&#x4F18;&#x5316;&#x5E94;&#x7528;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x8FD9;&#x4E9B;&#x4F18;&#x5316;&#x6280;&#x672F;&#xFF0C;&#x6BD4;&#x5982;&#xFF0C;&#x79EF;&#x6781;&#x7684;&#x5206;&#x652F;&#x9884;&#x6D4B;&#xFF08;optimistic branch prediction&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5148;&#x5206;&#x6790;&#x5E94;&#x7528;&#x5C31;&#x4E0D;&#x80FD;&#x6709;&#x6548;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x8BC1;&#x660E;&#x5B83;&#x4EEC;&#x4E0E;&#x6B64;&#x76F8;&#x5173;&#x65F6;&#x624D;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x6784;&#x5EFA;&#x67D0;&#x79CD;&#x70ED;&#x70B9;&#x3002;&#x88AB;&#x8C03;&#x7528;&#x5F88;&#x5C11;&#xFF08;&#x751A;&#x81F3;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#xFF09;&#x7684;&#x65B9;&#x6CD5;&#x5728;&#x89E3;&#x91CA;&#x6A21;&#x5F0F;&#x4E0B;&#x4F1A;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x4ECE;&#x800C;&#x51CF;&#x5C11;&#x7F16;&#x8BD1;&#x548C;&#x4F18;&#x5316;&#x6210;&#x672C;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x6DF7;&#x5408;&#x6A21;&#x5F0F;&#x4E5F;&#x6709;&#x4ED6;&#x81EA;&#x5DF1;&#x7684;&#x53C2;&#x6570;&#xFF0C;-Xmixed&#x3002;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684;HotSpot&#x7684;&#x9ED8;&#x8BA4;&#x6A21;&#x5F0F;&#x662F;&#x6DF7;&#x5408;&#x6A21;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x7279;&#x522B;&#x6307;&#x5B9A;&#x8FD9;&#x4E2A;&#x6807;&#x8BB0;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x7528;&#x5BF9;&#x8C61;&#x586B;&#x5145;HashMap&#x7136;&#x540E;&#x68C0;&#x7D22;&#x5B83;&#x7684;&#x7ED3;&#x679C;&#x505A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x7528;&#x4F8B;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5B83;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x90FD;&#x662F;&#x5F88;&#x591A;&#x6B21;&#x8FD0;&#x884C;&#x7684;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x3002;</p>
+<pre><code class="lang-bash">$ java -server -showversion Benchmark
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Server VM (build 19.1-b02, mixed mode)
+
+Average time: 0.856449 seconds
+</code></pre>
+<pre><code class="lang-bash">$ java -server -showversion -Xint Benchmark
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Server VM (build 19.1-b02, interpreted mode)
+
+Average time: 7.622285 seconds
+</code></pre>
+<p>&#x5F53;&#x7136;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x4F7F;-Xcomp&#x8868;&#x73B0;&#x5F88;&#x597D;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x7279;&#x522B;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x957F;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x6211;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x5927;&#x5BB6;&#x4F7F;&#x7528;JVM&#x7684;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;,&#x8BA9;JIT&#x7F16;&#x8BD1;&#x5668;&#x5145;&#x5206;&#x53D1;&#x6325;&#x5176;&#x52A8;&#x6001;&#x6F5C;&#x529B;&#xFF0C;&#x6BD5;&#x7ADF;JIT&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x7EC4;&#x6210;JVM&#x6700;&#x91CD;&#x8981;&#x7684;&#x7EC4;&#x4EF6;&#x4E4B;&#x4E00;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x6B63;&#x662F;&#x56E0;&#x4E3A;JVM&#x5728;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x8FDB;&#x5C55;&#x624D;&#x8BA9;Java&#x4E0D;&#x518D;&#x90A3;&#x4E48;&#x6162;&#x3002;<br>JVM&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5F0F;</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/tec/">TEC-技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JVM/">#JVM</a>
+  </div>
+
+
+        <br/>
+<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" title="JVM实用参数（一）JVM类型以及编译器模式">DeleiGuo:JVM实用参数（一）JVM类型以及编译器模式</a></b>.</code></pre>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.deleiguo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+  
+    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Team/">Team</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+    <ul class="entry">
+        <ul>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.hollischuang.com" target="_blank">HollisChuang's Blog</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank">并发编程网-ifeve.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank">酷勤网</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank">grepcode.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.importnew.com" target="_blank">ImportNew</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.jobbole.com" target="_blank">伯乐在线</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://wiki.jikexueyuan.com" target="_blank">极客学院wiki</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://hao.shejidaren.com/index.html" target="_blank">设计导航</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer">
+      <div class="inner">
+          <p style="color:#333">
+              I know no such things as genius,it is nothing but labor and diligence.<br/>
+              -哪有什么天才之说，不过是勤奋
+          </p>
+          <br/>
+          <div class="alignleft">
+  
+  &copy; 2016 DeleiGuo
+  
+  &nbsp;&nbsp;
+  湘ICP备16012107号-1
+  &nbsp;&nbsp;
+  Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
+</div>
+<div class="alignright">
+  <a href="https://github.com/delei"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</div>
+<div class="clearfix"></div>
+
+      </div>
+  </footer>
+  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/images/scrollup.png"/></a>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="/js/totop.js"></script>
+
+
+
+<script type="text/javascript">
+(function($){
+  hljs.initHighlightingOnLoad();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

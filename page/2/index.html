@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | DeleiGuo</title>
+  <meta name="author" content="DeleiGuo">
+  
+  <meta name="description" content="Target、Focus、Patient">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="DeleiGuo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class=""><a class="home-link" href="/">
+  <h1 class="site-title animated zoomIn">DeleiGuo</h1>
+  <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
+</a>
+<div class="clearfix"></div>
+</header>
+  <nav id="main-nav" class="navigation main-navigation">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/books">书籍库</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div id="content">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">JVM实用参数（一）JVM类型以及编译器模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E00;&#xFF09;JVM&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5F0F;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/">blog.codecentric.de</a></p>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x8D75;&#x5CF0;&#xFF0C;iDestiny<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x90ED;&#x857E;</p>
+<p>&#x73B0;&#x5728;&#x7684;JVM&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#xFF08;&#x548C;&#x5176;&#x5B83;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x8BED;&#x8A00;&#xFF09;&#x65F6;&#x5728;&#x9AD8;&#x6548;&#x6027;&#x548C;&#x7A33;&#x5B9A;&#x6027;&#x65B9;&#x9762;&#x505A;&#x7684;&#x975E;&#x5E38;&#x51FA;&#x8272;&#x3002;&#x81EA;&#x9002;&#x5E94;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3001;&#x5783;&#x573E;&#x6536;&#x96C6;&#x3001;&#x53CA;&#x65F6;&#x7F16;&#x8BD1;&#x3001;&#x52A8;&#x6001;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x9501;&#x4F18;&#x5316;&#x2014;&#x2014;&#x8FD9;&#x91CC;&#x4EC5;&#x4EC5;&#x5217;&#x4E3E;&#x4E86;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x4F1A;&#x53D1;&#x751F;&#x7684;&#x795E;&#x5947;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x4F46;&#x4ED6;&#x4EEC;&#x51E0;&#x4E4E;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4E0E;&#x666E;&#x901A;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x76F8;&#x5173;&#x3002;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;JVM&#x4F1A;&#x4E0D;&#x65AD;&#x7684;&#x8BA1;&#x7B97;&#x5E76;&#x4F18;&#x5316;&#x5E94;&#x7528;&#x6216;&#x8005;&#x5E94;&#x7528;&#x7684;&#x67D0;&#x4E9B;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x867D;&#x7136;&#x6709;&#x4E86;&#x8FD9;&#x79CD;&#x7A0B;&#x5EA6;&#x7684;&#x81EA;&#x52A8;&#x5316;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x6709;&#x8FD9;&#x4E48;&#x591A;&#x81EA;&#x52A8;&#x5316;&#xFF09;&#xFF0C;&#x4F46;&#x662F;JVM&#x4ECD;&#x7136;&#x63D0;&#x4F9B;&#x4E86;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x5916;&#x90E8;&#x76D1;&#x63A7;&#x548C;&#x624B;&#x52A8;&#x8C03;&#x4F18;&#x5DE5;&#x5177;&#x3002;&#x5728;&#x6709;&#x9519;&#x8BEF;&#x6216;&#x4F4E;&#x6027;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;JVM&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x8BA9;&#x4E13;&#x5BB6;&#x8C03;&#x8BD5;&#x3002;&#x987A;&#x4FBF;&#x8BF4;&#x4E00;&#x53E5;&#xFF0C;&#x9664;&#x4E86;&#x8FD9;&#x4E9B;&#x9690;&#x85CF;&#x5728;&#x5F15;&#x64CE;&#x4E2D;&#x7684;&#x795E;&#x5947;&#x529F;&#x80FD;&#xFF0C;&#x5141;&#x8BB8;&#x5927;&#x8303;&#x56F4;&#x7684;&#x624B;&#x52A8;&#x8C03;&#x4F18;&#x4E5F;&#x662F;&#x73B0;&#x4EE3;JVM&#x7684;&#x4F18;&#x52BF;&#x4E4B;&#x4E00;&#x3002;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x5728;JVM&#x542F;&#x52A8;&#x65F6;&#x4F20;&#x5165;&#x5230;JVM&#x4E2D;&#x3002;&#x4E00;&#x4E9B;JVM&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x767E;&#x4E2A;&#x8FD9;&#x6837;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#x5F88;&#x5BB9;&#x6613;&#x8FF7;&#x5931;&#x3002;&#x8FD9;&#x7CFB;&#x5217;&#x535A;&#x5BA2;&#x7684;&#x76EE;&#x6807;&#x662F;&#x7740;&#x91CD;&#x8BB2;&#x89E3;&#x65E5;&#x5E38;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x4EE5;&#x53CA;&#x4ED6;&#x4EEC;&#x7684;&#x9002;&#x7528;&#x573A;&#x5408;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x4E13;&#x6CE8;&#x4E8E;Java6&#x7684;Sun/Oracle HotSpot JVM&#xFF0C;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4E5F;&#x4F1A;&#x9002;&#x7528;&#x4E8E;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x6D41;&#x884C;&#x7684;JVM&#x91CC;&#x3002;</p>
+<p><strong>-server and -client</strong></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/">JVM实用参数（二）参数分类和即时（JIT）编译器诊断</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-2-flag/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E8C;&#xFF09;&#x53C2;&#x6570;&#x5206;&#x7C7B;&#x548C;&#x5373;&#x65F6;&#xFF08;JIT&#xFF09;&#x7F16;&#x8BD1;&#x5668;&#x8BCA;&#x65AD;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics">blog.codecentric.de</a></p>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x8D75;&#x5CF0;&#xFF0C;iDestiny<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x8BB8;&#x5DE7;&#x8F89;</p>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x6765;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;HotSpot JVM&#x63D0;&#x4F9B;&#x7684;&#x4E0D;&#x540C;&#x7C7B;&#x522B;&#x7684;&#x53C2;&#x6570;&#x3002;&#x6211;&#x540C;&#x6837;&#x4F1A;&#x8BA8;&#x8BBA;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;JIT&#x7F16;&#x8BD1;&#x5668;&#x8BCA;&#x65AD;&#x7684;&#x6709;&#x8DA3;&#x53C2;&#x6570;&#x3002;</p>
+<h2 id="JVM-&#x53C2;&#x6570;&#x5206;&#x7C7B;"><a href="#JVM-&#x53C2;&#x6570;&#x5206;&#x7C7B;" class="headerlink" title="JVM &#x53C2;&#x6570;&#x5206;&#x7C7B;"></a>JVM &#x53C2;&#x6570;&#x5206;&#x7C7B;</h2><p>HotSpot JVM &#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x7C7B;&#x53C2;&#x6570;&#x3002;&#x7B2C;&#x4E00;&#x7C7B;&#x5305;&#x62EC;&#x4E86;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x4E2D;&#x5305;&#x62EC;&#x529F;&#x80FD;&#x548C;&#x8F93;&#x51FA;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x5F88;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x5F88;&#x53EF;&#x80FD;&#x5728;&#x5C06;&#x6765;&#x7684;JVM&#x7248;&#x672C;&#x4E2D;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x7528;java&#x547D;&#x4EE4;&#xFF08;&#x6216;&#x8005;&#x662F;&#x7528; java -help&#xFF09;&#x68C0;&#x7D22;&#x51FA;&#x6240;&#x6709;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x4E2D;&#x5DF2;&#x7ECF;&#x89C1;&#x5230;&#x8FC7;&#x4E00;&#x4E9B;&#x6807;&#x51C6;&#x53C2;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;-server&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x7C7B;&#x662F;X&#x53C2;&#x6570;&#xFF0C;&#x975E;&#x6807;&#x51C6;&#x5316;&#x7684;&#x53C2;&#x6570;&#x5728;&#x5C06;&#x6765;&#x7684;&#x7248;&#x672C;&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x6240;&#x6709;&#x7684;&#x8FD9;&#x7C7B;&#x53C2;&#x6570;&#x90FD;&#x4EE5;-X&#x5F00;&#x59CB;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528;java -X&#x6765;&#x68C0;&#x7D22;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x6240;&#x6709;&#x53C2;&#x6570;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x68C0;&#x7D22;&#x51FA;&#x6765;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x6CA1;&#x6709;-Xcomp&#x3002;</p>
+<p>&#x7B2C;&#x4E09;&#x7C7B;&#x662F;&#x5305;&#x542B;XX&#x53C2;&#x6570;&#xFF08;&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x6700;&#x591A;&#x7684;&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x540C;&#x6837;&#x4E0D;&#x662F;&#x6807;&#x51C6;&#x7684;&#xFF0C;&#x751A;&#x81F3;&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x4E0D;&#x88AB;&#x5217;&#x51FA;&#x6765;&#xFF08;&#x6700;&#x8FD1;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x6709;&#x6539;&#x53D8; &#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x7CFB;&#x5217;&#x7684;&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#x4E2D;&#x8BA8;&#x8BBA;&#x5B83;&#x4EEC;&#xFF09;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x4E2D;X&#x53C2;&#x6570;&#x548C;XX&#x53C2;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#x3002;X&#x53C2;&#x6570;&#x7684;&#x529F;&#x80FD;&#x662F;&#x5341;&#x5206;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x7136;&#x800C;&#x5F88;&#x591A;XX&#x53C2;&#x6570;&#x4ECD;&#x5728;&#x5B9E;&#x9A8C;&#x5F53;&#x4E2D;&#xFF08;&#x4E3B;&#x8981;&#x662F;JVM&#x7684;&#x5F00;&#x53D1;&#x8005;&#x7528;&#x4E8E;debugging&#x548C;&#x8C03;&#x4F18;JVM&#x81EA;&#x8EAB;&#x7684;&#x5B9E;&#x73B0;&#xFF09;&#x3002;&#x503C;&#x7684;&#x4E00;&#x8BFB;&#x7684;&#x4ECB;&#x7ECD;&#x975E;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x7684;&#x6587;&#x6863; <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">HotSpot JVM documentation</a>&#xFF0C;&#x5176;&#x4E2D;&#x660E;&#x786E;&#x7684;&#x6307;&#x51FA;XX&#x53C2;&#x6570;&#x4E0D;&#x5E94;&#x8BE5;&#x5728;&#x4E0D;&#x4E86;&#x89E3;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x662F;&#x771F;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x5EFA;&#x8BAE;&#x540C;&#x6837;&#x9002;&#x7528;&#x4E8E;X&#x53C2;&#x6570;&#xFF08;&#x540C;&#x6837;&#x4E00;&#x4E9B;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#xFF09;&#x3002;&#x4E0D;&#x7BA1;&#x7C7B;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x53C2;&#x6570;&#x4E4B;&#x524D;&#x5E94;&#x8BE5;&#x5148;&#x4E86;&#x89E3;&#x5B83;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x6765;&#x8BF4;&#x660E;XX&#x53C2;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#x3002;&#x6240;&#x6709;&#x7684;XX&#x53C2;&#x6570;&#x90FD;&#x4EE5;&#x201D;-XX:&#x201D;&#x5F00;&#x59CB;&#xFF0C;&#x4F46;&#x662F;&#x968F;&#x540E;&#x7684;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x53D6;&#x51B3;&#x4E8E;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x201D;+&#x201D;&#x6216;&#x201D;-&#x201C;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x8BBE;&#x7F6E;JVM&#x9009;&#x9879;&#x7684;&#x5B9E;&#x9645;&#x540D;&#x79F0;&#x3002;&#x4F8B;&#x5982;&#xFF0C;-XX:+<name>&#x7528;&#x4E8E;&#x6FC0;&#x6D3B;<name>&#x9009;&#x9879;&#xFF0C;&#x800C;-XX:-<name>&#x7528;&#x4E8E;&#x6CE8;&#x9500;&#x9009;&#x9879;&#x3002;<br>&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x975E;&#x5E03;&#x5C14;&#x503C;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5982;string&#x6216;&#x8005;integer&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x5199;&#x53C2;&#x6570;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x201D;=&#x201D;&#xFF0C;&#x6700;&#x540E;&#x8D4B;&#x503C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;  -XX:<name>=<value>&#x7ED9;<name>&#x8D4B;&#x503C;<value>&#x3002;<br>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;JIT&#x7F16;&#x8BD1;&#x65B9;&#x9762;&#x7684;&#x4E00;&#x4E9B;XX&#x53C2;&#x6570;&#x3002;</value></name></value></name></name></name></name></p>
+<p><strong>-XX:+PrintCompilation and -XX:+CITime</strong></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-2-flag/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-command-jps/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/jvm-command-jps/">JDK命令：jps</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x9644;&#x5E26;&#x539F;&#x6587;&#x5730;&#x5740;</p>
+</blockquote>
+<h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><p>jps&#x5728;jdk&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E2D;&#x7684;bin&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x662F;java&#x81EA;&#x5E26;&#x7684;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;</p>
+<h2 id="&#x4E3B;&#x8981;&#x529F;&#x80FD;"><a href="#&#x4E3B;&#x8981;&#x529F;&#x80FD;" class="headerlink" title="&#x4E3B;&#x8981;&#x529F;&#x80FD;"></a>&#x4E3B;&#x8981;&#x529F;&#x80FD;</h2><p>&#x67E5;&#x770B;&#x5F53;&#x524D;java&#x8FDB;&#x7A0B;&#x57FA;&#x672C;&#x60C5;&#x51B5;</p>
+<h2 id="jps&#x4F7F;&#x7528;&#x6587;&#x6863;"><a href="#jps&#x4F7F;&#x7528;&#x6587;&#x6863;" class="headerlink" title="jps&#x4F7F;&#x7528;&#x6587;&#x6863;"></a>jps&#x4F7F;&#x7528;&#x6587;&#x6863;</h2><p>&#x5982;&#x679C;&#x5FD8;&#x8BB0;&#x4E86;&#x6709;&#x5173;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;Linux&#x4E2D;&#x7528;man&#x6216;info&#x547D;&#x4EE4;&#x67E5;&#x770B;jps&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;(&#x5185;&#x5BB9;&#x8FC7;&#x591A;,&#x2026;&#x8868;&#x793A;&#x7701;&#x7565;)</p>
+<pre><code class="lang-bash">delei@DeleitekiMBP:~$ man jps
+
+NAME
+       jps - Java Virtual Machine Process Status Tool
+
+SYNOPSIS
+       jps [options] [hostid]
+
+DESCRIPTION
+       The  jps tool lists the instrumented HotSpot Java Virtual Machines (JVMs) on the target sys-
+       tem. The tool is limited to reporting information on JVMs for which it has the  access  per-
+       missions.
+...
+
+PARAMETERS
+       options        Command-line options.
+
+       hostid         The host identifier of the host for which the process report should be gener-
+                      ated. The hostid may include optional components that indicate the communica-
+                      tions protocol, port number, and other implementation specific data.
+
+OPTIONS
+       The jps command supports a number of options that modify the output of the  command.   These
+       options are subject to change or removal in the future.
+
+       -q             Suppress the output of the class name, JAR file name, and arguments passed to
+...
+</code></pre>
+<p>&#x7ECF;&#x8FC7;&#x6BD4;&#x8F83;&#xFF0C;&#x5176;&#x5B9E;man&#x547D;&#x4EE4;&#x4E0B;&#x663E;&#x793A;&#x7684;&#x5185;&#x5BB9;&#x548C;Oracle &#x5B98;&#x7F51;&#x6587;&#x6863;&#x662F;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x7684;&#x3002;(&#x5EFA;&#x8BAE;&#x770B;&#x4E0B;&#x5B98;&#x7F51;&#x82F1;&#x6587;&#x539F;&#x6587;&#x6863;)<br><a href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html">jps - Java Virtual Machine Process Status Tool</a></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/jvm-command-jps/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-command-help/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/linux-command-help/">Linux Command：命令帮助</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x6307;&#x5BFC;&#x73AF;&#x5883;&#xFF1A;CentOS7</p>
+</blockquote>
+<h2 id="Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;"><a href="#Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;" class="headerlink" title="Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;"></a>Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;</h2><p>&#x5728;Linux&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BB0;&#x5F97;&#x547D;&#x4EE4;&#x7684;&#x5168;&#x79F0;&#xFF0C;&#x4F46;&#x77E5;&#x9053;&#x524D;&#x9762;&#x51E0;&#x4E2A;&#x5B57;&#x6BCD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;tab&#x81EA;&#x52A8;&#x8865;&#x5168;&#xFF0C;&#x6216;&#x6309;&#x4E0B;&#x4E24;&#x6B21;tab&#x5217;&#x51FA;&#x76F8;&#x7B26;&#x7684;&#x591A;&#x4E2A;&#x53EF;&#x9009;&#x9879;&#xFF1B;</p>
+<pre><code class="lang-bash">[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+</code></pre>
+<p>&#x800C;&#x5F53;&#x5339;&#x914D;&#x7684;&#x6570;&#x91CF;&#x8FC7;&#x591A;&#xFF0C;&#x4F1A;&#x5148;&#x5148;&#x7EDF;&#x8BA1;&#x6709;&#x591A;&#x5C11;&#x6570;&#x91CF;&#xFF0C;&#x8BE2;&#x95EE;&#x662F;&#x5426;&#x663E;&#x793A;</p>
+<pre><code class="lang-bash">[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/linux-command-help/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">JVM实用参数（三）打印所有XX参数及值</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E09;&#xFF09;&#x6253;&#x5370;&#x6240;&#x6709;XX&#x53C2;&#x6570;&#x53CA;&#x503C;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">blog.codecentric.de</a></p>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong>&#x674E;&#x6D2A;&#x67F1;&#xFF0C;iDestiny<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong>&#x65B9;&#x817E;&#x98DE;</p>
+<p>&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x57FA;&#x4E8E;Java 6&#xFF08;update 21oder 21&#x4E4B;&#x540E;&#xFF09;&#x7248;&#x672C;&#xFF0C; HotSpot JVM &#x63D0;&#x4F9B;&#x7ED9;&#x4E86;&#x4E24;&#x4E2A;&#x65B0;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5728;JVM&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x53EF;&#x4EE5;&#x8F93;&#x51FA;&#x6240;&#x6709;XX&#x53C2;&#x6570;&#x548C;&#x503C;&#x3002;</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/" class="alignleft prev">上一页</a>
+  
+  
+    <a href="/page/3/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.deleiguo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+  
+    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Team/">Team</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+    <ul class="entry">
+        <ul>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.hollischuang.com" target="_blank">HollisChuang's Blog</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank">并发编程网-ifeve.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank">酷勤网</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank">grepcode.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.importnew.com" target="_blank">ImportNew</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.jobbole.com" target="_blank">伯乐在线</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://wiki.jikexueyuan.com" target="_blank">极客学院wiki</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://hao.shejidaren.com/index.html" target="_blank">设计导航</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer">
+      <div class="inner">
+          <p style="color:#333">
+              I know no such things as genius,it is nothing but labor and diligence.<br/>
+              -哪有什么天才之说，不过是勤奋
+          </p>
+          <br/>
+          <div class="alignleft">
+  
+  &copy; 2016 DeleiGuo
+  
+  &nbsp;&nbsp;
+  湘ICP备16012107号-1
+  &nbsp;&nbsp;
+  Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
+</div>
+<div class="alignright">
+  <a href="https://github.com/delei"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</div>
+<div class="clearfix"></div>
+
+      </div>
+  </footer>
+  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/images/scrollup.png"/></a>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="/js/totop.js"></script>
+
+
+
+<script type="text/javascript">
+(function($){
+  hljs.initHighlightingOnLoad();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

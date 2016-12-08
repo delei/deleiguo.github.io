@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM实用参数（四）内存调优 | DeleiGuo</title>
+  <meta name="author" content="DeleiGuo">
+  
+  <meta name="description" content="Target、Focus、Patient">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JVM实用参数（四）内存调优"/>
+  <meta property="og:site_name" content="DeleiGuo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class=""><a class="home-link" href="/">
+  <h1 class="site-title animated zoomIn">DeleiGuo</h1>
+  <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
+</a>
+<div class="clearfix"></div>
+</header>
+  <nav id="main-nav" class="navigation main-navigation">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/books">书籍库</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div id="content">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-4-heap-tuning/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title">JVM实用参数（四）内存调优</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x56DB;&#xFF09;&#x5185;&#x5B58;&#x8C03;&#x4F18;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com" target="_blank" rel="external">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x90D1;&#x65ED;&#x4E1C;<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x6881;&#x6D77;&#x8230;</p>
+<p>&#x7406;&#x60F3;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;JVM&#x7684;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5F97;&#x5F88;&#x597D;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x8BBE;&#x7F6E;&#x4EFB;&#x4F55;JVM&#x53C2;&#x6570;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x7531;&#x4E8E;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF08;&#x5F88;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x7ECF;&#x5E38;&#x51FA;&#x73B0;&#xFF09;&#xFF0C;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x7684;JVM&#x53C2;&#x6570;&#x77E5;&#x8BC6;&#x4F1A;&#x662F;&#x6211;&#x4EEC;&#x5DE5;&#x4F5C;&#x4E2D;&#x5F97;&#x597D;&#x4F19;&#x4F34;&#x3002;&#x5728;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x53C2;&#x6570;&#x3002;&#x77E5;&#x9053;&#x5E76;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x5C06;&#x5BF9;&#x5F00;&#x53D1;&#x8005;&#x548C;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
+<a id="more"></a>
+<p>&#x6240;&#x6709;&#x5DF2;&#x5236;&#x5B9A;&#x7684;HotSpot&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x548C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B97;&#x6CD5;&#x90FD;&#x57FA;&#x4E8E;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7684;&#x5806;&#x5185;&#x5B58;&#x5212;&#x5206;&#xFF1A;&#x65B0;&#x751F;&#x4EE3;&#xFF08;young generation&#xFF09;&#x91CC;&#x5B58;&#x50A8;&#x7740;&#x65B0;&#x5206;&#x914D;&#x7684;&#x548C;&#x8F83;&#x5E74;&#x8F7B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#xFF08;old generation&#xFF09;&#x91CC;&#x5B58;&#x50A8;&#x7740;&#x957F;&#x5BFF;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5728;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6C38;&#x4E45;&#x4EE3;&#xFF08;permanent generation&#xFF09;&#x5B58;&#x50A8;&#x7740;&#x90A3;&#x4E9B;&#x9700;&#x8981;&#x4F34;&#x968F;&#x6574;&#x4E2A;JVM&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x6BD4;&#x5982;&#xFF0C;&#x5DF2;&#x52A0;&#x8F7D;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x5B9A;&#x4E49;&#x6216;&#x8005;String&#x5BF9;&#x8C61;&#x5185;&#x90E8;Cache&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5047;&#x8BBE;&#x5806;&#x5185;&#x5B58;&#x662F;&#x6309;&#x7167;&#x65B0;&#x751F;&#x4EE3;&#x3001;&#x8001;&#x5E74;&#x4EE3;&#x548C;&#x6C38;&#x4E45;&#x4EE3;&#x8FD9;&#x4E00;&#x7ECF;&#x5178;&#x7B56;&#x7565;&#x5212;&#x5206;&#x7684;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x5806;&#x5185;&#x5B58;&#x5212;&#x5206;&#x7B56;&#x7565;&#x4E5F;&#x662F;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x4E00;&#x4E2A;&#x7A81;&#x51FA;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;&#x65B0;&#x7684;G1&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x5B83;&#x6A21;&#x7CCA;&#x4E86;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x76EE;&#x524D;&#x7684;&#x5F00;&#x53D1;&#x8FDB;&#x7A0B;&#x4F3C;&#x4E4E;&#x8868;&#x660E;&#x5728;&#x672A;&#x6765;&#x7684;HotSpot JVM&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x5C06;&#x4E0D;&#x4F1A;&#x533A;&#x5206;&#x8001;&#x5E74;&#x4EE3;&#x548C;&#x6C38;&#x4E45;&#x4EE3;&#x3002;</p>
+<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
+<p>-Xms&#x548C;-Xmx&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x6700;&#x6D41;&#x884C;&#x7684;JVM&#x53C2;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x6307;&#x5B9A;JVM&#x7684;&#x521D;&#x59CB;&#x548C;&#x6700;&#x5927;&#x5806;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x3002;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x6570;&#x503C;&#x5355;&#x4F4D;&#x662F;Byte&#xFF0C;&#x4F46;&#x540C;&#x65F6;&#x5B83;&#x4EEC;&#x4E5F;&#x652F;&#x6301;&#x4F7F;&#x7528;&#x901F;&#x8BB0;&#x7B26;&#x53F7;&#xFF0C;&#x6BD4;&#x5982;&#x201C;k&#x201D;&#x6216;&#x8005;&#x201C;K&#x201D;&#x4EE3;&#x8868;&#x201C;kilo&#x201D;&#xFF0C;&#x201C;m&#x201D;&#x6216;&#x8005;&#x201C;M&#x201D;&#x4EE3;&#x8868;&#x201C;mega&#x201D;&#xFF0C;&#x201C;g&#x201D;&#x6216;&#x8005;&#x201C;G&#x201D;&#x4EE3;&#x8868;&#x201C;giga&#x201D;&#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x4E86;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x5806;&#x5185;&#x5B58;&#x4E3A;128M&#xFF0C;&#x6700;&#x5927;&#x5806;&#x5185;&#x5B58;&#x4E3A;2G&#xFF0C;&#x540D;&#x53EB;&#x201C;MyApp&#x201D;&#x7684;Java&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
+<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
+</code></pre>
+<p>&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x5806;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x901A;&#x5E38;&#x88AB;&#x89C6;&#x4E3A;&#x5806;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x7684;&#x4E0B;&#x754C;&#x3002;&#x7136;&#x800C;JVM&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x52A8;&#x6001;&#x7684;&#x8C03;&#x6574;&#x5806;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x7406;&#x8BBA;&#x4E0A;&#x6765;&#x8BF4;&#x6211;&#x4EEC;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x770B;&#x5230;&#x5806;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x5C0F;&#x4E8E;&#x521D;&#x59CB;&#x5316;&#x5806;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x4F46;&#x662F;&#x5373;&#x4F7F;&#x5728;&#x975E;&#x5E38;&#x4F4E;&#x7684;&#x5806;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x4E0B;&#xFF0C;&#x6211;&#x4E5F;&#x4ECE;&#x6765;&#x6CA1;&#x6709;&#x9047;&#x5230;&#x8FC7;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x3002;&#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#x5C06;&#x4F1A;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x8005;&#x548C;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;&#x201C;-Xms&#x201D;&#x548C;&#x201C;-Xmx&#x201D;&#x8BBE;&#x7F6E;&#x4E3A;&#x76F8;&#x540C;&#x5927;&#x5C0F;&#x6765;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#x7684;&#x5806;&#x5185;&#x5B58;&#x3002; -Xms&#x548C;-Xmx&#x5B9E;&#x9645;&#x4E0A;&#x662F;-XX:InitialHeapSize&#x548C;-XX:MaxHeapSize&#x7684;&#x7F29;&#x5199;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x6240;&#x8D77;&#x5F97;&#x6548;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6240;&#x6709;JVM&#x5173;&#x4E8E;&#x521D;&#x59CB;\&#x6700;&#x5927;&#x5806;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x7684;&#x8F93;&#x51FA;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x7684;&#x5B8C;&#x6574;&#x540D;&#x79F0;&#xFF1A;&#x201C;InitialHeapSize&#x201D;&#x548C;&#x201C;InitialHeapSize&#x201D;&#x3002;&#x6240;&#x4EE5;&#x5F53;&#x4F60;&#x67E5;&#x8BE2;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;JVM&#x7684;&#x5806;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x65F6;&#xFF0C;&#x5982;&#x4F7F;&#x7528;-XX:+PrintCommandLineFlags&#x53C2;&#x6570;&#x6216;&#x8005;&#x901A;&#x8FC7;JMX&#x67E5;&#x8BE2;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x5BFB;&#x627E;&#x201C;InitialHeapSize&#x201D;&#x548C;&#x201C;InitialHeapSize&#x201D;&#x6807;&#x5FD7;&#x800C;&#x4E0D;&#x662F;&#x201C;Xms&#x201D;&#x548C;&#x201C;Xmx&#x201D;&#x3002;</p>
+<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6CA1;&#x6CD5;&#x4E3A;-Xmx&#xFF08;&#x6700;&#x5927;&#x5806;&#x5185;&#x5B58;&#xFF09;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x9762;&#x4E34;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#xFF08;OutOfMemoryError&#xFF09;&#x7684;&#x98CE;&#x9669;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x662F;&#x6211;&#x4EEC;&#x4F7F;&#x7528;JVM&#x65F6;&#x9762;&#x4E34;&#x7684;&#x6700;&#x53EF;&#x6015;&#x7684;&#x731B;&#x517D;&#x4E4B;&#x4E00;&#x3002;&#x5C31;&#x540C;<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">&#x53E6;&#x5916;&#x4E00;&#x7BC7;</a>&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x4E3B;&#x9898;&#x7684;&#x535A;&#x6587;&#x8BF4;&#x7684;&#x4E00;&#x6837;&#xFF0C;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x7684;&#x6839;&#x672C;&#x539F;&#x56E0;&#x9700;&#x8981;&#x4ED4;&#x7EC6;&#x7684;&#x5B9A;&#x4F4D;&#x3002;&#x901A;&#x5E38;&#x6765;&#x8BF4;&#xFF0C;&#x5206;&#x6790;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#xFF08;Heap Dump&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x5B9A;&#x4F4D;&#x624B;&#x6BB5;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x751F;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x65F6;&#x6CA1;&#x6709;&#x751F;&#x6210;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x90A3;&#x5C31;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x7CDF;&#x4E86;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5BF9;&#x4E8E;&#x90A3;&#x79CD;JVM&#x5DF2;&#x7ECF;&#x5D29;&#x6E83;&#x6216;&#x8005;&#x9519;&#x8BEF;&#x53EA;&#x51FA;&#x73B0;&#x5728;&#x987A;&#x5229;&#x8FD0;&#x884C;&#x4E86;&#x6570;&#x5C0F;&#x65F6;&#x751A;&#x81F3;&#x6570;&#x5929;&#x7684;&#x751F;&#x4EA7;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;-XX:+HeapDumpOnOutOfMemoryError &#x8BA9;JVM&#x5728;&#x53D1;&#x751F;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x65F6;&#x81EA;&#x52A8;&#x7684;&#x751F;&#x6210;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x3002;&#x6709;&#x4E86;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x4E0D;&#x5F97;&#x4E0D;&#x9762;&#x5BF9;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5F02;&#x5E38;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x8282;&#x7EA6;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;JVM&#x7684;&#x542F;&#x52A8;&#x76EE;&#x5F55;&#x4E0B;&#x540D;&#x4E3A;java_pid<code>&lt;pid&gt;</code>.hprof &#x7684;&#x6587;&#x4EF6;&#x91CC;&#xFF08;&#x5728;&#x8FD9;&#x91CC;<code>&lt;pid&gt;</code>&#x5C31;&#x662F;JVM&#x8FDB;&#x7A0B;&#x7684;&#x8FDB;&#x7A0B;&#x53F7;&#xFF09;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;-XX:HeapDumpPath=<code>&lt;path&gt;</code>&#x6765;&#x6539;&#x53D8;&#x9ED8;&#x8BA4;&#x7684;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x751F;&#x6210;&#x8DEF;&#x5F84;&#xFF0C;<code>&lt;path&gt;</code>&#x53EF;&#x4EE5;&#x662F;&#x76F8;&#x5BF9;&#x6216;&#x8005;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x867D;&#x7136;&#x8FD9;&#x4E00;&#x5207;&#x542C;&#x8D77;&#x6765;&#x5F88;&#x4E0D;&#x9519;&#xFF0C;&#x4F46;&#x6709;&#x4E00;&#x70B9;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7262;&#x8BB0;&#x3002;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x6587;&#x4EF6;&#x6709;&#x53EF;&#x80FD;&#x5F88;&#x5E9E;&#x5927;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5F53;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x7684;&#x65F6;&#x5019;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x63A8;&#x8350;&#x5C06;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x751F;&#x6210;&#x8DEF;&#x5F84;&#x6307;&#x5B9A;&#x5230;&#x4E00;&#x4E2A;&#x62E5;&#x6709;&#x8DB3;&#x591F;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<p><strong>-XX:OnOutOfMemoryError</strong></p>
+<p>&#x5F53;&#x5185;&#x5B58;&#x6EA2;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x6307;&#x4EE4;&#xFF0C;&#x6BD4;&#x5982;&#x53D1;&#x4E2A;E-mail&#x901A;&#x77E5;&#x7BA1;&#x7406;&#x5458;&#x6216;&#x8005;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x901A;&#x8FC7;-XX:OnOutOfMemoryError &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E00;&#x4E32;&#x6307;&#x4EE4;&#x548C;&#x5B83;&#x4EEC;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4E0D;&#x4F1A;&#x6DF1;&#x5165;&#x5B83;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x5F53;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5C06;&#x5806;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x5199;&#x5230;/tmp/heapdump.hprof &#x6587;&#x4EF6;&#x5E76;&#x4E14;&#x5728;JVM&#x7684;&#x8FD0;&#x884C;&#x76EE;&#x5F55;&#x6267;&#x884C;&#x811A;&#x672C;cleanup.sh</p>
+<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
+</code></pre>
+<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>&#x6C38;&#x4E45;&#x4EE3;&#x5728;&#x5806;&#x5185;&#x5B58;&#x4E2D;&#x662F;&#x4E00;&#x5757;&#x72EC;&#x7ACB;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x5B83;&#x5305;&#x542B;&#x4E86;&#x6240;&#x6709;JVM&#x52A0;&#x8F7D;&#x7684;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x8868;&#x793A;&#x3002;&#x4E3A;&#x4E86;&#x6210;&#x529F;&#x8FD0;&#x884C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;JVM&#x4F1A;&#x52A0;&#x8F7D;&#x5F88;&#x591A;&#x7C7B;&#xFF08;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4F9D;&#x8D56;&#x4E8E;&#x5927;&#x91CF;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF0C;&#x800C;&#x8FD9;&#x53C8;&#x4F9D;&#x8D56;&#x4E8E;&#x66F4;&#x591A;&#x7684;&#x5E93;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x4ECE;&#x91CC;&#x9762;&#x5C06;&#x7C7B;&#x52A0;&#x8F7D;&#x8FDB;&#x6765;&#xFF09;&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x589E;&#x52A0;&#x6C38;&#x4E45;&#x4EE3;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;-XX:PermSize &#x548C;-XX:MaxPermSize &#x6765;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x76EE;&#x7684;&#x3002;&#x5176;&#x4E2D;-XX:MaxPermSize &#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x6C38;&#x4E45;&#x4EE3;&#x5927;&#x5C0F;&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;-XX:PermSize &#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x6C38;&#x4E45;&#x4EE3;&#x521D;&#x59CB;&#x5927;&#x5C0F;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
+</code></pre>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x7684;&#x6C38;&#x4E45;&#x4EE3;&#x5927;&#x5C0F;&#x5E76;&#x4E0D;&#x4F1A;&#x88AB;&#x5305;&#x62EC;&#x5728;&#x4F7F;&#x7528;&#x53C2;&#x6570;-XX:MaxHeapSize &#x8BBE;&#x7F6E;&#x7684;&#x5806;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x4E2D;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x901A;&#x8FC7;-XX:MaxPermSize&#x8BBE;&#x7F6E;&#x7684;&#x6C38;&#x4E45;&#x4EE3;&#x5185;&#x5B58;&#x53EF;&#x80FD;&#x4F1A;&#x9700;&#x8981;&#x7531;&#x53C2;&#x6570;-XX:MaxHeapSize &#x8BBE;&#x7F6E;&#x7684;&#x5806;&#x5185;&#x5B58;&#x4EE5;&#x5916;&#x7684;&#x66F4;&#x591A;&#x7684;&#x4E00;&#x4E9B;&#x5806;&#x5185;&#x5B58;&#x3002;</p>
+<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
+<p>JVM&#x4E00;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#xFF0C;&#x4F46;&#x5F80;&#x5F80;&#x88AB;&#x5FFD;&#x89C6;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x662F;&#x201C;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x201D;&#xFF0C;&#x5B83;&#x662F;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5DF2;&#x7F16;&#x8BD1;&#x65B9;&#x6CD5;&#x751F;&#x6210;&#x7684;&#x672C;&#x5730;&#x4EE3;&#x7801;&#x3002;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x786E;&#x5B9E;&#x5F88;&#x5C11;&#x5F15;&#x8D77;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x65E6;&#x53D1;&#x751F;&#x5176;&#x5F71;&#x54CD;&#x53EF;&#x80FD;&#x662F;&#x6BC1;&#x706D;&#x6027;&#x7684;&#x3002;&#x5982;&#x679C;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x88AB;&#x5360;&#x6EE1;&#xFF0C;JVM&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x4E00;&#x6761;&#x8B66;&#x544A;&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x5207;&#x6362;&#x5230;interpreted-only &#x6A21;&#x5F0F;&#xFF1A;JIT&#x7F16;&#x8BD1;&#x5668;&#x88AB;&#x505C;&#x7528;&#xFF0C;&#x5B57;&#x8282;&#x7801;&#x5C06;&#x4E0D;&#x518D;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x6210;&#x673A;&#x5668;&#x7801;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C06;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x4F1A;&#x964D;&#x4F4E;&#x4E00;&#x4E2A;&#x6570;&#x91CF;&#x7EA7;&#xFF0C;&#x76F4;&#x5230;&#x6709;&#x4EBA;&#x6CE8;&#x610F;&#x5230;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x5C31;&#x50CF;&#x5176;&#x4ED6;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E00;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x76F8;&#x5173;&#x7684;&#x53C2;&#x6570;&#x662F;-XX:InitialCodeCacheSize &#x548C;-XX:ReservedCodeCacheSize&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x53C2;&#x6570;&#x548C;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x53C2;&#x6570;&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x662F;&#x5B57;&#x8282;&#x503C;&#x3002;</p>
+<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
+<p>&#x5982;&#x679C;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x4E0D;&#x65AD;&#x589E;&#x957F;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x56E0;&#x4E3A;&#x70ED;&#x90E8;&#x7F72;&#x5F15;&#x8D77;&#x7684;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#xFF0C;&#x90A3;&#x4E48;&#x63D0;&#x9AD8;&#x4EE3;&#x7801;&#x7684;&#x7F13;&#x5B58;&#x5927;&#x5C0F;&#x53EA;&#x4F1A;&#x5EF6;&#x7F13;&#x5176;&#x53D1;&#x751F;&#x6EA2;&#x51FA;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x7684;&#x53D1;&#x751F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x4E00;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x65B0;&#x53C2;&#x6570;&#xFF1A;&#x5F53;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x88AB;&#x586B;&#x6EE1;&#x65F6;&#x8BA9;JVM&#x653E;&#x5F03;&#x4E00;&#x4E9B;&#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;-XX:+UseCodeCacheFlushing &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x81F3;&#x5C11;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x5F53;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x88AB;&#x586B;&#x6EE1;&#x7684;&#x65F6;&#x5019;JVM&#x5207;&#x6362;&#x5230;interpreted-only &#x6A21;&#x5F0F;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x6211;&#x4ECD;&#x5EFA;&#x8BAE;&#x5C3D;&#x5FEB;&#x89E3;&#x51B3;&#x4EE3;&#x7801;&#x7F13;&#x5B58;&#x95EE;&#x9898;&#x53D1;&#x751F;&#x7684;&#x6839;&#x672C;&#x539F;&#x56E0;&#xFF0C;&#x5982;&#x627E;&#x51FA;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x5E76;&#x4FEE;&#x590D;&#x5B83;&#x3002;</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/tec/">TEC-技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JVM/">#JVM</a>
+  </div>
+
+
+        <br/>
+<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2016/10/08/useful-jvm-flags-part-4-heap-tuning/" target="_blank" title="JVM实用参数（四）内存调优">DeleiGuo:JVM实用参数（四）内存调优</a></b>.</code></pre>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.deleiguo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+  
+    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
+  
+    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Team/">Team</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+    <ul class="entry">
+        <ul>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.hollischuang.com" target="_blank">HollisChuang's Blog</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank">并发编程网-ifeve.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank">酷勤网</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank">grepcode.com</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.importnew.com" target="_blank">ImportNew</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.jobbole.com" target="_blank">伯乐在线</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://wiki.jikexueyuan.com" target="_blank">极客学院wiki</a>
+            </li>
+            <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://hao.shejidaren.com/index.html" target="_blank">设计导航</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer">
+      <div class="inner">
+          <p style="color:#333">
+              I know no such things as genius,it is nothing but labor and diligence.<br/>
+              -哪有什么天才之说，不过是勤奋
+          </p>
+          <br/>
+          <div class="alignleft">
+  
+  &copy; 2016 DeleiGuo
+  
+  &nbsp;&nbsp;
+  湘ICP备16012107号-1
+  &nbsp;&nbsp;
+  Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
+</div>
+<div class="alignright">
+  <a href="https://github.com/delei"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</div>
+<div class="clearfix"></div>
+
+      </div>
+  </footer>
+  <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/images/scrollup.png"/></a>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="/js/totop.js"></script>
+
+
+
+<script type="text/javascript">
+(function($){
+  hljs.initHighlightingOnLoad();
+})(jQuery);
+</script>
+
+
+</body>
+</html>
