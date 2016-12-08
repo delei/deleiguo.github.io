@@ -102,32 +102,31 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">JVM实用参数（八）GC日志</a></h1>
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">JVM实用参数（一）JVM类型以及编译器模式</a></h1>
   
 
     </header>
     <div class="entry">
       
         <blockquote>
-<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x516B;&#xFF09;GC&#x65E5;&#x5FD7;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E00;&#xFF09;JVM&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5F0F;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
 </blockquote>
-<p><strong>&#x8BD1;&#x8005;:</strong> Greenster<br><strong>&#x6821;&#x5BF9;:</strong> &#x6881;&#x6D77;&#x8230;<br>&#x672C;&#x7CFB;&#x5217;&#x7684;&#x6700;&#x540E;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x6709;&#x5173;&#x5783;&#x573E;&#x6536;&#x96C6;&#xFF08;GC&#xFF09;&#x65E5;&#x5FD7;&#x7684;JVM&#x53C2;&#x6570;&#x3002;GC&#x65E5;&#x5FD7;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x51C6;&#x786E;&#x8BB0;&#x5F55;&#x4E86;&#x6BCF;&#x4E00;&#x6B21;&#x7684;GC&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x548C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;GC&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x5806;&#x8BBE;&#x7F6E;&#x548C;GC&#x8BBE;&#x7F6E;&#xFF0C;&#x6216;&#x8005;&#x6539;&#x8FDB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x6A21;&#x5F0F;&#x3002;</p>
-<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>&#x53C2;&#x6570;-XX:+PrintGC&#xFF08;&#x6216;&#x8005;-verbose:gc&#xFF09;&#x5F00;&#x542F;&#x4E86;&#x7B80;&#x5355;GC&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E00;&#x6B21;&#x65B0;&#x751F;&#x4EE3;&#xFF08;young generation&#xFF09;&#x7684;GC&#x548C;&#x6BCF;&#x4E00;&#x6B21;&#x7684;Full GC&#x6253;&#x5370;&#x4E00;&#x884C;&#x4FE1;&#x606F;&#x3002;&#x4E0B;&#x9762;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#xFF1A;</p>
-<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
-[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
-</code></pre>
-<p>&#x6BCF;&#x884C;&#x5F00;&#x59CB;&#x9996;&#x5148;&#x662F;GC&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x53EF;&#x4EE5;&#x662F;&#x201C;GC&#x201D;&#x6216;&#x8005;&#x201C;Full GC&#x201D;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x5728;GC&#x4E4B;&#x524D;&#x548C;GC&#x4E4B;&#x540E;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#xFF0C;&#x518D;&#x7136;&#x540E;&#x662F;&#x5F53;&#x524D;&#x7684;&#x5806;&#x5BB9;&#x91CF;&#xFF0C;&#x6700;&#x540E;&#x662F;GC&#x6301;&#x7EED;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x4EE5;&#x79D2;&#x8BA1;&#xFF09;&#x3002;</p>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/">blog.codecentric.de</a></p>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x8D75;&#x5CF0;&#xFF0C;iDestiny<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x90ED;&#x857E;</p>
+<p>&#x73B0;&#x5728;&#x7684;JVM&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#xFF08;&#x548C;&#x5176;&#x5B83;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x8BED;&#x8A00;&#xFF09;&#x65F6;&#x5728;&#x9AD8;&#x6548;&#x6027;&#x548C;&#x7A33;&#x5B9A;&#x6027;&#x65B9;&#x9762;&#x505A;&#x7684;&#x975E;&#x5E38;&#x51FA;&#x8272;&#x3002;&#x81EA;&#x9002;&#x5E94;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3001;&#x5783;&#x573E;&#x6536;&#x96C6;&#x3001;&#x53CA;&#x65F6;&#x7F16;&#x8BD1;&#x3001;&#x52A8;&#x6001;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x9501;&#x4F18;&#x5316;&#x2014;&#x2014;&#x8FD9;&#x91CC;&#x4EC5;&#x4EC5;&#x5217;&#x4E3E;&#x4E86;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x4F1A;&#x53D1;&#x751F;&#x7684;&#x795E;&#x5947;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x4F46;&#x4ED6;&#x4EEC;&#x51E0;&#x4E4E;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4E0E;&#x666E;&#x901A;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x76F8;&#x5173;&#x3002;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;JVM&#x4F1A;&#x4E0D;&#x65AD;&#x7684;&#x8BA1;&#x7B97;&#x5E76;&#x4F18;&#x5316;&#x5E94;&#x7528;&#x6216;&#x8005;&#x5E94;&#x7528;&#x7684;&#x67D0;&#x4E9B;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x867D;&#x7136;&#x6709;&#x4E86;&#x8FD9;&#x79CD;&#x7A0B;&#x5EA6;&#x7684;&#x81EA;&#x52A8;&#x5316;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x6709;&#x8FD9;&#x4E48;&#x591A;&#x81EA;&#x52A8;&#x5316;&#xFF09;&#xFF0C;&#x4F46;&#x662F;JVM&#x4ECD;&#x7136;&#x63D0;&#x4F9B;&#x4E86;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x5916;&#x90E8;&#x76D1;&#x63A7;&#x548C;&#x624B;&#x52A8;&#x8C03;&#x4F18;&#x5DE5;&#x5177;&#x3002;&#x5728;&#x6709;&#x9519;&#x8BEF;&#x6216;&#x4F4E;&#x6027;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;JVM&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x8BA9;&#x4E13;&#x5BB6;&#x8C03;&#x8BD5;&#x3002;&#x987A;&#x4FBF;&#x8BF4;&#x4E00;&#x53E5;&#xFF0C;&#x9664;&#x4E86;&#x8FD9;&#x4E9B;&#x9690;&#x85CF;&#x5728;&#x5F15;&#x64CE;&#x4E2D;&#x7684;&#x795E;&#x5947;&#x529F;&#x80FD;&#xFF0C;&#x5141;&#x8BB8;&#x5927;&#x8303;&#x56F4;&#x7684;&#x624B;&#x52A8;&#x8C03;&#x4F18;&#x4E5F;&#x662F;&#x73B0;&#x4EE3;JVM&#x7684;&#x4F18;&#x52BF;&#x4E4B;&#x4E00;&#x3002;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x5728;JVM&#x542F;&#x52A8;&#x65F6;&#x4F20;&#x5165;&#x5230;JVM&#x4E2D;&#x3002;&#x4E00;&#x4E9B;JVM&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x767E;&#x4E2A;&#x8FD9;&#x6837;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#x5F88;&#x5BB9;&#x6613;&#x8FF7;&#x5931;&#x3002;&#x8FD9;&#x7CFB;&#x5217;&#x535A;&#x5BA2;&#x7684;&#x76EE;&#x6807;&#x662F;&#x7740;&#x91CD;&#x8BB2;&#x89E3;&#x65E5;&#x5E38;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x4EE5;&#x53CA;&#x4ED6;&#x4EEC;&#x7684;&#x9002;&#x7528;&#x573A;&#x5408;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x4E13;&#x6CE8;&#x4E8E;Java6&#x7684;Sun/Oracle HotSpot JVM&#xFF0C;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4E5F;&#x4F1A;&#x9002;&#x7528;&#x4E8E;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x6D41;&#x884C;&#x7684;JVM&#x91CC;&#x3002;</p>
+<p><strong>-server and -client</strong></p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/#more" class="more-link">阅读更多</a>
           </div>
         
         
