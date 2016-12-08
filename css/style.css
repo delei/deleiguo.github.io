@@ -1,9 +1,14 @@
-@import url("//fonts.googleapis.com/css?family=Lato:300,300italic");
 @font-face {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: normal;
   src: url("font/fontawesome-webfont.eot?#iefix") format('embedded-opentype'), url("font/fontawesome-webfont.woff") format('woff'), url("font/fontawesome-webfont.ttf") format('truetype'), url("font/fontawesome-webfont.svg#FontAwesomeRegular") format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  src: url("font/lato-light.woff2") format('woff2'), url("font/lato-light.ttf") format('truetype'), url("font/lato-light.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 * {
   margin: 0;

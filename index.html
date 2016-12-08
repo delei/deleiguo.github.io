@@ -151,58 +151,71 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-command-jps/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-gc/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/jvm-command-jps/">JDK命令：jps</a></h1>
+    <h1 class="title"><a href="/2016/10/08/jvm-gc/">JVM GC</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <blockquote>
-<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x9644;&#x5E26;&#x539F;&#x6587;&#x5730;&#x5740;</p>
+        <p>[TOC]</p>
+<blockquote>
+<p>&#x53C2;&#x8003;&#x4E66;&#x7C4D;&#xFF1A;<a href="https://book.douban.com/subject/25953851/">&#x6DF1;&#x5165;&#x5206;&#x6790;Java Web&#x6280;&#x672F;&#x5185;&#x5E55;&#xFF08;&#x4FEE;&#x8BA2;&#x7248;&#xFF09;</a></p>
 </blockquote>
-<h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><p>jps&#x5728;jdk&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E2D;&#x7684;bin&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x662F;java&#x81EA;&#x5E26;&#x7684;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;</p>
-<h2 id="&#x4E3B;&#x8981;&#x529F;&#x80FD;"><a href="#&#x4E3B;&#x8981;&#x529F;&#x80FD;" class="headerlink" title="&#x4E3B;&#x8981;&#x529F;&#x80FD;"></a>&#x4E3B;&#x8981;&#x529F;&#x80FD;</h2><p>&#x67E5;&#x770B;&#x5F53;&#x524D;java&#x8FDB;&#x7A0B;&#x57FA;&#x672C;&#x60C5;&#x51B5;</p>
-<h2 id="jps&#x4F7F;&#x7528;&#x6587;&#x6863;"><a href="#jps&#x4F7F;&#x7528;&#x6587;&#x6863;" class="headerlink" title="jps&#x4F7F;&#x7528;&#x6587;&#x6863;"></a>jps&#x4F7F;&#x7528;&#x6587;&#x6863;</h2><p>&#x5982;&#x679C;&#x5FD8;&#x8BB0;&#x4E86;&#x6709;&#x5173;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;Linux&#x4E2D;&#x7528;man&#x6216;info&#x547D;&#x4EE4;&#x67E5;&#x770B;jps&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;(&#x5185;&#x5BB9;&#x8FC7;&#x591A;,&#x2026;&#x8868;&#x793A;&#x7701;&#x7565;)</p>
-<pre><code class="lang-bash">delei@DeleitekiMBP:~$ man jps
-
-NAME
-       jps - Java Virtual Machine Process Status Tool
-
-SYNOPSIS
-       jps [options] [hostid]
-
-DESCRIPTION
-       The  jps tool lists the instrumented HotSpot Java Virtual Machines (JVMs) on the target sys-
-       tem. The tool is limited to reporting information on JVMs for which it has the  access  per-
-       missions.
-...
-
-PARAMETERS
-       options        Command-line options.
-
-       hostid         The host identifier of the host for which the process report should be gener-
-                      ated. The hostid may include optional components that indicate the communica-
-                      tions protocol, port number, and other implementation specific data.
-
-OPTIONS
-       The jps command supports a number of options that modify the output of the  command.   These
-       options are subject to change or removal in the future.
-
-       -q             Suppress the output of the class name, JAR file name, and arguments passed to
-...
-</code></pre>
-<p>&#x7ECF;&#x8FC7;&#x6BD4;&#x8F83;&#xFF0C;&#x5176;&#x5B9E;man&#x547D;&#x4EE4;&#x4E0B;&#x663E;&#x793A;&#x7684;&#x5185;&#x5BB9;&#x548C;Oracle &#x5B98;&#x7F51;&#x6587;&#x6863;&#x662F;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x7684;&#x3002;(&#x5EFA;&#x8BAE;&#x770B;&#x4E0B;&#x5B98;&#x7F51;&#x82F1;&#x6587;&#x539F;&#x6587;&#x6863;)<br><a href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html">jps - Java Virtual Machine Process Status Tool</a></p>
+<h2 id="&#x7EC4;&#x5408;&#x4F7F;&#x7528;"><a href="#&#x7EC4;&#x5408;&#x4F7F;&#x7528;" class="headerlink" title="&#x7EC4;&#x5408;&#x4F7F;&#x7528;"></a>&#x7EC4;&#x5408;&#x4F7F;&#x7528;</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC&#x7EC4;&#x5408;</th>
+<th>Young&#x533A;</th>
+<th>Old&#x533A;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:+UseSerialGC</td>
+<td>&#x4E32;&#x884C;GC</td>
+<td>&#x4E32;&#x884C;GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelGC</td>
+<td>PSGC</td>
+<td>&#x5E76;&#x884C;MSCGC</td>
+</tr>
+<tr>
+<td>-XX:+UseParNewGC</td>
+<td>&#x5E76;&#x884C;GC</td>
+<td>&#x4E32;&#x884C;GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelOldGC</td>
+<td>PSGC</td>
+<td>&#x5E76;&#x884C;CompactingGC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC</td>
+<td>ParNewGC</td>
+<td>&#x5E76;&#x884C;GC<br>&#x5F53;&#x51FA;&#x73B0;concurrentMOde failure&#x65F6;&#x91C7;&#x7528;&#x4E32;&#x884C;GC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
+<td>&#x4E32;&#x884C;GC</td>
+<td>&#x5E76;&#x884C;GC<br>&#x5F53;&#x51FA;&#x73B0;concurrentMOde failure&#x6216;promotionfailed&#x91C7;&#x7528;&#x4E32;&#x884C;GC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&#x4E0D;&#x652F;&#x6301;&#x7684;&#x7EC4;&#x5408;&#x65B9;&#x5F0F;&#xFF1A;<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/jvm-command-jps/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/jvm-gc/#more" class="more-link">阅读更多</a>
           </div>
         
         
