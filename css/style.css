@@ -147,7 +147,11 @@ a:hover {
   line-height: 1;
   margin: 0;
   padding: 20px 0 5px;
-  text-transform: uppercase;
+}
+@media screen and (max-width: 600px) {
+  #header .home-link .site-title text-transform uppercase {
+    font-size: 36px;
+  }
 }
 #header .home-link .site-title-description {
   color: #666;
@@ -231,7 +235,7 @@ article .post-content {
 }
 @media screen and (max-width: 600px) {
   article .post-content {
-    padding-left: 20px;
+    padding: 10px 20px;
   }
 }
 article .gallery {
@@ -696,6 +700,11 @@ article footer .addthis iframe {
 }
 #footer .inner {
   padding-top: 30px;
+}
+@media screen and (max-width: 600px) {
+  #footer .dd-github-camo {
+    display: none;
+  }
 }
 .entry .gist {
   background: #eee;
