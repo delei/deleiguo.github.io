@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
   <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   
 
@@ -33,7 +33,7 @@
 <body>
   <header id="header" class="">
         <div class="container">
-          <a class="home-link jumbotron" href="/">
+          <a class="home-link" href="/">
   <h1 class="site-title animated zoomIn">DeleiGuo</h1>
   <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
 </a>
@@ -41,19 +41,29 @@
 
         </div>
   </header>
-  <nav id="main-nav" class="navigation main-navigation">
+  <nav id="main-nav" class="navbar navbar-default">
     <div class="container">
-    <ul>
-      
-        <li><a href="/">首页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-        <li><a href="/books">书籍库</a></li>
-      
-        <li><a href="/about">关于</a></li>
-      
-    </ul>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ddnavbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="ddnavbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+                <li><a href="/">首页</a></li>
+              
+                <li><a href="/archives">归档</a></li>
+              
+                <li><a href="/books">书籍库</a></li>
+              
+                <li><a href="/about">关于</a></li>
+              
+            </ul>
+          </div>
     </div>
     <div class="clearfix"></div>
   </nav>
@@ -146,36 +156,32 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-command-help/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/linux-command-help/">Linux Command：命令帮助</a></h1>
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">JVM实用参数（八）GC日志</a></h1>
   
 
     </header>
     <div class="entry">
       
         <blockquote>
-<p>&#x6307;&#x5BFC;&#x73AF;&#x5883;&#xFF1A;CentOS7</p>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x516B;&#xFF09;GC&#x65E5;&#x5FD7;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
 </blockquote>
-<h2 id="Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;"><a href="#Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;" class="headerlink" title="Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;"></a>Linux&#x547D;&#x4EE4;&#x6570;&#x91CF;</h2><p>&#x5728;Linux&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BB0;&#x5F97;&#x547D;&#x4EE4;&#x7684;&#x5168;&#x79F0;&#xFF0C;&#x4F46;&#x77E5;&#x9053;&#x524D;&#x9762;&#x51E0;&#x4E2A;&#x5B57;&#x6BCD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;tab&#x81EA;&#x52A8;&#x8865;&#x5168;&#xFF0C;&#x6216;&#x6309;&#x4E0B;&#x4E24;&#x6B21;tab&#x5217;&#x51FA;&#x76F8;&#x7B26;&#x7684;&#x591A;&#x4E2A;&#x53EF;&#x9009;&#x9879;&#xFF1B;</p>
-<pre><code class="lang-bash">[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+<p><strong>&#x8BD1;&#x8005;:</strong> Greenster<br><strong>&#x6821;&#x5BF9;:</strong> &#x6881;&#x6D77;&#x8230;<br>&#x672C;&#x7CFB;&#x5217;&#x7684;&#x6700;&#x540E;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x6709;&#x5173;&#x5783;&#x573E;&#x6536;&#x96C6;&#xFF08;GC&#xFF09;&#x65E5;&#x5FD7;&#x7684;JVM&#x53C2;&#x6570;&#x3002;GC&#x65E5;&#x5FD7;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x51C6;&#x786E;&#x8BB0;&#x5F55;&#x4E86;&#x6BCF;&#x4E00;&#x6B21;&#x7684;GC&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x548C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;GC&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x5806;&#x8BBE;&#x7F6E;&#x548C;GC&#x8BBE;&#x7F6E;&#xFF0C;&#x6216;&#x8005;&#x6539;&#x8FDB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x6A21;&#x5F0F;&#x3002;</p>
+<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>&#x53C2;&#x6570;-XX:+PrintGC&#xFF08;&#x6216;&#x8005;-verbose:gc&#xFF09;&#x5F00;&#x542F;&#x4E86;&#x7B80;&#x5355;GC&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E00;&#x6B21;&#x65B0;&#x751F;&#x4EE3;&#xFF08;young generation&#xFF09;&#x7684;GC&#x548C;&#x6BCF;&#x4E00;&#x6B21;&#x7684;Full GC&#x6253;&#x5370;&#x4E00;&#x884C;&#x4FE1;&#x606F;&#x3002;&#x4E0B;&#x9762;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#xFF1A;</p>
+<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
+[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
 </code></pre>
-<p>&#x800C;&#x5F53;&#x5339;&#x914D;&#x7684;&#x6570;&#x91CF;&#x8FC7;&#x591A;&#xFF0C;&#x4F1A;&#x5148;&#x5148;&#x7EDF;&#x8BA1;&#x6709;&#x591A;&#x5C11;&#x6570;&#x91CF;&#xFF0C;&#x8BE2;&#x95EE;&#x662F;&#x5426;&#x663E;&#x793A;</p>
-<pre><code class="lang-bash">[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-</code></pre>
+<p>&#x6BCF;&#x884C;&#x5F00;&#x59CB;&#x9996;&#x5148;&#x662F;GC&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x53EF;&#x4EE5;&#x662F;&#x201C;GC&#x201D;&#x6216;&#x8005;&#x201C;Full GC&#x201D;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x5728;GC&#x4E4B;&#x524D;&#x548C;GC&#x4E4B;&#x540E;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#xFF0C;&#x518D;&#x7136;&#x540E;&#x662F;&#x5F53;&#x524D;&#x7684;&#x5806;&#x5BB9;&#x91CF;&#xFF0C;&#x6700;&#x540E;&#x662F;GC&#x6301;&#x7EED;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x4EE5;&#x79D2;&#x8BA1;&#xFF09;&#x3002;</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/linux-command-help/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -313,19 +319,19 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
     <div class="clearfix"></div>
   </div>
   <footer id="footer">
-      <div class="inner">
-          <p style="color:#333">
+      <div class="container">
+          <h6 style="color:#333">
               I know no such things as genius,it is nothing but labor and diligence.<br/>
               -哪有什么天才之说，不过是勤奋
-          </p>
+          </h6>
           <br/>
-          <div class="alignleft">
+          <div class="text-center">
   
   &copy; 2016 DeleiGuo
   
   &nbsp;&nbsp;
   湘ICP备16012107号-1
-  &nbsp;&nbsp;
+  <br/>
   Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
 </div>
 <div class="dd-github-camo">
@@ -343,10 +349,8 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="//cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="/js/totop.js"></script>
-
-
-
 <script type="text/javascript">
 (function($){
   hljs.initHighlightingOnLoad();
