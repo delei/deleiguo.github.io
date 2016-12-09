@@ -21,11 +21,11 @@
   <link href="/favicon.png" rel="icon">
   <link rel="alternate" href="/atom.xml" title="DeleiGuo" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/github.min.css">
   <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-  
 
 </head>
 
@@ -54,13 +54,13 @@
           <div id="ddnavbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               
-                <li><a href="/">首页</a></li>
+                <li><a href="/"><i class="fa fa-home">&nbsp;</i>首页</a></li>
               
-                <li><a href="/archives">归档</a></li>
+                <li><a href="/archives"><i class="fa fa-archive">&nbsp;</i>归档</a></li>
               
-                <li><a href="/books">书籍库</a></li>
+                <li><a href="/books"><i class="fa fa-book">&nbsp;</i>书籍库</a></li>
               
-                <li><a href="/about">关于</a></li>
+                <li><a href="/about"><i class="fa fa-user">&nbsp;</i>关于</a></li>
               
             </ul>
           </div>
@@ -69,6 +69,53 @@
   </nav>
   <div id="content">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/">JVM实用参数（二）参数分类和即时（JIT）编译器诊断</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-2-flag/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E8C;&#xFF09;&#x53C2;&#x6570;&#x5206;&#x7C7B;&#x548C;&#x5373;&#x65F6;&#xFF08;JIT&#xFF09;&#x7F16;&#x8BD1;&#x5668;&#x8BCA;&#x65AD;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+</blockquote>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics">blog.codecentric.de</a></p>
+<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x8D75;&#x5CF0;&#xFF0C;iDestiny<br><strong>&#x6821;&#x5BF9;&#xFF1A;</strong> &#x8BB8;&#x5DE7;&#x8F89;</p>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x6765;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;HotSpot JVM&#x63D0;&#x4F9B;&#x7684;&#x4E0D;&#x540C;&#x7C7B;&#x522B;&#x7684;&#x53C2;&#x6570;&#x3002;&#x6211;&#x540C;&#x6837;&#x4F1A;&#x8BA8;&#x8BBA;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;JIT&#x7F16;&#x8BD1;&#x5668;&#x8BCA;&#x65AD;&#x7684;&#x6709;&#x8DA3;&#x53C2;&#x6570;&#x3002;</p>
+<h2 id="JVM-&#x53C2;&#x6570;&#x5206;&#x7C7B;"><a href="#JVM-&#x53C2;&#x6570;&#x5206;&#x7C7B;" class="headerlink" title="JVM &#x53C2;&#x6570;&#x5206;&#x7C7B;"></a>JVM &#x53C2;&#x6570;&#x5206;&#x7C7B;</h2><p>HotSpot JVM &#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x7C7B;&#x53C2;&#x6570;&#x3002;&#x7B2C;&#x4E00;&#x7C7B;&#x5305;&#x62EC;&#x4E86;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x4E2D;&#x5305;&#x62EC;&#x529F;&#x80FD;&#x548C;&#x8F93;&#x51FA;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x5F88;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x5F88;&#x53EF;&#x80FD;&#x5728;&#x5C06;&#x6765;&#x7684;JVM&#x7248;&#x672C;&#x4E2D;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x7528;java&#x547D;&#x4EE4;&#xFF08;&#x6216;&#x8005;&#x662F;&#x7528; java -help&#xFF09;&#x68C0;&#x7D22;&#x51FA;&#x6240;&#x6709;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x4E2D;&#x5DF2;&#x7ECF;&#x89C1;&#x5230;&#x8FC7;&#x4E00;&#x4E9B;&#x6807;&#x51C6;&#x53C2;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;-server&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x7C7B;&#x662F;X&#x53C2;&#x6570;&#xFF0C;&#x975E;&#x6807;&#x51C6;&#x5316;&#x7684;&#x53C2;&#x6570;&#x5728;&#x5C06;&#x6765;&#x7684;&#x7248;&#x672C;&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x6240;&#x6709;&#x7684;&#x8FD9;&#x7C7B;&#x53C2;&#x6570;&#x90FD;&#x4EE5;-X&#x5F00;&#x59CB;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528;java -X&#x6765;&#x68C0;&#x7D22;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x6240;&#x6709;&#x53C2;&#x6570;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x68C0;&#x7D22;&#x51FA;&#x6765;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x6CA1;&#x6709;-Xcomp&#x3002;</p>
+<p>&#x7B2C;&#x4E09;&#x7C7B;&#x662F;&#x5305;&#x542B;XX&#x53C2;&#x6570;&#xFF08;&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x6700;&#x591A;&#x7684;&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x540C;&#x6837;&#x4E0D;&#x662F;&#x6807;&#x51C6;&#x7684;&#xFF0C;&#x751A;&#x81F3;&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x4E0D;&#x88AB;&#x5217;&#x51FA;&#x6765;&#xFF08;&#x6700;&#x8FD1;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x6709;&#x6539;&#x53D8; &#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x7CFB;&#x5217;&#x7684;&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#x4E2D;&#x8BA8;&#x8BBA;&#x5B83;&#x4EEC;&#xFF09;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x4E2D;X&#x53C2;&#x6570;&#x548C;XX&#x53C2;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#x3002;X&#x53C2;&#x6570;&#x7684;&#x529F;&#x80FD;&#x662F;&#x5341;&#x5206;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x7136;&#x800C;&#x5F88;&#x591A;XX&#x53C2;&#x6570;&#x4ECD;&#x5728;&#x5B9E;&#x9A8C;&#x5F53;&#x4E2D;&#xFF08;&#x4E3B;&#x8981;&#x662F;JVM&#x7684;&#x5F00;&#x53D1;&#x8005;&#x7528;&#x4E8E;debugging&#x548C;&#x8C03;&#x4F18;JVM&#x81EA;&#x8EAB;&#x7684;&#x5B9E;&#x73B0;&#xFF09;&#x3002;&#x503C;&#x7684;&#x4E00;&#x8BFB;&#x7684;&#x4ECB;&#x7ECD;&#x975E;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x7684;&#x6587;&#x6863; <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">HotSpot JVM documentation</a>&#xFF0C;&#x5176;&#x4E2D;&#x660E;&#x786E;&#x7684;&#x6307;&#x51FA;XX&#x53C2;&#x6570;&#x4E0D;&#x5E94;&#x8BE5;&#x5728;&#x4E0D;&#x4E86;&#x89E3;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x662F;&#x771F;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x5EFA;&#x8BAE;&#x540C;&#x6837;&#x9002;&#x7528;&#x4E8E;X&#x53C2;&#x6570;&#xFF08;&#x540C;&#x6837;&#x4E00;&#x4E9B;&#x6807;&#x51C6;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#xFF09;&#x3002;&#x4E0D;&#x7BA1;&#x7C7B;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x53C2;&#x6570;&#x4E4B;&#x524D;&#x5E94;&#x8BE5;&#x5148;&#x4E86;&#x89E3;&#x5B83;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x6765;&#x8BF4;&#x660E;XX&#x53C2;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#x3002;&#x6240;&#x6709;&#x7684;XX&#x53C2;&#x6570;&#x90FD;&#x4EE5;&#x201D;-XX:&#x201D;&#x5F00;&#x59CB;&#xFF0C;&#x4F46;&#x662F;&#x968F;&#x540E;&#x7684;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x53D6;&#x51B3;&#x4E8E;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x201D;+&#x201D;&#x6216;&#x201D;-&#x201C;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x8BBE;&#x7F6E;JVM&#x9009;&#x9879;&#x7684;&#x5B9E;&#x9645;&#x540D;&#x79F0;&#x3002;&#x4F8B;&#x5982;&#xFF0C;-XX:+<name>&#x7528;&#x4E8E;&#x6FC0;&#x6D3B;<name>&#x9009;&#x9879;&#xFF0C;&#x800C;-XX:-<name>&#x7528;&#x4E8E;&#x6CE8;&#x9500;&#x9009;&#x9879;&#x3002;<br>&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x975E;&#x5E03;&#x5C14;&#x503C;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5982;string&#x6216;&#x8005;integer&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x5199;&#x53C2;&#x6570;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x201D;=&#x201D;&#xFF0C;&#x6700;&#x540E;&#x8D4B;&#x503C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;  -XX:<name>=<value>&#x7ED9;<name>&#x8D4B;&#x503C;<value>&#x3002;<br>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;JIT&#x7F16;&#x8BD1;&#x65B9;&#x9762;&#x7684;&#x4E00;&#x4E9B;XX&#x53C2;&#x6570;&#x3002;</value></name></value></name></name></name></name></p>
+<p><strong>-XX:+PrintCompilation and -XX:+CITime</strong></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-2-flag/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -115,29 +162,29 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM实用参数（五）新生代垃圾回收</a></h1>
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/">JVM实用参数（七）CMS收集器</a></h1>
   
 
     </header>
     <div class="entry">
       
         <blockquote>
-<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E94;&#xFF09;&#x65B0;&#x751F;&#x4EE3;&#x5783;&#x573E;&#x56DE;&#x6536;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x4E03;&#xFF09;CMS&#x6536;&#x96C6;&#x5668;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
 </blockquote>
-<p><strong>&#x8BD1;&#x8005;&#xFF1A;</strong> &#x4E25;&#x4EAE;<br>&#x672C;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5173;&#x6CE8;&#x5806;(heap) &#x4E2D;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x533A;&#x57DF;&#xFF0C;&#x65B0;&#x751F;&#x4EE3;(young generation)&#x3002;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x4F1A;&#x8BA8;&#x8BBA;&#x4E3A;&#x4EC0;&#x4E48;&#x8C03;&#x6574;&#x65B0;&#x751F;&#x4EE3;&#x7684;&#x53C2;&#x6570;&#x4F1A;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x6027;&#x80FD;&#x5982;&#x6B64;&#x91CD;&#x8981;&#xFF0C;&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x5C06;&#x5B66;&#x4E60;&#x65B0;&#x751F;&#x4EE3;&#x76F8;&#x5173;&#x7684;JVM&#x53C2;&#x6570;&#x3002;</p>
-<p>&#x5355;&#x7EAF;&#x4ECE;JVM&#x7684;&#x529F;&#x80FD;&#x8003;&#x8651;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x65B0;&#x751F;&#x4EE3;&#xFF0C;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x6574;&#x4E2A;&#x5806;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;&#x65B0;&#x751F;&#x4EE3;&#x5B58;&#x5728;&#x7684;&#x552F;&#x4E00;&#x7406;&#x7531;&#x662F;&#x4F18;&#x5316;&#x5783;&#x573E;&#x56DE;&#x6536;(GC)&#x7684;&#x6027;&#x80FD;&#x3002;&#x66F4;&#x5177;&#x4F53;&#x8BF4;&#xFF0C;&#x628A;&#x5806;&#x5212;&#x5206;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x6709;2&#x4E2A;&#x597D;&#x5904;&#xFF1A;&#x7B80;&#x5316;&#x4E86;&#x65B0;&#x5BF9;&#x8C61;&#x7684;&#x5206;&#x914D;(&#x53EA;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x5206;&#x914D;&#x5185;&#x5B58;),&#x53EF;&#x4EE5;&#x66F4;&#x6709;&#x6548;&#x7684;&#x6E05;&#x9664;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x7684;&#x5BF9;&#x8C61;(&#x5373;&#x6B7B;&#x5BF9;&#x8C61;)(&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;GC&#x7B97;&#x6CD5;)</p>
-<p>&#x901A;&#x8FC7;&#x5E7F;&#x6CDB;&#x7814;&#x7A76;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x5171;&#x540C;&#x7279;&#x70B9;&#xFF1A;&#x5F88;&#x591A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x90FD;&#x5F88;&#x77ED;&#x3002;&#x540C;&#x65F6;&#x7814;&#x7A76;&#x53D1;&#x73B0;&#xFF0C;&#x65B0;&#x751F;&#x5BF9;&#x8C61;&#x5F88;&#x5C11;&#x5F15;&#x7528;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x957F;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x7ED3;&#x5408;&#x8FD9;2&#x4E2A;&#x7279;&#x70B9;&#xFF0C;&#x5F88;&#x660E;&#x663E; GC &#x4F1A;&#x9891;&#x7E41;&#x8BBF;&#x95EE;&#x65B0;&#x751F;&#x5BF9;&#x8C61;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x5806;&#x4E2D;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x3002;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#xFF0C;GC&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x6807;&#x8BB0;&#x56DE;&#x6536;&#x201D;&#x6B7B;&#x5BF9;&#x8C61;&#x201D;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x626B;&#x63CF;&#x6574;&#x4E2A;Heap&#x4E2D;&#x7684;&#x5B58;&#x6D3B;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x201D;&#x8001;&#x5BF9;&#x8C61;&#x201D;&#x3002;</p>
+<p><strong>&#x8BD1;&#x8005;:</strong> iDestiny<br><strong>&#x6821;&#x5BF9;:</strong> &#x6881;&#x6D77;&#x8230;</p>
+<p>HotSpot JVM&#x7684;&#x5E76;&#x53D1;&#x6807;&#x8BB0;&#x6E05;&#x7406;&#x6536;&#x96C6;&#x5668;(CMS&#x6536;&#x96C6;&#x5668;)&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x6807;&#x5C31;&#x662F;:&#x4F4E;&#x5E94;&#x7528;&#x505C;&#x987F;&#x65F6;&#x95F4;&#x3002;&#x8BE5;&#x76EE;&#x6807;&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x4EA4;&#x4E92;&#x5F0F;&#x5E94;&#x7528;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x6BD4;&#x5982;web&#x5E94;&#x7528;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x6709;&#x5173;JVM&#x7684;&#x53C2;&#x6570;&#x4E4B;&#x524D;,&#x8BA9;&#x6211;&#x4EEC;&#x7B80;&#x8981;&#x56DE;&#x987E;CMS&#x6536;&#x96C6;&#x5668;&#x7684;&#x64CD;&#x4F5C;&#x548C;&#x4F7F;&#x7528;&#x5B83;&#x65F6;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;&#x4E3B;&#x8981;&#x6311;&#x6218;&#x3002;</p>
+<p>&#x5C31;&#x50CF;&#x541E;&#x5410;&#x91CF;&#x6536;&#x96C6;&#x5668;(&#x53C2;&#x89C1;&#x672C;&#x7CFB;&#x5217;&#x7684;&#x7B2C;6&#x90E8;&#x5206;),CMS&#x6536;&#x96C6;&#x5668;&#x5904;&#x7406;&#x8001;&#x5E74;&#x4EE3;&#x7684;&#x5BF9;&#x8C61;,&#x7136;&#x800C;&#x5176;&#x64CD;&#x4F5C;&#x8981;&#x590D;&#x6742;&#x5F97;&#x591A;&#x3002;&#x541E;&#x5410;&#x91CF;&#x6536;&#x96C6;&#x5668;&#x603B;&#x662F;&#x6682;&#x505C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7EBF;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x80FD;&#x662F;&#x76F8;&#x5F53;&#x957F;&#x7684;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x7136;&#x800C;&#x8FD9;&#x80FD;&#x591F;&#x4F7F;&#x8BE5;&#x7B97;&#x6CD5;&#x5B89;&#x5168;&#x5730;&#x5FFD;&#x7565;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;CMS&#x6536;&#x96C6;&#x5668;&#x88AB;&#x8BBE;&#x8BA1;&#x6210;&#x5728;&#x5927;&#x591A;&#x6570;&#x65F6;&#x95F4;&#x80FD;&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7EBF;&#x7A0B;&#x5E76;&#x884C;&#x6267;&#x884C;&#xFF0C;&#x4EC5;&#x4EC5;&#x4F1A;&#x6709;&#x4E00;&#x70B9;(&#x77ED;&#x6682;&#x7684;)&#x505C;&#x987F;&#x65F6;&#x95F4;&#x3002;GC&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5E76;&#x884C;&#x7684;&#x7F3A;&#x70B9;&#x5C31;&#x662F;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x5404;&#x79CD;&#x540C;&#x6B65;&#x548C;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x5B89;&#x5168;&#x4E14;&#x6B63;&#x786E;&#x7684;&#x5E76;&#x53D1;&#x6267;&#x884C;&#xFF0C;CMS&#x6536;&#x96C6;&#x5668;&#x7684;GC&#x5468;&#x671F;&#x88AB;&#x5206;&#x4E3A;&#x4E86;&#x597D;&#x51E0;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x9636;&#x6BB5;&#x3002;</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -156,33 +203,96 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-follow-dns/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">JVM实用参数（八）GC日志</a></h1>
+    <h1 class="title"><a href="/2016/10/08/linux-follow-dns/">Linux 跟踪域名解析过程</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <blockquote>
-<p>&#x8F6C;&#x8F7D;&#x81EA;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51; &#x2013; ifeve.com&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/">JVM&#x5B9E;&#x7528;&#x53C2;&#x6570;&#xFF08;&#x516B;&#xFF09;GC&#x65E5;&#x5FD7;</a><br>&#x672C;&#x6587;&#x662F;<a href="http://ifeve.com">&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7F51;</a>&#x7ECF;&#x539F;&#x56FD;&#x5916;blog&#x4F5C;&#x8005;&#x6388;&#x6743;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x6587;</p>
+        <h2 id="&#x547D;&#x4EE4;&#x4E00;-nslookup"><a href="#&#x547D;&#x4EE4;&#x4E00;-nslookup" class="headerlink" title="&#x547D;&#x4EE4;&#x4E00;:nslookup"></a>&#x547D;&#x4EE4;&#x4E00;:nslookup</h2><blockquote>
+<p>linux and windows</p>
 </blockquote>
-<p><strong>&#x8BD1;&#x8005;:</strong> Greenster<br><strong>&#x6821;&#x5BF9;:</strong> &#x6881;&#x6D77;&#x8230;<br>&#x672C;&#x7CFB;&#x5217;&#x7684;&#x6700;&#x540E;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x6709;&#x5173;&#x5783;&#x573E;&#x6536;&#x96C6;&#xFF08;GC&#xFF09;&#x65E5;&#x5FD7;&#x7684;JVM&#x53C2;&#x6570;&#x3002;GC&#x65E5;&#x5FD7;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x51C6;&#x786E;&#x8BB0;&#x5F55;&#x4E86;&#x6BCF;&#x4E00;&#x6B21;&#x7684;GC&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x548C;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;GC&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x5806;&#x8BBE;&#x7F6E;&#x548C;GC&#x8BBE;&#x7F6E;&#xFF0C;&#x6216;&#x8005;&#x6539;&#x8FDB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x6A21;&#x5F0F;&#x3002;</p>
-<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>&#x53C2;&#x6570;-XX:+PrintGC&#xFF08;&#x6216;&#x8005;-verbose:gc&#xFF09;&#x5F00;&#x542F;&#x4E86;&#x7B80;&#x5355;GC&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E00;&#x6B21;&#x65B0;&#x751F;&#x4EE3;&#xFF08;young generation&#xFF09;&#x7684;GC&#x548C;&#x6BCF;&#x4E00;&#x6B21;&#x7684;Full GC&#x6253;&#x5370;&#x4E00;&#x884C;&#x4FE1;&#x606F;&#x3002;&#x4E0B;&#x9762;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#xFF1A;</p>
-<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
-[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="&#x547D;&#x4EE4;&#x4E8C;-dig"><a href="#&#x547D;&#x4EE4;&#x4E8C;-dig" class="headerlink" title="&#x547D;&#x4EE4;&#x4E8C;:dig"></a>&#x547D;&#x4EE4;&#x4E8C;:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>&#x589E;&#x52A0;+trace&#x53C2;&#x6570;&#x8DDF;&#x8E2A;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
 </code></pre>
-<p>&#x6BCF;&#x884C;&#x5F00;&#x59CB;&#x9996;&#x5148;&#x662F;GC&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x53EF;&#x4EE5;&#x662F;&#x201C;GC&#x201D;&#x6216;&#x8005;&#x201C;Full GC&#x201D;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x5728;GC&#x4E4B;&#x524D;&#x548C;GC&#x4E4B;&#x540E;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5806;&#x7A7A;&#x95F4;&#xFF0C;&#x518D;&#x7136;&#x540E;&#x662F;&#x5F53;&#x524D;&#x7684;&#x5806;&#x5BB9;&#x91CF;&#xFF0C;&#x6700;&#x540E;&#x662F;GC&#x6301;&#x7EED;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x4EE5;&#x79D2;&#x8BA1;&#xFF09;&#x3002;</p>
       
     </div>
     <footer>
       
-        
-          <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读更多</a>
-          </div>
         
         
       
@@ -266,7 +376,7 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/pri/">PRI-文章</a><small>1</small></li>
+    <li><a href="/categories/pri/">PRI-文章</a><small>2</small></li>
   
     <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
   
@@ -278,6 +388,8 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry">
+  
+    <li><a href="/tags/DeleiGuo/">DeleiGuo</a><small>1</small></li>
   
     <li><a href="/tags/JVM/">JVM</a><small>9</small></li>
   
