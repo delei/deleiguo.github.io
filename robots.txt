@@ -1,15 +1,13 @@
 User-agent: *
-Disallow: /wp-admin/
-Disallow: /wp-content/
-Disallow: /wp-includes/
-Disallow: /*/comment-page-*
-Disallow: /*?replytocom=*
-Disallow: /category/*/page/
-Disallow: /tag/*/page/
-Disallow: /*/trackback
-Disallow: /feed
-Disallow: /*/feed
-Disallow: /comments/feed
-Disallow: /?s=*
-Disallow: /*/?s=*\
-Disallow: /attachment/
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /about/
+Allow: /books/
+Allow: /tags/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /fancybox/
