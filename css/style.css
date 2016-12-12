@@ -11,7 +11,7 @@
 body {
   background: #fff;
   color: #444;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Helvetica", Arial, sans-serif;
   font-size: 14px;
   text-shadow: 0 0 1px transparent;
   width: 100%;
@@ -696,7 +696,6 @@ article footer .addthis iframe {
 }
 .entry .gist .gist-file {
   border: none;
-  font-family: inherit;
   margin: 0;
   font-size: 0.9em;
 }
