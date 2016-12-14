@@ -576,6 +576,21 @@ article footer .addthis iframe {
 .archive article .post-content {
   margin-bottom: 0;
 }
+.archive-list {
+  font-size: 0.9em;
+  padding: 15px 20px;
+}
+.archive-list .archive-list-count {
+  margin-left: 8px;
+  font-size: 0.8em;
+  color: #999;
+}
+.archive-list .archive-list-count:before {
+  content: '(';
+}
+.archive-list .archive-list-count:after {
+  content: ')';
+}
 #sidebar {
   width: 270px;
   line-height: 1.8em;
