@@ -4,8 +4,48 @@
 
     
   <url>
+    <loc>https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/</loc>
+    <lastmod>2017-02-09T09:23:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM GC个人小抄</title>
+        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2016/10/08/jvm-gc/</loc>
+    <lastmod>2017-02-09T09:21:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM GC</title>
+        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.deleiguo.com/2017/02/09/easy-saas/</loc>
-    <lastmod>2017-02-09T06:37:11.000Z</lastmod>
+    <lastmod>2017-02-09T07:33:42.000Z</lastmod>
     <data>
         <display>
         <title>简单的SAAS软件开发与设计</title>
@@ -123,26 +163,6 @@
            
              
               <breadCrumb title="PRI-文章" url="https://www.deleiguo.com/categories/pri/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2016/10/08/jvm-gc/</loc>
-    <lastmod>2016-12-09T03:11:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>JVM GC</title>
-        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
-        
-        <tag>JVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
           
         </display>
     </data>
