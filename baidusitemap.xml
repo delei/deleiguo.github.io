@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</loc>
+    <lastmod>2017-02-09T09:58:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>微服务架构的设计模式</title>
+        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
+        
+        <tag>Web</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/</loc>
     <lastmod>2017-02-09T09:23:13.000Z</lastmod>
     <data>
@@ -91,9 +111,9 @@
         <title>Mac/Linux Tree命令</title>
         <pubTime>2017-02-08T16:00:00.000Z</pubTime>
         
-        <tag>Mac</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>Mac</tag>
          
          
            

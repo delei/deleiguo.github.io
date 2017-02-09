@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</loc>
+    
+    <lastmod>2017-02-09T09:58:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/</loc>
     
     <lastmod>2017-02-09T09:23:13.000Z</lastmod>
