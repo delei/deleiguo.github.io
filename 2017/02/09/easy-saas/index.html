@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>简单的SAAS模式 | DeleiGuo</title>
+  <title>简单的SAAS软件开发与设计 | DeleiGuo</title>
   <meta name="author" content="DeleiGuo">
   
   <meta name="description" content="deleiguo,DeleiGuo,裤子_Delei,裤子_DeleiGuo,个人博客,技术博客,Java">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="简单的SAAS模式"/>
+  <meta property="og:title" content="简单的SAAS软件开发与设计"/>
   <meta property="og:site_name" content="DeleiGuo"/>
 
   
@@ -77,15 +77,19 @@
       
       
   
-    <h1 class="title"><strong>简单的SAAS模式</strong></h1>
+    <h1 class="title"><strong>简单的SAAS软件开发与设计</strong></h1>
   
 
 
     </header>
     <div class="entry">
       
-        <p>前端时间结合公司业务，主导行的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。<br>到目前为止，算是蹒跚起步，但肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+        <p>前端时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
+<blockquote>
+<p>到目前为止，算是蹒跚起步，没有SAAS经验给的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+</blockquote>
 <h2 id="1-服务架构"><a href="#1-服务架构" class="headerlink" title="1. 服务架构"></a>1. 服务架构</h2><h3 id="1-1-硬件环境"><a href="#1-1-硬件环境" class="headerlink" title="1.1 硬件环境"></a>1.1 硬件环境</h3><p><img src="/2017/02/09/easy-saas/001.png" alt=""></p>
+<a id="more"></a>
 <blockquote>
 <p>主要为SAAS，分布式负载均衡方案</p>
 </blockquote>
@@ -102,16 +106,64 @@
 <p><a href="http://baike.baidu.com/link?url=6ZlndxwkbLPOgAJmdr_m8P9Epo78IcSFPzQ-GBE8IOxpRZUR_L_o1VlKrq_U3PKPJd0WhHU_BQJ7-P0H0dlgfK" target="_blank" rel="external">百度百科-saas</a><br><a href="http://baike.baidu.com/link?url=2REx4ks4t-ierKw4ViBLnLqQc5fWgL0jlCSpPtG-pgU6GJYHq09MQMEQiRbSfrqCaABFS0z7Ejoj0Ph9sQE2WnNFak5PEpZaGNxR2kudfMG" target="_blank" rel="external">百度百科-saas模式</a></p>
 </blockquote>
 <p>SaaS是Software-as-a-service（软件即服务）,主要特性：</p>
-<ol>
-<li>互联网<br>一方面，SaaS服务通过互联网浏览器或WebServices/Web2.0程序连接的形式为用户提供服务，使得SaaS应用具备了典型互联网技术特点;另一方面，由于SaaS极大的缩短了用户与SaaS提供商之间的时空距离，从而使得SaaS服务的营销、交付与传统软件相比有着很大的不同。</li>
-<li>多租户<br>SaaS服务通常基于一套标准软件系统为成百上千的不同客户(又称租户)提供服务。这要求SaaS服务要能够支持不同租户之间数据和配置的隔离，从而保证每个租户数据的安全与隐私，以及用户对诸如界面、业务逻辑、数据结构等的个性化需求。由于SaaS同时支持多个租户，每个租户又有很多用户，这对支撑软件的基础设施平台的性能、稳定性、扩展性提出很大挑战。</li>
-<li>服务特性<br>SaaS使得软件以互联网为载体的服务形式被客户使用，所以服务合约的签定、服务使用的计量、在线服务质量的保证、服务费用的收取等等问题都必须考虑。而这些问题通常是传统软件没有考虑到的。<br>SaaS(Software asaService，软件即服务)是通过互联网以服务形式交付和使用软件的业务模式。在SaaS模式下，软件使用者无需购置额外硬件设备、软件许可证及安装和维护软件系统，通过互联网浏览器在任何时间、任何地点都可以轻松使用软件并按照使用量定期支付使用费。</li>
-<li>模型分级：<br>根据SaaS应用是否具有可配置性，高性能，可伸缩性的特性，SaaS成熟度模型被分成四级。每一级都比前一级增加三种特性中的一种。<br>|等级|可配置|高性能|可伸缩|<br>|-|-|-|<br>|Level1|N|N|N|<br>|Level2|Y|N|N|<br>|Level3|Y|Y|N|<br>|Level4|Y|Y|Y|</li>
-<li>定制开发<br>这种模型下，软件服务提供商为每个客户定制一套软件，并为其部署。每个客户使用一个独立的数据库实例和应用服务器实例。数据库中的数据结构和应用的代码可能都根据客户需求做过定制化修改。（多次开发）</li>
-<li>可配置<br>通过不同的配置满足不同客户的需求，而不需要为每个客户进行特定定制，以降低定制开发的成本。<br>但是，软件的部署架构没有太大的变化，依然为每个客户独立部署一个运行实例。只是每个运行实例运行的是同一份代码，通过配置的不同来满足不同客户的个性化需求。<br>可配置性的比较通用的实现方式，就是通过MetaData（元数据）来实现。（一次开发多次部署）</li>
-<li>多租架构<br>多租户单实例（Multi-Tenant）的应用架构才是通常真正意义上的SaaS应用架构，它可以有效降低SaaS应用的硬件及运行维护成本，最大化地发挥SaaS应用的规模效应。（一次开发一次部署）</li>
-<li>可伸缩架构<br>将第三级的Multi-Tenant SingleInstance系统扩展为Multi-Tenant MultiInstance。最终用户首先通过接入Tenant Load Balance层，再被分配到不同的Instance上。通过多个Instance来分担大量用户的访问，我们可以让应用实现近似无限的水平扩展。<br>要实现第四级成熟度模型，最复杂的就是针对原有单个Instance的数据库服务器，实现其数据的水平拆分。</li>
-</ol>
+<ul>
+<li><p>互联网<br>一方面，SaaS服务通过互联网浏览器或WebServices/Web2.0程序连接的形式为用户提供服务，使得SaaS应用具备了典型互联网技术特点;另一方面，由于SaaS极大的缩短了用户与SaaS提供商之间的时空距离，从而使得SaaS服务的营销、交付与传统软件相比有着很大的不同。</p>
+</li>
+<li><p>多租户<br>SaaS服务通常基于一套标准软件系统为成百上千的不同客户(又称租户)提供服务。这要求SaaS服务要能够支持不同租户之间数据和配置的隔离，从而保证每个租户数据的安全与隐私，以及用户对诸如界面、业务逻辑、数据结构等的个性化需求。由于SaaS同时支持多个租户，每个租户又有很多用户，这对支撑软件的基础设施平台的性能、稳定性、扩展性提出很大挑战。</p>
+</li>
+<li><p>服务特性<br>SaaS使得软件以互联网为载体的服务形式被客户使用，所以服务合约的签定、服务使用的计量、在线服务质量的保证、服务费用的收取等等问题都必须考虑。而这些问题通常是传统软件没有考虑到的。<br>SaaS(Software asaService，软件即服务)是通过互联网以服务形式交付和使用软件的业务模式。在SaaS模式下，软件使用者无需购置额外硬件设备、软件许可证及安装和维护软件系统，通过互联网浏览器在任何时间、任何地点都可以轻松使用软件并按照使用量定期支付使用费。</p>
+</li>
+<li><p>模型分级：<br>  根据SaaS应用是否具有可配置性，高性能，可伸缩性的特性，SaaS成熟度模型被分成四级。每一级都比前一级增加三种特性中的一种。</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>可配置</th>
+<th>高性能</th>
+<th>可伸缩</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level1</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Level2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Level3</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Level4</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>定制开发<br>这种模型下，软件服务提供商为每个客户定制一套软件，并为其部署。每个客户使用一个独立的数据库实例和应用服务器实例。数据库中的数据结构和应用的代码可能都根据客户需求做过定制化修改。（多次开发）</p>
+</li>
+<li><p>可配置<br>通过不同的配置满足不同客户的需求，而不需要为每个客户进行特定定制，以降低定制开发的成本。<br>但是，软件的部署架构没有太大的变化，依然为每个客户独立部署一个运行实例。只是每个运行实例运行的是同一份代码，通过配置的不同来满足不同客户的个性化需求。<br>可配置性的比较通用的实现方式，就是通过MetaData（元数据）来实现。（一次开发多次部署）</p>
+</li>
+<li><p>多租架构<br>多租户单实例（Multi-Tenant）的应用架构才是通常真正意义上的SaaS应用架构，它可以有效降低SaaS应用的硬件及运行维护成本，最大化地发挥SaaS应用的规模效应。（一次开发一次部署）</p>
+</li>
+<li><p>可伸缩架构<br>将第三级的Multi-Tenant SingleInstance系统扩展为Multi-Tenant MultiInstance。最终用户首先通过接入Tenant Load Balance层，再被分配到不同的Instance上。通过多个Instance来分担大量用户的访问，我们可以让应用实现近似无限的水平扩展。<br>要实现第四级成熟度模型，最复杂的就是针对原有单个Instance的数据库服务器，实现其数据的水平拆分。</p>
+</li>
+</ul>
 <h4 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h4><blockquote>
 <p><a href="http://blog.csdn.net/chenhuajie123/article/details/9264015" target="_blank" rel="external">SaaS系统中的数据模型设计思路</a><br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-dataMultitenant/index.html" target="_blank" rel="external">数据层的多租户浅谈</a></p>
 </blockquote>
@@ -119,8 +171,9 @@
 <ol>
 <li>独立数据库</li>
 <li>共享数据库、独立 Schema</li>
-<li>共享数据库、共享 Schema、共享数据表<br>独立数据库是一个租户独享一个数据库实例，它提供了最强的分离度，租户的数据彼此物理不可见，备份与恢复都很灵活；共享数据库、独立 Schema 将每个租户关联到同一个数据库的不同 Schema，租户间数据彼此逻辑不可见，上层应用程序的实现和独立数据库一样简单，但备份恢复稍显复杂； 最后一种模式则是租户数据在数据表级别实现共享，它提供了最低的成本，但引入了额外的编程复杂性（程序的数据访问需要用 tenantId 来区分不同租户），备份与恢复也更复杂。这三种模式的特点可以用一张图来概括：<br><img src="/2017/02/09/easy-saas/004.jpg" alt=""></li>
+<li>共享数据库、共享 Schema、共享数据表</li>
 </ol>
+<p>独立数据库是一个租户独享一个数据库实例，它提供了最强的分离度，租户的数据彼此物理不可见，备份与恢复都很灵活；共享数据库、独立 Schema 将每个租户关联到同一个数据库的不同 Schema，租户间数据彼此逻辑不可见，上层应用程序的实现和独立数据库一样简单，但备份恢复稍显复杂； 最后一种模式则是租户数据在数据表级别实现共享，它提供了最低的成本，但引入了额外的编程复杂性（程序的数据访问需要用 tenantId 来区分不同租户），备份与恢复也更复杂。这三种模式的特点可以用一张图来概括：<br><img src="/2017/02/09/easy-saas/004.jpg" alt=""></p>
 <p>我们的数据库设计：</p>
 <p><img src="/2017/02/09/easy-saas/002.png" alt=""></p>
 <ul>
@@ -302,8 +355,7 @@
 <blockquote>
 <p>使用阿里云服务器，将源的域名从mirrors.aliyun.com改为mirrors.aliyuncs.com,不占用公网流量</p>
 </blockquote>
-<pre><code class="lang-bash">  [datadriver@iZqcns26tj0it3Z app]$ yum repolist
-  已加载插件：fastestmirror
+<pre><code class="lang-bash">  已加载插件：fastestmirror
   Loading mirror speeds from cached hostfile
    * base: mirrors.aliyuncs.com
    * epel: mirrors.aliyuncs.com
@@ -317,40 +369,8 @@
   repolist: 21,207
 </code></pre>
 </li>
-<li><p>用户</p>
-<blockquote>
-<p>创建datadriver用户，加入root用户组</p>
-</blockquote>
-</li>
-<li><p>目录说明</p>
-<pre><code class="lang-bash">  /home/datadriver：用户目录
-      |--app：应用文件目录
-          |--config：服务器软件相关的配置文件备份
-          |--headump：JVM dump文件目录
-          |--invest_crm：每个应用单独的文件夹
-          |--logs：jvm，服务器日志等，按照日期分类
-      |--server：web容器，服务器软件等安装目录
-      |--tools：需要的安装文件
-      |--uploadfile：用户文件上传目录：已mount ntfs4 盘
-</code></pre>
-</li>
 </ul>
-<h3 id="2-2-JVM相关"><a href="#2-2-JVM相关" class="headerlink" title="2.2 JVM相关"></a>2.2 JVM相关</h3><ul>
-<li><p>JVM版本</p>
-<pre><code class="lang-bash">  java-1.7.0-openjdk.x86_64              1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  java-1.7.0-openjdk-devel.x86_64        1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  java-1.7.0-openjdk-headless.x86_64     1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  javapackages-tools.noarch              3.4.1-11.el7                                    @base
-</code></pre>
-<pre><code class="lang-bash">  [datadriver@iZqcns26tj0it3Z app]$ java -version
-  java version &quot;1.7.0_121&quot;
-  OpenJDK Runtime Environment (rhel-2.6.8.0.el7_3-x86_64 u121-b00)
-  OpenJDK 64-Bit Server VM (build 24.121-b00, mixed mode)
-</code></pre>
-<p>  已安装tools工具，可以使用Oracle JDK类似的jps,jinfo等工具命令</p>
-</li>
-</ul>
-<h3 id="2-3-Tomcat相关"><a href="#2-3-Tomcat相关" class="headerlink" title="2.3 Tomcat相关"></a>2.3 Tomcat相关</h3><ul>
+<h3 id="2-2-Tomcat相关"><a href="#2-2-Tomcat相关" class="headerlink" title="2.2 Tomcat相关"></a>2.2 Tomcat相关</h3><ul>
 <li><p>版本</p>
 <blockquote>
 <p>apache-tomcat-7.0.73</p>
@@ -450,7 +470,7 @@ tomcat-redis-session-manage-tomcat7.jar
 
 
         <br/>
-<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2017/02/09/easy-saas/" target="_blank" title="简单的SAAS模式">DeleiGuo:简单的SAAS模式</a></b>.</code></pre>
+<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2017/02/09/easy-saas/" target="_blank" title="简单的SAAS软件开发与设计">DeleiGuo:简单的SAAS软件开发与设计</a></b>.</code></pre>
 
         
       

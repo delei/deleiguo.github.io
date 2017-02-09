@@ -135,43 +135,6 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/linux-tree/">2017-02-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/02/09/linux-tree/"><strong>Mac/Linux Tree命令</strong></a></h1>
-  
-
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2017/02/09/linux-tree/#more" class="more-link">阅读更多</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/alibaba-java-develop-norm/">2017-02-09</a></time>
       
       
@@ -214,365 +177,63 @@
       
       
   
-    <h1 class="title"><a href="/2017/02/09/easy-saas/"><strong>简单的SAAS模式</strong></a></h1>
+    <h1 class="title"><a href="/2017/02/09/easy-saas/"><strong>简单的SAAS软件开发与设计</strong></a></h1>
   
 
 
     </header>
     <div class="entry">
       
-        <p>前端时间结合公司业务，主导行的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。<br>到目前为止，算是蹒跚起步，但肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+        <p>前端时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
+<blockquote>
+<p>到目前为止，算是蹒跚起步，没有SAAS经验给的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+</blockquote>
 <h2 id="1-服务架构"><a href="#1-服务架构" class="headerlink" title="1. 服务架构"></a>1. 服务架构</h2><h3 id="1-1-硬件环境"><a href="#1-1-硬件环境" class="headerlink" title="1.1 硬件环境"></a>1.1 硬件环境</h3><p><img src="/2017/02/09/easy-saas/001.png" alt=""></p>
-<blockquote>
-<p>主要为SAAS，分布式负载均衡方案</p>
-</blockquote>
-<ul>
-<li>负载均衡方式（两个以上的web容器提供应用服务）；</li>
-<li>负载均衡为外网，负责转发流量负载；</li>
-<li>应用服务器，数据库，缓存服务，备份服务，文件服务等位于内网，不暴露至公网；</li>
-<li>每一个节点基本为一台单一的服务器，有独立的内/外网IP进行服务；</li>
-</ul>
-<blockquote>
-<p>单机配置环境<br>负载均衡:nginx<br>应用服务器：不同端口同一IP地址<br>数据库：mysql<br>缓存服务：redis<br>文件服务：本地盘符硬盘位置</p>
-</blockquote>
-<h3 id="1-2-SAAS"><a href="#1-2-SAAS" class="headerlink" title="1.2 SAAS"></a>1.2 SAAS</h3><h4 id="什么是SAAS"><a href="#什么是SAAS" class="headerlink" title="什么是SAAS"></a>什么是SAAS</h4><blockquote>
-<p><a href="http://baike.baidu.com/link?url=6ZlndxwkbLPOgAJmdr_m8P9Epo78IcSFPzQ-GBE8IOxpRZUR_L_o1VlKrq_U3PKPJd0WhHU_BQJ7-P0H0dlgfK" target="_blank" rel="external">百度百科-saas</a><br><a href="http://baike.baidu.com/link?url=2REx4ks4t-ierKw4ViBLnLqQc5fWgL0jlCSpPtG-pgU6GJYHq09MQMEQiRbSfrqCaABFS0z7Ejoj0Ph9sQE2WnNFak5PEpZaGNxR2kudfMG" target="_blank" rel="external">百度百科-saas模式</a></p>
-</blockquote>
-<p>SaaS是Software-as-a-service（软件即服务）,主要特性：</p>
-<ol>
-<li>互联网<br>一方面，SaaS服务通过互联网浏览器或WebServices/Web2.0程序连接的形式为用户提供服务，使得SaaS应用具备了典型互联网技术特点;另一方面，由于SaaS极大的缩短了用户与SaaS提供商之间的时空距离，从而使得SaaS服务的营销、交付与传统软件相比有着很大的不同。</li>
-<li>多租户<br>SaaS服务通常基于一套标准软件系统为成百上千的不同客户(又称租户)提供服务。这要求SaaS服务要能够支持不同租户之间数据和配置的隔离，从而保证每个租户数据的安全与隐私，以及用户对诸如界面、业务逻辑、数据结构等的个性化需求。由于SaaS同时支持多个租户，每个租户又有很多用户，这对支撑软件的基础设施平台的性能、稳定性、扩展性提出很大挑战。</li>
-<li>服务特性<br>SaaS使得软件以互联网为载体的服务形式被客户使用，所以服务合约的签定、服务使用的计量、在线服务质量的保证、服务费用的收取等等问题都必须考虑。而这些问题通常是传统软件没有考虑到的。<br>SaaS(Software asaService，软件即服务)是通过互联网以服务形式交付和使用软件的业务模式。在SaaS模式下，软件使用者无需购置额外硬件设备、软件许可证及安装和维护软件系统，通过互联网浏览器在任何时间、任何地点都可以轻松使用软件并按照使用量定期支付使用费。</li>
-<li>模型分级：<br>根据SaaS应用是否具有可配置性，高性能，可伸缩性的特性，SaaS成熟度模型被分成四级。每一级都比前一级增加三种特性中的一种。<br>|等级|可配置|高性能|可伸缩|<br>|-|-|-|<br>|Level1|N|N|N|<br>|Level2|Y|N|N|<br>|Level3|Y|Y|N|<br>|Level4|Y|Y|Y|</li>
-<li>定制开发<br>这种模型下，软件服务提供商为每个客户定制一套软件，并为其部署。每个客户使用一个独立的数据库实例和应用服务器实例。数据库中的数据结构和应用的代码可能都根据客户需求做过定制化修改。（多次开发）</li>
-<li>可配置<br>通过不同的配置满足不同客户的需求，而不需要为每个客户进行特定定制，以降低定制开发的成本。<br>但是，软件的部署架构没有太大的变化，依然为每个客户独立部署一个运行实例。只是每个运行实例运行的是同一份代码，通过配置的不同来满足不同客户的个性化需求。<br>可配置性的比较通用的实现方式，就是通过MetaData（元数据）来实现。（一次开发多次部署）</li>
-<li>多租架构<br>多租户单实例（Multi-Tenant）的应用架构才是通常真正意义上的SaaS应用架构，它可以有效降低SaaS应用的硬件及运行维护成本，最大化地发挥SaaS应用的规模效应。（一次开发一次部署）</li>
-<li>可伸缩架构<br>将第三级的Multi-Tenant SingleInstance系统扩展为Multi-Tenant MultiInstance。最终用户首先通过接入Tenant Load Balance层，再被分配到不同的Instance上。通过多个Instance来分担大量用户的访问，我们可以让应用实现近似无限的水平扩展。<br>要实现第四级成熟度模型，最复杂的就是针对原有单个Instance的数据库服务器，实现其数据的水平拆分。</li>
-</ol>
-<h4 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h4><blockquote>
-<p><a href="http://blog.csdn.net/chenhuajie123/article/details/9264015" target="_blank" rel="external">SaaS系统中的数据模型设计思路</a><br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-dataMultitenant/index.html" target="_blank" rel="external">数据层的多租户浅谈</a></p>
-</blockquote>
-<p>数据层的三种多租户架构:</p>
-<ol>
-<li>独立数据库</li>
-<li>共享数据库、独立 Schema</li>
-<li>共享数据库、共享 Schema、共享数据表<br>独立数据库是一个租户独享一个数据库实例，它提供了最强的分离度，租户的数据彼此物理不可见，备份与恢复都很灵活；共享数据库、独立 Schema 将每个租户关联到同一个数据库的不同 Schema，租户间数据彼此逻辑不可见，上层应用程序的实现和独立数据库一样简单，但备份恢复稍显复杂； 最后一种模式则是租户数据在数据表级别实现共享，它提供了最低的成本，但引入了额外的编程复杂性（程序的数据访问需要用 tenantId 来区分不同租户），备份与恢复也更复杂。这三种模式的特点可以用一张图来概括：<br><img src="/2017/02/09/easy-saas/004.jpg" alt=""></li>
-</ol>
-<p>我们的数据库设计：</p>
-<p><img src="/2017/02/09/easy-saas/002.png" alt=""></p>
-<ul>
-<li>每一个公司(租户)是一个单独的mysql database；</li>
-<li>每一个公司(租户)通过唯一的公司代码用于登录</li>
-<li>每一个公司(租户)都有各自的用户表，可以有该公司的admin用户来独立管理系统</li>
-</ul>
-<p>其他：</p>
-<ul>
-<li>有一个单独的数据库实例(company)来管理公司(租户)信息，以及公司(租户)的数据源datasource信息；</li>
-<li>用户在登录时访问的是company datasource,然后将(租户)的数据源信息放入当前session中；</li>
-<li>当公司(租户)数量增加时，可通过增加mysql实例来实现无缝水平扩展(程序无需配置或重启)；</li>
-</ul>
-<h3 id="1-3-应用设计"><a href="#1-3-应用设计" class="headerlink" title="1.3 应用设计"></a>1.3 应用设计</h3><h4 id="缓存改造"><a href="#缓存改造" class="headerlink" title="缓存改造"></a>缓存改造</h4><p>不同的应用服务器部署的是同一份代码，所有的应用连接的都是同一份数据库。Tomcat集群可通过tomcat本身支持的session持久化相关保证session同步（目前采用的是redis方案）。<br>除此外，程序考虑和改造如下部分：</p>
-<ol>
-<li><p>程序缓存改造:<br> 缓存一般都在本机内存中，或者是持久化在本地盘。在分布式环境下， 需要考虑缓存同步，采用的是redis作为缓存存储，所有的应用服务从redis中获取和更新缓存。<br> 在代码中使用Spring cache注解，实际配置为redis来存储:applicationContext.xml</p>
-<pre><code class="lang-xml"> &lt;!-- spring自己的换管理器，这里定义了两个缓存位置名称 ，既注解中的value --&gt;
- &lt;bean id=&quot;cacheManager&quot; class=&quot;org.springframework.data.redis.cache.RedisCacheManager&quot;&gt;
-     &lt;constructor-arg ref=&quot;redisTemplate&quot; /&gt;
- &lt;/bean&gt;
-
- &lt;bean id=&quot;poolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;
-     &lt;property name=&quot;maxIdle&quot; value=&quot;${redis.maxIdle}&quot; /&gt;
-     &lt;property name=&quot;minIdle&quot; value=&quot;${redis.minIdle}&quot; /&gt;
- &lt;/bean&gt;
-
- &lt;bean id=&quot;connectionFactory&quot;
-     class=&quot;org.springframework.data.redis.connection.jedis.JedisConnectionFactory&quot;&gt;
-     &lt;property name=&quot;hostName&quot; value=&quot;${redis.host}&quot; /&gt;
-     &lt;property name=&quot;port&quot; value=&quot;${redis.port}&quot; /&gt;
-     &lt;property name=&quot;password&quot; value=&quot;${redis.password}&quot; /&gt;
-     &lt;property name=&quot;database&quot; value=&quot;${redis.database}&quot; /&gt;
-     &lt;property name=&quot;timeout&quot; value=&quot;${redis.timeout}&quot; /&gt;
-     &lt;property name=&quot;usePool&quot; value=&quot;true&quot; /&gt;
-     &lt;property name=&quot;poolConfig&quot; ref=&quot;poolConfig&quot; /&gt;
- &lt;/bean&gt;
-
- &lt;bean id=&quot;redisTemplate&quot; class=&quot;org.springframework.data.redis.core.RedisTemplate&quot;&gt;
-     &lt;property name=&quot;connectionFactory&quot; ref=&quot;connectionFactory&quot; /&gt;
-     &lt;property name=&quot;keySerializer&quot;&gt;
-         &lt;bean
-             class=&quot;org.springframework.data.redis.serializer.StringRedisSerializer&quot; /&gt;
-     &lt;/property&gt;
-     &lt;property name=&quot;valueSerializer&quot;&gt;
-         &lt;bean
-             class=&quot;org.springframework.data.redis.serializer.JdkSerializationRedisSerializer&quot; /&gt;
-     &lt;/property&gt;
- &lt;/bean&gt;
-</code></pre>
-</li>
-<li><p>Shiro<br> shiro本身也可以使用缓存，比如ehcache，但为了统一，所以都换成使用redis来处理：applicationContext-shiro.xml</p>
-<pre><code class="lang-xml"> &lt;!-- 缓存管理器 使用redis实现 --&gt;
- &lt;bean id=&quot;redisManager&quot; class=&quot;com.datadriver.web.common.redis.RedisManager&quot;&gt;
-     &lt;property name=&quot;hostName&quot; value=&quot;${redis.host}&quot; /&gt;
-     &lt;property name=&quot;port&quot; value=&quot;${redis.port}&quot; /&gt;
-     &lt;property name=&quot;password&quot; value=&quot;${redis.password}&quot; /&gt;
-     &lt;property name=&quot;database&quot; value=&quot;${redis.shiro.database}&quot; /&gt;
-     &lt;property name=&quot;poolConfig&quot; ref=&quot;poolConfig&quot; /&gt;
- &lt;/bean&gt;
- &lt;!-- cacheManager --&gt;
- &lt;bean id=&quot;shiroCacheManager&quot; class=&quot;com.datadriver.web.common.redis.RedisCacheManager&quot;&gt;
-     &lt;property name=&quot;redisManager&quot; ref=&quot;redisManager&quot; /&gt;
- &lt;/bean&gt;
-
- &lt;!-- 会话DAO --&gt;
- &lt;bean id=&quot;redisSessionDAO&quot; class=&quot;com.datadriver.web.common.redis.RedisSessionDAO&quot;&gt;
-     &lt;property name=&quot;redisManager&quot; ref=&quot;redisManager&quot; /&gt;
- &lt;/bean&gt;
-
- &lt;!-- 会话管理器 --&gt;
- &lt;bean id=&quot;sessionManager&quot;
-     class=&quot;org.apache.shiro.web.session.mgt.DefaultWebSessionManager&quot;&gt;
-     &lt;property name=&quot;sessionDAO&quot; ref=&quot;redisSessionDAO&quot; /&gt;
- &lt;/bean&gt;
-
- &lt;!-- 安全管理器 --&gt;
- &lt;bean id=&quot;securityManager&quot; class=&quot;org.apache.shiro.web.mgt.DefaultWebSecurityManager&quot;&gt;
-     &lt;property name=&quot;realms&quot;&gt;
-         &lt;list&gt;
-             &lt;ref bean=&quot;securityRealm&quot; /&gt;
-         &lt;/list&gt;
-     &lt;/property&gt;
-     &lt;!-- cacheManager,集合spring缓存工厂 --&gt;
-     &lt;property name=&quot;cacheManager&quot; ref=&quot;shiroCacheManager&quot; /&gt;
-     &lt;!-- &lt;property name=&quot;sessionManager&quot; ref=&quot;sessionManager&quot; /&gt; --&gt;
- &lt;/bean&gt;
-</code></pre>
-</li>
-</ol>
-<h4 id="多数据源"><a href="#多数据源" class="headerlink" title="多数据源"></a>多数据源</h4><p>在spring中，多数据源主要通过路由AbstractRoutingDataSource类来实现，我们可以继承这个类，来实现多数据源的情况。<br>详细代码：<code>com.datadriver.web.common.dbcontext.AbstractRoutingDataSource</code></p>
-<p>使用这个类，可以实现常见的几种业务场景：</p>
-<ol>
-<li>读写分离：读数据是一个db,写数据是两外一个sb；直接在xml中配置多个数据源即可；</li>
-<li>业务库分离：每一个db代表着一种业务（例如用户库，商品库，权限库等），这样需要在程序xml预先配置好这些数据源，然后在程序中不同业务中指定相应的数据源</li>
-<li>。。。</li>
-</ol>
-<p>根据业务需要，我们在此基础上再次进行了改造：</p>
-<pre><code class="lang-java">    private Map&lt;Object, Object&gt;    _targetDataSources;
-
-        private final static String    DEFAULT_DATASOURCE_KEY        = &quot;dataSource&quot;;
-        /**
-         * 只能在本类中特定使用
-         */
-        private final static String    DEFAULT_DATASOURCE_NEW        = &quot;NEW&quot;;
-        /**
-         * 供给特殊应用场景使用
-         */
-        public final static String    DEFAULT_DATASOURCE_COMPANY    = &quot;COMPANY&quot;;
-
-        /**
-         * @see org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource#determineCurrentLookupKey()
-         * @describe 数据源为空或者为0时，自动切换至默认数据源，即在配置文件中定义的dataSource数据源
-         */
-        @Override
-        protected Object determineCurrentLookupKey() {
-            String dataSourceName = DBContextHolder.getDBType();
-            try {
-                if (!StringUtils.isBlank(dataSourceName) &amp;&amp; DEFAULT_DATASOURCE_COMPANY.equals(dataSourceName)) {
-                    // company操作
-                    dataSourceName = DEFAULT_DATASOURCE_KEY;
-                } else if (!StringUtils.isBlank(dataSourceName) &amp;&amp; DEFAULT_DATASOURCE_NEW.equals(dataSourceName)) {
-                    // new则默认datasource
-                    dataSourceName = DEFAULT_DATASOURCE_KEY;
-                } else {
-                    // 从Session中获取datasource key
-                    ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-                    // 查看session是否存在
-                    if (requestAttributes != null) {
-                        HttpServletRequest request = requestAttributes.getRequest();
-                        if (request != null) {
-                            String sessionDataSourceName = (String) WebUtils.getSessionAttribute(request, SessionAttribute.DBCONTEXT);
-                            // 如果是NEW表明是特殊逻辑获取新的datasource
-                            if (!StringUtils.isBlank(sessionDataSourceName)) {
-                                dataSourceName = sessionDataSourceName;
-                            } else {
-                                dataSourceName = DEFAULT_DATASOURCE_KEY;
-                            }
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                UnitedLogger.error(&quot;--------&gt; DynamicDataSource error: &quot; + e);
-            }
-            if (StringUtils.isBlank(dataSourceName)) {
-                dataSourceName = DEFAULT_DATASOURCE_KEY;
-            }
-            this.selectDataSource(dataSourceName);
-            UnitedLogger.error(&quot;--------&gt; use datasource &quot; + dataSourceName);
-            return dataSourceName;
-        }
-</code></pre>
-<p>这其中主要是<code>determineCurrentLookupKey</code>方法,实现了如下场景：</p>
-<ol>
-<li>不同的公司(租户)使用不同的datasource;</li>
-<li>程序xml中不需要预先设定好数据源，只需要设定好company库的数据源；</li>
-<li>如果当前公司(租户)是新公司(租户)，那么用户在登录时如果不存在datasource，则会通过company库查询数据库源，放入<code>_targetDataSources</code>中；</li>
-<li>每一个公司(租户)的用户在登录时，会将公司(租户)信息放入session中，每一次调用dao都会通过<code>determineCurrentLookupKey</code>方法，该方法根据session中的公司(租户)信息判断该用户使用的是<code>_targetDataSources</code>的哪一个数据源;</li>
-</ol>
-<p>其他：</p>
-<ul>
-<li>使用的是来自阿里的开源Druid数据库连接工具，开启了Druid的监控页面可以看到多个数据源的监控情况；</li>
-</ul>
-<p><img src="/2017/02/09/easy-saas/005.png" alt=""></p>
-<ul>
-<li>在程序中不需要在某一个service方法钱手动指定数据源；</li>
-<li>开发者无需关注多数据源情况，只需要按照单数据源来进行开发测试即可；</li>
-<li>该应用可以支持单机单数据源部署；</li>
-</ul>
-<h2 id="2-服务器设置"><a href="#2-服务器设置" class="headerlink" title="2. 服务器设置"></a>2. 服务器设置</h2><h3 id="2-1-系统相关"><a href="#2-1-系统相关" class="headerlink" title="2.1 系统相关"></a>2.1 系统相关</h3><ul>
-<li><p>系统</p>
-<pre><code class="lang-bash">  LSB Version:    :core-4.1-amd64:core-4.1-noarch
-  Distributor ID:    CentOS
-  Description:    CentOS Linux release 7.3.1611 (Core)
-  Release:    7.3.1611
-  Codename:    Core
-</code></pre>
-</li>
-<li><p>软件源<br>  使用的国内aliyun的yum源<a href="http://mirrors.aliyun.com/help/centos" target="_blank" rel="external">Ali-OSM</a></p>
-<blockquote>
-<p>使用阿里云服务器，将源的域名从mirrors.aliyun.com改为mirrors.aliyuncs.com,不占用公网流量</p>
-</blockquote>
-<pre><code class="lang-bash">  [datadriver@iZqcns26tj0it3Z app]$ yum repolist
-  已加载插件：fastestmirror
-  Loading mirror speeds from cached hostfile
-   * base: mirrors.aliyuncs.com
-   * epel: mirrors.aliyuncs.com
-   * extras: mirrors.aliyuncs.com
-   * updates: mirrors.aliyuncs.com
-  源标识                            源名称                                                      状态
-  !base/7/x86_64                   CentOS-7 - Base - mirrors.aliyun.com                       9,363
-  !epel/x86_64                     Extra Packages for Enterprise Linux 7 - x86_64             10,976
-  !extras/7/x86_64                 CentOS-7 - Extras - mirrors.aliyun.com                     435
-  !updates/7/x86_64                CentOS-7 - Updates - mirrors.aliyun.com                    433
-  repolist: 21,207
-</code></pre>
-</li>
-<li><p>用户</p>
-<blockquote>
-<p>创建datadriver用户，加入root用户组</p>
-</blockquote>
-</li>
-<li><p>目录说明</p>
-<pre><code class="lang-bash">  /home/datadriver：用户目录
-      |--app：应用文件目录
-          |--config：服务器软件相关的配置文件备份
-          |--headump：JVM dump文件目录
-          |--invest_crm：每个应用单独的文件夹
-          |--logs：jvm，服务器日志等，按照日期分类
-      |--server：web容器，服务器软件等安装目录
-      |--tools：需要的安装文件
-      |--uploadfile：用户文件上传目录：已mount ntfs4 盘
-</code></pre>
-</li>
-</ul>
-<h3 id="2-2-JVM相关"><a href="#2-2-JVM相关" class="headerlink" title="2.2 JVM相关"></a>2.2 JVM相关</h3><ul>
-<li><p>JVM版本</p>
-<pre><code class="lang-bash">  java-1.7.0-openjdk.x86_64              1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  java-1.7.0-openjdk-devel.x86_64        1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  java-1.7.0-openjdk-headless.x86_64     1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  javapackages-tools.noarch              3.4.1-11.el7                                    @base
-</code></pre>
-<pre><code class="lang-bash">  [datadriver@iZqcns26tj0it3Z app]$ java -version
-  java version &quot;1.7.0_121&quot;
-  OpenJDK Runtime Environment (rhel-2.6.8.0.el7_3-x86_64 u121-b00)
-  OpenJDK 64-Bit Server VM (build 24.121-b00, mixed mode)
-</code></pre>
-<p>  已安装tools工具，可以使用Oracle JDK类似的jps,jinfo等工具命令</p>
-</li>
-</ul>
-<h3 id="2-3-Tomcat相关"><a href="#2-3-Tomcat相关" class="headerlink" title="2.3 Tomcat相关"></a>2.3 Tomcat相关</h3><ul>
-<li><p>版本</p>
-<blockquote>
-<p>apache-tomcat-7.0.73</p>
-</blockquote>
-</li>
-<li><p>参数:<code>bin/catalina.sh</code></p>
-<pre><code class="lang-bash">  # datadriver folder
-  DATADRIVER_APP_FOLDER=/home/datadriver/app/
-  # 内存设置
-  JAVA_OPTS=&quot;$JAVA_OPTS  -server -Xms1024m -Xmx1024m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;
-  # 日志相关，使用CMS
-  JAVA_OPTS=&quot;$JAVA_OPTS -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly &quot;
-  JAVA_OPTS=&quot;$JAVA_OPTS -XX:MaxTenuringThreshold=6 -XX:+ExplicitGCInvokesConcurrent -XX:+ParallelRefProcEnabled&quot;
-  # 日志目录，打印GC Details
-  JAVA_OPTS=&quot;$JAVA_OPTS -Xloggc:${DATADRIVER_APP_FOLDER}logs/app_gc_%Y-%m-%d.log -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCDateStamps -XX:+PrintGCDetails&quot;
-  # 当jvm出现异常时，日志目录和dump文件目录
-  JAVA_OPTS=&quot;$JAVA_OPTS -XX:-OmitStackTraceInFastThrow -XX:ErrorFile=${DATADRIVER_APP_FOLDER}logs/jvm_err_%p_%Y-%m-%d.log -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${DATADRIVER_APP_FOLDER}heapdump/&quot;
-</code></pre>
-<blockquote>
-<p>因为设置较长，分开多行来设置</p>
-</blockquote>
-</li>
-<li><p>设置<code>conf</code></p>
-<ul>
-<li><p>server.xml</p>
-<ul>
-<li><p>开启ThreadPool</p>
-<pre><code class="lang-bash">&lt;Executor name=&quot;tomcatThreadPool&quot; namePrefix=&quot;catalina-exec-&quot;
-maxThreads=&quot;300&quot; minSpareThreads=&quot;10&quot;/&gt;
-</code></pre>
-</li>
-<li><p>编码:UTF-8</p>
-<pre><code class="lang-bash">&lt;Connector executor=&quot;tomcatThreadPool&quot;
-     port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
-     connectionTimeout=&quot;20000&quot;
-     redirectPort=&quot;8443&quot; URIEcoding=&quot;UTF-8&quot; /&gt;
-</code></pre>
-</li>
-<li><p>开启GZIP</p>
-<pre><code class="lang-bash">&lt;Connector executor=&quot;tomcatThreadPool&quot;
-     port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
-     connectionTimeout=&quot;20000&quot;
-     redirectPort=&quot;8443&quot; URIEcoding=&quot;UTF-8&quot;
-     compression=&quot;on&quot;
-     compressionMinSize=&quot;2048&quot;
-     noCompressionUserAgents=&quot;gozilla,traviata&quot;
-     compressableMimeType=&quot;text/html,text/xml,text/javascript,application/x-javascript,application/javascript,text/css,text/plain&quot; /&gt;
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>Tomcat7集群/分布式部署(使用Redis)</p>
-<blockquote>
-<p><a href="https://github.com/jcoleman/tomcat-redis-session-manager" target="_blank" rel="external">jcoleman</a>:tomcat-redis-session-manage-tomcat7<br><a href="http://blog.csdn.net/caiwenfeng_for_23/article/details/45666831" target="_blank" rel="external">Tomcat7+Redis存储Session</a></p>
-</blockquote>
-<ul>
-<li><p>单点Redis配置</p>
-<pre><code class="lang-bash">&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt;
-&lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot;
-  host=&quot;r-bp1f2aa502d15a94.redis.rds.aliyuncs.com&quot;
-  port=&quot;6379&quot;
-  database=&quot;0&quot;
-  password=&quot;Appadmin68868569&quot;/&gt;
-</code></pre>
-</li>
-<li><p>以下的jar文件放入Tomcat <code>lib</code>目录下</p>
-<pre><code class="lang-bash">commons-logging-1.1.3.jar
-commons-pool2-2.2.jar
-jedis-2.5.2.jar
-tomcat-juli.jar
-tomcat-redis-session-manage-tomcat7.jar
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2017/02/09/easy-saas/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/linux-tree/">2017-02-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/09/linux-tree/"><strong>Mac/Linux Tree命令</strong></a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2017/02/09/linux-tree/#more" class="more-link">阅读更多</a>
+          </div>
         
         
       

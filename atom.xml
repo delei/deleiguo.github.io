@@ -58,90 +58,6 @@
   </entry>
   
   <entry>
-    <title>Mac/Linux Tree命令</title>
-    <link href="https://www.deleiguo.com/2017/02/09/linux-tree/"/>
-    <id>https://www.deleiguo.com/2017/02/09/linux-tree/</id>
-    <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T05:37:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-<a id="more"></a>
-<h2 id="tree命令行参数（只适用于安装了tree命令行工具）："><a href="#tree命令行参数（只适用于安装了tree命令行工具）：" class="headerlink" title="tree命令行参数（只适用于安装了tree命令行工具）："></a>tree命令行参数（只适用于安装了tree命令行工具）：</h2><p>实例：</p>
-<pre><code class="lang-bash">[deleiguo@test config]$ tree
-.
-|-- context.xml
-|-- server.xml
-`-- v1.0
-    |-- conf.properties
-    `-- log4j.properties
-
-1 directory, 4 files
-</code></pre>
-<p>以下为主要的参数译文：</p>
-<pre><code class="lang-bash">-a 显示所有文件和目录。
--A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
--C 在文件和目录清单加上色彩，便于区分各种类型。
--d 显示目录名称而非内容。
--D 列出文件或目录的更改时间。
--f 在每个文件或目录之前，显示完整的相对路径名称。
--F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;,&quot;/&quot;,&quot;=&quot;,&quot;@&quot;,&quot;|&quot;号。
--g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
--i 不以阶梯状列出文件或目录名称。
--I 不显示符合范本样式的文件或目录名称。
--l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
--n 不在文件和目录清单加上色彩。
--N 直接列出文件和目录名称，包括控制字符。
--p 列出权限标示。
--P 只显示符合范本样式的文件或目录名称。
--q 用&quot;?&quot;号取代控制字符，列出文件和目录名称。
--s 列出文件或目录大小。
--t 用文件和目录的更改时间排序。
--u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
--x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
-</code></pre>
-<blockquote>
-<p>Linux中可以用<code>man tree</code>来查看更加详细的帮助说明</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>不是所有的linux系统中都有tree命令，例如CentOS，其次类Unix系统Mac中也没有</p>
-<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>CentOS默认也没有tree命令，可以使用如下命令安装后使用</p>
-<pre><code class="lang-bash">sudo yum install tree
-</code></pre>
-<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac中并没有tree,有几种方法实现tree</p>
-<h5 id="模拟Tree命令"><a href="#模拟Tree命令" class="headerlink" title="模拟Tree命令"></a>模拟Tree命令</h5><blockquote>
-<p>这其实是用find来模拟的。无法实现linux tree命令的所有功能和参数</p>
-</blockquote>
-<p>在用户目录中，在<code>.bash_profeile</code>中添加</p>
-<pre><code class="lang-bash">alias tree=&quot;find . -print | sed -e &#39;s;[^/]*/;|____;g;s;____|; |;g&#39;&quot;
-</code></pre>
-<p>然后<code>source .bash_profile</code>即可生效</p>
-<h5 id="安装Tree命令-推荐"><a href="#安装Tree命令-推荐" class="headerlink" title="安装Tree命令(推荐)"></a>安装Tree命令(推荐)</h5><p>现在mac上安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>:</p>
-<pre><code class="lang-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-<p>然后</p>
-<pre><code class="lang-bash">sudo brew install tree
-</code></pre>
-<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
-<li><a href="http://www.runoob.com/linux/linux-comm-tree.html" target="_blank" rel="external">菜鸟教程-Linux tree命令</a></li>
-<li>博客园：破男孩<a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">mac tree命令</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h1&gt;&lt;p&gt;在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。&lt;br&gt;执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
-    
-      <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【转】阿里巴巴集团Java代码规范</title>
     <link href="https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/"/>
     <id>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</id>
@@ -180,14 +96,18 @@
   </entry>
   
   <entry>
-    <title>简单的SAAS模式</title>
+    <title>简单的SAAS软件开发与设计</title>
     <link href="https://www.deleiguo.com/2017/02/09/easy-saas/"/>
     <id>https://www.deleiguo.com/2017/02/09/easy-saas/</id>
     <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T06:24:11.000Z</updated>
+    <updated>2017-02-09T06:37:11.000Z</updated>
     
-    <content type="html"><![CDATA[<p>前端时间结合公司业务，主导行的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。<br>到目前为止，算是蹒跚起步，但肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+    <content type="html"><![CDATA[<p>前端时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
+<blockquote>
+<p>到目前为止，算是蹒跚起步，没有SAAS经验给的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+</blockquote>
 <h2 id="1-服务架构"><a href="#1-服务架构" class="headerlink" title="1. 服务架构"></a>1. 服务架构</h2><h3 id="1-1-硬件环境"><a href="#1-1-硬件环境" class="headerlink" title="1.1 硬件环境"></a>1.1 硬件环境</h3><p><img src="/2017/02/09/easy-saas/001.png" alt=""></p>
+<a id="more"></a>
 <blockquote>
 <p>主要为SAAS，分布式负载均衡方案</p>
 </blockquote>
@@ -204,16 +124,64 @@
 <p><a href="http://baike.baidu.com/link?url=6ZlndxwkbLPOgAJmdr_m8P9Epo78IcSFPzQ-GBE8IOxpRZUR_L_o1VlKrq_U3PKPJd0WhHU_BQJ7-P0H0dlgfK" target="_blank" rel="external">百度百科-saas</a><br><a href="http://baike.baidu.com/link?url=2REx4ks4t-ierKw4ViBLnLqQc5fWgL0jlCSpPtG-pgU6GJYHq09MQMEQiRbSfrqCaABFS0z7Ejoj0Ph9sQE2WnNFak5PEpZaGNxR2kudfMG" target="_blank" rel="external">百度百科-saas模式</a></p>
 </blockquote>
 <p>SaaS是Software-as-a-service（软件即服务）,主要特性：</p>
-<ol>
-<li>互联网<br>一方面，SaaS服务通过互联网浏览器或WebServices/Web2.0程序连接的形式为用户提供服务，使得SaaS应用具备了典型互联网技术特点;另一方面，由于SaaS极大的缩短了用户与SaaS提供商之间的时空距离，从而使得SaaS服务的营销、交付与传统软件相比有着很大的不同。</li>
-<li>多租户<br>SaaS服务通常基于一套标准软件系统为成百上千的不同客户(又称租户)提供服务。这要求SaaS服务要能够支持不同租户之间数据和配置的隔离，从而保证每个租户数据的安全与隐私，以及用户对诸如界面、业务逻辑、数据结构等的个性化需求。由于SaaS同时支持多个租户，每个租户又有很多用户，这对支撑软件的基础设施平台的性能、稳定性、扩展性提出很大挑战。</li>
-<li>服务特性<br>SaaS使得软件以互联网为载体的服务形式被客户使用，所以服务合约的签定、服务使用的计量、在线服务质量的保证、服务费用的收取等等问题都必须考虑。而这些问题通常是传统软件没有考虑到的。<br>SaaS(Software asaService，软件即服务)是通过互联网以服务形式交付和使用软件的业务模式。在SaaS模式下，软件使用者无需购置额外硬件设备、软件许可证及安装和维护软件系统，通过互联网浏览器在任何时间、任何地点都可以轻松使用软件并按照使用量定期支付使用费。</li>
-<li>模型分级：<br>根据SaaS应用是否具有可配置性，高性能，可伸缩性的特性，SaaS成熟度模型被分成四级。每一级都比前一级增加三种特性中的一种。<br>|等级|可配置|高性能|可伸缩|<br>|-|-|-|<br>|Level1|N|N|N|<br>|Level2|Y|N|N|<br>|Level3|Y|Y|N|<br>|Level4|Y|Y|Y|</li>
-<li>定制开发<br>这种模型下，软件服务提供商为每个客户定制一套软件，并为其部署。每个客户使用一个独立的数据库实例和应用服务器实例。数据库中的数据结构和应用的代码可能都根据客户需求做过定制化修改。（多次开发）</li>
-<li>可配置<br>通过不同的配置满足不同客户的需求，而不需要为每个客户进行特定定制，以降低定制开发的成本。<br>但是，软件的部署架构没有太大的变化，依然为每个客户独立部署一个运行实例。只是每个运行实例运行的是同一份代码，通过配置的不同来满足不同客户的个性化需求。<br>可配置性的比较通用的实现方式，就是通过MetaData（元数据）来实现。（一次开发多次部署）</li>
-<li>多租架构<br>多租户单实例（Multi-Tenant）的应用架构才是通常真正意义上的SaaS应用架构，它可以有效降低SaaS应用的硬件及运行维护成本，最大化地发挥SaaS应用的规模效应。（一次开发一次部署）</li>
-<li>可伸缩架构<br>将第三级的Multi-Tenant SingleInstance系统扩展为Multi-Tenant MultiInstance。最终用户首先通过接入Tenant Load Balance层，再被分配到不同的Instance上。通过多个Instance来分担大量用户的访问，我们可以让应用实现近似无限的水平扩展。<br>要实现第四级成熟度模型，最复杂的就是针对原有单个Instance的数据库服务器，实现其数据的水平拆分。</li>
-</ol>
+<ul>
+<li><p>互联网<br>一方面，SaaS服务通过互联网浏览器或WebServices/Web2.0程序连接的形式为用户提供服务，使得SaaS应用具备了典型互联网技术特点;另一方面，由于SaaS极大的缩短了用户与SaaS提供商之间的时空距离，从而使得SaaS服务的营销、交付与传统软件相比有着很大的不同。</p>
+</li>
+<li><p>多租户<br>SaaS服务通常基于一套标准软件系统为成百上千的不同客户(又称租户)提供服务。这要求SaaS服务要能够支持不同租户之间数据和配置的隔离，从而保证每个租户数据的安全与隐私，以及用户对诸如界面、业务逻辑、数据结构等的个性化需求。由于SaaS同时支持多个租户，每个租户又有很多用户，这对支撑软件的基础设施平台的性能、稳定性、扩展性提出很大挑战。</p>
+</li>
+<li><p>服务特性<br>SaaS使得软件以互联网为载体的服务形式被客户使用，所以服务合约的签定、服务使用的计量、在线服务质量的保证、服务费用的收取等等问题都必须考虑。而这些问题通常是传统软件没有考虑到的。<br>SaaS(Software asaService，软件即服务)是通过互联网以服务形式交付和使用软件的业务模式。在SaaS模式下，软件使用者无需购置额外硬件设备、软件许可证及安装和维护软件系统，通过互联网浏览器在任何时间、任何地点都可以轻松使用软件并按照使用量定期支付使用费。</p>
+</li>
+<li><p>模型分级：<br>  根据SaaS应用是否具有可配置性，高性能，可伸缩性的特性，SaaS成熟度模型被分成四级。每一级都比前一级增加三种特性中的一种。</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>可配置</th>
+<th>高性能</th>
+<th>可伸缩</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level1</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Level2</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Level3</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Level4</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>定制开发<br>这种模型下，软件服务提供商为每个客户定制一套软件，并为其部署。每个客户使用一个独立的数据库实例和应用服务器实例。数据库中的数据结构和应用的代码可能都根据客户需求做过定制化修改。（多次开发）</p>
+</li>
+<li><p>可配置<br>通过不同的配置满足不同客户的需求，而不需要为每个客户进行特定定制，以降低定制开发的成本。<br>但是，软件的部署架构没有太大的变化，依然为每个客户独立部署一个运行实例。只是每个运行实例运行的是同一份代码，通过配置的不同来满足不同客户的个性化需求。<br>可配置性的比较通用的实现方式，就是通过MetaData（元数据）来实现。（一次开发多次部署）</p>
+</li>
+<li><p>多租架构<br>多租户单实例（Multi-Tenant）的应用架构才是通常真正意义上的SaaS应用架构，它可以有效降低SaaS应用的硬件及运行维护成本，最大化地发挥SaaS应用的规模效应。（一次开发一次部署）</p>
+</li>
+<li><p>可伸缩架构<br>将第三级的Multi-Tenant SingleInstance系统扩展为Multi-Tenant MultiInstance。最终用户首先通过接入Tenant Load Balance层，再被分配到不同的Instance上。通过多个Instance来分担大量用户的访问，我们可以让应用实现近似无限的水平扩展。<br>要实现第四级成熟度模型，最复杂的就是针对原有单个Instance的数据库服务器，实现其数据的水平拆分。</p>
+</li>
+</ul>
 <h4 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h4><blockquote>
 <p><a href="http://blog.csdn.net/chenhuajie123/article/details/9264015" target="_blank" rel="external">SaaS系统中的数据模型设计思路</a><br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-dataMultitenant/index.html" target="_blank" rel="external">数据层的多租户浅谈</a></p>
 </blockquote>
@@ -221,8 +189,9 @@
 <ol>
 <li>独立数据库</li>
 <li>共享数据库、独立 Schema</li>
-<li>共享数据库、共享 Schema、共享数据表<br>独立数据库是一个租户独享一个数据库实例，它提供了最强的分离度，租户的数据彼此物理不可见，备份与恢复都很灵活；共享数据库、独立 Schema 将每个租户关联到同一个数据库的不同 Schema，租户间数据彼此逻辑不可见，上层应用程序的实现和独立数据库一样简单，但备份恢复稍显复杂； 最后一种模式则是租户数据在数据表级别实现共享，它提供了最低的成本，但引入了额外的编程复杂性（程序的数据访问需要用 tenantId 来区分不同租户），备份与恢复也更复杂。这三种模式的特点可以用一张图来概括：<br><img src="/2017/02/09/easy-saas/004.jpg" alt=""></li>
+<li>共享数据库、共享 Schema、共享数据表</li>
 </ol>
+<p>独立数据库是一个租户独享一个数据库实例，它提供了最强的分离度，租户的数据彼此物理不可见，备份与恢复都很灵活；共享数据库、独立 Schema 将每个租户关联到同一个数据库的不同 Schema，租户间数据彼此逻辑不可见，上层应用程序的实现和独立数据库一样简单，但备份恢复稍显复杂； 最后一种模式则是租户数据在数据表级别实现共享，它提供了最低的成本，但引入了额外的编程复杂性（程序的数据访问需要用 tenantId 来区分不同租户），备份与恢复也更复杂。这三种模式的特点可以用一张图来概括：<br><img src="/2017/02/09/easy-saas/004.jpg" alt=""></p>
 <p>我们的数据库设计：</p>
 <p><img src="/2017/02/09/easy-saas/002.png" alt=""></p>
 <ul>
@@ -404,8 +373,7 @@
 <blockquote>
 <p>使用阿里云服务器，将源的域名从mirrors.aliyun.com改为mirrors.aliyuncs.com,不占用公网流量</p>
 </blockquote>
-<pre><code class="lang-bash">  [datadriver@iZqcns26tj0it3Z app]$ yum repolist
-  已加载插件：fastestmirror
+<pre><code class="lang-bash">  已加载插件：fastestmirror
   Loading mirror speeds from cached hostfile
    * base: mirrors.aliyuncs.com
    * epel: mirrors.aliyuncs.com
@@ -419,40 +387,8 @@
   repolist: 21,207
 </code></pre>
 </li>
-<li><p>用户</p>
-<blockquote>
-<p>创建datadriver用户，加入root用户组</p>
-</blockquote>
-</li>
-<li><p>目录说明</p>
-<pre><code class="lang-bash">  /home/datadriver：用户目录
-      |--app：应用文件目录
-          |--config：服务器软件相关的配置文件备份
-          |--headump：JVM dump文件目录
-          |--invest_crm：每个应用单独的文件夹
-          |--logs：jvm，服务器日志等，按照日期分类
-      |--server：web容器，服务器软件等安装目录
-      |--tools：需要的安装文件
-      |--uploadfile：用户文件上传目录：已mount ntfs4 盘
-</code></pre>
-</li>
 </ul>
-<h3 id="2-2-JVM相关"><a href="#2-2-JVM相关" class="headerlink" title="2.2 JVM相关"></a>2.2 JVM相关</h3><ul>
-<li><p>JVM版本</p>
-<pre><code class="lang-bash">  java-1.7.0-openjdk.x86_64              1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  java-1.7.0-openjdk-devel.x86_64        1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  java-1.7.0-openjdk-headless.x86_64     1:1.7.0.121-2.6.8.0.el7_3                       @updates
-  javapackages-tools.noarch              3.4.1-11.el7                                    @base
-</code></pre>
-<pre><code class="lang-bash">  [datadriver@iZqcns26tj0it3Z app]$ java -version
-  java version &quot;1.7.0_121&quot;
-  OpenJDK Runtime Environment (rhel-2.6.8.0.el7_3-x86_64 u121-b00)
-  OpenJDK 64-Bit Server VM (build 24.121-b00, mixed mode)
-</code></pre>
-<p>  已安装tools工具，可以使用Oracle JDK类似的jps,jinfo等工具命令</p>
-</li>
-</ul>
-<h3 id="2-3-Tomcat相关"><a href="#2-3-Tomcat相关" class="headerlink" title="2.3 Tomcat相关"></a>2.3 Tomcat相关</h3><ul>
+<h3 id="2-2-Tomcat相关"><a href="#2-2-Tomcat相关" class="headerlink" title="2.2 Tomcat相关"></a>2.2 Tomcat相关</h3><ul>
 <li><p>版本</p>
 <blockquote>
 <p>apache-tomcat-7.0.73</p>
@@ -537,8 +473,11 @@ tomcat-redis-session-manage-tomcat7.jar
     
     <summary type="html">
     
-      &lt;p&gt;前端时间结合公司业务，主导行的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。&lt;br&gt;到目前为止，算是蹒跚起步，但肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较&lt;/p&gt;
-&lt;h2 id=&quot;1-服务架
+      &lt;p&gt;前端时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;到目前为止，算是蹒跚起步，没有SAAS经验给的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导&lt;br&gt;&lt;br&gt;在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-服务架构&quot;&gt;&lt;a href=&quot;#1-服务架构&quot; class=&quot;headerlink&quot; title=&quot;1. 服务架构&quot;&gt;&lt;/a&gt;1. 服务架构&lt;/h2&gt;&lt;h3 id=&quot;1-1-硬件环境&quot;&gt;&lt;a href=&quot;#1-1-硬件环境&quot; class=&quot;headerlink&quot; title=&quot;1.1 硬件环境&quot;&gt;&lt;/a&gt;1.1 硬件环境&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/2017/02/09/easy-saas/001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -546,6 +485,90 @@ tomcat-redis-session-manage-tomcat7.jar
     
     
       <category term="Java" scheme="https://www.deleiguo.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac/Linux Tree命令</title>
+    <link href="https://www.deleiguo.com/2017/02/09/linux-tree/"/>
+    <id>https://www.deleiguo.com/2017/02/09/linux-tree/</id>
+    <published>2017-02-08T16:00:00.000Z</published>
+    <updated>2017-02-09T05:37:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+<a id="more"></a>
+<h2 id="tree命令行参数（只适用于安装了tree命令行工具）："><a href="#tree命令行参数（只适用于安装了tree命令行工具）：" class="headerlink" title="tree命令行参数（只适用于安装了tree命令行工具）："></a>tree命令行参数（只适用于安装了tree命令行工具）：</h2><p>实例：</p>
+<pre><code class="lang-bash">[deleiguo@test config]$ tree
+.
+|-- context.xml
+|-- server.xml
+`-- v1.0
+    |-- conf.properties
+    `-- log4j.properties
+
+1 directory, 4 files
+</code></pre>
+<p>以下为主要的参数译文：</p>
+<pre><code class="lang-bash">-a 显示所有文件和目录。
+-A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
+-C 在文件和目录清单加上色彩，便于区分各种类型。
+-d 显示目录名称而非内容。
+-D 列出文件或目录的更改时间。
+-f 在每个文件或目录之前，显示完整的相对路径名称。
+-F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;,&quot;/&quot;,&quot;=&quot;,&quot;@&quot;,&quot;|&quot;号。
+-g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
+-i 不以阶梯状列出文件或目录名称。
+-I 不显示符合范本样式的文件或目录名称。
+-l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
+-n 不在文件和目录清单加上色彩。
+-N 直接列出文件和目录名称，包括控制字符。
+-p 列出权限标示。
+-P 只显示符合范本样式的文件或目录名称。
+-q 用&quot;?&quot;号取代控制字符，列出文件和目录名称。
+-s 列出文件或目录大小。
+-t 用文件和目录的更改时间排序。
+-u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
+-x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
+</code></pre>
+<blockquote>
+<p>Linux中可以用<code>man tree</code>来查看更加详细的帮助说明</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>不是所有的linux系统中都有tree命令，例如CentOS，其次类Unix系统Mac中也没有</p>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>CentOS默认也没有tree命令，可以使用如下命令安装后使用</p>
+<pre><code class="lang-bash">sudo yum install tree
+</code></pre>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac中并没有tree,有几种方法实现tree</p>
+<h5 id="模拟Tree命令"><a href="#模拟Tree命令" class="headerlink" title="模拟Tree命令"></a>模拟Tree命令</h5><blockquote>
+<p>这其实是用find来模拟的。无法实现linux tree命令的所有功能和参数</p>
+</blockquote>
+<p>在用户目录中，在<code>.bash_profeile</code>中添加</p>
+<pre><code class="lang-bash">alias tree=&quot;find . -print | sed -e &#39;s;[^/]*/;|____;g;s;____|; |;g&#39;&quot;
+</code></pre>
+<p>然后<code>source .bash_profile</code>即可生效</p>
+<h5 id="安装Tree命令-推荐"><a href="#安装Tree命令-推荐" class="headerlink" title="安装Tree命令(推荐)"></a>安装Tree命令(推荐)</h5><p>现在mac上安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>:</p>
+<pre><code class="lang-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+<p>然后</p>
+<pre><code class="lang-bash">sudo brew install tree
+</code></pre>
+<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
+<li><a href="http://www.runoob.com/linux/linux-comm-tree.html" target="_blank" rel="external">菜鸟教程-Linux tree命令</a></li>
+<li>博客园：破男孩<a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">mac tree命令</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h1&gt;&lt;p&gt;在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。&lt;br&gt;执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -826,62 +849,74 @@ Compiled  Size  Type Method
   </entry>
   
   <entry>
-    <title>JVM实用参数（一）JVM类型以及编译器模式</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
+    <title>JVM实用参数（八）GC日志</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-8-gc-logging/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-8-gc-logging/</id>
     <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:19.000Z</updated>
+    <updated>2016-12-08T10:21:45.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" rel="external">JVM实用参数（一）JVM类型以及编译器模式</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/" target="_blank" rel="external">JVM实用参数（八）GC日志</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/" target="_blank" rel="external">blog.codecentric.de</a></p>
-<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 郭蕾</p>
-<p>现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。</p>
-<p>虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。</p>
-<p><strong>-server and -client</strong></p>
+<p><strong>译者:</strong> Greenster<br><strong>校对:</strong> 梁海舰<br>本系列的最后一部分是有关垃圾收集（GC）日志的JVM参数。GC日志是一个很重要的工具，它准确记录了每一次的GC的执行时间和执行结果，通过分析GC日志可以优化堆设置和GC设置，或者改进应用程序的对象分配模式。</p>
+<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>参数-XX:+PrintGC（或者-verbose:gc）开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息。下面举例说明：</p>
+<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
+[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
+</code></pre>
+<p>每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。</p>
 <a id="more"></a>
-<p>有两种类型的 HotSpot JVM，即”server”和”client”。服务端的VM中的默认为堆提供了一个更大的空间以及一个并行的垃圾收集器，并且在运行时可以更大程度地优化代码。客户端的VM更加保守一些（校对注：这里作者指客户端虚拟机有较小的默认堆大小），这样可以缩短JVM的启动时间和占用更少的内存。有一个叫”JVM功效学”的概念，它会在JVM启动的时候根据可用的硬件和操作系统来自动的选择JVM的类型。具体的标准可以在这里找到。从标准表中，我们可以看到客户端的VM只在32位系统中可用。</p>
-<p>如果我们不喜欢预选（校对注：指JVM自动选择的JVM类型）的JVM，我们可以使用-server和-client参数来设置使用服务端或客户端的VM。虽然当初服务端VM的目标是长时间运行的服务进程，但是现在看来，在运行独立应用程序时它比客户端VM有更出色的性能。当应用的性能非常重要时，我推荐使用-server参数来选择服务端VM。一个常见的问题：在一个32位的系统上，HotSpot JDK可以运行服务端VM，但是32位的JRE只能运行客户端VM。</p>
-<p><strong>-version and -showversion</strong></p>
-<p>当我们调用“java”命令时，我们如何才能知道我们安装的是哪个版本的Java和JVM类型呢？在同一个系统中安装多个Java，如果不注意的话有运行错误JVM的风险。在不同的Linux版本上预装JVM这方面，我承认现在已经变的比以前好很多了。幸运的是，我们现在可以使用-version参数，它可以打印出正在使用的JVM的信息。例如：</p>
-<pre><code class="lang-bash">$ java -version
-java version &quot;1.6.0_24&quot;
-Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
-Java HotSpot(TM) Client VM (build 19.1-b02, mixed mode, sharing)
+<p>第一行的意思就是GC将已使用的堆空间从246656K减少到243120K，当前的堆容量（译者注：GC发生时）是376320K，GC持续的时间是0.0929090秒。</p>
+<p>简单模式的GC日志格式是与GC算法无关的，日志也没有提供太多的信息。在上面的例子中，我们甚至无法从日志中判断是否GC将一些对象从young generation移到了old generation。所以详细模式的GC日志更有用一些。</p>
+<h2 id="XX-PrintGCDetails"><a href="#XX-PrintGCDetails" class="headerlink" title="-XX:PrintGCDetails"></a>-XX:PrintGCDetails</h2><p>如果不是使用-XX:+PrintGC，而是-XX:PrintGCDetails，就开启了详细GC日志模式。在这种模式下，日志格式和所使用的GC算法有关。我们首先看一下使用Throughput垃圾收集器在young generation中生成的日志。为了便于阅读这里将一行日志分为多行并使用缩进。</p>
+<pre><code class="lang-bash">[GC
+    [PSYoungGen: 142816K-&gt;10752K(142848K)] 246648K-&gt;243136K(375296K), 0.0935090 secs
+]
+[Times: user=0.55 sys=0.10, real=0.09 secs]
 </code></pre>
-<p>输出显示的是Java版本号(1.6.0_24)和JRE确切的build号(1.6.0_24-b07)。我们也可以看到JVM的名字(HotSpot)、类型(client)和build ID（19.1-b02) ）。除此之外，我们还知道JVM以混合模式(mixed mode)在运行，这是HotSpot默认的运行模式，意味着JVM在运行时可以动态的把字节码编译为本地代码。我们也可以看到类数据共享（class data sharing）是开启的，类数据共享（class data sharing）是一种在只读缓存（在jsa文件中，”Java Shared Archive”）中存储JRE的系统类，被所有Java进程的类加载器用来当做共享资源。类数据共享(Class data sharing)可能在经常从jar文档中读所有的类数据的情况下显示出性能优势。</p>
-<p>-version参数在打印完上述信息后立即终止JVM。还有一个类似的参数-showversion可以用来输出相同的信息，但是-showversion紧接着会处理并执行Java程序。因此，-showversion对几乎所有Java应用的命令行都是一个有效的补充。你永远不知道你什么时候，突然需要了解一个特定的Java应用（崩溃时）使用的JVM的一些信息。在启动时添加-showversion，我们就能保证当我们需要时可以得到这些信息。</p>
-<p><strong>-Xint, -Xcomp, 和 -Xmixed</strong></p>
-<p>-Xint和-Xcomp参数和我们的日常工作不是很相关，但是我非常有兴趣通过它来了解下JVM。在解释模式(interpreted mode)下，-Xint标记会强制JVM执行所有的字节码，当然这会降低运行速度，通常低10倍或更多。-Xcomp参数与它（-Xint）正好相反，JVM在第一次使用时会把所有的字节码编译成本地代码，从而带来最大程度的优化。这听起来不错，因为这完全绕开了缓慢的解释器。然而，很多应用在使用-Xcomp也会有一些性能损失，当然这比使用-Xint损失的少，原因是-xcomp没有让JVM启用JIT编译器的全部功能。JIT编译器在运行时创建方法使用文件，然后一步一步的优化每一个方法，有时候会主动的优化应用的行为。这些优化技术，比如，积极的分支预测（optimistic branch prediction），如果不先分析应用就不能有效的使用。另一方面方法只有证明它们与此相关时才会被编译，也就是，在应用中构建某种热点。被调用很少（甚至只有一次）的方法在解释模式下会继续执行，从而减少编译和优化成本。</p>
-<p>注意混合模式也有他自己的参数，-Xmixed。最新版本的HotSpot的默认模式是混合模式，所以我们不需要特别指定这个标记。我们来用对象填充HashMap然后检索它的结果做一个简单的用例。每一个例子，它的运行时间都是很多次运行的平均时间。</p>
-<pre><code class="lang-bash">$ java -server -showversion Benchmark
-java version &quot;1.6.0_24&quot;
-Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
-Java HotSpot(TM) Server VM (build 19.1-b02, mixed mode)
-
-Average time: 0.856449 seconds
+<p>我们可以很容易发现：这是一次在young generation中的GC，它将已使用的堆空间从246648K减少到了243136K，用时0.0935090秒。此外我们还可以得到更多的信息：所使用的垃圾收集器（即PSYoungGen）、young generation的大小和使用情况（在这个例子中“PSYoungGen”垃圾收集器将young generation所使用的堆空间从142816K减少到10752K）。</p>
+<p>既然我们已经知道了young generation的大小，所以很容易判定发生了GC，因为young generation无法分配更多的对象空间：已经使用了142848K中的142816K。我们可以进一步得出结论，多数从young generation移除的对象仍然在堆空间中，只是被移到了old generation：通过对比绿色的和蓝色的部分可以发现即使young generation几乎被完全清空（从142816K减少到10752K），但是所占用的堆空间仍然基本相同（从246648K到243136K）。</p>
+<p>详细日志的“Times”部分包含了GC所使用的CPU时间信息，分别为操作系统的用户空间和系统空间所使用的时间。同时，它显示了GC运行的“真实”时间（0.09秒是0.0929090秒的近似值）。如果CPU时间（译者注：0.55秒+0.10秒）明显多于”真实“时间（译者注：0.09秒），我们可以得出结论：GC使用了多线程运行。这样的话CPU时间就是所有GC线程所花费的CPU时间的总和。实际上我们的例子中的垃圾收集器使用了8个线程。</p>
+<p>接下来看一下Full GC的输出日志</p>
+<pre><code class="lang-bash">[Full GC
+    [PSYoungGen: 10752K-&gt;9707K(142848K)]
+    [ParOldGen: 232384K-&gt;232244K(485888K)] 243136K-&gt;241951K(628736K)
+    [PSPermGen: 3162K-&gt;3161K(21504K)], 1.5265450 secs
+]
 </code></pre>
-<pre><code class="lang-bash">$ java -server -showversion -Xint Benchmark
-java version &quot;1.6.0_24&quot;
-Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
-Java HotSpot(TM) Server VM (build 19.1-b02, interpreted mode)
-
-Average time: 7.622285 seconds
+<p>除了关于young generation的详细信息，日志也提供了old generation和permanent generation的详细信息。对于这三个generations，一样也可以看到所使用的垃圾收集器、堆空间的大小、GC前后的堆使用情况。需要注意的是显示堆空间的大小等于young generation和old generation各自堆空间的和。以上面为例，堆空间总共占用了241951K，其中9707K在young generation，232244K在old generation。Full GC持续了大约1.53秒，用户空间的CPU执行时间为10.96秒，说明GC使用了多线程（和之前一样8个线程）。</p>
+<p>对不同generation详细的日志可以让我们分析GC的原因，如果某个generation的日志显示在GC之前，堆空间几乎被占满，那么很有可能就是这个generation触发了GC。但是在上面的例子中，三个generation中的任何一个都不是这样的，在这种情况下是什么原因触发了GC呢。对于Throughput垃圾收集器，在某一个generation被过度使用之前，GC ergonomics（参考本系列第6节）决定要启动GC。</p>
+<p>Full GC也可以通过显式的请求而触发，可以是通过应用程序，或者是一个外部的JVM接口。这样触发的GC可以很容易在日志里分辨出来，因为输出的日志是以“Full GC(System)”开头的，而不是“Full GC”。</p>
+<p>对于Serial垃圾收集器，详细的GC日志和Throughput垃圾收集器是非常相似的。唯一的区别是不同的generation日志可能使用了不同的GC算法（例如：old generation的日志可能以Tenured开头，而不是ParOldGen）。使用垃圾收集器作为一行日志的开头可以方便我们从日志就判断出JVM的GC设置。</p>
+<p>对于CMS垃圾收集器，young generation的详细日志也和Throughput垃圾收集器非常相似，但是old generation的日志却不是这样。对于CMS垃圾收集器，在old generation中的GC是在不同的时间片内与应用程序同时运行的。GC日志自然也和Full GC的日志不同。而且在不同时间片的日志夹杂着在此期间young generation的GC日志。但是了解了上面介绍的GC日志的基本元素，也不难理解在不同时间片内的日志。只是在解释GC运行时间时要特别注意，由于大多数时间片内的GC都是和应用程序同时运行的，所以和那种独占式的GC相比，GC的持续时间更长一些并不说明一定有问题。</p>
+<p>正如我们在第7节中所了解的，即使CMS垃圾收集器没有完成一个CMS周期，Full GC也可能会发生。如果发生了GC，在日志中会包含触发Full GC的原因，例如众所周知的”concurrent mode failure“。</p>
+<p>为了避免过于冗长，我这里就不详细说明CMS垃圾收集器的日志了。另外，CMS垃圾收集器的作者做了详细的说明（在这里），强烈建议阅读。</p>
+<h2 id="XX-PrintGCTimeStamps和-XX-PrintGCDateStamps"><a href="#XX-PrintGCTimeStamps和-XX-PrintGCDateStamps" class="headerlink" title="-XX:+PrintGCTimeStamps和-XX:+PrintGCDateStamps"></a>-XX:+PrintGCTimeStamps和-XX:+PrintGCDateStamps</h2><p>使用-XX:+PrintGCTimeStamps可以将时间和日期也加到GC日志中。表示自JVM启动至今的时间戳会被添加到每一行中。例子如下：</p>
+<pre><code class="lang-bash">0.185: [GC 66048K-&gt;53077K(251392K), 0.0977580 secs]
+0.323: [GC 119125K-&gt;114661K(317440K), 0.1448850 secs]
+0.603: [GC 246757K-&gt;243133K(375296K), 0.2860800 secs]
 </code></pre>
-<p>当然也有很多使-Xcomp表现很好的例子。特别是运行时间长的应用，我强烈建议大家使用JVM的默认设置,让JIT编译器充分发挥其动态潜力，毕竟JIT编译器是组成JVM最重要的组件之一。事实上，正是因为JVM在这方面的进展才让Java不再那么慢。<br>JVM类型以及编译器模式</p>
+<p>如果指定了-XX:+PrintGCDateStamps，每一行就添加上了绝对的日期和时间。</p>
+<pre><code class="lang-bash">2014-01-03T12:08:38.102-0100: [GC 66048K-&gt;53077K(251392K), 0.0959470 secs]
+2014-01-03T12:08:38.239-0100: [GC 119125K-&gt;114661K(317440K), 0.1421720 secs]
+2014-01-03T12:08:38.513-0100: [GC 246757K-&gt;243133K(375296K), 0.2761000 secs]
+</code></pre>
+<p>如果需要也可以同时使用两个参数。推荐同时使用这两个参数，因为这样在关联不同来源的GC日志时很有帮助。</p>
+<h2 id="Xloggc"><a href="#Xloggc" class="headerlink" title="-Xloggc"></a>-Xloggc</h2><p>缺省的GC日志时输出到终端的，使用-Xloggc:也可以输出到指定的文件。需要注意这个参数隐式的设置了参数-XX:+PrintGC和-XX:+PrintGCTimeStamps，但为了以防在新版本的JVM中有任何变化，我仍建议显示的设置这些参数。</p>
+<h2 id="可管理的JVM参数"><a href="#可管理的JVM参数" class="headerlink" title="可管理的JVM参数"></a>可管理的JVM参数</h2><p>一个常常被讨论的问题是在生产环境中GC日志是否应该开启。因为它所产生的开销通常都非常有限，因此我的答案是需要开启。但并不一定在启动JVM时就必须指定GC日志参数。</p>
+<p>HotSpot JVM有一类特别的参数叫做可管理的参数。对于这些参数，可以在运行时修改他们的值。我们这里所讨论的所有参数以及以“PrintGC”开头的参数都是可管理的参数。这样在任何时候我们都可以开启或是关闭GC日志。比如我们可以使用JDK自带的jinfo工具来设置这些参数，或者是通过JMX客户端调用HotSpotDiagnostic MXBean的setVMOption方法来设置这些参数。</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/&quot;&gt;JVM实用参数（一）JVM类型以及编译器模式&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-8-gc-logging/&quot;&gt;JVM实用参数（八）GC日志&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 赵峰，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 郭蕾&lt;/p&gt;
-&lt;p&gt;现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。&lt;/p&gt;
-&lt;p&gt;虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;-server and -client&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; Greenster&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;br&gt;本系列的最后一部分是有关垃圾收集（GC）日志的JVM参数。GC日志是一个很重要的工具，它准确记录了每一次的GC的执行时间和执行结果，通过分析GC日志可以优化堆设置和GC设置，或者改进应用程序的对象分配模式。&lt;/p&gt;
+&lt;h2 id=&quot;XX-PrintGC&quot;&gt;&lt;a href=&quot;#XX-PrintGC&quot; class=&quot;headerlink&quot; title=&quot;-XX:+PrintGC&quot;&gt;&lt;/a&gt;-XX:+PrintGC&lt;/h2&gt;&lt;p&gt;参数-XX:+PrintGC（或者-verbose:gc）开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息。下面举例说明：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[GC 246656K-&amp;gt;243120K(376320K), 0.0929090 secs]
+[Full GC 243120K-&amp;gt;241951K(629760K), 1.5589690 secs]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。&lt;/p&gt;
     
     </summary>
     
@@ -889,172 +924,6 @@ Average time: 7.622285 seconds
     
     
       <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（七）CMS收集器</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
-<a id="more"></a>
-<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
-<ol>
-<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
-<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
-<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
-<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
-<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
-<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
-</ol>
-<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
-<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
-<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
-<ol>
-<li>堆碎片</li>
-<li>对象分配率高</li>
-</ol>
-<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
-<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
-<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
-<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
-<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
-<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
-<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
-<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
-<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
-<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
-<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
-<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
-<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
-<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
-<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
-<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
-<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
-<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
-&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 跟踪域名解析过程</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:49:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
-<p>linux and windows</p>
-</blockquote>
-<pre><code>delei@XXX:~$ nslookup
-&gt; www.deleiguo.com
-Server:        192.168.1.1
-Address:    192.168.1.1#53
-
-Non-authoritative answer:
-www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
-Name:    ew-2l6hqh9le.aliapp.com
-Address: 121.199.250.133
-</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
-<p>linux</p>
-</blockquote>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;www.deleiguo.com.        IN    A
-
-;; ANSWER SECTION:
-www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
-
-;; Query time: 39 msec
-;; SERVER: 192.168.1.1#53(192.168.1.1)
-;; WHEN: Sat Oct  8 19:15:18 2016
-;; MSG SIZE  rcvd: 87
-</code></pre><p>增加+trace参数跟踪过程：</p>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
-;; global options: +cmd
-.            89065    IN    NS    c.root-servers.net.
-.            89065    IN    NS    j.root-servers.net.
-.            89065    IN    NS    g.root-servers.net.
-.            89065    IN    NS    d.root-servers.net.
-.            89065    IN    NS    h.root-servers.net.
-.            89065    IN    NS    f.root-servers.net.
-.            89065    IN    NS    b.root-servers.net.
-.            89065    IN    NS    l.root-servers.net.
-.            89065    IN    NS    k.root-servers.net.
-.            89065    IN    NS    a.root-servers.net.
-.            89065    IN    NS    e.root-servers.net.
-.            89065    IN    NS    m.root-servers.net.
-.            89065    IN    NS    i.root-servers.net.
-;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
-
-com.            172800    IN    NS    j.gtld-servers.net.
-com.            172800    IN    NS    i.gtld-servers.net.
-com.            172800    IN    NS    c.gtld-servers.net.
-com.            172800    IN    NS    l.gtld-servers.net.
-com.            172800    IN    NS    g.gtld-servers.net.
-com.            172800    IN    NS    h.gtld-servers.net.
-com.            172800    IN    NS    m.gtld-servers.net.
-com.            172800    IN    NS    d.gtld-servers.net.
-com.            172800    IN    NS    a.gtld-servers.net.
-com.            172800    IN    NS    b.gtld-servers.net.
-com.            172800    IN    NS    e.gtld-servers.net.
-com.            172800    IN    NS    k.gtld-servers.net.
-com.            172800    IN    NS    f.gtld-servers.net.
-;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
-
-deleiguo.com.        172800    IN    NS    dns9.hichina.com.
-deleiguo.com.        172800    IN    NS    dns10.hichina.com.
-;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
-
-www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;linux and windows
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -1705,6 +1574,323 @@ print( f() + 1 );
   </entry>
   
   <entry>
+    <title>JVM实用参数（七）CMS收集器</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
+<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
+<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+<a id="more"></a>
+<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
+<ol>
+<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
+<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
+<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
+<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
+<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
+<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
+</ol>
+<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
+<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
+<ol>
+<li>堆碎片</li>
+<li>对象分配率高</li>
+</ol>
+<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
+<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
+<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
+<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
+<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
+<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
+<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
+<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
+<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
+<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
+<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
+<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
+<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
+<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
+<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
+<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
+<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
+<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
+&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM GC</title>
+    <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
+    <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-09T03:11:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p>
+<blockquote>
+<p>参考书籍：<a href="https://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析Java Web技术内幕（修订版）</a></p>
+</blockquote>
+<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC组合</th>
+<th>Young区</th>
+<th>Old区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:+UseSerialGC</td>
+<td>串行GC</td>
+<td>串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelGC</td>
+<td>PSGC</td>
+<td>并行MSCGC</td>
+</tr>
+<tr>
+<td>-XX:+UseParNewGC</td>
+<td>并行GC</td>
+<td>串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelOldGC</td>
+<td>PSGC</td>
+<td>并行CompactingGC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC</td>
+<td>ParNewGC</td>
+<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
+<td>串行GC</td>
+<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
+<a id="more"></a>
+<h2 id="参数列表集合"><a href="#参数列表集合" class="headerlink" title="参数列表集合"></a>参数列表集合</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC方式</th>
+<th>参数集合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heep堆配置</td>
+<td><ul><li>-Xms 堆初始大小</li><li>-Xmx 堆最大值</li><li>-Xmn Young区大小</li><li>-XX:PermSize Perm区大小</li><li>-XX:MaxPermSize Perm区最大值</li></ul></td>
+</tr>
+<tr>
+<td>Serial Collector(串行)</td>
+<td><ul><li>-XX:+UseSerialGC GC方式</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15,代表对象在新生代经历多少次MinorGC后才晋升到Old区,效率高,当Heap过大时,应用程序暂停时间较长</li></ul></td>
+</tr>
+<tr>
+<td>(并行)Parallel Collector-ParNewGC</td>
+<td><ul><li>-XX:+UseParNewGC</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+UseAdaptiveSizePolicy</li></ul></td>
+</tr>
+<tr>
+<td>(并行)Parallel Collector-ParallelGC</td>
+<td><ul><li>-XX:+UseParallelGC</li><li>-XX:+ParallelGCThreads 并发线程数</li><li>-XX:InitialSurivivorRatio 默认为8,Young:s0的比</li><li>-XX:+UseAdaptiveSizePolicy</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+ScavengeBeforeFullGC FullGC前触发MinorGC</li></ul></td>
+</tr>
+<tr>
+<td>(并行)Parallel Collector-ParallelOldGC</td>
+<td><ul><li>-XX:+UseParallelOldGC </li></ul></td>
+</tr>
+<tr>
+<td>(并发)CMS Collector</td>
+<td><ul><li>-XX:+UseConcMarkSweepGC</li><li>-XX:ParallelCMSThreads 设置并发CMS GC时的线程数</li><li>-XX:CMSInitiatingOccupancyFraction 当旧生代使用占到多少百分比时触发CMS GC</li><li>-XX:+UseCMSInitiatingOccupancyOnly 默认为false,代表允许hotspot根据成本来决定什么时候执行CMS GC</li><li>-XX:+UseCMSCompactAtFullCollection 当Full GC时执行压缩</li><li>-XX:CMSMaxAbortablePrecleanTime=5000 设置preclean步骤的超时事件,单位为毫秒</li><li>-XX:+CMSClassUnloadingEnabled PermGen采用CMS GC</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="三种GC优缺对比"><a href="#三种GC优缺对比" class="headerlink" title="三种GC优缺对比"></a>三种GC优缺对比</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serial Collector(串行)</td>
+<td>在适合内存有限的情况下</td>
+<td>回收慢</td>
+</tr>
+<tr>
+<td>Parallel Collector(并发)</td>
+<td>效率高</td>
+<td>当Heap过大时,应用程序暂停时间较长</td>
+</tr>
+<tr>
+<td>CMS Collector(并发)</td>
+<td>Old区回收暂停时间短</td>
+<td>产生内存碎片、整个GC耗时较长,比较耗CPU</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考书籍：&lt;a href=&quot;https://book.douban.com/subject/25953851/&quot;&gt;深入分析Java Web技术内幕（修订版）&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;组合使用&quot;&gt;&lt;a href=&quot;#组合使用&quot; class=&quot;headerlink&quot; title=&quot;组合使用&quot;&gt;&lt;/a&gt;组合使用&lt;/h2&gt;&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;GC组合&lt;/th&gt;
+&lt;th&gt;Young区&lt;/th&gt;
+&lt;th&gt;Old区&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseSerialGC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseParallelGC&lt;/td&gt;
+&lt;td&gt;PSGC&lt;/td&gt;
+&lt;td&gt;并行MSCGC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseParNewGC&lt;/td&gt;
+&lt;td&gt;并行GC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseParallelOldGC&lt;/td&gt;
+&lt;td&gt;PSGC&lt;/td&gt;
+&lt;td&gt;并行CompactingGC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;/td&gt;
+&lt;td&gt;ParNewGC&lt;/td&gt;
+&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure时采用串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;br&gt;-XX:+UseParNewGC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure或promotionfailed采用串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;不支持的组合方式：&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseParallelOldGC&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseSerialGC&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM实用参数（一）JVM类型以及编译器模式</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" rel="external">JVM实用参数（一）JVM类型以及编译器模式</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 郭蕾</p>
+<p>现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。</p>
+<p>虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。</p>
+<p><strong>-server and -client</strong></p>
+<a id="more"></a>
+<p>有两种类型的 HotSpot JVM，即”server”和”client”。服务端的VM中的默认为堆提供了一个更大的空间以及一个并行的垃圾收集器，并且在运行时可以更大程度地优化代码。客户端的VM更加保守一些（校对注：这里作者指客户端虚拟机有较小的默认堆大小），这样可以缩短JVM的启动时间和占用更少的内存。有一个叫”JVM功效学”的概念，它会在JVM启动的时候根据可用的硬件和操作系统来自动的选择JVM的类型。具体的标准可以在这里找到。从标准表中，我们可以看到客户端的VM只在32位系统中可用。</p>
+<p>如果我们不喜欢预选（校对注：指JVM自动选择的JVM类型）的JVM，我们可以使用-server和-client参数来设置使用服务端或客户端的VM。虽然当初服务端VM的目标是长时间运行的服务进程，但是现在看来，在运行独立应用程序时它比客户端VM有更出色的性能。当应用的性能非常重要时，我推荐使用-server参数来选择服务端VM。一个常见的问题：在一个32位的系统上，HotSpot JDK可以运行服务端VM，但是32位的JRE只能运行客户端VM。</p>
+<p><strong>-version and -showversion</strong></p>
+<p>当我们调用“java”命令时，我们如何才能知道我们安装的是哪个版本的Java和JVM类型呢？在同一个系统中安装多个Java，如果不注意的话有运行错误JVM的风险。在不同的Linux版本上预装JVM这方面，我承认现在已经变的比以前好很多了。幸运的是，我们现在可以使用-version参数，它可以打印出正在使用的JVM的信息。例如：</p>
+<pre><code class="lang-bash">$ java -version
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Client VM (build 19.1-b02, mixed mode, sharing)
+</code></pre>
+<p>输出显示的是Java版本号(1.6.0_24)和JRE确切的build号(1.6.0_24-b07)。我们也可以看到JVM的名字(HotSpot)、类型(client)和build ID（19.1-b02) ）。除此之外，我们还知道JVM以混合模式(mixed mode)在运行，这是HotSpot默认的运行模式，意味着JVM在运行时可以动态的把字节码编译为本地代码。我们也可以看到类数据共享（class data sharing）是开启的，类数据共享（class data sharing）是一种在只读缓存（在jsa文件中，”Java Shared Archive”）中存储JRE的系统类，被所有Java进程的类加载器用来当做共享资源。类数据共享(Class data sharing)可能在经常从jar文档中读所有的类数据的情况下显示出性能优势。</p>
+<p>-version参数在打印完上述信息后立即终止JVM。还有一个类似的参数-showversion可以用来输出相同的信息，但是-showversion紧接着会处理并执行Java程序。因此，-showversion对几乎所有Java应用的命令行都是一个有效的补充。你永远不知道你什么时候，突然需要了解一个特定的Java应用（崩溃时）使用的JVM的一些信息。在启动时添加-showversion，我们就能保证当我们需要时可以得到这些信息。</p>
+<p><strong>-Xint, -Xcomp, 和 -Xmixed</strong></p>
+<p>-Xint和-Xcomp参数和我们的日常工作不是很相关，但是我非常有兴趣通过它来了解下JVM。在解释模式(interpreted mode)下，-Xint标记会强制JVM执行所有的字节码，当然这会降低运行速度，通常低10倍或更多。-Xcomp参数与它（-Xint）正好相反，JVM在第一次使用时会把所有的字节码编译成本地代码，从而带来最大程度的优化。这听起来不错，因为这完全绕开了缓慢的解释器。然而，很多应用在使用-Xcomp也会有一些性能损失，当然这比使用-Xint损失的少，原因是-xcomp没有让JVM启用JIT编译器的全部功能。JIT编译器在运行时创建方法使用文件，然后一步一步的优化每一个方法，有时候会主动的优化应用的行为。这些优化技术，比如，积极的分支预测（optimistic branch prediction），如果不先分析应用就不能有效的使用。另一方面方法只有证明它们与此相关时才会被编译，也就是，在应用中构建某种热点。被调用很少（甚至只有一次）的方法在解释模式下会继续执行，从而减少编译和优化成本。</p>
+<p>注意混合模式也有他自己的参数，-Xmixed。最新版本的HotSpot的默认模式是混合模式，所以我们不需要特别指定这个标记。我们来用对象填充HashMap然后检索它的结果做一个简单的用例。每一个例子，它的运行时间都是很多次运行的平均时间。</p>
+<pre><code class="lang-bash">$ java -server -showversion Benchmark
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Server VM (build 19.1-b02, mixed mode)
+
+Average time: 0.856449 seconds
+</code></pre>
+<pre><code class="lang-bash">$ java -server -showversion -Xint Benchmark
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Server VM (build 19.1-b02, interpreted mode)
+
+Average time: 7.622285 seconds
+</code></pre>
+<p>当然也有很多使-Xcomp表现很好的例子。特别是运行时间长的应用，我强烈建议大家使用JVM的默认设置,让JIT编译器充分发挥其动态潜力，毕竟JIT编译器是组成JVM最重要的组件之一。事实上，正是因为JVM在这方面的进展才让Java不再那么慢。<br>JVM类型以及编译器模式</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/&quot;&gt;JVM实用参数（一）JVM类型以及编译器模式&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 赵峰，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 郭蕾&lt;/p&gt;
+&lt;p&gt;现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。&lt;/p&gt;
+&lt;p&gt;虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-server and -client&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux Command：命令帮助</title>
     <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
     <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
@@ -2112,177 +2298,69 @@ Display all 199 possibilities? (y or n)
   </entry>
   
   <entry>
-    <title>JVM GC</title>
-    <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
-    <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
+    <title>JVM实用参数（三）打印所有XX参数及值</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/</id>
     <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-09T03:11:41.000Z</updated>
+    <updated>2016-12-08T10:20:43.000Z</updated>
     
-    <content type="html"><![CDATA[<p>[TOC]</p>
-<blockquote>
-<p>参考书籍：<a href="https://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析Java Web技术内幕（修订版）</a></p>
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC组合</th>
-<th>Young区</th>
-<th>Old区</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-XX:+UseSerialGC</td>
-<td>串行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelGC</td>
-<td>PSGC</td>
-<td>并行MSCGC</td>
-</tr>
-<tr>
-<td>-XX:+UseParNewGC</td>
-<td>并行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelOldGC</td>
-<td>PSGC</td>
-<td>并行CompactingGC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC</td>
-<td>ParNewGC</td>
-<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
-<td>串行GC</td>
-<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>译者：</strong>李洪柱，iDestiny<br><strong>校对：</strong>方腾飞</p>
+<p>本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。</p>
 <a id="more"></a>
-<h2 id="参数列表集合"><a href="#参数列表集合" class="headerlink" title="参数列表集合"></a>参数列表集合</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC方式</th>
-<th>参数集合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Heep堆配置</td>
-<td><ul><li>-Xms 堆初始大小</li><li>-Xmx 堆最大值</li><li>-Xmn Young区大小</li><li>-XX:PermSize Perm区大小</li><li>-XX:MaxPermSize Perm区最大值</li></ul></td>
-</tr>
-<tr>
-<td>Serial Collector(串行)</td>
-<td><ul><li>-XX:+UseSerialGC GC方式</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15,代表对象在新生代经历多少次MinorGC后才晋升到Old区,效率高,当Heap过大时,应用程序暂停时间较长</li></ul></td>
-</tr>
-<tr>
-<td>(并行)Parallel Collector-ParNewGC</td>
-<td><ul><li>-XX:+UseParNewGC</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+UseAdaptiveSizePolicy</li></ul></td>
-</tr>
-<tr>
-<td>(并行)Parallel Collector-ParallelGC</td>
-<td><ul><li>-XX:+UseParallelGC</li><li>-XX:+ParallelGCThreads 并发线程数</li><li>-XX:InitialSurivivorRatio 默认为8,Young:s0的比</li><li>-XX:+UseAdaptiveSizePolicy</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+ScavengeBeforeFullGC FullGC前触发MinorGC</li></ul></td>
-</tr>
-<tr>
-<td>(并行)Parallel Collector-ParallelOldGC</td>
-<td><ul><li>-XX:+UseParallelOldGC </li></ul></td>
-</tr>
-<tr>
-<td>(并发)CMS Collector</td>
-<td><ul><li>-XX:+UseConcMarkSweepGC</li><li>-XX:ParallelCMSThreads 设置并发CMS GC时的线程数</li><li>-XX:CMSInitiatingOccupancyFraction 当旧生代使用占到多少百分比时触发CMS GC</li><li>-XX:+UseCMSInitiatingOccupancyOnly 默认为false,代表允许hotspot根据成本来决定什么时候执行CMS GC</li><li>-XX:+UseCMSCompactAtFullCollection 当Full GC时执行压缩</li><li>-XX:CMSMaxAbortablePrecleanTime=5000 设置preclean步骤的超时事件,单位为毫秒</li><li>-XX:+CMSClassUnloadingEnabled PermGen采用CMS GC</li></ul></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="三种GC优缺对比"><a href="#三种GC优缺对比" class="headerlink" title="三种GC优缺对比"></a>三种GC优缺对比</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC</th>
-<th>优点</th>
-<th>缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Serial Collector(串行)</td>
-<td>在适合内存有限的情况下</td>
-<td>回收慢</td>
-</tr>
-<tr>
-<td>Parallel Collector(并发)</td>
-<td>效率高</td>
-<td>当Heap过大时,应用程序暂停时间较长</td>
-</tr>
-<tr>
-<td>CMS Collector(并发)</td>
-<td>Old区回收暂停时间短</td>
-<td>产生内存碎片、整个GC耗时较长,比较耗CPU</td>
-</tr>
-</tbody>
-</table>
-</div>
+<pre><code class="lang-bash">-XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial
+</code></pre>
+<p>让我们现在就了解一下新参数的输出。以 -client 作为参数的 -XX:+PrintFlagsFinal   的结果是一个按字母排序的590个参数表格（注意，每个release版本参数的数量会不一样）</p>
+<pre><code class="lang-bash">$ java -client -XX:+PrintFlagsFinal
+[Global flags]
+    uintx AdaptivePermSizeWeight                    = 20              {product}           
+    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}           
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}           
+    uintx AdaptiveSizePausePolicy                   = 0               {product}           
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}           
+     ...
+</code></pre>
+<p>(校对注：你可以尝试在命令行输入上面的命令，亲自实现下)</p>
+<p>表格的每一行包括五列，来表示一个XX参数。第一列表示参数的数据类型，第二列是名称，第四列为值，第五列是参数的类别。第三列”=”表示第四列是参数的默认值，而”:=” 表明了参数被用户或者JVM赋值了。</p>
+<p>注意对于这个例子我只是用了Benchmark类，因为这个系列前面的章节也是用的这个类。甚至没有一个主类的情况下你能得到相同的输出，通过运行java 带另外的参数 -version.现在让我们检查下 server VM提供了多少个参数。我们也能指定参数-XX:+UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。</p>
+<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal
+</code></pre>
+<p>724个参数，让我们看一眼那些已经被赋值的参数</p>
+<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal Benchmark | grep &quot;:&quot;
+uintx InitialHeapSize                     := 57505088         {product}
+uintx MaxHeapSize                         := 920649728        {product}
+uintx ParallelGCThreads                   := 4                {product}
+ bool PrintFlagsFinal                     := true             {product}
+ bool UseParallelGC                       := true             {product}
+</code></pre>
+<p>校对注：这个命令非常有用）我们仅设置一个自己的参数 -XX:+PrintFlagsFinal。其他参数通过server VM基于系统设置的，以便以合适的堆大小和GC设置运行。</p>
+<p>如果我们只想看下所有XX参数的默认值，能够用一个相关的参数，-XX:+PrintFlagsInitial  。 用 -XX:+PrintFlagsInitial, 只是展示了第三列为“=”的数据（也包括那些被设置其他值的参数）。</p>
+<p>然而，注意当与-XX:+PrintFlagsFinal 对比的时候，一些参数会丢失，大概因为这些参数是动态创建的。</p>
+<p>研究表格的内容是很有意思的，通过比较client和server VM的行为，很明显了解哪些参数会影响其他的参数。有兴趣的读者，可以看一下这篇不错文章<a href="http://q-redux.blogspot.com/2011/01/inspecting-hotspot-jvm-options.html" target="_blank" rel="external">Inspecting HotSpot JVM Options</a>。这个文章主要解释了第五列的参数类别。</p>
+<p>-XX:+PrintCommandLineFlags<br>让我们看下另外一个参数，事实上这个参数非常有用: -XX:+PrintCommandLineFlags。这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值。</p>
+<p>换句话说，它列举出 -XX:+PrintFlagsFinal的结果中第三列有”:=”的参数。以这种方式，我们可以用-XX:+PrintCommandLineFlags作为快捷方式来查看修改过的参数。看下面的例子。</p>
+<pre><code class="lang-bash">$ java -server -XX:+PrintCommandLineFlags Benchmark
+
+-XX:InitialHeapSize=57505088 -XX:MaxHeapSize=920081408 -XX:ParallelGCThreads=4 -XX:+PrintCommandLineFlags -XX:+UseParallelGC
+</code></pre>
+<p>现在如果我们每次启动java 程序的时候设置 -XX:+PrintCommandLineFlags 并且输出到日志文件上，这样会记录下我们设置的JVM 参数对应用程序性能的影响。类似于 -showversion(见 Part1)，我建议 –XX:+PrintCommandLineFlags 这个参数应该总是设置在JVM启动的配置项里。因为你从不知道你什么时候会需要这些信息。</p>
+<p>奇怪的是在这个例子中，通过 -XX:+PrintCommandLineFlags 列出堆的最大值会比通过-XX:+PrintFlagsFinal列举出的相应值小一点。如果谁知道两者之间不同的原因，请告诉我。</p>
+<blockquote>
+<p>文中提到的问题，网友在原文中给的答案，仅供参考<br><a href="http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM" target="_blank" rel="external">http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM</a></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;参考书籍：&lt;a href=&quot;https://book.douban.com/subject/25953851/&quot;&gt;深入分析Java Web技术内幕（修订版）&lt;/a&gt;&lt;/p&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;JVM实用参数（三）打印所有XX参数及值&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;组合使用&quot;&gt;&lt;a href=&quot;#组合使用&quot; class=&quot;headerlink&quot; title=&quot;组合使用&quot;&gt;&lt;/a&gt;组合使用&lt;/h2&gt;&lt;div class=&quot;table-container&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;GC组合&lt;/th&gt;
-&lt;th&gt;Young区&lt;/th&gt;
-&lt;th&gt;Old区&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseSerialGC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseParallelGC&lt;/td&gt;
-&lt;td&gt;PSGC&lt;/td&gt;
-&lt;td&gt;并行MSCGC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseParNewGC&lt;/td&gt;
-&lt;td&gt;并行GC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseParallelOldGC&lt;/td&gt;
-&lt;td&gt;PSGC&lt;/td&gt;
-&lt;td&gt;并行CompactingGC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;/td&gt;
-&lt;td&gt;ParNewGC&lt;/td&gt;
-&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure时采用串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;br&gt;-XX:+UseParNewGC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure或promotionfailed采用串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;p&gt;不支持的组合方式：&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseParallelOldGC&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseSerialGC&lt;/p&gt;
+&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt;李洪柱，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt;方腾飞&lt;/p&gt;
+&lt;p&gt;本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。&lt;/p&gt;
     
     </summary>
     
@@ -2396,137 +2474,6 @@ Accumulated compiler times (for compiled methods only)
   </entry>
   
   <entry>
-    <title>JVM实用参数（三）打印所有XX参数及值</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:20:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">blog.codecentric.de</a></p>
-<p><strong>译者：</strong>李洪柱，iDestiny<br><strong>校对：</strong>方腾飞</p>
-<p>本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。</p>
-<a id="more"></a>
-<pre><code class="lang-bash">-XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial
-</code></pre>
-<p>让我们现在就了解一下新参数的输出。以 -client 作为参数的 -XX:+PrintFlagsFinal   的结果是一个按字母排序的590个参数表格（注意，每个release版本参数的数量会不一样）</p>
-<pre><code class="lang-bash">$ java -client -XX:+PrintFlagsFinal
-[Global flags]
-    uintx AdaptivePermSizeWeight                    = 20              {product}           
-    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}           
-    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}           
-    uintx AdaptiveSizePausePolicy                   = 0               {product}           
-    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}           
-     ...
-</code></pre>
-<p>(校对注：你可以尝试在命令行输入上面的命令，亲自实现下)</p>
-<p>表格的每一行包括五列，来表示一个XX参数。第一列表示参数的数据类型，第二列是名称，第四列为值，第五列是参数的类别。第三列”=”表示第四列是参数的默认值，而”:=” 表明了参数被用户或者JVM赋值了。</p>
-<p>注意对于这个例子我只是用了Benchmark类，因为这个系列前面的章节也是用的这个类。甚至没有一个主类的情况下你能得到相同的输出，通过运行java 带另外的参数 -version.现在让我们检查下 server VM提供了多少个参数。我们也能指定参数-XX:+UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。</p>
-<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal
-</code></pre>
-<p>724个参数，让我们看一眼那些已经被赋值的参数</p>
-<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal Benchmark | grep &quot;:&quot;
-uintx InitialHeapSize                     := 57505088         {product}
-uintx MaxHeapSize                         := 920649728        {product}
-uintx ParallelGCThreads                   := 4                {product}
- bool PrintFlagsFinal                     := true             {product}
- bool UseParallelGC                       := true             {product}
-</code></pre>
-<p>校对注：这个命令非常有用）我们仅设置一个自己的参数 -XX:+PrintFlagsFinal。其他参数通过server VM基于系统设置的，以便以合适的堆大小和GC设置运行。</p>
-<p>如果我们只想看下所有XX参数的默认值，能够用一个相关的参数，-XX:+PrintFlagsInitial  。 用 -XX:+PrintFlagsInitial, 只是展示了第三列为“=”的数据（也包括那些被设置其他值的参数）。</p>
-<p>然而，注意当与-XX:+PrintFlagsFinal 对比的时候，一些参数会丢失，大概因为这些参数是动态创建的。</p>
-<p>研究表格的内容是很有意思的，通过比较client和server VM的行为，很明显了解哪些参数会影响其他的参数。有兴趣的读者，可以看一下这篇不错文章<a href="http://q-redux.blogspot.com/2011/01/inspecting-hotspot-jvm-options.html" target="_blank" rel="external">Inspecting HotSpot JVM Options</a>。这个文章主要解释了第五列的参数类别。</p>
-<p>-XX:+PrintCommandLineFlags<br>让我们看下另外一个参数，事实上这个参数非常有用: -XX:+PrintCommandLineFlags。这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值。</p>
-<p>换句话说，它列举出 -XX:+PrintFlagsFinal的结果中第三列有”:=”的参数。以这种方式，我们可以用-XX:+PrintCommandLineFlags作为快捷方式来查看修改过的参数。看下面的例子。</p>
-<pre><code class="lang-bash">$ java -server -XX:+PrintCommandLineFlags Benchmark
-
--XX:InitialHeapSize=57505088 -XX:MaxHeapSize=920081408 -XX:ParallelGCThreads=4 -XX:+PrintCommandLineFlags -XX:+UseParallelGC
-</code></pre>
-<p>现在如果我们每次启动java 程序的时候设置 -XX:+PrintCommandLineFlags 并且输出到日志文件上，这样会记录下我们设置的JVM 参数对应用程序性能的影响。类似于 -showversion(见 Part1)，我建议 –XX:+PrintCommandLineFlags 这个参数应该总是设置在JVM启动的配置项里。因为你从不知道你什么时候会需要这些信息。</p>
-<p>奇怪的是在这个例子中，通过 -XX:+PrintCommandLineFlags 列出堆的最大值会比通过-XX:+PrintFlagsFinal列举出的相应值小一点。如果谁知道两者之间不同的原因，请告诉我。</p>
-<blockquote>
-<p>文中提到的问题，网友在原文中给的答案，仅供参考<br><a href="http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM" target="_blank" rel="external">http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;JVM实用参数（三）打印所有XX参数及值&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt;李洪柱，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt;方腾飞&lt;/p&gt;
-&lt;p&gt;本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（四）内存调优</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者：</strong> 郑旭东<br><strong>校对：</strong> 梁海舰</p>
-<p>理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。</p>
-<a id="more"></a>
-<p>所有已制定的HotSpot内存管理和垃圾回收算法都基于一个相同的堆内存划分：新生代（young generation）里存储着新分配的和较年轻的对象，老年代（old generation）里存储着长寿的对象。在此之外，永久代（permanent generation）存储着那些需要伴随整个JVM生命周期的对象，比如，已加载的对象的类定义或者String对象内部Cache。接下来，我们将假设堆内存是按照新生代、老年代和永久代这一经典策略划分的。然而，其他的一些堆内存划分策略也是可行的，一个突出的例子就是新的G1垃圾回收器，它模糊了新生代和老年代之间的区别。此外，目前的开发进程似乎表明在未来的HotSpot JVM版本中，将不会区分老年代和永久代。</p>
-<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
-<p>-Xms和-Xmx可以说是最流行的JVM参数，它们可以允许我们指定JVM的初始和最大堆内存大小。一般来说，这两个参数的数值单位是Byte，但同时它们也支持使用速记符号，比如“k”或者“K”代表“kilo”，“m”或者“M”代表“mega”，“g”或者“G”代表“giga”。举个例子，下面的命令启动了一个初始化堆内存为128M，最大堆内存为2G，名叫“MyApp”的Java应用程序。</p>
-<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
-</code></pre>
-<p>在实际使用过程中，初始化堆内存的大小通常被视为堆内存大小的下界。然而JVM可以在运行时动态的调整堆内存的大小，所以理论上来说我们有可能会看到堆内存的大小小于初始化堆内存的大小。但是即使在非常低的堆内存使用下，我也从来没有遇到过这种情况。这种行为将会方便开发者和系统管理员，因为我们可以通过将“-Xms”和“-Xmx”设置为相同大小来获得一个固定大小的堆内存。 -Xms和-Xmx实际上是-XX:InitialHeapSize和-XX:MaxHeapSize的缩写。我们也可以直接使用这两个参数，它们所起得效果是一样的：</p>
-<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
-</code></pre>
-<p>需要注意的是，所有JVM关于初始\最大堆内存大小的输出都是使用它们的完整名称：“InitialHeapSize”和“InitialHeapSize”。所以当你查询一个正在运行的JVM的堆内存大小时，如使用-XX:+PrintCommandLineFlags参数或者通过JMX查询，你应该寻找“InitialHeapSize”和“InitialHeapSize”标志而不是“Xms”和“Xmx”。</p>
-<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
-<p>如果我们没法为-Xmx（最大堆内存）设置一个合适的大小，那么就有可能面临内存溢出（OutOfMemoryError）的风险，这可能是我们使用JVM时面临的最可怕的猛兽之一。就同<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">另外一篇</a>关于这个主题的博文说的一样，导致内存溢出的根本原因需要仔细的定位。通常来说，分析堆内存快照（Heap Dump）是一个很好的定位手段，如果发生内存溢出时没有生成内存快照那就实在是太糟了，特别是对于那种JVM已经崩溃或者错误只出现在顺利运行了数小时甚至数天的生产系统上的情况。</p>
-<p>幸运的是，我们可以通过设置-XX:+HeapDumpOnOutOfMemoryError 让JVM在发生内存溢出时自动的生成堆内存快照。有了这个参数，当我们不得不面对内存溢出异常的时候会节约大量的时间。默认情况下，堆内存快照会保存在JVM的启动目录下名为java_pid<code>&lt;pid&gt;</code>.hprof 的文件里（在这里<code>&lt;pid&gt;</code>就是JVM进程的进程号）。也可以通过设置-XX:HeapDumpPath=<code>&lt;path&gt;</code>来改变默认的堆内存快照生成路径，<code>&lt;path&gt;</code>可以是相对或者绝对路径。</p>
-<p>虽然这一切听起来很不错，但有一点我们需要牢记。堆内存快照文件有可能很庞大，特别是当内存溢出错误发生的时候。因此，我们推荐将堆内存快照生成路径指定到一个拥有足够磁盘空间的地方。</p>
-<p><strong>-XX:OnOutOfMemoryError</strong></p>
-<p>当内存溢发生时，我们甚至可以可以执行一些指令，比如发个E-mail通知管理员或者执行一些清理工作。通过-XX:OnOutOfMemoryError 这个参数我们可以做到这一点，这个参数可以接受一串指令和它们的参数。在这里，我们将不会深入它的细节，但我们提供了它的一个例子。在下面的例子中，当内存溢出错误发生的时候，我们会将堆内存快照写到/tmp/heapdump.hprof 文件并且在JVM的运行目录执行脚本cleanup.sh</p>
-<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
-</code></pre>
-<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>永久代在堆内存中是一块独立的区域，它包含了所有JVM加载的类的对象表示。为了成功运行应用程序，JVM会加载很多类（因为它们依赖于大量的第三方库，而这又依赖于更多的库并且需要从里面将类加载进来）这就需要增加永久代的大小。我们可以使用-XX:PermSize 和-XX:MaxPermSize 来达到这个目的。其中-XX:MaxPermSize 用于设置永久代大小的最大值，-XX:PermSize 用于设置永久代初始大小。下面是一个简单的例子：</p>
-<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
-</code></pre>
-<p>请注意，这里设置的永久代大小并不会被包括在使用参数-XX:MaxHeapSize 设置的堆内存大小中。也就是说，通过-XX:MaxPermSize设置的永久代内存可能会需要由参数-XX:MaxHeapSize 设置的堆内存以外的更多的一些堆内存。</p>
-<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
-<p>JVM一个有趣的，但往往被忽视的内存区域是“代码缓存”，它是用来存储已编译方法生成的本地代码。代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。就像其他内存区域一样，我们可以自定义代码缓存的大小。相关的参数是-XX:InitialCodeCacheSize 和-XX:ReservedCodeCacheSize，它们的参数和上面介绍的参数一样，都是字节值。</p>
-<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
-<p>如果代码缓存不断增长，例如，因为热部署引起的内存泄漏，那么提高代码的缓存大小只会延缓其发生溢出。为了避免这种情况的发生，我们可以尝试一个有趣的新参数：当代码缓存被填满时让JVM放弃一些编译代码。通过使用-XX:+UseCodeCacheFlushing 这个参数，我们至少可以避免当代码缓存被填满的时候JVM切换到interpreted-only 模式。不过，我仍建议尽快解决代码缓存问题发生的根本原因，如找出内存泄漏并修复它。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/&quot;&gt;JVM实用参数（四）内存调优&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 郑旭东&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM实用参数（五）新生代垃圾回收</title>
     <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/"/>
     <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/</id>
@@ -2599,74 +2546,52 @@ uintx ParallelGCThreads                   := 4                {product}
   </entry>
   
   <entry>
-    <title>JVM实用参数（八）GC日志</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-8-gc-logging/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-8-gc-logging/</id>
+    <title>JVM实用参数（四）内存调优</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/</id>
     <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:45.000Z</updated>
+    <updated>2016-12-08T10:21:25.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/" target="_blank" rel="external">JVM实用参数（八）GC日志</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<p><strong>译者:</strong> Greenster<br><strong>校对:</strong> 梁海舰<br>本系列的最后一部分是有关垃圾收集（GC）日志的JVM参数。GC日志是一个很重要的工具，它准确记录了每一次的GC的执行时间和执行结果，通过分析GC日志可以优化堆设置和GC设置，或者改进应用程序的对象分配模式。</p>
-<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>参数-XX:+PrintGC（或者-verbose:gc）开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息。下面举例说明：</p>
-<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
-[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
-</code></pre>
-<p>每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。</p>
+<p><strong>译者：</strong> 郑旭东<br><strong>校对：</strong> 梁海舰</p>
+<p>理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。</p>
 <a id="more"></a>
-<p>第一行的意思就是GC将已使用的堆空间从246656K减少到243120K，当前的堆容量（译者注：GC发生时）是376320K，GC持续的时间是0.0929090秒。</p>
-<p>简单模式的GC日志格式是与GC算法无关的，日志也没有提供太多的信息。在上面的例子中，我们甚至无法从日志中判断是否GC将一些对象从young generation移到了old generation。所以详细模式的GC日志更有用一些。</p>
-<h2 id="XX-PrintGCDetails"><a href="#XX-PrintGCDetails" class="headerlink" title="-XX:PrintGCDetails"></a>-XX:PrintGCDetails</h2><p>如果不是使用-XX:+PrintGC，而是-XX:PrintGCDetails，就开启了详细GC日志模式。在这种模式下，日志格式和所使用的GC算法有关。我们首先看一下使用Throughput垃圾收集器在young generation中生成的日志。为了便于阅读这里将一行日志分为多行并使用缩进。</p>
-<pre><code class="lang-bash">[GC
-    [PSYoungGen: 142816K-&gt;10752K(142848K)] 246648K-&gt;243136K(375296K), 0.0935090 secs
-]
-[Times: user=0.55 sys=0.10, real=0.09 secs]
+<p>所有已制定的HotSpot内存管理和垃圾回收算法都基于一个相同的堆内存划分：新生代（young generation）里存储着新分配的和较年轻的对象，老年代（old generation）里存储着长寿的对象。在此之外，永久代（permanent generation）存储着那些需要伴随整个JVM生命周期的对象，比如，已加载的对象的类定义或者String对象内部Cache。接下来，我们将假设堆内存是按照新生代、老年代和永久代这一经典策略划分的。然而，其他的一些堆内存划分策略也是可行的，一个突出的例子就是新的G1垃圾回收器，它模糊了新生代和老年代之间的区别。此外，目前的开发进程似乎表明在未来的HotSpot JVM版本中，将不会区分老年代和永久代。</p>
+<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
+<p>-Xms和-Xmx可以说是最流行的JVM参数，它们可以允许我们指定JVM的初始和最大堆内存大小。一般来说，这两个参数的数值单位是Byte，但同时它们也支持使用速记符号，比如“k”或者“K”代表“kilo”，“m”或者“M”代表“mega”，“g”或者“G”代表“giga”。举个例子，下面的命令启动了一个初始化堆内存为128M，最大堆内存为2G，名叫“MyApp”的Java应用程序。</p>
+<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
 </code></pre>
-<p>我们可以很容易发现：这是一次在young generation中的GC，它将已使用的堆空间从246648K减少到了243136K，用时0.0935090秒。此外我们还可以得到更多的信息：所使用的垃圾收集器（即PSYoungGen）、young generation的大小和使用情况（在这个例子中“PSYoungGen”垃圾收集器将young generation所使用的堆空间从142816K减少到10752K）。</p>
-<p>既然我们已经知道了young generation的大小，所以很容易判定发生了GC，因为young generation无法分配更多的对象空间：已经使用了142848K中的142816K。我们可以进一步得出结论，多数从young generation移除的对象仍然在堆空间中，只是被移到了old generation：通过对比绿色的和蓝色的部分可以发现即使young generation几乎被完全清空（从142816K减少到10752K），但是所占用的堆空间仍然基本相同（从246648K到243136K）。</p>
-<p>详细日志的“Times”部分包含了GC所使用的CPU时间信息，分别为操作系统的用户空间和系统空间所使用的时间。同时，它显示了GC运行的“真实”时间（0.09秒是0.0929090秒的近似值）。如果CPU时间（译者注：0.55秒+0.10秒）明显多于”真实“时间（译者注：0.09秒），我们可以得出结论：GC使用了多线程运行。这样的话CPU时间就是所有GC线程所花费的CPU时间的总和。实际上我们的例子中的垃圾收集器使用了8个线程。</p>
-<p>接下来看一下Full GC的输出日志</p>
-<pre><code class="lang-bash">[Full GC
-    [PSYoungGen: 10752K-&gt;9707K(142848K)]
-    [ParOldGen: 232384K-&gt;232244K(485888K)] 243136K-&gt;241951K(628736K)
-    [PSPermGen: 3162K-&gt;3161K(21504K)], 1.5265450 secs
-]
+<p>在实际使用过程中，初始化堆内存的大小通常被视为堆内存大小的下界。然而JVM可以在运行时动态的调整堆内存的大小，所以理论上来说我们有可能会看到堆内存的大小小于初始化堆内存的大小。但是即使在非常低的堆内存使用下，我也从来没有遇到过这种情况。这种行为将会方便开发者和系统管理员，因为我们可以通过将“-Xms”和“-Xmx”设置为相同大小来获得一个固定大小的堆内存。 -Xms和-Xmx实际上是-XX:InitialHeapSize和-XX:MaxHeapSize的缩写。我们也可以直接使用这两个参数，它们所起得效果是一样的：</p>
+<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
 </code></pre>
-<p>除了关于young generation的详细信息，日志也提供了old generation和permanent generation的详细信息。对于这三个generations，一样也可以看到所使用的垃圾收集器、堆空间的大小、GC前后的堆使用情况。需要注意的是显示堆空间的大小等于young generation和old generation各自堆空间的和。以上面为例，堆空间总共占用了241951K，其中9707K在young generation，232244K在old generation。Full GC持续了大约1.53秒，用户空间的CPU执行时间为10.96秒，说明GC使用了多线程（和之前一样8个线程）。</p>
-<p>对不同generation详细的日志可以让我们分析GC的原因，如果某个generation的日志显示在GC之前，堆空间几乎被占满，那么很有可能就是这个generation触发了GC。但是在上面的例子中，三个generation中的任何一个都不是这样的，在这种情况下是什么原因触发了GC呢。对于Throughput垃圾收集器，在某一个generation被过度使用之前，GC ergonomics（参考本系列第6节）决定要启动GC。</p>
-<p>Full GC也可以通过显式的请求而触发，可以是通过应用程序，或者是一个外部的JVM接口。这样触发的GC可以很容易在日志里分辨出来，因为输出的日志是以“Full GC(System)”开头的，而不是“Full GC”。</p>
-<p>对于Serial垃圾收集器，详细的GC日志和Throughput垃圾收集器是非常相似的。唯一的区别是不同的generation日志可能使用了不同的GC算法（例如：old generation的日志可能以Tenured开头，而不是ParOldGen）。使用垃圾收集器作为一行日志的开头可以方便我们从日志就判断出JVM的GC设置。</p>
-<p>对于CMS垃圾收集器，young generation的详细日志也和Throughput垃圾收集器非常相似，但是old generation的日志却不是这样。对于CMS垃圾收集器，在old generation中的GC是在不同的时间片内与应用程序同时运行的。GC日志自然也和Full GC的日志不同。而且在不同时间片的日志夹杂着在此期间young generation的GC日志。但是了解了上面介绍的GC日志的基本元素，也不难理解在不同时间片内的日志。只是在解释GC运行时间时要特别注意，由于大多数时间片内的GC都是和应用程序同时运行的，所以和那种独占式的GC相比，GC的持续时间更长一些并不说明一定有问题。</p>
-<p>正如我们在第7节中所了解的，即使CMS垃圾收集器没有完成一个CMS周期，Full GC也可能会发生。如果发生了GC，在日志中会包含触发Full GC的原因，例如众所周知的”concurrent mode failure“。</p>
-<p>为了避免过于冗长，我这里就不详细说明CMS垃圾收集器的日志了。另外，CMS垃圾收集器的作者做了详细的说明（在这里），强烈建议阅读。</p>
-<h2 id="XX-PrintGCTimeStamps和-XX-PrintGCDateStamps"><a href="#XX-PrintGCTimeStamps和-XX-PrintGCDateStamps" class="headerlink" title="-XX:+PrintGCTimeStamps和-XX:+PrintGCDateStamps"></a>-XX:+PrintGCTimeStamps和-XX:+PrintGCDateStamps</h2><p>使用-XX:+PrintGCTimeStamps可以将时间和日期也加到GC日志中。表示自JVM启动至今的时间戳会被添加到每一行中。例子如下：</p>
-<pre><code class="lang-bash">0.185: [GC 66048K-&gt;53077K(251392K), 0.0977580 secs]
-0.323: [GC 119125K-&gt;114661K(317440K), 0.1448850 secs]
-0.603: [GC 246757K-&gt;243133K(375296K), 0.2860800 secs]
+<p>需要注意的是，所有JVM关于初始\最大堆内存大小的输出都是使用它们的完整名称：“InitialHeapSize”和“InitialHeapSize”。所以当你查询一个正在运行的JVM的堆内存大小时，如使用-XX:+PrintCommandLineFlags参数或者通过JMX查询，你应该寻找“InitialHeapSize”和“InitialHeapSize”标志而不是“Xms”和“Xmx”。</p>
+<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
+<p>如果我们没法为-Xmx（最大堆内存）设置一个合适的大小，那么就有可能面临内存溢出（OutOfMemoryError）的风险，这可能是我们使用JVM时面临的最可怕的猛兽之一。就同<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">另外一篇</a>关于这个主题的博文说的一样，导致内存溢出的根本原因需要仔细的定位。通常来说，分析堆内存快照（Heap Dump）是一个很好的定位手段，如果发生内存溢出时没有生成内存快照那就实在是太糟了，特别是对于那种JVM已经崩溃或者错误只出现在顺利运行了数小时甚至数天的生产系统上的情况。</p>
+<p>幸运的是，我们可以通过设置-XX:+HeapDumpOnOutOfMemoryError 让JVM在发生内存溢出时自动的生成堆内存快照。有了这个参数，当我们不得不面对内存溢出异常的时候会节约大量的时间。默认情况下，堆内存快照会保存在JVM的启动目录下名为java_pid<code>&lt;pid&gt;</code>.hprof 的文件里（在这里<code>&lt;pid&gt;</code>就是JVM进程的进程号）。也可以通过设置-XX:HeapDumpPath=<code>&lt;path&gt;</code>来改变默认的堆内存快照生成路径，<code>&lt;path&gt;</code>可以是相对或者绝对路径。</p>
+<p>虽然这一切听起来很不错，但有一点我们需要牢记。堆内存快照文件有可能很庞大，特别是当内存溢出错误发生的时候。因此，我们推荐将堆内存快照生成路径指定到一个拥有足够磁盘空间的地方。</p>
+<p><strong>-XX:OnOutOfMemoryError</strong></p>
+<p>当内存溢发生时，我们甚至可以可以执行一些指令，比如发个E-mail通知管理员或者执行一些清理工作。通过-XX:OnOutOfMemoryError 这个参数我们可以做到这一点，这个参数可以接受一串指令和它们的参数。在这里，我们将不会深入它的细节，但我们提供了它的一个例子。在下面的例子中，当内存溢出错误发生的时候，我们会将堆内存快照写到/tmp/heapdump.hprof 文件并且在JVM的运行目录执行脚本cleanup.sh</p>
+<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
 </code></pre>
-<p>如果指定了-XX:+PrintGCDateStamps，每一行就添加上了绝对的日期和时间。</p>
-<pre><code class="lang-bash">2014-01-03T12:08:38.102-0100: [GC 66048K-&gt;53077K(251392K), 0.0959470 secs]
-2014-01-03T12:08:38.239-0100: [GC 119125K-&gt;114661K(317440K), 0.1421720 secs]
-2014-01-03T12:08:38.513-0100: [GC 246757K-&gt;243133K(375296K), 0.2761000 secs]
+<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>永久代在堆内存中是一块独立的区域，它包含了所有JVM加载的类的对象表示。为了成功运行应用程序，JVM会加载很多类（因为它们依赖于大量的第三方库，而这又依赖于更多的库并且需要从里面将类加载进来）这就需要增加永久代的大小。我们可以使用-XX:PermSize 和-XX:MaxPermSize 来达到这个目的。其中-XX:MaxPermSize 用于设置永久代大小的最大值，-XX:PermSize 用于设置永久代初始大小。下面是一个简单的例子：</p>
+<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
 </code></pre>
-<p>如果需要也可以同时使用两个参数。推荐同时使用这两个参数，因为这样在关联不同来源的GC日志时很有帮助。</p>
-<h2 id="Xloggc"><a href="#Xloggc" class="headerlink" title="-Xloggc"></a>-Xloggc</h2><p>缺省的GC日志时输出到终端的，使用-Xloggc:也可以输出到指定的文件。需要注意这个参数隐式的设置了参数-XX:+PrintGC和-XX:+PrintGCTimeStamps，但为了以防在新版本的JVM中有任何变化，我仍建议显示的设置这些参数。</p>
-<h2 id="可管理的JVM参数"><a href="#可管理的JVM参数" class="headerlink" title="可管理的JVM参数"></a>可管理的JVM参数</h2><p>一个常常被讨论的问题是在生产环境中GC日志是否应该开启。因为它所产生的开销通常都非常有限，因此我的答案是需要开启。但并不一定在启动JVM时就必须指定GC日志参数。</p>
-<p>HotSpot JVM有一类特别的参数叫做可管理的参数。对于这些参数，可以在运行时修改他们的值。我们这里所讨论的所有参数以及以“PrintGC”开头的参数都是可管理的参数。这样在任何时候我们都可以开启或是关闭GC日志。比如我们可以使用JDK自带的jinfo工具来设置这些参数，或者是通过JMX客户端调用HotSpotDiagnostic MXBean的setVMOption方法来设置这些参数。</p>
+<p>请注意，这里设置的永久代大小并不会被包括在使用参数-XX:MaxHeapSize 设置的堆内存大小中。也就是说，通过-XX:MaxPermSize设置的永久代内存可能会需要由参数-XX:MaxHeapSize 设置的堆内存以外的更多的一些堆内存。</p>
+<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
+<p>JVM一个有趣的，但往往被忽视的内存区域是“代码缓存”，它是用来存储已编译方法生成的本地代码。代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。就像其他内存区域一样，我们可以自定义代码缓存的大小。相关的参数是-XX:InitialCodeCacheSize 和-XX:ReservedCodeCacheSize，它们的参数和上面介绍的参数一样，都是字节值。</p>
+<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
+<p>如果代码缓存不断增长，例如，因为热部署引起的内存泄漏，那么提高代码的缓存大小只会延缓其发生溢出。为了避免这种情况的发生，我们可以尝试一个有趣的新参数：当代码缓存被填满时让JVM放弃一些编译代码。通过使用-XX:+UseCodeCacheFlushing 这个参数，我们至少可以避免当代码缓存被填满的时候JVM切换到interpreted-only 模式。不过，我仍建议尽快解决代码缓存问题发生的根本原因，如找出内存泄漏并修复它。</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-8-gc-logging/&quot;&gt;JVM实用参数（八）GC日志&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/&quot;&gt;JVM实用参数（四）内存调优&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; Greenster&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;br&gt;本系列的最后一部分是有关垃圾收集（GC）日志的JVM参数。GC日志是一个很重要的工具，它准确记录了每一次的GC的执行时间和执行结果，通过分析GC日志可以优化堆设置和GC设置，或者改进应用程序的对象分配模式。&lt;/p&gt;
-&lt;h2 id=&quot;XX-PrintGC&quot;&gt;&lt;a href=&quot;#XX-PrintGC&quot; class=&quot;headerlink&quot; title=&quot;-XX:+PrintGC&quot;&gt;&lt;/a&gt;-XX:+PrintGC&lt;/h2&gt;&lt;p&gt;参数-XX:+PrintGC（或者-verbose:gc）开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息。下面举例说明：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[GC 246656K-&amp;gt;243120K(376320K), 0.0929090 secs]
-[Full GC 243120K-&amp;gt;241951K(629760K), 1.5589690 secs]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 郑旭东&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。&lt;/p&gt;
     
     </summary>
     
@@ -2674,6 +2599,104 @@ uintx ParallelGCThreads                   := 4                {product}
     
     
       <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 跟踪域名解析过程</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:49:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
+<p>linux and windows</p>
+</blockquote>
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>增加+trace参数跟踪过程：</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;linux and windows
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
