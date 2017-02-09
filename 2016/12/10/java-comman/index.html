@@ -85,35 +85,35 @@
     <div class="entry">
       
         <blockquote>
-<p>&#x7B14;&#x8005;&#x73AF;&#x5883;&#xFF1A;&#x5F00;&#x542F;eclipse,&#x4F7F;&#x7528;&#x7684; JDK:Java HotSpot(TM) 64-Bit Server( &#x201C;1.7.0_79&#x201D;)<br>51933&#x4E3A; eclipse LVMID</p>
+<p>笔者环境：开启eclipse,使用的 JDK:Java HotSpot(TM) 64-Bit Server( “1.7.0_79”)<br>51933为 eclipse LVMID</p>
 </blockquote>
-<p>JDK &#x4E2D;bin&#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x8FD9;&#x4E9B;&#x4E8B;&#x5BF9;jdk/lib/tools.jar&#x7C7B;&#x5E93;&#x7684;&#x4E00;&#x5C42;&#x5305;&#x88C5;&#xFF0C;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x4EE3;&#x7801;&#x662F;&#x5728;tools&#x7C7B;&#x5E93;&#x4E2D;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>JDK 中bin目录中有很多命令行工具，这些事对jdk/lib/tools.jar类库的一层包装，主要的功能代码是在tools类库中实现。</p>
 <blockquote>
-<p>tools.jar&#x5305;&#x5728;oracle&#x7684;jvm&#x4E2D;&#x4F1A;&#x81EA;&#x5E26;&#xFF0C;&#x4F46;&#x5176;&#x4ED6;&#x5382;&#x5546;&#x7684; jvm&#xFF0C;&#x5982; IBM &#x7684;j9&#x7B49;&#x4E0D;&#x4E00;&#x5B9A;&#x6709;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x90E8;&#x7F72;&#x7A0B;&#x5E8F;&#x65F6;&#x4E00;&#x8D77;&#x90E8;&#x7F72;&#x8FD9;&#x4E2A;jar</p>
+<p>tools.jar包在oracle的jvm中会自带，但其他厂商的 jvm，如 IBM 的j9等不一定有，如果需要也可以在部署程序时一起部署这个jar</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><h2 id="q-&#x53EA;&#x663E;&#x793A;LVMID-&#x7701;&#x7565;&#x4E3B;&#x7C7B;&#x7684;&#x540D;&#x79F0;"><a href="#q-&#x53EA;&#x663E;&#x793A;LVMID-&#x7701;&#x7565;&#x4E3B;&#x7C7B;&#x7684;&#x540D;&#x79F0;" class="headerlink" title="-q :&#x53EA;&#x663E;&#x793A;LVMID,&#x7701;&#x7565;&#x4E3B;&#x7C7B;&#x7684;&#x540D;&#x79F0;"></a>-q :&#x53EA;&#x663E;&#x793A;LVMID,&#x7701;&#x7565;&#x4E3B;&#x7C7B;&#x7684;&#x540D;&#x79F0;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -q
+<h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><h2 id="q-只显示LVMID-省略主类的名称"><a href="#q-只显示LVMID-省略主类的名称" class="headerlink" title="-q :只显示LVMID,省略主类的名称"></a>-q :只显示LVMID,省略主类的名称</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -q
 51933
 52249
 </code></pre>
-<h2 id="m-&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x65F6;&#x4F20;&#x9012;&#x7ED9;&#x4E3B;&#x7C7B;main-&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;"><a href="#m-&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x65F6;&#x4F20;&#x9012;&#x7ED9;&#x4E3B;&#x7C7B;main-&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;" class="headerlink" title="-m :&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x65F6;&#x4F20;&#x9012;&#x7ED9;&#x4E3B;&#x7C7B;main()&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;"></a>-m :&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x65F6;&#x4F20;&#x9012;&#x7ED9;&#x4E3B;&#x7C7B;main()&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -m
+<h2 id="m-输出虚拟机进程时传递给主类main-方法的参数"><a href="#m-输出虚拟机进程时传递给主类main-方法的参数" class="headerlink" title="-m :输出虚拟机进程时传递给主类main()方法的参数"></a>-m :输出虚拟机进程时传递给主类main()方法的参数</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -m
 51933
 52284 Jps -m
 </code></pre>
-<h2 id="l-&#x8F93;&#x51FA;&#x4E3B;&#x7C7B;&#x7684;&#x5168;&#x540D;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;jar&#x5305;&#xFF0C;&#x8F93;&#x51FA;-jar&#x7684;&#x8DEF;&#x5F84;"><a href="#l-&#x8F93;&#x51FA;&#x4E3B;&#x7C7B;&#x7684;&#x5168;&#x540D;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;jar&#x5305;&#xFF0C;&#x8F93;&#x51FA;-jar&#x7684;&#x8DEF;&#x5F84;" class="headerlink" title="-l :&#x8F93;&#x51FA;&#x4E3B;&#x7C7B;&#x7684;&#x5168;&#x540D;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;jar&#x5305;&#xFF0C;&#x8F93;&#x51FA; jar&#x7684;&#x8DEF;&#x5F84;"></a>-l :&#x8F93;&#x51FA;&#x4E3B;&#x7C7B;&#x7684;&#x5168;&#x540D;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;jar&#x5305;&#xFF0C;&#x8F93;&#x51FA; jar&#x7684;&#x8DEF;&#x5F84;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -l
+<h2 id="l-输出主类的全名，如果执行的是jar包，输出-jar的路径"><a href="#l-输出主类的全名，如果执行的是jar包，输出-jar的路径" class="headerlink" title="-l :输出主类的全名，如果执行的是jar包，输出 jar的路径"></a>-l :输出主类的全名，如果执行的是jar包，输出 jar的路径</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -l
 51933
 52303 sun.tools.jps.Jps
 </code></pre>
-<h2 id="v-&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;jvm&#x53C2;&#x6570;"><a href="#v-&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;jvm&#x53C2;&#x6570;" class="headerlink" title="-v :&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;jvm&#x53C2;&#x6570;"></a>-v :&#x8F93;&#x51FA;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;jvm&#x53C2;&#x6570;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -v
+<h2 id="v-输出虚拟机进程启动时jvm参数"><a href="#v-输出虚拟机进程启动时jvm参数" class="headerlink" title="-v :输出虚拟机进程启动时jvm参数"></a>-v :输出虚拟机进程启动时jvm参数</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jps -v
 51933  -Dosgi.requiredJavaVersion=1.7 -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts -XX:MaxPermSize=256m -Xms256m -Xmx1024m -Xdock:icon=../Resources/Eclipse.icns -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
 52315 Jps -Dapplication.home=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home -Xms8m
 </code></pre>
-<p>&#x4F7F;&#x7528;-v&#x53EF;&#x4EE5;&#x67E5;&#x770B; jvm &#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x5DF2;&#x751F;&#x6548;</p>
-<h2 id="&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;"><a href="#&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;" class="headerlink" title="&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;"></a>&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;</h2><ul>
-<li><a href="http://www.hollischuang.com/archives/105" target="_blank" rel="external">HollisChuang&#x2019;s Blog:Java&#x547D;&#x4EE4;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#xFF08;&#x4E00;&#xFF09;&#x2014;&#x2014;Jps</a></li>
+<p>使用-v可以查看 jvm 参数设置是否已生效</p>
+<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
+<li><a href="http://www.hollischuang.com/archives/105" target="_blank" rel="external">HollisChuang’s Blog:Java命令学习系列（一）——Jps</a></li>
 <li><a href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html" target="_blank" rel="external">jps - Java Virtual Machine Process Status Tool</a></li>
 </ul>
-<h1 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h1><p>&#x8BE5;&#x547D;&#x4EE4;&#x7684;jdk7&#x5F00;&#x59CB;&#xFF0C;&#x8BE5;&#x547D;&#x4EE4;&#x5728;&#x540E;&#x7EED;&#x7248;&#x672C;&#x4E2D;&#x53EF;&#x80FD;&#x4E0D;&#x518D;&#x4F7F;&#x7528;&#xFF0C;&#x5728;jdk8&#x4E2D;&#x5DF2;&#x4E0D;&#x652F;&#x6301;&#x8BE5;&#x547D;&#x4EE4;</p>
+<h1 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h1><p>该命令的jdk7开始，该命令在后续版本中可能不再使用，在jdk8中已不支持该命令</p>
 <pre><code class="lang-bash">-flag &lt;name&gt;         to print the value of the named VM flag
 -flag [+|-]&lt;name&gt;    to enable or disable the named VM flag
 -flag &lt;name&gt;=&lt;value&gt; to set the named VM flag to the given value
@@ -123,7 +123,7 @@
 -h | -help           to print this help message
 </code></pre>
 <blockquote>
-<p>&#x5728;&#x7B14;&#x8005;&#x7684;jdk&#x73AF;&#x5883;&#x4E2D;&#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;&#x547D;&#x4EE4;&#x7684;(&#x673A;&#x5668;&#x6682;&#x65F6;&#x6CA1;&#x88C5;jdk8)</p>
+<p>在笔者的jdk环境中还是可以使用该命令的(机器暂时没装jdk8)</p>
 </blockquote>
 <pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jinfo -flags 51933
 Attaching to process ID 51933, please wait...
@@ -133,167 +133,167 @@ JVM version is 24.79-b02
 
 -Dosgi.requiredJavaVersion=1.7 -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts -XX:MaxPermSize=256m -Xms256m -Xmx1024m -Xdock:icon=../Resources/Eclipse.icns -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
 </code></pre>
-<h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>&#x662F;&#x7528;&#x4E8E;&#x76D1;&#x63A7;&#x865A;&#x62DF;&#x673A;&#x5404;&#x79CD;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002;&#x4ED6;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x672C;&#x5730;&#x6216;&#x8FDC;&#x7A0B;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7C7B;&#x88C5;&#x8F7D;&#x3001;&#x5185;&#x5B58;&#x3001;&#x5783;&#x573E;&#x6536;&#x96C6;&#x3001;JIT&#x7F16;&#x8BD1;&#x7B49;&#x8FD0;&#x884C;&#x6570;&#x636E;</p>
-<p>&#x9700;&#x8981;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;&#x63D0;&#x4F9B;RMI&#x652F;&#x6301;&#xFF0C;oracle jdk&#x53EF;&#x4EE5;&#x4F7F;&#x7528;jstatd&#x5DE5;&#x5177;</p>
-<h2 id="class-&#x575A;&#x6301;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x5378;&#x8F7D;&#x6570;&#x91CF;&#x3001;&#x603B;&#x7A7A;&#x95F4;&#x4EE5;&#x53CA;&#x7C7B;&#x88C5;&#x8F7D;&#x6240;&#x8017;&#x8D39;&#x7684;&#x65F6;&#x95F4;"><a href="#class-&#x575A;&#x6301;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x5378;&#x8F7D;&#x6570;&#x91CF;&#x3001;&#x603B;&#x7A7A;&#x95F4;&#x4EE5;&#x53CA;&#x7C7B;&#x88C5;&#x8F7D;&#x6240;&#x8017;&#x8D39;&#x7684;&#x65F6;&#x95F4;" class="headerlink" title="-class :&#x575A;&#x6301;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x5378;&#x8F7D;&#x6570;&#x91CF;&#x3001;&#x603B;&#x7A7A;&#x95F4;&#x4EE5;&#x53CA;&#x7C7B;&#x88C5;&#x8F7D;&#x6240;&#x8017;&#x8D39;&#x7684;&#x65F6;&#x95F4;"></a>-class :&#x575A;&#x6301;&#x7C7B;&#x52A0;&#x8F7D;&#x3001;&#x5378;&#x8F7D;&#x6570;&#x91CF;&#x3001;&#x603B;&#x7A7A;&#x95F4;&#x4EE5;&#x53CA;&#x7C7B;&#x88C5;&#x8F7D;&#x6240;&#x8017;&#x8D39;&#x7684;&#x65F6;&#x95F4;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -class 51933
+<h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>是用于监控虚拟机各种运行状态信息的命令行工具。他可以显示本地或远程虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据</p>
+<p>需要远程主机提供RMI支持，oracle jdk可以使用jstatd工具</p>
+<h2 id="class-坚持类加载、卸载数量、总空间以及类装载所耗费的时间"><a href="#class-坚持类加载、卸载数量、总空间以及类装载所耗费的时间" class="headerlink" title="-class :坚持类加载、卸载数量、总空间以及类装载所耗费的时间"></a>-class :坚持类加载、卸载数量、总空间以及类装载所耗费的时间</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -class 51933
 Loaded  Bytes  Unloaded  Bytes     Time
 15591 34025.2        0     0.0      15.45
 </code></pre>
-<h2 id="gc-&#x575A;&#x6301;-Java-&#x5806;&#x72B6;&#x51B5;&#xFF0C;&#x5305;&#x62EC;-Eden&#xFF0C;survivor&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#xFF0C;&#x6C38;&#x4E45;&#x5E26;&#x7B49;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x5DF2;&#x7528;&#x7A7A;&#x95F4;&#x3001;GC-&#x65F6;&#x95F4;&#x5408;&#x96C6;&#x7B49;&#x4FE1;&#x606F;"><a href="#gc-&#x575A;&#x6301;-Java-&#x5806;&#x72B6;&#x51B5;&#xFF0C;&#x5305;&#x62EC;-Eden&#xFF0C;survivor&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#xFF0C;&#x6C38;&#x4E45;&#x5E26;&#x7B49;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x5DF2;&#x7528;&#x7A7A;&#x95F4;&#x3001;GC-&#x65F6;&#x95F4;&#x5408;&#x96C6;&#x7B49;&#x4FE1;&#x606F;" class="headerlink" title="-gc :&#x575A;&#x6301; Java &#x5806;&#x72B6;&#x51B5;&#xFF0C;&#x5305;&#x62EC; Eden&#xFF0C;survivor&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#xFF0C;&#x6C38;&#x4E45;&#x5E26;&#x7B49;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x5DF2;&#x7528;&#x7A7A;&#x95F4;&#x3001;GC &#x65F6;&#x95F4;&#x5408;&#x96C6;&#x7B49;&#x4FE1;&#x606F;"></a>-gc :&#x575A;&#x6301; Java &#x5806;&#x72B6;&#x51B5;&#xFF0C;&#x5305;&#x62EC; Eden&#xFF0C;survivor&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#xFF0C;&#x6C38;&#x4E45;&#x5E26;&#x7B49;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x5DF2;&#x7528;&#x7A7A;&#x95F4;&#x3001;GC &#x65F6;&#x95F4;&#x5408;&#x96C6;&#x7B49;&#x4FE1;&#x606F;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gc 51933
+<h2 id="gc-坚持-Java-堆状况，包括-Eden，survivor，老年代，永久带等的容量，已用空间、GC-时间合集等信息"><a href="#gc-坚持-Java-堆状况，包括-Eden，survivor，老年代，永久带等的容量，已用空间、GC-时间合集等信息" class="headerlink" title="-gc :坚持 Java 堆状况，包括 Eden，survivor，老年代，永久带等的容量，已用空间、GC 时间合集等信息"></a>-gc :坚持 Java 堆状况，包括 Eden，survivor，老年代，永久带等的容量，已用空间、GC 时间合集等信息</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gc 51933
  S0C    S1C    S0U    S1U      EC       EU        OC         OU       PC     PU    YGC     YGCT    FGC    FGCT     GCT
 58880.0 62976.0  0.0    0.0   193536.0 97183.2   382976.0   123877.1  153088.0 96650.8     32    0.445   6      2.812    3.257
 </code></pre>
 <ul>
-<li>S0C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S1C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S0U &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>S1U &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>EC &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>EU &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>OC Old&#x4EE3;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>OU Old&#x4EE3;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>PC Perm(&#x6301;&#x4E45;&#x4EE3;)&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>PU Perm(&#x6301;&#x4E45;&#x4EE3;)&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>YGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
-<li>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;</li>
-<li>FGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
-<li>GCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;gc&#x7528;&#x7684;&#x603B;&#x65F6;&#x95F4;(s)</li>
+<li>S0C 年轻代中第一个survivor（幸存区）的容量 (字节)</li>
+<li>S1C 年轻代中第二个survivor（幸存区）的容量 (字节)</li>
+<li>S0U 年轻代中第一个survivor（幸存区）目前已使用空间 (字节)</li>
+<li>S1U 年轻代中第二个survivor（幸存区）目前已使用空间 (字节)</li>
+<li>EC 年轻代中Eden（伊甸园）的容量 (字节)</li>
+<li>EU 年轻代中Eden（伊甸园）目前已使用空间 (字节)</li>
+<li>OC Old代的容量 (字节)</li>
+<li>OU Old代目前已使用空间 (字节)</li>
+<li>PC Perm(持久代)的容量 (字节)</li>
+<li>PU Perm(持久代)目前已使用空间 (字节)</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>YGCT 从应用程序启动到采样时年轻代中gc所用时间(s)</li>
+<li>FGC 从应用程序启动到采样时old代(全gc)gc次数</li>
+<li>FGCT 从应用程序启动到采样时old代(全gc)gc所用时间(s)</li>
+<li>GCT 从应用程序启动到采样时gc用的总时间(s)</li>
 </ul>
-<h2 id="gccapacity-&#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x5173;&#x6CE8;Java&#x5806;&#x5404;&#x4E2A;&#x533A;&#x57DF;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"><a href="#gccapacity-&#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x5173;&#x6CE8;Java&#x5806;&#x5404;&#x4E2A;&#x533A;&#x57DF;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;" class="headerlink" title="-gccapacity &#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x5173;&#x6CE8;Java&#x5806;&#x5404;&#x4E2A;&#x533A;&#x57DF;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"></a>-gccapacity &#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x5173;&#x6CE8;Java&#x5806;&#x5404;&#x4E2A;&#x533A;&#x57DF;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gccapacity 51933
+<h2 id="gccapacity-与gc基本相同，但主要关注Java堆各个区域使用到的最大、最小空间"><a href="#gccapacity-与gc基本相同，但主要关注Java堆各个区域使用到的最大、最小空间" class="headerlink" title="-gccapacity 与gc基本相同，但主要关注Java堆各个区域使用到的最大、最小空间"></a>-gccapacity 与gc基本相同，但主要关注Java堆各个区域使用到的最大、最小空间</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gccapacity 51933
  NGCMN    NGCMX     NGC     S0C   S1C       EC      OGCMN      OGCMX       OGC         OC      PGCMN    PGCMX     PGC       PC     YGC    FGC
  87552.0 349696.0 319488.0 58880.0 62976.0 193536.0   175104.0   698880.0   382976.0   382976.0  21504.0 262144.0 153088.0 153088.0     32     6
 </code></pre>
 <ul>
-<li>NGCMN &#x5E74;&#x8F7B;&#x4EE3;(young)&#x4E2D;&#x521D;&#x59CB;&#x5316;(&#x6700;&#x5C0F;)&#x7684;&#x5927;&#x5C0F;(&#x5B57;&#x8282;)</li>
-<li>NGCMX &#x5E74;&#x8F7B;&#x4EE3;(young)&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>NGC &#x5E74;&#x8F7B;&#x4EE3;(young)&#x4E2D;&#x5F53;&#x524D;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S0C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S1C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>EC &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>OGCMN old&#x4EE3;&#x4E2D;&#x521D;&#x59CB;&#x5316;(&#x6700;&#x5C0F;)&#x7684;&#x5927;&#x5C0F; (&#x5B57;&#x8282;)</li>
-<li>OGCMX old&#x4EE3;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF;(&#x5B57;&#x8282;)</li>
-<li>OGC old&#x4EE3;&#x5F53;&#x524D;&#x65B0;&#x751F;&#x6210;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>OC Old&#x4EE3;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>PGCMN perm&#x4EE3;&#x4E2D;&#x521D;&#x59CB;&#x5316;(&#x6700;&#x5C0F;)&#x7684;&#x5927;&#x5C0F; (&#x5B57;&#x8282;)</li>
-<li>PGCMX perm&#x4EE3;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>PGC perm&#x4EE3;&#x5F53;&#x524D;&#x65B0;&#x751F;&#x6210;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>PC Perm(&#x6301;&#x4E45;&#x4EE3;)&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;</li>
+<li>NGCMN 年轻代(young)中初始化(最小)的大小(字节)</li>
+<li>NGCMX 年轻代(young)的最大容量 (字节)</li>
+<li>NGC 年轻代(young)中当前的容量 (字节)</li>
+<li>S0C 年轻代中第一个survivor（幸存区）的容量 (字节)</li>
+<li>S1C 年轻代中第二个survivor（幸存区）的容量 (字节)</li>
+<li>EC 年轻代中Eden（伊甸园）的容量 (字节)</li>
+<li>OGCMN old代中初始化(最小)的大小 (字节)</li>
+<li>OGCMX old代的最大容量(字节)</li>
+<li>OGC old代当前新生成的容量 (字节)</li>
+<li>OC Old代的容量 (字节)</li>
+<li>PGCMN perm代中初始化(最小)的大小 (字节)</li>
+<li>PGCMX perm代的最大容量 (字节)</li>
+<li>PGC perm代当前新生成的容量 (字节)</li>
+<li>PC Perm(持久代)的容量 (字节)</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>FGC 从应用程序启动到采样时old代(全gc)gc次数</li>
 </ul>
-<h2 id="gcutil-&#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x6302;&#x4F4F;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4;&#x5360;&#x603B;&#x7A7A;&#x95F4;&#x7684;&#x767E;&#x5206;&#x6BD4;"><a href="#gcutil-&#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x6302;&#x4F4F;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4;&#x5360;&#x603B;&#x7A7A;&#x95F4;&#x7684;&#x767E;&#x5206;&#x6BD4;" class="headerlink" title="-gcutil &#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x6302;&#x4F4F;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4;&#x5360;&#x603B;&#x7A7A;&#x95F4;&#x7684;&#x767E;&#x5206;&#x6BD4;"></a>-gcutil &#x4E0E;gc&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x4E3B;&#x8981;&#x6302;&#x4F4F;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4;&#x5360;&#x603B;&#x7A7A;&#x95F4;&#x7684;&#x767E;&#x5206;&#x6BD4;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcutil 51933
+<h2 id="gcutil-与gc基本相同，但主要挂住已使用空间占总空间的百分比"><a href="#gcutil-与gc基本相同，但主要挂住已使用空间占总空间的百分比" class="headerlink" title="-gcutil 与gc基本相同，但主要挂住已使用空间占总空间的百分比"></a>-gcutil 与gc基本相同，但主要挂住已使用空间占总空间的百分比</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcutil 51933
   S0     S1     E      O      P     YGC     YGCT    FGC    FGCT     GCT   
   0.00   0.00  71.76  32.35  63.17     32    0.445     6    2.812    3.257
 </code></pre>
 <ul>
-<li>S0 &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5360;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x767E;&#x5206;&#x6BD4;</li>
-<li>S1 &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5360;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x767E;&#x5206;&#x6BD4;</li>
-<li>E &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5360;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x767E;&#x5206;&#x6BD4;</li>
-<li>O old&#x4EE3;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5360;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x767E;&#x5206;&#x6BD4;</li>
-<li>P perm&#x4EE3;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5360;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x767E;&#x5206;&#x6BD4;</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>YGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
-<li>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;</li>
-<li>FGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
-<li>GCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;gc&#x7528;&#x7684;&#x603B;&#x65F6;&#x95F4;(s)</li>
+<li>S0 年轻代中第一个survivor（幸存区）已使用的占当前容量百分比</li>
+<li>S1 年轻代中第二个survivor（幸存区）已使用的占当前容量百分比</li>
+<li>E 年轻代中Eden（伊甸园）已使用的占当前容量百分比</li>
+<li>O old代已使用的占当前容量百分比</li>
+<li>P perm代已使用的占当前容量百分比</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>YGCT 从应用程序启动到采样时年轻代中gc所用时间(s)</li>
+<li>FGC 从应用程序启动到采样时old代(全gc)gc次数</li>
+<li>FGCT 从应用程序启动到采样时old代(全gc)gc所用时间(s)</li>
+<li>GCT 从应用程序启动到采样时gc用的总时间(s)</li>
 </ul>
-<h2 id="gccause-&#x4E0E;gcutil&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x989D;&#x5916;&#x8F93;&#x51FA;&#x5BFC;&#x81F4;&#x4E0A;&#x4E00;&#x6B21;-GC-&#x4EA7;&#x5E94;&#x7684;&#x539F;&#x56E0;LGCC"><a href="#gccause-&#x4E0E;gcutil&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x989D;&#x5916;&#x8F93;&#x51FA;&#x5BFC;&#x81F4;&#x4E0A;&#x4E00;&#x6B21;-GC-&#x4EA7;&#x5E94;&#x7684;&#x539F;&#x56E0;LGCC" class="headerlink" title="-gccause &#x4E0E;gcutil&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x989D;&#x5916;&#x8F93;&#x51FA;&#x5BFC;&#x81F4;&#x4E0A;&#x4E00;&#x6B21; GC &#x4EA7;&#x5E94;&#x7684;&#x539F;&#x56E0;LGCC"></a>-gccause &#x4E0E;gcutil&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x989D;&#x5916;&#x8F93;&#x51FA;&#x5BFC;&#x81F4;&#x4E0A;&#x4E00;&#x6B21; GC &#x4EA7;&#x5E94;&#x7684;&#x539F;&#x56E0;LGCC</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gccause 51933
+<h2 id="gccause-与gcutil基本相同，但是会额外输出导致上一次-GC-产应的原因LGCC"><a href="#gccause-与gcutil基本相同，但是会额外输出导致上一次-GC-产应的原因LGCC" class="headerlink" title="-gccause 与gcutil基本相同，但是会额外输出导致上一次 GC 产应的原因LGCC"></a>-gccause 与gcutil基本相同，但是会额外输出导致上一次 GC 产应的原因LGCC</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gccause 51933
   S0     S1     E      O      P     YGC     YGCT    FGC    FGCT     GCT    LGCC                 GCC                 
   0.00   0.00  90.17  32.35  63.18     32    0.445     6    2.812    3.257 System.gc()          No GC
 </code></pre>
-<h2 id="gcnew-&#x65B0;&#x751F;&#x4EE3;gc-&#x72B6;&#x51B5;"><a href="#gcnew-&#x65B0;&#x751F;&#x4EE3;gc-&#x72B6;&#x51B5;" class="headerlink" title="-gcnew &#x65B0;&#x751F;&#x4EE3;gc &#x72B6;&#x51B5;"></a>-gcnew &#x65B0;&#x751F;&#x4EE3;gc &#x72B6;&#x51B5;</h2><pre><code class="lang-bash"> S0C    S1C    S0U    S1U   TT MTT  DSS      EC       EU     YGC     YGCT  
+<h2 id="gcnew-新生代gc-状况"><a href="#gcnew-新生代gc-状况" class="headerlink" title="-gcnew 新生代gc 状况"></a>-gcnew 新生代gc 状况</h2><pre><code class="lang-bash"> S0C    S1C    S0U    S1U   TT MTT  DSS      EC       EU     YGC     YGCT  
 58880.0 62976.0    0.0    0.0  9  15 62976.0 193536.0 180917.7     32    0.445
 </code></pre>
 <ul>
-<li>S0C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S1C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S0U &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>S1U &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>TT &#x6301;&#x6709;&#x6B21;&#x6570;&#x9650;&#x5236; MTT &#x6700;&#x5927;&#x6301;&#x6709;&#x6B21;&#x6570;&#x9650;&#x5236;</li>
-<li>EC &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>EU &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>YGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
+<li>S0C 年轻代中第一个survivor（幸存区）的容量 (字节)</li>
+<li>S1C 年轻代中第二个survivor（幸存区）的容量 (字节)</li>
+<li>S0U 年轻代中第一个survivor（幸存区）目前已使用空间 (字节)</li>
+<li>S1U 年轻代中第二个survivor（幸存区）目前已使用空间 (字节)</li>
+<li>TT 持有次数限制 MTT 最大持有次数限制</li>
+<li>EC 年轻代中Eden（伊甸园）的容量 (字节)</li>
+<li>EU 年轻代中Eden（伊甸园）目前已使用空间 (字节)</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>YGCT 从应用程序启动到采样时年轻代中gc所用时间(s)</li>
 </ul>
-<h2 id="gcnewcapacity-&#x4E0E;gcnew&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x8F93;&#x51FA;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"><a href="#gcnewcapacity-&#x4E0E;gcnew&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x8F93;&#x51FA;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;" class="headerlink" title="-gcnewcapacity &#x4E0E;gcnew&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x8F93;&#x51FA;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"></a>-gcnewcapacity &#x4E0E;gcnew&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x8F93;&#x51FA;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcnewcapacity 51933
+<h2 id="gcnewcapacity-与gcnew基本相同，输出主要关注使用的最大、最小空间"><a href="#gcnewcapacity-与gcnew基本相同，输出主要关注使用的最大、最小空间" class="headerlink" title="-gcnewcapacity 与gcnew基本相同，输出主要关注使用的最大、最小空间"></a>-gcnewcapacity 与gcnew基本相同，输出主要关注使用的最大、最小空间</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcnewcapacity 51933
   NGCMN      NGCMX       NGC      S0CMX     S0C     S1CMX     S1C       ECMX        EC      YGC   FGC
    87552.0   349696.0   319488.0 116224.0  58880.0 116224.0  62976.0   348672.0   193536.0    32     6
 </code></pre>
 <ul>
-<li>NGCMN &#x5E74;&#x8F7B;&#x4EE3;(young)&#x4E2D;&#x521D;&#x59CB;&#x5316;(&#x6700;&#x5C0F;)&#x7684;&#x5927;&#x5C0F;(&#x5B57;&#x8282;)</li>
-<li>NGCMX &#x5E74;&#x8F7B;&#x4EE3;(young)&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>NGC &#x5E74;&#x8F7B;&#x4EE3;(young)&#x4E2D;&#x5F53;&#x524D;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S0CMX &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S0C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S1CMX &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>S1C &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;survivor&#xFF08;&#x5E78;&#x5B58;&#x533A;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>ECMX &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>EC &#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;Eden&#xFF08;&#x4F0A;&#x7538;&#x56ED;&#xFF09;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;</li>
+<li>NGCMN 年轻代(young)中初始化(最小)的大小(字节)</li>
+<li>NGCMX 年轻代(young)的最大容量 (字节)</li>
+<li>NGC 年轻代(young)中当前的容量 (字节)</li>
+<li>S0CMX 年轻代中第一个survivor（幸存区）的最大容量 (字节)</li>
+<li>S0C 年轻代中第一个survivor（幸存区）的容量 (字节)</li>
+<li>S1CMX 年轻代中第二个survivor（幸存区）的最大容量 (字节)</li>
+<li>S1C 年轻代中第二个survivor（幸存区）的容量 (字节)</li>
+<li>ECMX 年轻代中Eden（伊甸园）的最大容量 (字节)</li>
+<li>EC 年轻代中Eden（伊甸园）的容量 (字节)</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>FGC 从应用程序启动到采样时old代(全gc)gc次数</li>
 </ul>
-<h2 id="gcold-&#x8001;&#x5E74;&#x4EE3;GC&#x72B6;&#x51B5;"><a href="#gcold-&#x8001;&#x5E74;&#x4EE3;GC&#x72B6;&#x51B5;" class="headerlink" title="-gcold &#x8001;&#x5E74;&#x4EE3;GC&#x72B6;&#x51B5;"></a>-gcold &#x8001;&#x5E74;&#x4EE3;GC&#x72B6;&#x51B5;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcold 51933
+<h2 id="gcold-老年代GC状况"><a href="#gcold-老年代GC状况" class="headerlink" title="-gcold 老年代GC状况"></a>-gcold 老年代GC状况</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcold 51933
    PC       PU        OC          OU       YGC    FGC    FGCT     GCT   
 153088.0  96730.3    382976.0    123877.1     32     6    2.812    3.257
 </code></pre>
 <ul>
-<li>PC Perm(&#x6301;&#x4E45;&#x4EE3;)&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>PU Perm(&#x6301;&#x4E45;&#x4EE3;)&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>OC Old&#x4EE3;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>OU Old&#x4EE3;&#x76EE;&#x524D;&#x5DF2;&#x4F7F;&#x7528;&#x7A7A;&#x95F4; (&#x5B57;&#x8282;)</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;</li>
-<li>FGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
-<li>GCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;gc&#x7528;&#x7684;&#x603B;&#x65F6;&#x95F4;(s)</li>
+<li>PC Perm(持久代)的容量 (字节)</li>
+<li>PU Perm(持久代)目前已使用空间 (字节)</li>
+<li>OC Old代的容量 (字节)</li>
+<li>OU Old代目前已使用空间 (字节)</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>FGC 从应用程序启动到采样时old代(全gc)gc次数</li>
+<li>FGCT 从应用程序启动到采样时old代(全gc)gc所用时间(s)</li>
+<li>GCT 从应用程序启动到采样时gc用的总时间(s)</li>
 </ul>
-<h2 id="gcoldcapacity-&#x4E0E;gcold&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"><a href="#gcoldcapacity-&#x4E0E;gcold&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;" class="headerlink" title="-gcoldcapacity &#x4E0E;gcold&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"></a>-gcoldcapacity &#x4E0E;gcold&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcoldcapacity 51933
+<h2 id="gcoldcapacity-与gcold基本相同，主要关注使用到的最大、最小空间"><a href="#gcoldcapacity-与gcold基本相同，主要关注使用到的最大、最小空间" class="headerlink" title="-gcoldcapacity 与gcold基本相同，主要关注使用到的最大、最小空间"></a>-gcoldcapacity 与gcold基本相同，主要关注使用到的最大、最小空间</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcoldcapacity 51933
    OGCMN       OGCMX        OGC         OC       YGC   FGC    FGCT     GCT   
    175104.0    698880.0    382976.0    382976.0    33     6    2.812    3.317
 </code></pre>
 <ul>
-<li>OGCMN old&#x4EE3;&#x4E2D;&#x521D;&#x59CB;&#x5316;(&#x6700;&#x5C0F;)&#x7684;&#x5927;&#x5C0F; (&#x5B57;&#x8282;)</li>
-<li>OGCMX old&#x4EE3;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF;(&#x5B57;&#x8282;)</li>
-<li>OGC old&#x4EE3;&#x5F53;&#x524D;&#x65B0;&#x751F;&#x6210;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>OC Old&#x4EE3;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)</li>
-<li>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;</li>
-<li>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;</li>
-<li>FGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)</li>
-<li>GCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;gc&#x7528;&#x7684;&#x603B;&#x65F6;&#x95F4;(s)</li>
+<li>OGCMN old代中初始化(最小)的大小 (字节)</li>
+<li>OGCMX old代的最大容量(字节)</li>
+<li>OGC old代当前新生成的容量 (字节)</li>
+<li>OC Old代的容量 (字节)</li>
+<li>YGC 从应用程序启动到采样时年轻代中gc次数</li>
+<li>FGC 从应用程序启动到采样时old代(全gc)gc次数</li>
+<li>FGCT 从应用程序启动到采样时old代(全gc)gc所用时间(s)</li>
+<li>GCT 从应用程序启动到采样时gc用的总时间(s)</li>
 </ul>
-<h2 id="gcpermcapacity-&#x6C38;&#x4E45;&#x4EE3;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"><a href="#gcpermcapacity-&#x6C38;&#x4E45;&#x4EE3;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;" class="headerlink" title="-gcpermcapacity &#x6C38;&#x4E45;&#x4EE3;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;"></a>-gcpermcapacity &#x6C38;&#x4E45;&#x4EE3;&#x4F7F;&#x7528;&#x7684;&#x6700;&#x5927;&#x3001;&#x6700;&#x5C0F;&#x7A7A;&#x95F4;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcpermcapacity 51933
+<h2 id="gcpermcapacity-永久代使用的最大、最小空间"><a href="#gcpermcapacity-永久代使用的最大、最小空间" class="headerlink" title="-gcpermcapacity 永久代使用的最大、最小空间"></a>-gcpermcapacity 永久代使用的最大、最小空间</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -gcpermcapacity 51933
   PGCMN      PGCMX       PGC         PC      YGC   FGC    FGCT     GCT   
    21504.0   262144.0   153088.0   153088.0    33     6    2.812    3.317
 </code></pre>
 <ul>
-<li>PGCMN perm&#x4EE3;&#x4E2D;&#x521D;&#x59CB;&#x5316;(&#x6700;&#x5C0F;)&#x7684;&#x5927;&#x5C0F; (&#x5B57;&#x8282;)</li>
-<li>PGCMX perm&#x4EE3;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)<br>PGC perm&#x4EE3;&#x5F53;&#x524D;&#x65B0;&#x751F;&#x6210;&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)<br>PC Perm(&#x6301;&#x4E45;&#x4EE3;)&#x7684;&#x5BB9;&#x91CF; (&#x5B57;&#x8282;)<br>YGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;&#x5E74;&#x8F7B;&#x4EE3;&#x4E2D;gc&#x6B21;&#x6570;<br>FGC &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6B21;&#x6570;<br>FGCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;old&#x4EE3;(&#x5168;gc)gc&#x6240;&#x7528;&#x65F6;&#x95F4;(s)<br>GCT &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x91C7;&#x6837;&#x65F6;gc&#x7528;&#x7684;&#x603B;&#x65F6;&#x95F4;(s)</li>
+<li>PGCMN perm代中初始化(最小)的大小 (字节)</li>
+<li>PGCMX perm代的最大容量 (字节)<br>PGC perm代当前新生成的容量 (字节)<br>PC Perm(持久代)的容量 (字节)<br>YGC 从应用程序启动到采样时年轻代中gc次数<br>FGC 从应用程序启动到采样时old代(全gc)gc次数<br>FGCT 从应用程序启动到采样时old代(全gc)gc所用时间(s)<br>GCT 从应用程序启动到采样时gc用的总时间(s)</li>
 </ul>
-<h2 id="compiler-JIT-&#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x8FC7;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x8017;&#x65F6;&#x4FE1;&#x606F;"><a href="#compiler-JIT-&#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x8FC7;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x8017;&#x65F6;&#x4FE1;&#x606F;" class="headerlink" title="-compiler JIT &#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x8FC7;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x8017;&#x65F6;&#x4FE1;&#x606F;"></a>-compiler JIT &#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x8FC7;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x8017;&#x65F6;&#x4FE1;&#x606F;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -compiler 51933
+<h2 id="compiler-JIT-编译器编译过的方法、耗时信息"><a href="#compiler-JIT-编译器编译过的方法、耗时信息" class="headerlink" title="-compiler JIT 编译器编译过的方法、耗时信息"></a>-compiler JIT 编译器编译过的方法、耗时信息</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -compiler 51933
 Compiled Failed Invalid   Time   FailedType FailedMethod
     2867      0       0    27.54          0
 </code></pre>
 <ul>
-<li>Compiled &#x7F16;&#x8BD1;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x6570;&#x91CF;</li>
-<li>Failed &#x7F16;&#x8BD1;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5931;&#x8D25;&#x6570;&#x91CF;</li>
-<li>Invalid &#x7F16;&#x8BD1;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5931;&#x6548;&#x6570;&#x91CF;</li>
-<li>Time &#x7F16;&#x8BD1;&#x4EFB;&#x52A1;&#x6D88;&#x8017;&#x65F6;&#x95F4;</li>
-<li>FailedType &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5931;&#x8D25;&#x4EFB;&#x52A1;&#x7684;&#x7C7B;&#x578B;</li>
-<li>FailedMethod &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5931;&#x8D25;&#x4EFB;&#x52A1;&#x6240;&#x5728;&#x7684;&#x7C7B;&#x53CA;&#x65B9;&#x6CD5;</li>
+<li>Compiled 编译任务执行数量</li>
+<li>Failed 编译任务执行失败数量</li>
+<li>Invalid 编译任务执行失效数量</li>
+<li>Time 编译任务消耗时间</li>
+<li>FailedType 最后一个编译失败任务的类型</li>
+<li>FailedMethod 最后一个编译失败任务所在的类及方法</li>
 </ul>
-<h2 id="printcompilation-&#x8F93;&#x51FA;&#x5DF2;&#x88AB;JIT&#x7F16;&#x8BD1;&#x7684;&#x65B9;&#x6CD5;"><a href="#printcompilation-&#x8F93;&#x51FA;&#x5DF2;&#x88AB;JIT&#x7F16;&#x8BD1;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="-printcompilation &#x8F93;&#x51FA;&#x5DF2;&#x88AB;JIT&#x7F16;&#x8BD1;&#x7684;&#x65B9;&#x6CD5;"></a>-printcompilation &#x8F93;&#x51FA;&#x5DF2;&#x88AB;JIT&#x7F16;&#x8BD1;&#x7684;&#x65B9;&#x6CD5;</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -printcompilation 51933
+<h2 id="printcompilation-输出已被JIT编译的方法"><a href="#printcompilation-输出已被JIT编译的方法" class="headerlink" title="-printcompilation 输出已被JIT编译的方法"></a>-printcompilation 输出已被JIT编译的方法</h2><pre><code class="lang-bash">delei@DeleitekiMacBook-Pro:~$ jstat -printcompilation 51933
 Compiled  Size  Type Method
     2867    439    1 org/eclipse/emf/common/util/CommonUtil$StringPool$SelfCleaningStringPoolEntry clear
 </code></pre>
 <ul>
-<li>Compiled &#x7F16;&#x8BD1;&#x4EFB;&#x52A1;&#x7684;&#x6570;&#x76EE;</li>
-<li>Size &#x65B9;&#x6CD5;&#x751F;&#x6210;&#x7684;&#x5B57;&#x8282;&#x7801;&#x7684;&#x5927;&#x5C0F;</li>
-<li>Type &#x7F16;&#x8BD1;&#x7C7B;&#x578B;</li>
-<li>Method &#x7C7B;&#x540D;&#x548C;&#x65B9;&#x6CD5;&#x540D;&#x7528;&#x6765;&#x6807;&#x8BC6;&#x7F16;&#x8BD1;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x7C7B;&#x540D;&#x4F7F;&#x7528;/&#x505A;&#x4E3A;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5206;&#x9694;&#x7B26;&#x3002;&#x65B9;&#x6CD5;&#x540D;&#x662F;&#x7ED9;&#x5B9A;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E0A;&#x8FF0;&#x683C;&#x5F0F;&#x662F;&#x7531;-XX:+PrintComplation&#x9009;&#x9879;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x7684;</li>
+<li>Compiled 编译任务的数目</li>
+<li>Size 方法生成的字节码的大小</li>
+<li>Type 编译类型</li>
+<li>Method 类名和方法名用来标识编译的方法。类名使用/做为一个命名空间分隔符。方法名是给定类中的方法。上述格式是由-XX:+PrintComplation选项进行设置的</li>
 </ul>
-<h2 id="&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;-1"><a href="#&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;-1" class="headerlink" title="&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;"></a>&#x5F15;&#x7528;&#x5185;&#x5BB9;&#x6587;&#x7AE0;</h2><ul>
-<li>blog&#xFF1A;<a href="http://www.hollischuang.com/archives/481" target="_blank" rel="external">HollisChuang&#x2019;s Blog &#xBB; Java&#x547D;&#x4EE4;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#xFF08;&#x56DB;&#xFF09;&#x2014;&#x2014;jstat</a></li>
-<li>&#x4E66;&#x7C4D;&#xFF1A;<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#xFF08;&#x7B2C;2&#x7248;&#xFF09;</a></li>
+<h2 id="引用内容文章-1"><a href="#引用内容文章-1" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
+<li>blog：<a href="http://www.hollischuang.com/archives/481" target="_blank" rel="external">HollisChuang’s Blog » Java命令学习系列（四）——jstat</a></li>
+<li>书籍：<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">深入理解Java虚拟机（第2版）</a></li>
 </ul>
 
       
@@ -341,7 +341,7 @@ Compiled  Size  Type Method
   
     <li><a href="/categories/pri/">PRI-文章</a><small>2</small></li>
   
-    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+    <li><a href="/categories/tec/">TEC-技术</a><small>15</small></li>
   
   </ul>
 </div>
@@ -356,9 +356,11 @@ Compiled  Size  Type Method
   
     <li><a href="/tags/JVM/">JVM</a><small>10</small></li>
   
-    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+    <li><a href="/tags/Java/">Java</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>1</small></li>
   
     <li><a href="/tags/Team/">Team</a><small>1</small></li>
   
@@ -369,7 +371,7 @@ Compiled  Size  Type Method
   
   <div class="widget tag">
     <h3 class="title">归档</h3>
-	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -416,7 +418,7 @@ Compiled  Size  Type Method
           <br/>
           <div class="text-center">
   
-  &copy; 2016 DeleiGuo
+  &copy; 2017 DeleiGuo
   
   &nbsp;&nbsp;
   湘ICP备16012107号-1

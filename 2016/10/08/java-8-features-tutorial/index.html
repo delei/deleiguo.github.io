@@ -85,52 +85,52 @@
     <div class="entry">
       
         <blockquote>
-<p>&#x8F6C;&#x8F7D;&#x81EA;importnew&#x672C;&#x6587;&#x94FE;&#x63A5;&#x5730;&#x5740;: <a href="http://www.importnew.com/11908.html" target="_blank" rel="external">Java 8&#x65B0;&#x7279;&#x6027;&#x7EC8;&#x6781;&#x6307;&#x5357;</a><br>&#x672C;&#x6587;&#x4E3A;&#x8BD1;&#x6587;&#xFF0C;&#x63A8;&#x8350;&#x770B;&#x539F;&#x6587;&#xFF1A;<a href="https://www.javacodegeeks.com/2014/05/java-8-features-tutorial.html" target="_blank" rel="external">Java 8 Features Tutorial &#x2013; The ULTIMATE Guide</a></p>
-<p>ps:&#x539F;&#x6587;&#x53EF;&#x80FD;&#x8981;&#x7FFB;&#x5899;.</p>
-<p>JDK8&#x5176;&#x5B9E;&#x5DF2;&#x95EE;&#x4E16;&#x5F88;&#x4E45;&#x4E86;&#x3002;JDK9&#x4E5F;&#x5373;&#x5C06;&#x5230;&#x6765;&#xFF0C;&#x622A;&#x6B62;&#x8BE5;&#x6587;&#x7AE0;&#x53D1;&#x5E03;&#x65F6;&#xFF0C;JDK8&#x4E5F;&#x8FD8;&#x6CA1;&#x6709;&#x5728;&#x5927;&#x90E8;&#x5206;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#x5927;&#x91CF;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x672C;&#x4EBA;&#x5F53;&#x524D;&#x6240;&#x5728;&#x516C;&#x53F8;,JDK7&#x8FD8;&#x662F;&#x4E3B;&#x6D41;&#xFF0C;&#x90E8;&#x5206;&#x8001;&#x6846;&#x67B6;&#x9879;&#x76EE;&#x8FD8;&#x5728;&#x7528;&#x7740;JDK6</p>
+<p>转载自importnew本文链接地址: <a href="http://www.importnew.com/11908.html" target="_blank" rel="external">Java 8新特性终极指南</a><br>本文为译文，推荐看原文：<a href="https://www.javacodegeeks.com/2014/05/java-8-features-tutorial.html" target="_blank" rel="external">Java 8 Features Tutorial – The ULTIMATE Guide</a></p>
+<p>ps:原文可能要翻墙.</p>
+<p>JDK8其实已问世很久了。JDK9也即将到来，截止该文章发布时，JDK8也还没有在大部分的环境中大量使用。在本人当前所在公司,JDK7还是主流，部分老框架项目还在用着JDK6</p>
 </blockquote>
 <p>[TOC]</p>
-<h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>&#x6BEB;&#x65E0;&#x7591;&#x95EE;&#xFF0C;Java 8&#x53D1;&#x884C;&#x7248;&#x662F;&#x81EA;Java 5&#xFF08;&#x53D1;&#x884C;&#x4E8E;2004&#xFF0C;&#x5DF2;&#x7ECF;&#x8FC7;&#x4E86;&#x76F8;&#x5F53;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E86;&#xFF09;&#x4EE5;&#x6765;&#x6700;&#x5177;&#x9769;&#x547D;&#x6027;&#x7684;&#x7248;&#x672C;&#x3002;Java 8 &#x4E3A;Java&#x8BED;&#x8A00;&#x3001;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x7C7B;&#x5E93;&#x3001;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x4E0E;JVM&#xFF08;Java&#x865A;&#x62DF;&#x673A;&#xFF09;&#x5E26;&#x6765;&#x4E86;&#x5927;&#x91CF;&#x65B0;&#x7279;&#x6027;&#x3002;&#x5728;&#x8FD9;&#x7BC7;&#x6559;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4E00;&#x4E00;&#x63A2;&#x7D22;&#x8FD9;&#x4E9B;&#x53D8;&#x5316;&#xFF0C;&#x5E76;&#x7528;&#x771F;&#x5B9E;&#x7684;&#x4F8B;&#x5B50;&#x8BF4;&#x660E;&#x5B83;&#x4EEC;&#x9002;&#x7528;&#x7684;&#x573A;&#x666F;&#x3002;</p>
-<p>&#x8FD9;&#x7BC7;&#x6559;&#x7A0B;&#x7531;&#x4EE5;&#x4E0B;&#x51E0;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF0C;&#x5B83;&#x4EEC;&#x5206;&#x522B;&#x6D89;&#x53CA;&#x5230;Java&#x5E73;&#x53F0;&#x67D0;&#x4E00;&#x7279;&#x5B9A;&#x65B9;&#x9762;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>毫无疑问，Java 8发行版是自Java 5（发行于2004，已经过了相当一段时间了）以来最具革命性的版本。Java 8 为Java语言、编译器、类库、开发工具与JVM（Java虚拟机）带来了大量新特性。在这篇教程中，我们将一一探索这些变化，并用真实的例子说明它们适用的场景。</p>
+<p>这篇教程由以下几部分组成，它们分别涉及到Java平台某一特定方面的内容：</p>
 <a id="more"></a>
 <ul>
-<li>Java&#x8BED;&#x8A00;</li>
-<li>&#x7F16;&#x8BD1;&#x5668;</li>
-<li>&#x7C7B;&#x5E93;</li>
-<li>&#x5DE5;&#x5177;</li>
-<li>Java&#x8FD0;&#x884C;&#x65F6;&#xFF08;JVM&#xFF09;</li>
+<li>Java语言</li>
+<li>编译器</li>
+<li>类库</li>
+<li>工具</li>
+<li>Java运行时（JVM）</li>
 </ul>
-<h2 id="Java&#x8BED;&#x8A00;&#x7684;&#x65B0;&#x7279;&#x6027;"><a href="#Java&#x8BED;&#x8A00;&#x7684;&#x65B0;&#x7279;&#x6027;" class="headerlink" title="Java&#x8BED;&#x8A00;&#x7684;&#x65B0;&#x7279;&#x6027;"></a>Java&#x8BED;&#x8A00;&#x7684;&#x65B0;&#x7279;&#x6027;</h2><p>&#x4E0D;&#x7BA1;&#x600E;&#x4E48;&#x8BF4;&#xFF0C;Java 8&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x5316;&#x5DE8;&#x5927;&#x7684;&#x7248;&#x672C;&#x3002;&#x4F60;&#x53EF;&#x80FD;&#x8BA4;&#x4E3A;Java 8&#x8017;&#x8D39;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x624D;&#x5F97;&#x4EE5;&#x5B8C;&#x6210;&#x662F;&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x4E86;&#x6BCF;&#x4E2A;Java&#x7A0B;&#x5E8F;&#x5458;&#x6240;&#x671F;&#x5F85;&#x7684;&#x7279;&#x6027;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x5C0F;&#x8282;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x6D89;&#x53CA;&#x5230;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x7684;&#x5927;&#x90E8;&#x5206;&#x3002;</p>
-<h3 id="Lambda&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;Functional&#x63A5;&#x53E3;"><a href="#Lambda&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;Functional&#x63A5;&#x53E3;" class="headerlink" title="Lambda&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;Functional&#x63A5;&#x53E3;"></a>Lambda&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;Functional&#x63A5;&#x53E3;</h3><p>Lambda&#x8868;&#x8FBE;&#x5F0F;&#xFF08;&#x4E5F;&#x79F0;&#x4E3A;&#x95ED;&#x5305;&#xFF09;&#x662F;&#x6574;&#x4E2A;Java 8&#x53D1;&#x884C;&#x7248;&#x4E2D;&#x6700;&#x53D7;&#x671F;&#x5F85;&#x7684;&#x5728;Java&#x8BED;&#x8A00;&#x5C42;&#x9762;&#x4E0A;&#x7684;&#x6539;&#x53D8;&#xFF0C;Lambda&#x5141;&#x8BB8;&#x628A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x8FDB;&#x65B9;&#x6CD5;&#x4E2D;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x628A;&#x4EE3;&#x7801;&#x770B;&#x6210;&#x6570;&#x636E;&#xFF1A;&#x51FD;&#x6570;&#x5F0F;&#x7A0B;&#x5E8F;&#x5458;&#x5BF9;&#x8FD9;&#x4E00;&#x6982;&#x5FF5;&#x975E;&#x5E38;&#x719F;&#x6089;&#x3002;&#x5728;JVM&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x5F88;&#x591A;&#x8BED;&#x8A00;&#xFF08;Groovy&#xFF0C;Scala&#xFF0C;&#x2026;&#x2026;&#xFF09;&#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x6709;Lambda&#xFF0C;&#x4F46;&#x662F;Java&#x7A0B;&#x5E8F;&#x5458;&#x4E0D;&#x5F97;&#x4E0D;&#x4F7F;&#x7528;&#x6BEB;&#x65E0;&#x65B0;&#x610F;&#x7684;&#x533F;&#x540D;&#x7C7B;&#x6765;&#x4EE3;&#x66FF;lambda&#x3002;</p>
-<p>&#x5173;&#x4E8E;Lambda&#x8BBE;&#x8BA1;&#x7684;&#x8BA8;&#x8BBA;&#x5360;&#x7528;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x4E0E;&#x793E;&#x533A;&#x7684;&#x52AA;&#x529B;&#x3002;&#x53EF;&#x559C;&#x7684;&#x662F;&#xFF0C;&#x6700;&#x7EC8;&#x627E;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x5E73;&#x8861;&#x70B9;&#xFF0C;&#x4F7F;&#x5F97;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x79CD;&#x5373;&#x7B80;&#x6D01;&#x53C8;&#x7D27;&#x51D1;&#x7684;&#x65B0;&#x65B9;&#x5F0F;&#x6765;&#x6784;&#x9020;Lambdas&#x3002;&#x5728;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5F62;&#x5F0F;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;lambda&#x53EF;&#x4EE5;&#x7531;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7684;&#x53C2;&#x6570;&#x5217;&#x8868;&#x3001;&#x2013;&gt;&#x7B26;&#x53F7;&#x4E0E;&#x51FD;&#x6570;&#x4F53;&#x4E09;&#x90E8;&#x5206;&#x8868;&#x793A;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<h2 id="Java语言的新特性"><a href="#Java语言的新特性" class="headerlink" title="Java语言的新特性"></a>Java语言的新特性</h2><p>不管怎么说，Java 8都是一个变化巨大的版本。你可能认为Java 8耗费了大量的时间才得以完成是为了实现了每个Java程序员所期待的特性。在这个小节里，我们将会涉及到这些特性的大部分。</p>
+<h3 id="Lambda表达式与Functional接口"><a href="#Lambda表达式与Functional接口" class="headerlink" title="Lambda表达式与Functional接口"></a>Lambda表达式与Functional接口</h3><p>Lambda表达式（也称为闭包）是整个Java 8发行版中最受期待的在Java语言层面上的改变，Lambda允许把函数作为一个方法的参数（函数作为参数传递进方法中），或者把代码看成数据：函数式程序员对这一概念非常熟悉。在JVM平台上的很多语言（Groovy，Scala，……）从一开始就有Lambda，但是Java程序员不得不使用毫无新意的匿名类来代替lambda。</p>
+<p>关于Lambda设计的讨论占用了大量的时间与社区的努力。可喜的是，最终找到了一个平衡点，使得可以使用一种即简洁又紧凑的新方式来构造Lambdas。在最简单的形式中，一个lambda可以由用逗号分隔的参数列表、–&gt;符号与函数体三部分表示。例如：</p>
 <pre><code class="lang-java">Arrays.asList( &quot;a&quot;, &quot;b&quot;, &quot;d&quot; ).forEach( e -&gt; System.out.println( e ) );
 </code></pre>
-<p>&#x8BF7;&#x6CE8;&#x610F;&#x53C2;&#x6570;e&#x7684;&#x7C7B;&#x578B;&#x662F;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x63A8;&#x6D4B;&#x51FA;&#x6765;&#x7684;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x628A;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E0E;&#x53C2;&#x6570;&#x5305;&#x62EC;&#x5728;&#x62EC;&#x53F7;&#x4E2D;&#x7684;&#x5F62;&#x5F0F;&#x76F4;&#x63A5;&#x7ED9;&#x51FA;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#xFF1A;</p>
+<p>请注意参数e的类型是由编译器推测出来的。同时，你也可以通过把参数类型与参数包括在括号中的形式直接给出参数的类型：</p>
 <pre><code class="lang-java">Arrays.asList( &quot;a&quot;, &quot;b&quot;, &quot;d&quot; ).forEach( ( String e ) -&gt; System.out.println( e ) );
 </code></pre>
-<p>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;lambda&#x7684;&#x51FD;&#x6570;&#x4F53;&#x4F1A;&#x66F4;&#x52A0;&#x590D;&#x6742;&#xFF0C;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x628A;&#x51FD;&#x6570;&#x4F53;&#x653E;&#x5230;&#x5728;&#x4E00;&#x5BF9;&#x82B1;&#x62EC;&#x53F7;&#x4E2D;&#xFF0C;&#x5C31;&#x50CF;&#x5728;Java&#x4E2D;&#x5B9A;&#x4E49;&#x666E;&#x901A;&#x51FD;&#x6570;&#x4E00;&#x6837;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>在某些情况下lambda的函数体会更加复杂，这时可以把函数体放到在一对花括号中，就像在Java中定义普通函数一样。例如：</p>
 <pre><code class="lang-java">Arrays.asList( &quot;a&quot;, &quot;b&quot;, &quot;d&quot; ).forEach( e -&gt; {
     System.out.print( e );
     System.out.print( e );
 } );
 </code></pre>
-<p>Lambda&#x53EF;&#x4EE5;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E0E;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF08;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x4E0D;&#x662F;final&#x7684;&#x8BDD;&#xFF0C;&#x5B83;&#x4EEC;&#x4F1A;&#x88AB;&#x9690;&#x542B;&#x7684;&#x8F6C;&#x4E3A;final&#xFF0C;&#x8FD9;&#x6837;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#xFF09;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF1A;</p>
+<p>Lambda可以引用类的成员变量与局部变量（如果这些变量不是final的话，它们会被隐含的转为final，这样效率更高）。例如，下面两个代码片段是等价的：</p>
 <pre><code class="lang-java">String separator = &quot;,&quot;;
 Arrays.asList( &quot;a&quot;, &quot;b&quot;, &quot;d&quot; ).forEach(
     ( String e ) -&gt; System.out.print( e + separator ) );
 </code></pre>
-<p>&#x548C;</p>
+<p>和</p>
 <pre><code class="lang-java">final String separator = &quot;,&quot;;
 Arrays.asList( &quot;a&quot;, &quot;b&quot;, &quot;d&quot; ).forEach(
     ( String e ) -&gt; System.out.print( e + separator ) );
 </code></pre>
-<p>&#x8BED;&#x8A00;&#x8BBE;&#x8BA1;&#x8005;&#x6295;&#x5165;&#x4E86;&#x5927;&#x91CF;&#x7CBE;&#x529B;&#x6765;&#x601D;&#x8003;&#x5982;&#x4F55;&#x4F7F;&#x73B0;&#x6709;&#x7684;&#x51FD;&#x6570;&#x53CB;&#x597D;&#x5730;&#x652F;&#x6301;lambda&#x3002;&#x6700;&#x7EC8;&#x91C7;&#x53D6;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;&#x589E;&#x52A0;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x666E;&#x901A;&#x63A5;&#x53E3;&#x3002;&#x50CF;&#x8FD9;&#x6837;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x9690;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;lambda&#x8868;&#x8FBE;&#x5F0F;&#x3002;java.lang.Runnable&#x4E0E;java.util.concurrent.Callable&#x662F;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x6700;&#x5178;&#x578B;&#x7684;&#x4E24;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x662F;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x7684;&#xFF1A;&#x5982;&#x6709;&#x67D0;&#x4E2A;&#x4EBA;&#x5728;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x4E2D;&#x589E;&#x52A0;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x5C31;&#x4E0D;&#x518D;&#x662F;&#x51FD;&#x6570;&#x5F0F;&#x7684;&#x4E86;&#xFF0C;&#x5E76;&#x4E14;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E5F;&#x4F1A;&#x5931;&#x8D25;&#x3002;&#x4E3A;&#x4E86;&#x514B;&#x670D;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x7684;&#x8FD9;&#x79CD;&#x8106;&#x5F31;&#x6027;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x660E;&#x786E;&#x58F0;&#x660E;&#x63A5;&#x53E3;&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x7684;&#x610F;&#x56FE;&#xFF0C;Java 8&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x6CE8;&#x89E3;<code>@FunctionalInterface</code>&#xFF08;Java 8&#x4E2D;&#x6240;&#x6709;&#x7C7B;&#x5E93;&#x7684;&#x5DF2;&#x6709;&#x63A5;&#x53E3;&#x90FD;&#x6DFB;&#x52A0;&#x4E86;<code>@FunctionalInterface</code>&#x6CE8;&#x89E3;&#xFF09;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x79CD;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<p>语言设计者投入了大量精力来思考如何使现有的函数友好地支持lambda。最终采取的方法是：增加函数式接口的概念。函数式接口就是一个具有一个方法的普通接口。像这样的接口，可以被隐式转换为lambda表达式。java.lang.Runnable与java.util.concurrent.Callable是函数式接口最典型的两个例子。在实际使用过程中，函数式接口是容易出错的：如有某个人在接口定义中增加了另一个方法，这时，这个接口就不再是函数式的了，并且编译过程也会失败。为了克服函数式接口的这种脆弱性并且能够明确声明接口作为函数式接口的意图，Java 8增加了一种特殊的注解<code>@FunctionalInterface</code>（Java 8中所有类库的已有接口都添加了<code>@FunctionalInterface</code>注解）。让我们看一下这种函数式接口的定义：</p>
 <pre><code class="lang-java">@FunctionalInterface
 public interface Functional {
     void method();
 }
 </code></pre>
-<p>&#x9700;&#x8981;&#x8BB0;&#x4F4F;&#x7684;&#x4E00;&#x4EF6;&#x4E8B;&#x662F;&#xFF1A;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x5E76;&#x4E0D;&#x5F71;&#x54CD;&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;&#x7684;&#x5951;&#x7EA6;&#xFF0C;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x4F7F;&#x7528;&#xFF1A;</p>
+<p>需要记住的一件事是：默认方法与静态方法并不影响函数式接口的契约，可以任意使用：</p>
 <pre><code class="lang-java">@FunctionalInterface
 public interface FunctionalDefaultMethods {
     void method();
@@ -139,9 +139,9 @@ public interface FunctionalDefaultMethods {
     }
 }
 </code></pre>
-<p>Lambda&#x662F;Java 8&#x6700;&#x5927;&#x7684;&#x5356;&#x70B9;&#x3002;&#x5B83;&#x5177;&#x6709;&#x5438;&#x5F15;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x7A0B;&#x5E8F;&#x5458;&#x5230;Java&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x6F5C;&#x529B;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x5728;&#x7EAF;Java&#x8BED;&#x8A00;&#x73AF;&#x5883;&#x4E2D;&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x4F18;&#x96C5;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x652F;&#x6301;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x3002;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;</p>
-<h3 id="&#x63A5;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;"><a href="#&#x63A5;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;" class="headerlink" title="&#x63A5;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;"></a>&#x63A5;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;</h3><p>Java 8&#x7528;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x8FD9;&#x4E24;&#x4E2A;&#x65B0;&#x6982;&#x5FF5;&#x6765;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x7684;&#x58F0;&#x660E;&#x3002;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4F7F;&#x63A5;&#x53E3;&#x6709;&#x70B9;&#x50CF;Traits&#xFF08;Scala&#x4E2D;&#x7279;&#x5F81;(trait)&#x7C7B;&#x4F3C;&#x4E8E;Java&#x4E2D;&#x7684;Interface&#xFF0C;&#x4F46;&#x5B83;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x76EE;&#x524D;Java8&#x65B0;&#x589E;&#x7684;&#x529F;&#x80FD;&#xFF09;&#xFF0C;&#x4F46;&#x4E0E;&#x4F20;&#x7EDF;&#x7684;&#x63A5;&#x53E3;&#x53C8;&#x6709;&#x4E9B;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x5728;&#x5DF2;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x540C;&#x65F6;&#x53C8;&#x4FDD;&#x6301;&#x4E86;&#x4E0E;&#x65E7;&#x7248;&#x672C;&#x4EE3;&#x7801;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x3002;</p>
-<p>&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6C42;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x5219;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x8981;&#x6C42;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x6BCF;&#x4E2A;&#x63A5;&#x53E3;&#x90FD;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x6240;&#x8C13;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x6837;&#x6240;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x8005;&#x5C06;&#x4F1A;&#x9ED8;&#x8BA4;&#x7EE7;&#x627F;&#x5B83;&#xFF08;&#x5982;&#x679C;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x8986;&#x76D6;&#x8FD9;&#x4E2A;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF09;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>Lambda是Java 8最大的卖点。它具有吸引越来越多程序员到Java平台上的潜力，并且能够在纯Java语言环境中提供一种优雅的方式来支持函数式编程。更多详情可以参考<a href="http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" target="_blank" rel="external">官方文档</a>。</p>
+<h3 id="接口的默认方法与静态方法"><a href="#接口的默认方法与静态方法" class="headerlink" title="接口的默认方法与静态方法"></a>接口的默认方法与静态方法</h3><p>Java 8用默认方法与静态方法这两个新概念来扩展接口的声明。默认方法使接口有点像Traits（Scala中特征(trait)类似于Java中的Interface，但它可以包含实现代码，也就是目前Java8新增的功能），但与传统的接口又有些不一样，它允许在已有的接口中添加新方法，而同时又保持了与旧版本代码的兼容性。</p>
+<p>默认方法与抽象方法不同之处在于抽象方法必须要求实现，但是默认方法则没有这个要求。相反，每个接口都必须提供一个所谓的默认实现，这样所有的接口实现者将会默认继承它（如果有必要的话，可以覆盖这个默认实现）。让我们看看下面的例子：</p>
 <pre><code class="lang-java">private interface Defaulable {
     // Interfaces now allow default methods, the implementer may or
     // may not implement (override) them.
@@ -160,8 +160,8 @@ private static class OverridableImpl implements Defaulable {
     }
 }
 </code></pre>
-<p>Defaulable&#x63A5;&#x53E3;&#x7528;&#x5173;&#x952E;&#x5B57;default&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;notRequired()&#xFF0C;Defaulable&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x8005;&#x4E4B;&#x4E00;DefaultableImpl&#x5B9E;&#x73B0;&#x4E86;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x4E14;&#x8BA9;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x3002;Defaulable&#x63A5;&#x53E3;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x8005;OverridableImpl&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x65B9;&#x6CD5;&#x8986;&#x76D6;&#x4E86;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>Java 8&#x5E26;&#x6765;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x7279;&#x6027;&#x662F;&#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x58F0;&#x660E;&#xFF08;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x5B9E;&#x73B0;&#xFF09;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>Defaulable接口用关键字default声明了一个默认方法notRequired()，Defaulable接口的实现者之一DefaultableImpl实现了这个接口，并且让默认方法保持原样。Defaulable接口的另一个实现者OverridableImpl用自己的方法覆盖了默认方法。</p>
+<p>Java 8带来的另一个有趣的特性是接口可以声明（并且可以提供实现）静态方法。例如：</p>
 <pre><code class="lang-java">private interface DefaulableFactory {
     // Interfaces now allow static methods
     static Defaulable create( Supplier&lt; Defaulable &gt; supplier ) {
@@ -169,7 +169,7 @@ private static class OverridableImpl implements Defaulable {
     }
 }
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x7684;&#x4E00;&#x5C0F;&#x6BB5;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x628A;&#x4E0A;&#x9762;&#x7684;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x9ECF;&#x5408;&#x5230;&#x4E00;&#x8D77;:</p>
+<p>下面的一小段代码片段把上面的默认方法与静态方法黏合到一起:</p>
 <pre><code class="lang-java">public static void main( String[] args ) {
     Defaulable defaulable = DefaulableFactory.create( DefaultableImpl::new );
     System.out.println( defaulable.notRequired() );
@@ -178,14 +178,14 @@ private static class OverridableImpl implements Defaulable {
     System.out.println( defaulable.notRequired() );
 }
 </code></pre>
-<p>&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>这个程序的控制台输出如下：</p>
 <pre><code class="lang-bash">Default implementation
 Overridden implementation
 </code></pre>
-<p>&#x5728;JVM&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x975E;&#x5E38;&#x9AD8;&#x6548;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x4E3A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x63D0;&#x4F9B;&#x4E86;&#x652F;&#x6301;&#x3002;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x5141;&#x8BB8;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x73B0;&#x6709;&#x7684;Java&#x63A5;&#x53E3;&#xFF0C;&#x800C;&#x540C;&#x65F6;&#x80FD;&#x591F;&#x4FDD;&#x969C;&#x6B63;&#x5E38;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x3002;&#x8FD9;&#x65B9;&#x9762;&#x597D;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x5927;&#x91CF;&#x7684;&#x65B9;&#x6CD5;&#x88AB;&#x6DFB;&#x52A0;&#x5230;java.util.Collection&#x63A5;&#x53E3;&#x4E2D;&#x53BB;&#xFF1A;stream()&#xFF0C;parallelStream()&#xFF0C;forEach()&#xFF0C;removeIf()&#xFF0C;&#x2026;&#x2026;</p>
-<p>&#x5C3D;&#x7BA1;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x975E;&#x5E38;&#x5F3A;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x65F6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C0F;&#x5FC3;&#x6CE8;&#x610F;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#xFF1A;&#x5728;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x524D;&#xFF0C;&#x8BF7;&#x4ED4;&#x7EC6;&#x601D;&#x8003;&#x662F;&#x4E0D;&#x662F;&#x771F;&#x7684;&#x6709;&#x5FC5;&#x8981;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4F1A;&#x5E26;&#x7ED9;&#x7A0B;&#x5E8F;&#x6B67;&#x4E49;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x590D;&#x6742;&#x7684;&#x7EE7;&#x627F;&#x4F53;&#x7CFB;&#x4E2D;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a></p>
-<h3 id="&#x65B9;&#x6CD5;&#x5F15;&#x7528;"><a href="#&#x65B9;&#x6CD5;&#x5F15;&#x7528;" class="headerlink" title="&#x65B9;&#x6CD5;&#x5F15;&#x7528;"></a>&#x65B9;&#x6CD5;&#x5F15;&#x7528;</h3><p>&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x63D0;&#x4F9B;&#x4E86;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x5DF2;&#x6709;Java&#x7C7B;&#x6216;&#x5BF9;&#x8C61;&#xFF08;&#x5B9E;&#x4F8B;&#xFF09;&#x7684;&#x65B9;&#x6CD5;&#x6216;&#x6784;&#x9020;&#x5668;&#x3002;&#x4E0E;lambda&#x8054;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x53EF;&#x4EE5;&#x4F7F;&#x8BED;&#x8A00;&#x7684;&#x6784;&#x9020;&#x66F4;&#x7D27;&#x51D1;&#x7B80;&#x6D01;&#xFF0C;&#x51CF;&#x5C11;&#x5197;&#x4F59;&#x4EE3;&#x7801;&#x3002;</p>
-<p>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;&#x5B9A;&#x4E49;&#x4E86;4&#x4E2A;&#x65B9;&#x6CD5;&#x7684;Car&#x8FD9;&#x4E2A;&#x7C7B;&#x4F5C;&#x4E3A;&#x4F8B;&#x5B50;&#xFF0C;&#x533A;&#x5206;Java&#x4E2D;&#x652F;&#x6301;&#x7684;4&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5F15;&#x7528;:</p>
+<p>在JVM中，默认方法的实现是非常高效的，并且通过字节码指令为方法调用提供了支持。默认方法允许继续使用现有的Java接口，而同时能够保障正常的编译过程。这方面好的例子是大量的方法被添加到java.util.Collection接口中去：stream()，parallelStream()，forEach()，removeIf()，……</p>
+<p>尽管默认方法非常强大，但是在使用默认方法时我们需要小心注意一个地方：在声明一个默认方法前，请仔细思考是不是真的有必要使用默认方法，因为默认方法会带给程序歧义，并且在复杂的继承体系中容易产生编译错误。更多详情请参考<a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html" target="_blank" rel="external">官方文档</a></p>
+<h3 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h3><p>方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。</p>
+<p>下面，我们以定义了4个方法的Car这个类作为例子，区分Java中支持的4种不同的方法引用:</p>
 <pre><code class="lang-java">public static class Car {
     public static Car create( final Supplier&lt; Car &gt; supplier ) {
         return supplier.get();
@@ -204,28 +204,28 @@ Overridden implementation
     }
 }
 </code></pre>
-<p>&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x662F;&#x6784;&#x9020;&#x5668;&#x5F15;&#x7528;&#xFF0C;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x662F;Class::new&#xFF0C;&#x6216;&#x8005;&#x66F4;&#x4E00;&#x822C;&#x7684;Class&lt; T &gt;::new&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#x6784;&#x9020;&#x5668;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x3002;</p>
+<p>第一种方法引用是构造器引用，它的语法是Class::new，或者更一般的Class&lt; T &gt;::new。请注意构造器没有参数。</p>
 <pre><code class="lang-java">final Car car = Car.create( Car::new );
 final List&lt; Car &gt; cars = Arrays.asList( car );
 </code></pre>
-<p>&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x662F;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#xFF0C;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x662F;Class::static_method&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;Car&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>第二种方法引用是静态方法引用，它的语法是Class::static_method。请注意这个方法接受一个Car类型的参数。</p>
 <pre><code class="lang-java">cars.forEach( Car::collide );
 </code></pre>
-<p>&#x7B2C;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x662F;&#x7279;&#x5B9A;&#x7C7B;&#x7684;&#x4EFB;&#x610F;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#xFF0C;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x662F;Class::method&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x3002;</p>
+<p>第三种方法引用是特定类的任意对象的方法引用，它的语法是Class::method。请注意，这个方法没有参数。</p>
 <pre><code class="lang-java">cars.forEach( Car::repair );
 </code></pre>
-<p>&#x6700;&#x540E;&#xFF0C;&#x7B2C;&#x56DB;&#x79CD;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x662F;&#x7279;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#xFF0C;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x662F;instance::method&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;Car&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;</p>
+<p>最后，第四种方法引用是特定对象的方法引用，它的语法是instance::method。请注意，这个方法接受一个Car类型的参数</p>
 <pre><code class="lang-java">final Car police = Car.create( Car::new );
 cars.forEach( police::follow );
 </code></pre>
-<p>&#x8FD0;&#x884C;&#x4E0A;&#x9762;&#x7684;Java&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x4F1A;&#x6709;&#x4E0B;&#x9762;&#x7684;&#x8F93;&#x51FA;&#xFF08;Car&#x7684;&#x5B9E;&#x4F8B;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x6837;&#xFF09;&#xFF1A;</p>
+<p>运行上面的Java程序在控制台上会有下面的输出（Car的实例可能不一样）：</p>
 <pre><code class="lang-java">Collided com.javacodegeeks.java8.method.references.MethodReferences$Car@7a81197d
 Repaired com.javacodegeeks.java8.method.references.MethodReferences$Car@7a81197d
 Following the com.javacodegeeks.java8.method.references.MethodReferences$Car@7a81197d
 </code></pre>
-<p>&#x5173;&#x4E8E;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x7684;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;</p>
-<h3 id="&#x91CD;&#x590D;&#x6CE8;&#x89E3;"><a href="#&#x91CD;&#x590D;&#x6CE8;&#x89E3;" class="headerlink" title="&#x91CD;&#x590D;&#x6CE8;&#x89E3;"></a>&#x91CD;&#x590D;&#x6CE8;&#x89E3;</h3><p>&#x81EA;&#x4ECE;Java 5&#x5F15;&#x5165;&#x4E86;&#x6CE8;&#x89E3;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x4E00;&#x7279;&#x6027;&#x5C31;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x6D41;&#x884C;&#x5E76;&#x4E14;&#x5E7F;&#x4E3A;&#x4F7F;&#x7528;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x7684;&#x4E00;&#x4E2A;&#x9650;&#x5236;&#x662F;&#x76F8;&#x540C;&#x7684;&#x6CE8;&#x89E3;&#x5728;&#x540C;&#x4E00;&#x4F4D;&#x7F6E;&#x53EA;&#x80FD;&#x58F0;&#x660E;&#x4E00;&#x6B21;&#xFF0C;&#x4E0D;&#x80FD;&#x58F0;&#x660E;&#x591A;&#x6B21;&#x3002;Java 8&#x6253;&#x7834;&#x4E86;&#x8FD9;&#x6761;&#x89C4;&#x5219;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x91CD;&#x590D;&#x6CE8;&#x89E3;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x6837;&#x76F8;&#x540C;&#x7684;&#x6CE8;&#x89E3;&#x53EF;&#x4EE5;&#x5728;&#x540C;&#x4E00;&#x5730;&#x65B9;&#x58F0;&#x660E;&#x591A;&#x6B21;&#x3002;</p>
-<p>&#x91CD;&#x590D;&#x6CE8;&#x89E3;&#x673A;&#x5236;&#x672C;&#x8EAB;&#x5FC5;&#x987B;&#x7528;@Repeatable&#x6CE8;&#x89E3;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x8BED;&#x8A00;&#x5C42;&#x9762;&#x4E0A;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x6280;&#x5DE7;&#xFF0C;&#x5E95;&#x5C42;&#x7684;&#x539F;&#x7406;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E2A;&#x5FEB;&#x901F;&#x5165;&#x95E8;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>关于方法引用的更多详情请参考<a href="http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html" target="_blank" rel="external">官方文档</a>。</p>
+<h3 id="重复注解"><a href="#重复注解" class="headerlink" title="重复注解"></a>重复注解</h3><p>自从Java 5引入了注解机制，这一特性就变得非常流行并且广为使用。然而，使用注解的一个限制是相同的注解在同一位置只能声明一次，不能声明多次。Java 8打破了这条规则，引入了重复注解机制，这样相同的注解可以在同一地方声明多次。</p>
+<p>重复注解机制本身必须用@Repeatable注解。事实上，这并不是语言层面上的改变，更多的是编译器的技巧，底层的原理保持不变。让我们看一个快速入门的例子：</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.repeatable.annotations;
 
 import java.lang.annotation.ElementType;
@@ -260,14 +260,14 @@ public class RepeatingAnnotations {
     }
 }
 </code></pre>
-<p>&#x6B63;&#x5982;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E2A;&#x4F7F;&#x7528;@Repeatable( Filters.class )&#x6CE8;&#x89E3;&#x7684;&#x6CE8;&#x89E3;&#x7C7B;Filter&#xFF0C;Filters&#x4EC5;&#x4EC5;&#x662F;Filter&#x6CE8;&#x89E3;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x4F46;Java&#x7F16;&#x8BD1;&#x5668;&#x5E76;&#x4E0D;&#x60F3;&#x8BA9;&#x7A0B;&#x5E8F;&#x5458;&#x610F;&#x8BC6;&#x5230;Filters&#x7684;&#x5B58;&#x5728;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x63A5;&#x53E3;Filterable&#x5C31;&#x62E5;&#x6709;&#x4E86;&#x4E24;&#x6B21;Filter&#xFF08;&#x5E76;&#x6CA1;&#x6709;&#x63D0;&#x5230;Filter&#xFF09;&#x6CE8;&#x89E3;&#x3002;</p>
-<p>&#x540C;&#x65F6;&#xFF0C;&#x53CD;&#x5C04;&#x76F8;&#x5173;&#x7684;API&#x63D0;&#x4F9B;&#x4E86;&#x65B0;&#x7684;&#x51FD;&#x6570;<code>getAnnotationsByType()</code>&#x6765;&#x8FD4;&#x56DE;&#x91CD;&#x590D;&#x6CE8;&#x89E3;&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x8BF7;&#x6CE8;&#x610F;<code>Filterable.class.getAnnotation(Filters.class)</code>&#x7ECF;&#x7F16;&#x8BD1;&#x5668;&#x5904;&#x7406;&#x540E;&#x5C06;&#x4F1A;&#x8FD4;&#x56DE;Filters&#x7684;&#x5B9E;&#x4F8B;&#xFF09;&#x3002;</p>
-<p>&#x7A0B;&#x5E8F;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>正如我们看到的，这里有个使用@Repeatable( Filters.class )注解的注解类Filter，Filters仅仅是Filter注解的数组，但Java编译器并不想让程序员意识到Filters的存在。这样，接口Filterable就拥有了两次Filter（并没有提到Filter）注解。</p>
+<p>同时，反射相关的API提供了新的函数<code>getAnnotationsByType()</code>来返回重复注解的类型（请注意<code>Filterable.class.getAnnotation(Filters.class)</code>经编译器处理后将会返回Filters的实例）。</p>
+<p>程序输出结果如下：</p>
 <pre><code class="lang-java">filter1
 filter2
 </code></pre>
-<p>&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a></p>
-<h3 id="&#x66F4;&#x597D;&#x7684;&#x7C7B;&#x578B;&#x63A8;&#x6D4B;&#x673A;&#x5236;"><a href="#&#x66F4;&#x597D;&#x7684;&#x7C7B;&#x578B;&#x63A8;&#x6D4B;&#x673A;&#x5236;" class="headerlink" title="&#x66F4;&#x597D;&#x7684;&#x7C7B;&#x578B;&#x63A8;&#x6D4B;&#x673A;&#x5236;"></a>&#x66F4;&#x597D;&#x7684;&#x7C7B;&#x578B;&#x63A8;&#x6D4B;&#x673A;&#x5236;</h3><p>Java 8&#x5728;&#x7C7B;&#x578B;&#x63A8;&#x6D4B;&#x65B9;&#x9762;&#x6709;&#x4E86;&#x5F88;&#x5927;&#x7684;&#x63D0;&#x9AD8;&#x3002;&#x5728;&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x63A8;&#x6D4B;&#x51FA;&#x786E;&#x5B9A;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x80FD;&#x4F7F;&#x4EE3;&#x7801;&#x66F4;&#x6574;&#x6D01;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>更多详情请参考<a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html" target="_blank" rel="external">官方文档</a></p>
+<h3 id="更好的类型推测机制"><a href="#更好的类型推测机制" class="headerlink" title="更好的类型推测机制"></a>更好的类型推测机制</h3><p>Java 8在类型推测方面有了很大的提高。在很多情况下，编译器可以推测出确定的参数类型，这样就能使代码更整洁。让我们看一个例子：</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.type.inference;
 
 public class Value&lt; T &gt; {
@@ -279,7 +279,7 @@ public class Value&lt; T &gt; {
     }
 }
 </code></pre>
-<p>&#x8FD9;&#x91CC;&#x662F;<code>Value&lt;String&gt;</code>&#x7C7B;&#x578B;&#x7684;&#x7528;&#x6CD5;&#x3002;</p>
+<p>这里是<code>Value&lt;String&gt;</code>类型的用法。</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.type.inference;
 
 public class TypeInference {
@@ -289,8 +289,8 @@ public class TypeInference {
     }
 }
 </code></pre>
-<p>Value.defaultValue()&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x88AB;&#x63A8;&#x6D4B;&#x51FA;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x4E0D;&#x5FC5;&#x660E;&#x786E;&#x7ED9;&#x51FA;&#x3002;&#x5728;Java 7&#x4E2D;&#xFF0C;&#x76F8;&#x540C;&#x7684;&#x4F8B;&#x5B50;&#x5C06;&#x4E0D;&#x4F1A;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#xFF0C;&#x6B63;&#x786E;&#x7684;&#x4E66;&#x5199;&#x65B9;&#x5F0F;&#x662F; Value.&lt; String &gt;defaultValue()&#x3002;</p>
-<h3 id="&#x6269;&#x5C55;&#x6CE8;&#x89E3;&#x7684;&#x652F;&#x6301;"><a href="#&#x6269;&#x5C55;&#x6CE8;&#x89E3;&#x7684;&#x652F;&#x6301;" class="headerlink" title="&#x6269;&#x5C55;&#x6CE8;&#x89E3;&#x7684;&#x652F;&#x6301;"></a>&#x6269;&#x5C55;&#x6CE8;&#x89E3;&#x7684;&#x652F;&#x6301;</h3><p>Java 8&#x6269;&#x5C55;&#x4E86;&#x6CE8;&#x89E3;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x3002;&#x73B0;&#x5728;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x4E3A;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF1A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3001;&#x6CDB;&#x578B;&#x7C7B;&#x3001;&#x7236;&#x7C7B;&#x4E0E;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5C31;&#x8FDE;&#x65B9;&#x6CD5;&#x7684;&#x5F02;&#x5E38;&#x4E5F;&#x80FD;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#x3002;&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>Value.defaultValue()的参数类型可以被推测出，所以就不必明确给出。在Java 7中，相同的例子将不会通过编译，正确的书写方式是 Value.&lt; String &gt;defaultValue()。</p>
+<h3 id="扩展注解的支持"><a href="#扩展注解的支持" class="headerlink" title="扩展注解的支持"></a>扩展注解的支持</h3><p>Java 8扩展了注解的上下文。现在几乎可以为任何东西添加注解：局部变量、泛型类、父类与接口的实现，就连方法的异常也能添加注解。下面演示几个例子：</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.annotations;
 
 import java.lang.annotation.ElementType;
@@ -318,8 +318,8 @@ public class Annotations {
     }
 }
 </code></pre>
-<p>ElementType.TYPE_USE&#x548C;ElementType.TYPE_PARAMETER&#x662F;&#x4E24;&#x4E2A;&#x65B0;&#x6DFB;&#x52A0;&#x7684;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x9002;&#x5F53;&#x7684;&#x6CE8;&#x89E3;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x3002;&#x5728;Java&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x6CE8;&#x89E3;&#x5904;&#x7406;API&#x4E5F;&#x6709;&#x5C0F;&#x7684;&#x6539;&#x52A8;&#x6765;&#x8BC6;&#x522B;&#x65B0;&#x589E;&#x7684;&#x7C7B;&#x578B;&#x6CE8;&#x89E3;&#x3002;</p>
-<h2 id="Java&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x65B0;&#x7279;&#x6027;"><a href="#Java&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x65B0;&#x7279;&#x6027;" class="headerlink" title="Java&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x65B0;&#x7279;&#x6027;"></a>Java&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x65B0;&#x7279;&#x6027;</h2><h3 id="&#x53C2;&#x6570;&#x540D;&#x5B57;"><a href="#&#x53C2;&#x6570;&#x540D;&#x5B57;" class="headerlink" title="&#x53C2;&#x6570;&#x540D;&#x5B57;"></a>&#x53C2;&#x6570;&#x540D;&#x5B57;</h3><p>&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x91CC;&#xFF0C;Java&#x7A0B;&#x5E8F;&#x5458;&#x4E00;&#x76F4;&#x5728;&#x53D1;&#x660E;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x4F7F;&#x5F97;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x7684;&#x540D;&#x5B57;&#x80FD;&#x4FDD;&#x7559;&#x5728;Java&#x5B57;&#x8282;&#x7801;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x83B7;&#x53D6;&#x5B83;&#x4EEC;&#xFF08;&#x6BD4;&#x5982;&#xFF0C;Paranamer&#x7C7B;&#x5E93;&#xFF09;&#x3002;&#x6700;&#x7EC8;&#xFF0C;&#x5728;Java 8&#x4E2D;&#x628A;&#x8FD9;&#x4E2A;&#x5F3A;&#x70C8;&#x8981;&#x6C42;&#x7684;&#x529F;&#x80FD;&#x6DFB;&#x52A0;&#x5230;&#x8BED;&#x8A00;&#x5C42;&#x9762;&#xFF08;&#x901A;&#x8FC7;&#x53CD;&#x5C04;API&#x4E0E;Parameter.getName()&#x65B9;&#x6CD5;&#xFF09;&#x4E0E;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#xFF08;&#x901A;&#x8FC7;&#x65B0;&#x7248;&#x7684;javac&#x7684;&#x2013;parameters&#x9009;&#x9879;&#xFF09;&#x4E2D;&#x3002;</p>
+<p>ElementType.TYPE_USE和ElementType.TYPE_PARAMETER是两个新添加的用于描述适当的注解上下文的元素类型。在Java语言中，注解处理API也有小的改动来识别新增的类型注解。</p>
+<h2 id="Java编译器的新特性"><a href="#Java编译器的新特性" class="headerlink" title="Java编译器的新特性"></a>Java编译器的新特性</h2><h3 id="参数名字"><a href="#参数名字" class="headerlink" title="参数名字"></a>参数名字</h3><p>很长一段时间里，Java程序员一直在发明不同的方式使得方法参数的名字能保留在Java字节码中，并且能够在运行时获取它们（比如，Paranamer类库）。最终，在Java 8中把这个强烈要求的功能添加到语言层面（通过反射API与Parameter.getName()方法）与字节码文件（通过新版的javac的–parameters选项）中。</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.parameter.names;
 
 import java.lang.reflect.Method;
@@ -334,13 +334,13 @@ public class ParameterNames {
     }
 }
 </code></pre>
-<p>&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528;&#x2013;parameters&#x53C2;&#x6570;&#x6765;&#x7F16;&#x8BD1;&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x4E0B;&#x9762;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>如果不使用–parameters参数来编译这个类，然后运行这个类，会得到下面的输出：</p>
 <pre><code class="lang-java">Parameter: arg0
 </code></pre>
-<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x2013;parameters&#x53C2;&#x6570;&#x6765;&#x7F16;&#x8BD1;&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x7A0B;&#x5E8F;&#x7684;&#x7ED3;&#x6784;&#x4F1A;&#x6709;&#x6240;&#x4E0D;&#x540C;&#xFF08;&#x53C2;&#x6570;&#x7684;&#x771F;&#x5B9E;&#x540D;&#x5B57;&#x5C06;&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x6765;&#xFF09;&#xFF1A;</p>
+<p>如果使用–parameters参数来编译这个类，程序的结构会有所不同（参数的真实名字将会显示出来）：</p>
 <pre><code class="lang-java">Parameter: args
 </code></pre>
-<p>&#x5BF9;&#x4E8E;&#x6709;&#x7ECF;&#x9A8C;&#x7684;Maven&#x7528;&#x6237;&#xFF0C;&#x901A;&#x8FC7;maven-compiler-plugin&#x7684;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x5C06;-parameters&#x53C2;&#x6570;&#x6DFB;&#x52A0;&#x5230;&#x7F16;&#x8BD1;&#x5668;&#x4E2D;&#x53BB;&#x3002;</p>
+<p>对于有经验的Maven用户，通过maven-compiler-plugin的配置可以将-parameters参数添加到编译器中去。</p>
 <pre><code class="lang-xml">&lt;plugin&gt;
     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
     &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
@@ -353,42 +353,42 @@ public class ParameterNames {
 &lt;/plugin&gt;
 `
 </code></pre>
-<p>&#x9488;&#x5BF9;Java 8&#x6700;&#x65B0;&#x53D1;&#x5E03;&#x7684;Eclipse Kepler SR2&#xFF08;&#x8BF7;&#x68C0;&#x67E5;&#x8FD9;&#x91CC;&#x7684;&#x4E0B;&#x8F7D;&#x8BF4;&#x660E;&#xFF09;&#x63D0;&#x4F9B;&#x4E86;&#x975E;&#x5E38;&#x5B9E;&#x7528;&#x7684;&#x914D;&#x7F6E;&#x9009;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x56FE;&#x7684;&#x914D;&#x7F6E;&#x65B9;&#x5F0F;&#x6765;&#x63A7;&#x5236;&#x7F16;&#x8BD1;&#x5668;&#x884C;&#x4E3A;</p>
+<p>针对Java 8最新发布的Eclipse Kepler SR2（请检查这里的下载说明）提供了非常实用的配置选项，可以通过下图的配置方式来控制编译器行为</p>
 <blockquote>
-<p>ps:&#x539F;&#x6587;&#x94FE;&#x63A5;&#x5DF2;&#x5931;&#x6548;&#xFF01;&#x5728;&#x6700;&#x65B0;&#x7684;eclipse mars &#x7B49;&#x540E;&#x7EED;&#x7248;&#x672C;&#xFF0C;&#x53EA;&#x8981;&#x652F;&#x6301;jdk8&#x7684;&#x7248;&#x672C;&#x4E2D;&#x5747;&#x6709;&#x8BE5;&#x9009;&#x9879;&#x4E86;</p>
+<p>ps:原文链接已失效！在最新的eclipse mars 等后续版本，只要支持jdk8的版本中均有该选项了</p>
 </blockquote>
 <p><img src="/2016/10/08/java-8-features-tutorial/01.ECLIPSE-JAVA-COMPILER.png" alt=""></p>
-<p>&#x56FE;1. &#x914D;&#x7F6E;Eclipse&#x5DE5;&#x7A0B;&#x4F7F;&#x4E4B;&#x652F;&#x6301;Java 8&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x65B0;&#x7279;&#x6027;&#x2014;&#x2014;parameters&#x53C2;&#x6570;</p>
-<p>&#x6B64;&#x5916;&#xFF0C;Parameter&#x7C7B;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x65B9;&#x6CD5;isNamePresent()&#x6765;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x53C2;&#x6570;&#x7684;&#x540D;&#x5B57;&#x3002;</p>
-<h2 id="Java-&#x7C7B;&#x5E93;&#x7684;&#x65B0;&#x7279;&#x6027;"><a href="#Java-&#x7C7B;&#x5E93;&#x7684;&#x65B0;&#x7279;&#x6027;" class="headerlink" title="Java &#x7C7B;&#x5E93;&#x7684;&#x65B0;&#x7279;&#x6027;"></a>Java &#x7C7B;&#x5E93;&#x7684;&#x65B0;&#x7279;&#x6027;</h2><p>Java 8 &#x901A;&#x8FC7;&#x589E;&#x52A0;&#x5927;&#x91CF;&#x65B0;&#x7C7B;&#xFF0C;&#x6269;&#x5C55;&#x5DF2;&#x6709;&#x7C7B;&#x7684;&#x529F;&#x80FD;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x6539;&#x5584;&#x5BF9;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x3001;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x3001;&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x66F4;&#x591A;&#x65B9;&#x9762;&#x7684;&#x652F;&#x6301;&#x3002;</p>
-<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x81ED;&#x540D;&#x662D;&#x8457;&#x7684;&#x7A7A;&#x6307;&#x9488;&#x5F02;&#x5E38;&#x662F;&#x5BFC;&#x81F4;Java&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5931;&#x8D25;&#x7684;&#x6700;&#x5E38;&#x89C1;&#x539F;&#x56E0;&#x3002;&#x4EE5;&#x524D;&#xFF0C;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x7A7A;&#x6307;&#x9488;&#x5F02;&#x5E38;&#xFF0C;Google&#x516C;&#x53F8;&#x8457;&#x540D;&#x7684;Guava&#x9879;&#x76EE;&#x5F15;&#x5165;&#x4E86;Optional&#x7C7B;&#xFF0C;Guava&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x68C0;&#x67E5;&#x7A7A;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x9632;&#x6B62;&#x4EE3;&#x7801;&#x6C61;&#x67D3;&#xFF0C;&#x5B83;&#x9F13;&#x52B1;&#x7A0B;&#x5E8F;&#x5458;&#x5199;&#x66F4;&#x5E72;&#x51C0;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x53D7;&#x5230;<a href="https://github.com/google/guava" target="_blank" rel="external">Google Guava</a>&#x7684;&#x542F;&#x53D1;&#xFF0C;Optional&#x7C7B;&#x5DF2;&#x7ECF;&#x6210;&#x4E3A;Java 8&#x7C7B;&#x5E93;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
-<p>Optional&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E2A;&#x5BB9;&#x5668;&#xFF1A;&#x5B83;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x7C7B;&#x578B;T&#x7684;&#x503C;&#xFF0C;&#x6216;&#x8005;&#x4EC5;&#x4EC5;&#x4FDD;&#x5B58;null&#x3002;Optional&#x63D0;&#x4F9B;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x7528;&#x663E;&#x5F0F;&#x8FDB;&#x884C;&#x7A7A;&#x503C;&#x68C0;&#x6D4B;&#x3002;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/8/docs/api/" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x7528;&#x4E24;&#x4E2A;&#x5C0F;&#x4F8B;&#x5B50;&#x6765;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528;Optional&#x7C7B;&#xFF1A;&#x4E00;&#x4E2A;&#x5141;&#x8BB8;&#x4E3A;&#x7A7A;&#x503C;&#xFF0C;&#x4E00;&#x4E2A;&#x4E0D;&#x5141;&#x8BB8;&#x4E3A;&#x7A7A;&#x503C;&#x3002;</p>
+<p>图1. 配置Eclipse工程使之支持Java 8编译器的新特性——parameters参数</p>
+<p>此外，Parameter类有一个很方便的方法isNamePresent()来验证是否可以获取参数的名字。</p>
+<h2 id="Java-类库的新特性"><a href="#Java-类库的新特性" class="headerlink" title="Java 类库的新特性"></a>Java 类库的新特性</h2><p>Java 8 通过增加大量新类，扩展已有类的功能的方式来改善对并发编程、函数式编程、日期/时间相关操作以及其他更多方面的支持。</p>
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>到目前为止，臭名昭著的空指针异常是导致Java应用程序失败的最常见原因。以前，为了解决空指针异常，Google公司著名的Guava项目引入了Optional类，Guava通过使用检查空值的方式来防止代码污染，它鼓励程序员写更干净的代码。受到<a href="https://github.com/google/guava" target="_blank" rel="external">Google Guava</a>的启发，Optional类已经成为Java 8类库的一部分。</p>
+<p>Optional实际上是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。更多详情请参考<a href="http://docs.oracle.com/javase/8/docs/api/" target="_blank" rel="external">官方文档</a>。</p>
+<p>我们下面用两个小例子来演示如何使用Optional类：一个允许为空值，一个不允许为空值。</p>
 <pre><code class="lang-java">Optional&lt; String &gt; fullName = Optional.ofNullable( null );
 System.out.println( &quot;Full Name is set? &quot; + fullName.isPresent() );
 System.out.println( &quot;Full Name: &quot; + fullName.orElseGet( () -&gt; &quot;[none]&quot; ) );
 System.out.println( fullName.map( s -&gt; &quot;Hey &quot; + s + &quot;!&quot; ).orElse( &quot;Hey Stranger!&quot; ) );
 </code></pre>
-<p>&#x5982;&#x679C;Optional&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x4E3A;&#x975E;&#x7A7A;&#x503C;&#x7684;&#x8BDD;&#xFF0C;isPresent()&#x8FD4;&#x56DE;true&#xFF0C;&#x5426;&#x4ECE;&#x8FD4;&#x56DE;false&#x3002;&#x4E3A;&#x4E86;&#x9632;&#x6B62;Optional&#x4E3A;&#x7A7A;&#x503C;&#xFF0C;orElseGet()&#x65B9;&#x6CD5;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6765;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#x3002;map()&#x51FD;&#x6570;&#x5BF9;&#x5F53;&#x524D;Optional&#x7684;&#x503C;&#x8FDB;&#x884C;&#x8F6C;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Optional&#x5B9E;&#x4F8B;&#x3002;orElse()&#x65B9;&#x6CD5;&#x548C;orElseGet()&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;orElse&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>如果Optional类的实例为非空值的话，isPresent()返回true，否从返回false。为了防止Optional为空值，orElseGet()方法通过回调函数来产生一个默认值。map()函数对当前Optional的值进行转化，然后返回一个新的Optional实例。orElse()方法和orElseGet()方法类似，但是orElse接受一个默认值而不是一个回调函数。下面是这个程序的输出：</p>
 <pre><code class="lang-java">Full Name is set? false
 Full Name: [none]
 Hey Stranger!
 </code></pre>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x53E6;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>让我们来看看另一个例子：</p>
 <pre><code class="lang-java">Optional&lt; String &gt; firstName = Optional.of( &quot;Tom&quot; );
 System.out.println( &quot;First Name is set? &quot; + firstName.isPresent() );
 System.out.println( &quot;First Name: &quot; + firstName.orElseGet( () -&gt; &quot;[none]&quot; ) );
 System.out.println( firstName.map( s -&gt; &quot;Hey &quot; + s + &quot;!&quot; ).orElse( &quot;Hey Stranger!&quot; ) );
 System.out.println();
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是程序的输出：</p>
 <pre><code class="lang-java">First Name is set? true
 First Name: Tom
 Hey Tom!
 </code></pre>
-<p>&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a></p>
-<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><p>&#x6700;&#x65B0;&#x6DFB;&#x52A0;&#x7684;<a href="https://www.javacodegeeks.com/2014/05/the-effects-of-programming-with-java-8-streams-on-algorithm-performance.html" target="_blank" rel="external">Stream API(java.util.stream)</a>&#x628A;&#x771F;&#x6B63;&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x98CE;&#x683C;&#x5F15;&#x5165;&#x5230;Java&#x4E2D;&#x3002;&#x8FD9;&#x662F;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x5BF9;Java&#x7C7B;&#x5E93;&#x6700;&#x597D;&#x7684;&#x8865;&#x5145;&#xFF0C;&#x56E0;&#x4E3A;Stream API&#x53EF;&#x4EE5;&#x6781;&#x5927;&#x63D0;&#x4F9B;Java&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x751F;&#x4EA7;&#x529B;&#xFF0C;&#x8BA9;&#x7A0B;&#x5E8F;&#x5458;&#x5199;&#x51FA;&#x9AD8;&#x6548;&#x7387;&#x3001;&#x5E72;&#x51C0;&#x3001;&#x7B80;&#x6D01;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
-<p>Stream API&#x6781;&#x5927;&#x7B80;&#x5316;&#x4E86;&#x96C6;&#x5408;&#x6846;&#x67B6;&#x7684;&#x5904;&#x7406;&#xFF08;&#x4F46;&#x5B83;&#x7684;&#x5904;&#x7406;&#x7684;&#x8303;&#x56F4;&#x4E0D;&#x4EC5;&#x4EC5;&#x9650;&#x4E8E;&#x96C6;&#x5408;&#x6846;&#x67B6;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x70B9;&#x540E;&#x9762;&#x6211;&#x4EEC;&#x4F1A;&#x770B;&#x5230;&#xFF09;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;Task&#x7C7B;&#x4E3A;&#x4F8B;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<p>更多详情请参考<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html" target="_blank" rel="external">官方文档</a></p>
+<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><p>最新添加的<a href="https://www.javacodegeeks.com/2014/05/the-effects-of-programming-with-java-8-streams-on-algorithm-performance.html" target="_blank" rel="external">Stream API(java.util.stream)</a>把真正的函数式编程风格引入到Java中。这是目前为止对Java类库最好的补充，因为Stream API可以极大提供Java程序员的生产力，让程序员写出高效率、干净、简洁的代码。</p>
+<p>Stream API极大简化了集合框架的处理（但它的处理的范围不仅仅限于集合框架的处理，这点后面我们会看到）。让我们以一个简单的Task类为例进行介绍：</p>
 <pre><code class="lang-java">public class Streams  {
     private enum Status {
         OPEN, CLOSED
@@ -418,14 +418,14 @@ Hey Tom!
     }
 }
 </code></pre>
-<p>Task&#x7C7B;&#x6709;&#x4E00;&#x4E2A;&#x5206;&#x6570;&#x7684;&#x6982;&#x5FF5;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x4F2A;&#x590D;&#x6742;&#x5EA6;&#xFF09;&#xFF0C;&#x5176;&#x6B21;&#x662F;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x503C;&#x53EF;&#x4EE5;&#x4E3A;OPEN&#x6216;CLOSED&#x7684;&#x72B6;&#x6001;.&#x8BA9;&#x6211;&#x4EEC;&#x5F15;&#x5165;&#x4E00;&#x4E2A;Task&#x7684;&#x5C0F;&#x96C6;&#x5408;&#x4F5C;&#x4E3A;&#x6F14;&#x793A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>Task类有一个分数的概念（或者说是伪复杂度），其次是还有一个值可以为OPEN或CLOSED的状态.让我们引入一个Task的小集合作为演示例子：</p>
 <pre><code class="lang-java">final Collection&lt; Task &gt; tasks = Arrays.asList(
     new Task( Status.OPEN, 5 ),
     new Task( Status.OPEN, 13 ),
     new Task( Status.CLOSED, 8 )
 );
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x8981;&#x8BA8;&#x8BBA;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x6240;&#x6709;&#x72B6;&#x6001;&#x4E3A;OPEN&#x7684;&#x4EFB;&#x52A1;&#x4E00;&#x5171;&#x6709;&#x591A;&#x5C11;&#x5206;&#x6570;&#xFF1F;&#x5728;Java 8&#x4EE5;&#x524D;&#xFF0C;&#x4E00;&#x822C;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x5F0F;&#x7528;foreach&#x5FAA;&#x73AF;&#xFF0C;&#x4F46;&#x662F;&#x5728;Java 8&#x91CC;&#x9762;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;stream&#xFF1A;&#x4E00;&#x4E32;&#x652F;&#x6301;&#x8FDE;&#x7EED;&#x3001;&#x5E76;&#x884C;&#x805A;&#x96C6;&#x64CD;&#x4F5C;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<p>我们下面要讨论的第一个问题是所有状态为OPEN的任务一共有多少分数？在Java 8以前，一般的解决方式用foreach循环，但是在Java 8里面我们可以使用stream：一串支持连续、并行聚集操作的元素。</p>
 <pre><code class="lang-java">// Calculate total points of all active tasks using sum()
 final long totalPointsOfOpenTasks = tasks
     .stream()
@@ -435,20 +435,20 @@ final long totalPointsOfOpenTasks = tasks
 
 System.out.println( &quot;Total points: &quot; + totalPointsOfOpenTasks );
 </code></pre>
-<p>&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>程序在控制台上的输出如下：</p>
 <pre><code class="lang-bash">Total points: 18
 </code></pre>
-<p>&#x8FD9;&#x91CC;&#x6709;&#x51E0;&#x4E2A;&#x6CE8;&#x610F;&#x4E8B;&#x9879;:</p>
+<p>这里有几个注意事项:</p>
 <ol>
-<li>task&#x96C6;&#x5408;&#x88AB;&#x8F6C;&#x6362;&#x5316;&#x4E3A;&#x5176;&#x76F8;&#x5E94;&#x7684;stream&#x8868;&#x793A;</li>
-<li>filter&#x64CD;&#x4F5C;&#x8FC7;&#x6EE4;&#x6389;&#x72B6;&#x6001;&#x4E3A;CLOSED&#x7684;task&#x3002;</li>
-<li>mapToInt&#x64CD;&#x4F5C;&#x901A;&#x8FC7;Task::getPoints&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x6BCF;&#x4E2A;task&#x5B9E;&#x4F8B;&#x7684;getPoints&#x65B9;&#x6CD5;&#x628A;Task&#x7684;stream&#x8F6C;&#x5316;&#x4E3A;Integer&#x7684;stream&#x3002;</li>
-<li>&#x7528;sum&#x51FD;&#x6570;&#x628A;&#x6240;&#x6709;&#x7684;&#x5206;&#x6570;&#x52A0;&#x8D77;&#x6765;&#xFF0C;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;&#x3002;</li>
+<li>task集合被转换化为其相应的stream表示</li>
+<li>filter操作过滤掉状态为CLOSED的task。</li>
+<li>mapToInt操作通过Task::getPoints这种方式调用每个task实例的getPoints方法把Task的stream转化为Integer的stream。</li>
+<li>用sum函数把所有的分数加起来，得到最终的结果。</li>
 </ol>
-<p>&#x5728;&#x7EE7;&#x7EED;&#x8BB2;&#x89E3;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E4B;&#x524D;&#xFF0C;&#x5173;&#x4E8E;stream&#x6709;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#xFF08;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamOps" target="_blank" rel="external">&#x8BE6;&#x60C5;</a>&#xFF09;.stream&#x64CD;&#x4F5C;&#x88AB;&#x5206;&#x6210;&#x4E86;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#x4E0E;&#x6700;&#x7EC8;&#x64CD;&#x4F5C;&#x8FD9;&#x4E24;&#x79CD;&#x3002;</p>
-<p>&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;stream&#x5BF9;&#x8C61;&#x3002;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#x603B;&#x662F;&#x91C7;&#x7528;&#x60F0;&#x6027;&#x6C42;&#x503C;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x50CF;filter&#x8FD9;&#x6837;&#x7684;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#x5B9E;&#x9645;&#x4E0A;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x8FC7;&#x6EE4;&#xFF0C;&#x76F8;&#x53CD;&#x5B83;&#x5728;&#x904D;&#x5386;&#x5143;&#x7D20;&#x65F6;&#x4F1A;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;stream&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x7684;stream&#x5BF9;&#x8C61;&#x5305;&#x542B;&#x539F;&#x59CB;stream<br>&#x4E2D;&#x7B26;&#x5408;&#x7ED9;&#x5B9A;&#x8C13;&#x8BCD;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x3002;</p>
-<p>&#x50CF;forEach&#x3001;sum&#x8FD9;&#x6837;&#x7684;&#x6700;&#x7EC8;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x76F4;&#x63A5;&#x904D;&#x5386;stream&#xFF0C;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#x6216;&#x526F;&#x4F5C;&#x7528;&#x3002;&#x5F53;&#x6700;&#x7EC8;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#xFF0C;stream&#x7BA1;&#x9053;&#x88AB;&#x8BA4;&#x4E3A;&#x5DF2;&#x7ECF;&#x88AB;&#x6D88;&#x8017;&#x4E86;&#xFF0C;&#x6CA1;&#x6709;&#x53EF;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#x4E86;&#x3002;&#x5728;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6700;&#x7EC8;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x91C7;&#x7528;&#x53CA;&#x65E9;&#x6C42;&#x503C;&#x65B9;&#x5F0F;&#xFF0C;&#x53CA;&#x65E9;&#x5B8C;&#x6210;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x6E90;&#x7684;&#x904D;&#x5386;&#x3002;</p>
-<p>stream&#x53E6;&#x4E00;&#x4E2A;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x5730;&#x65B9;&#x662F;&#x80FD;&#x591F;&#x539F;&#x751F;&#x652F;&#x6301;&#x5E76;&#x884C;&#x5904;&#x7406;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E2A;&#x7B97;task&#x5206;&#x6570;&#x548C;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>在继续讲解下面的例子之前，关于stream有一些需要注意的地方（<a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamOps" target="_blank" rel="external">详情</a>）.stream操作被分成了中间操作与最终操作这两种。</p>
+<p>中间操作返回一个新的stream对象。中间操作总是采用惰性求值方式，运行一个像filter这样的中间操作实际上没有进行任何过滤，相反它在遍历元素时会产生了一个新的stream对象，这个新的stream对象包含原始stream<br>中符合给定谓词的所有元素。</p>
+<p>像forEach、sum这样的最终操作可能直接遍历stream，产生一个结果或副作用。当最终操作执行结束之后，stream管道被认为已经被消耗了，没有可能再被使用了。在大多数情况下，最终操作都是采用及早求值方式，及早完成底层数据源的遍历。</p>
+<p>stream另一个有价值的地方是能够原生支持并行处理。让我们来看看这个算task分数和的例子。</p>
 <pre><code class="lang-java">// Calculate total points of all tasks
 final double totalPoints = tasks
    .stream()
@@ -458,20 +458,20 @@ final double totalPoints = tasks
 
 System.out.println( &quot;Total points (all tasks): &quot; + totalPoints );
 </code></pre>
-<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x548C;&#x7B2C;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x5F88;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x7684;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x662F;&#x5E76;&#x884C;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5176;&#x6B21;&#x4F7F;&#x7528;reduce&#x65B9;&#x6CD5;&#x6765;&#x7B97;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;&#x3002;<br>&#x4E0B;&#x9762;&#x662F;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>这个例子和第一个例子很相似，但这个例子的不同之处在于这个程序是并行运行的，其次使用reduce方法来算最终的结果。<br>下面是这个例子在控制台的输出：</p>
 <pre><code class="lang-bash">Total points (all tasks): 26.0
 </code></pre>
-<p>&#x7ECF;&#x5E38;&#x4F1A;&#x6709;&#x8FD9;&#x4E2A;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#xFF1A;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x51C6;&#x5219;&#x6765;&#x5BF9;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x3002;Stream&#x4E5F;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x8FD9;&#x6837;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>经常会有这个一个需求：我们需要按照某种准则来对集合中的元素进行分组。Stream也可以处理这样的需求，下面是一个例子：</p>
 <pre><code class="lang-java">// Group tasks by their status
 final Map&lt; Status, List&lt; Task &gt; &gt; map = tasks
     .stream()
     .collect( Collectors.groupingBy( Task::getStatus ) );
 System.out.println( map );
 </code></pre>
-<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x7684;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>这个例子的控制台输出如下：</p>
 <pre><code class="lang-bash">{CLOSED=[[CLOSED, 8]], OPEN=[[OPEN, 5], [OPEN, 13]]}
 </code></pre>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x8BA1;&#x7B97;&#x6574;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6BCF;&#x4E2A;task&#x5206;&#x6570;&#xFF08;&#x6216;&#x6743;&#x91CD;&#xFF09;&#x7684;&#x5E73;&#x5747;&#x503C;&#x6765;&#x7ED3;&#x675F;task&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>让我们来计算整个集合中每个task分数（或权重）的平均值来结束task的例子。</p>
 <pre><code class="lang-java">// Calculate the weight of each tasks (as percent of total points)
 final Collection&lt; String &gt; result = tasks
     .stream()                                        // Stream&lt; String &gt;
@@ -485,30 +485,30 @@ final Collection&lt; String &gt; result = tasks
 
 System.out.println( result );
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x7684;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是这个例子的控制台输出：</p>
 <pre><code class="lang-bash">[19%, 50%, 30%]
 </code></pre>
-<p>&#x6700;&#x540E;&#xFF0C;&#x5C31;&#x50CF;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;&#xFF0C;Stream API&#x4E0D;&#x4EC5;&#x4EC5;&#x5904;&#x7406;Java&#x96C6;&#x5408;&#x6846;&#x67B6;&#x3002;&#x50CF;&#x4ECE;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x4E2D;&#x9010;&#x884C;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x8FD9;&#x6837;&#x5178;&#x578B;&#x7684;I/O&#x64CD;&#x4F5C;&#x4E5F;&#x5F88;&#x9002;&#x5408;&#x7528;Stream API&#x6765;&#x5904;&#x7406;&#x3002;&#x4E0B;&#x9762;&#x7528;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x5E94;&#x8BC1;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
+<p>最后，就像前面提到的，Stream API不仅仅处理Java集合框架。像从文本文件中逐行读取数据这样典型的I/O操作也很适合用Stream API来处理。下面用一个例子来应证这一点。</p>
 <pre><code class="lang-java">final Path path = new File( filename ).toPath();
 try( Stream&lt; String &gt; lines = Files.lines( path, StandardCharsets.UTF_8 ) ) {
     lines.onClose( () -&gt; System.out.println(&quot;Done!&quot;) ).forEach( System.out::println );
 }
 </code></pre>
-<p>&#x5BF9;&#x4E00;&#x4E2A;stream&#x5BF9;&#x8C61;&#x8C03;&#x7528;onClose&#x65B9;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5728;&#x539F;&#x6709;&#x529F;&#x80FD;&#x57FA;&#x7840;&#x4E0A;&#x65B0;&#x589E;&#x4E86;&#x5173;&#x95ED;&#x529F;&#x80FD;&#x7684;stream&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x5BF9;stream&#x5BF9;&#x8C61;&#x8C03;&#x7528;close()&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E0E;&#x5173;&#x95ED;&#x76F8;&#x5173;&#x7684;&#x5904;&#x7406;&#x5668;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x3002;</p>
-<p>Stream API&#x3001;Lambda&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;&#x65B9;&#x6CD5;&#x5F15;&#x7528;&#x5728;&#x63A5;&#x53E3;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x4E0E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7684;&#x914D;&#x5408;&#x4E0B;&#x662F;Java 8&#x5BF9;&#x73B0;&#x4EE3;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x8303;&#x5F0F;&#x7684;&#x56DE;&#x5E94;&#x3002;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/tutorial/collections/streams/index.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;</p>
-<h3 id="Date-Time-API-JSR-310"><a href="#Date-Time-API-JSR-310" class="headerlink" title="Date/Time API (JSR 310)"></a>Date/Time API (JSR 310)</h3><p>Java 8&#x901A;&#x8FC7;&#x53D1;&#x5E03;&#x65B0;&#x7684;<a href="https://jcp.org/en/jsr/detail?id=310" target="_blank" rel="external">Date-Time API (JSR 310)</a>&#x6765;&#x8FDB;&#x4E00;&#x6B65;&#x52A0;&#x5F3A;&#x5BF9;&#x65E5;&#x671F;&#x4E0E;&#x65F6;&#x95F4;&#x7684;&#x5904;&#x7406;&#x3002;&#x5BF9;&#x65E5;&#x671F;&#x4E0E;&#x65F6;&#x95F4;&#x7684;&#x64CD;&#x4F5C;&#x4E00;&#x76F4;&#x662F;Java&#x7A0B;&#x5E8F;&#x5458;&#x6700;&#x75DB;&#x82E6;&#x7684;&#x5730;&#x65B9;&#x4E4B;&#x4E00;&#x3002;&#x6807;&#x51C6;&#x7684; java.util.Date&#x4EE5;&#x53CA;&#x540E;&#x6765;&#x7684;java.util.Calendar&#x4E00;&#x70B9;&#x6CA1;&#x6709;&#x6539;&#x5584;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF08;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x8BF4;&#xFF0C;&#x5B83;&#x4EEC;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x66F4;&#x52A0;&#x590D;&#x6742;&#xFF09;&#x3002;</p>
-<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x76F4;&#x63A5;&#x5BFC;&#x81F4;&#x4E86;Joda-Time&#x2014;&#x2014;&#x4E00;&#x4E2A;&#x53EF;&#x66FF;&#x6362;&#x6807;&#x51C6;&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x5904;&#x7406;&#x4E14;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x5F3A;&#x5927;&#x7684;Java API&#x7684;&#x8BDE;&#x751F;&#x3002;Java 8&#x65B0;&#x7684;Date-Time API (JSR 310)&#x5728;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x53D7;&#x5230;Joda-Time&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x5E76;&#x4E14;&#x5438;&#x53D6;&#x4E86;&#x5176;&#x7CBE;&#x9AD3;&#x3002;&#x65B0;&#x7684;java.time&#x5305;&#x6DB5;&#x76D6;&#x4E86;&#x6240;&#x6709;&#x5904;&#x7406;&#x65E5;&#x671F;&#xFF0C;&#x65F6;&#x95F4;&#xFF0C;&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#xFF0C;&#x65F6;&#x533A;&#xFF0C;&#x65F6;&#x523B;&#xFF08;instants&#xFF09;&#xFF0C;&#x8FC7;&#x7A0B;&#xFF08;during&#xFF09;&#x4E0E;&#x65F6;&#x949F;&#xFF08;clock&#xFF09;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5728;&#x8BBE;&#x8BA1;&#x65B0;&#x7248;API&#x65F6;&#xFF0C;&#x5341;&#x5206;&#x6CE8;&#x91CD;&#x4E0E;&#x65E7;&#x7248;API&#x7684;&#x517C;&#x5BB9;&#x6027;&#xFF1A;&#x4E0D;&#x5141;&#x8BB8;&#x6709;&#x4EFB;&#x4F55;&#x7684;&#x6539;&#x53D8;&#xFF08;&#x4ECE;java.util.Calendar&#x4E2D;&#x5F97;&#x5230;&#x7684;&#x6DF1;&#x523B;&#x6559;&#x8BAD;&#xFF09;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x5B9E;&#x4F8B;&#x3002;</p>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x7528;&#x4F8B;&#x5B50;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x65B0;&#x7248;API&#x4E3B;&#x8981;&#x7C7B;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;Clock&#x7C7B;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x65F6;&#x533A;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x5F53;&#x524D;&#x7684;&#x65F6;&#x523B;&#xFF0C;&#x65E5;&#x671F;&#x4E0E;&#x65F6;&#x95F4;&#x3002;Clock&#x53EF;&#x4EE5;&#x66FF;&#x6362;System.currentTimeMillis()&#x4E0E;TimeZone.getDefault()&#x3002;</p>
+<p>对一个stream对象调用onClose方法会返回一个在原有功能基础上新增了关闭功能的stream对象，当对stream对象调用close()方法时，与关闭相关的处理器就会执行。</p>
+<p>Stream API、Lambda表达式与方法引用在接口默认方法与静态方法的配合下是Java 8对现代软件开发范式的回应。更多详情请参考<a href="http://docs.oracle.com/javase/tutorial/collections/streams/index.html" target="_blank" rel="external">官方文档</a>。</p>
+<h3 id="Date-Time-API-JSR-310"><a href="#Date-Time-API-JSR-310" class="headerlink" title="Date/Time API (JSR 310)"></a>Date/Time API (JSR 310)</h3><p>Java 8通过发布新的<a href="https://jcp.org/en/jsr/detail?id=310" target="_blank" rel="external">Date-Time API (JSR 310)</a>来进一步加强对日期与时间的处理。对日期与时间的操作一直是Java程序员最痛苦的地方之一。标准的 java.util.Date以及后来的java.util.Calendar一点没有改善这种情况（可以这么说，它们一定程度上更加复杂）。</p>
+<p>这种情况直接导致了Joda-Time——一个可替换标准日期/时间处理且功能非常强大的Java API的诞生。Java 8新的Date-Time API (JSR 310)在很大程度上受到Joda-Time的影响，并且吸取了其精髓。新的java.time包涵盖了所有处理日期，时间，日期/时间，时区，时刻（instants），过程（during）与时钟（clock）的操作。在设计新版API时，十分注重与旧版API的兼容性：不允许有任何的改变（从java.util.Calendar中得到的深刻教训）。如果需要修改，会返回这个类的一个新实例。</p>
+<p>让我们用例子来看一下新版API主要类的使用方法。第一个是Clock类，它通过指定一个时区，然后就可以获取到当前的时刻，日期与时间。Clock可以替换System.currentTimeMillis()与TimeZone.getDefault()。</p>
 <pre><code class="lang-java">// Get the system clock as UTC offset
 final Clock clock = Clock.systemUTC();
 System.out.println( clock.instant() );
 System.out.println( clock.millis() );
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是程序在控制台上的输出：</p>
 <pre><code class="lang-bash">2014-04-12T15:19:29.282Z
 1397315969360
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x5176;&#x4ED6;&#x7C7B;&#x662F;LocaleDate&#x4E0E;LocalTime&#x3002;LocaleDate&#x53EA;&#x6301;&#x6709;ISO-8601&#x683C;&#x5F0F;&#x4E14;&#x65E0;&#x65F6;&#x533A;&#x4FE1;&#x606F;&#x7684;&#x65E5;&#x671F;&#x90E8;&#x5206;&#x3002;&#x76F8;&#x5E94;&#x7684;&#xFF0C;LocaleTime&#x53EA;&#x6301;&#x6709;ISO-8601&#x683C;&#x5F0F;&#x4E14;&#x65E0;&#x65F6;&#x533A;&#x4FE1;&#x606F;&#x7684;&#x65F6;&#x95F4;&#x90E8;&#x5206;&#x3002;LocaleDate&#x4E0E;LocalTime&#x90FD;&#x53EF;&#x4EE5;&#x4ECE;Clock&#x4E2D;&#x5F97;&#x5230;&#x3002;</p>
+<p>我们需要关注的其他类是LocaleDate与LocalTime。LocaleDate只持有ISO-8601格式且无时区信息的日期部分。相应的，LocaleTime只持有ISO-8601格式且无时区信息的时间部分。LocaleDate与LocalTime都可以从Clock中得到。</p>
 <pre><code class="lang-java">// Get the local date and local time
 final LocalDate date = LocalDate.now();
 final LocalDate dateFromClock = LocalDate.now( clock );
@@ -523,13 +523,13 @@ final LocalTime timeFromClock = LocalTime.now( clock );
 System.out.println( time );
 System.out.println( timeFromClock );
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;:</p>
+<p>下面是程序在控制台上的输出:</p>
 <pre><code class="lang-bash">2014-04-12
 2014-04-12
 11:25:54.568
 15:25:54.568
 </code></pre>
-<p>LocaleDateTime&#x628A;LocaleDate&#x4E0E;LocaleTime&#x7684;&#x529F;&#x80FD;&#x5408;&#x5E76;&#x8D77;&#x6765;&#xFF0C;&#x5B83;&#x6301;&#x6709;&#x7684;&#x662F;ISO-8601&#x683C;&#x5F0F;&#x65E0;&#x65F6;&#x533A;&#x4FE1;&#x606F;&#x7684;&#x65E5;&#x671F;&#x4E0E;&#x65F6;&#x95F4;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5FEB;&#x901F;&#x5165;&#x95E8;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>LocaleDateTime把LocaleDate与LocaleTime的功能合并起来，它持有的是ISO-8601格式无时区信息的日期与时间。下面是一个快速入门的例子。</p>
 <pre><code class="lang-java">// Get the local date/time
 final LocalDateTime datetime = LocalDateTime.now();
 final LocalDateTime datetimeFromClock = LocalDateTime.now( clock );
@@ -537,11 +537,11 @@ final LocalDateTime datetimeFromClock = LocalDateTime.now( clock );
 System.out.println( datetime );
 System.out.println( datetimeFromClock );
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是程序在控制台上的输出：</p>
 <pre><code class="lang-bash">2014-04-12T11:37:52.309
 2014-04-12T15:37:52.309
 </code></pre>
-<p>&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x7279;&#x5B9A;&#x65F6;&#x533A;&#x7684;&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;ZonedDateTime&#x662F;&#x4F60;&#x7684;&#x9009;&#x62E9;&#x3002;&#x5B83;&#x6301;&#x6709;ISO-8601&#x683C;&#x5F0F;&#x5177;&#x5177;&#x6709;&#x65F6;&#x533A;&#x4FE1;&#x606F;&#x7684;&#x65E5;&#x671F;&#x4E0E;&#x65F6;&#x95F4;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E9B;&#x4E0D;&#x540C;&#x65F6;&#x533A;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>如果你需要特定时区的日期/时间，那么ZonedDateTime是你的选择。它持有ISO-8601格式具具有时区信息的日期与时间。下面是一些不同时区的例子：</p>
 <pre><code class="lang-java">// Get the zoned date/time
 final ZonedDateTime zonedDatetime = ZonedDateTime.now();
 final ZonedDateTime zonedDatetimeFromClock = ZonedDateTime.now( clock );
@@ -551,12 +551,12 @@ System.out.println( zonedDatetime );
 System.out.println( zonedDatetimeFromClock );
 System.out.println( zonedDatetimeFromZone );
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是程序在控制台上的输出：</p>
 <pre><code class="lang-bash">2014-04-12T11:47:01.017-04:00[America/New_York]
 2014-04-12T15:47:01.017Z
 2014-04-12T08:47:01.017-07:00[America/Los_Angeles]
 </code></pre>
-<p>&#x6700;&#x540E;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;Duration&#x7C7B;&#xFF1A;&#x5728;&#x79D2;&#x4E0E;&#x7EB3;&#x79D2;&#x7EA7;&#x522B;&#x4E0A;&#x7684;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x3002;Duration&#x4F7F;&#x8BA1;&#x7B97;&#x4E24;&#x4E2A;&#x65E5;&#x671F;&#x95F4;&#x7684;&#x4E0D;&#x540C;&#x53D8;&#x7684;&#x5341;&#x5206;&#x7B80;&#x5355;&#x3002;&#x4E0B;&#x9762;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E2A;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>最后，让我们看一下Duration类：在秒与纳秒级别上的一段时间。Duration使计算两个日期间的不同变的十分简单。下面让我们看一个这方面的例子。</p>
 <pre><code class="lang-java">// Get duration between two dates
 final LocalDateTime from = LocalDateTime.of( 2014, Month.APRIL, 16, 0, 0, 0 );
 final LocalDateTime to = LocalDateTime.of( 2015, Month.APRIL, 16, 23, 59, 59 );
@@ -565,24 +565,24 @@ final Duration duration = Duration.between( from, to );
 System.out.println( &quot;Duration in days: &quot; + duration.toDays() );
 System.out.println( &quot;Duration in hours: &quot; + duration.toHours() );
 </code></pre>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x8BA1;&#x7B97;&#x4E86;&#x4E24;&#x4E2A;&#x65E5;&#x671F;2014&#x5E74;4&#x6708;16&#x53F7;&#x4E0E;2014&#x5E74;4&#x6708;16&#x53F7;&#x4E4B;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>上面的例子计算了两个日期2014年4月16号与2014年4月16号之间的过程。下面是程序在控制台上的输出：</p>
 <pre><code class="lang-bash">Duration in days: 365
 Duration in hours: 8783
 </code></pre>
-<p>&#x5BF9;Java 8&#x5728;&#x65E5;&#x671F;/&#x65F6;&#x95F4;API&#x7684;&#x6539;&#x8FDB;&#x6574;&#x4F53;&#x5370;&#x8C61;&#x662F;&#x975E;&#x5E38;&#x975E;&#x5E38;&#x597D;&#x7684;&#x3002;&#x4E00;&#x90E8;&#x5206;&#x539F;&#x56E0;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x5EFA;&#x7ACB;&#x5728;&#x201C;&#x4E45;&#x6218;&#x6740;&#x573A;&#x201D;&#x7684;Joda-Time&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x56E0;&#x4E3A;&#x7528;&#x6765;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x6765;&#x8BBE;&#x8BA1;&#x5B83;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x6B21;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x58F0;&#x97F3;&#x5F97;&#x5230;&#x4E86;&#x8BA4;&#x53EF;&#x3002;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/tutorial/datetime/index.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;</p>
-<h3 id="JavaScript&#x5F15;&#x64CE;Nashorn"><a href="#JavaScript&#x5F15;&#x64CE;Nashorn" class="headerlink" title="JavaScript&#x5F15;&#x64CE;Nashorn"></a>JavaScript&#x5F15;&#x64CE;Nashorn</h3><p>Nashorn&#xFF0C;&#x4E00;&#x4E2A;&#x65B0;&#x7684;JavaScript&#x5F15;&#x64CE;&#x968F;&#x7740;Java 8&#x4E00;&#x8D77;&#x516C;&#x8BF8;&#x4E8E;&#x4E16;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x5728;JVM&#x4E0A;&#x5F00;&#x53D1;&#x8FD0;&#x884C;&#x67D0;&#x4E9B;JavaScript&#x5E94;&#x7528;&#x3002;Nashorn&#x5C31;&#x662F;javax.script.ScriptEngine&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x4EEC;&#x4FE9;&#x9075;&#x5FAA;&#x76F8;&#x540C;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5141;&#x8BB8;Java&#x4E0E;JavaScript&#x76F8;&#x4E92;&#x8C03;&#x7528;&#x3002;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>对Java 8在日期/时间API的改进整体印象是非常非常好的。一部分原因是因为它建立在“久战杀场”的Joda-Time基础上，另一方面是因为用来大量的时间来设计它，并且这次程序员的声音得到了认可。更多详情请参考<a href="http://docs.oracle.com/javase/tutorial/datetime/index.html" target="_blank" rel="external">官方文档</a>。</p>
+<h3 id="JavaScript引擎Nashorn"><a href="#JavaScript引擎Nashorn" class="headerlink" title="JavaScript引擎Nashorn"></a>JavaScript引擎Nashorn</h3><p>Nashorn，一个新的JavaScript引擎随着Java 8一起公诸于世，它允许在JVM上开发运行某些JavaScript应用。Nashorn就是javax.script.ScriptEngine的另一种实现，并且它们俩遵循相同的规则，允许Java与JavaScript相互调用。下面看一个例子：</p>
 <pre><code class="lang-java">ScriptEngineManager manager = new ScriptEngineManager();
 ScriptEngine engine = manager.getEngineByName( &quot;JavaScript&quot; );
 
 System.out.println( engine.getClass().getName() );
 System.out.println( &quot;Result:&quot; + engine.eval( &quot;function f() { return 1; }; f() + 1;&quot; ) );
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是程序在控制台上的输出：</p>
 <pre><code class="lang-bash">jdk.nashorn.api.scripting.NashornScriptEngine
 Result: 2
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x5728;&#x540E;&#x9762;&#x7684;Java&#x65B0;&#x5DE5;&#x5177;&#x7AE0;&#x8282;&#x4F1A;&#x518D;&#x6B21;&#x8C08;&#x5230;Nashorn&#x3002;</p>
-<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>&#x5728;Java 8&#x4E2D;&#xFF0C;Base64&#x7F16;&#x7801;&#x5DF2;&#x7ECF;&#x6210;&#x4E3A;Java&#x7C7B;&#x5E93;&#x7684;&#x6807;&#x51C6;&#x3002;&#x5B83;&#x7684;&#x4F7F;&#x7528;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF0C;&#x4E0B;&#x9762;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>我们在后面的Java新工具章节会再次谈到Nashorn。</p>
+<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>在Java 8中，Base64编码已经成为Java类库的标准。它的使用十分简单，下面让我们看一个例子：</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.base64;
 
 import java.nio.charset.StandardCharsets;
@@ -604,12 +604,12 @@ public class Base64s {
     }
 }
 </code></pre>
-<p>&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x8F93;&#x51FA;&#x4E86;&#x7F16;&#x7801;&#x540E;&#x7684;&#x5B57;&#x7B26;&#x4E0E;&#x89E3;&#x7801;&#x540E;&#x7684;&#x5B57;&#x7B26;&#xFF1A;</p>
+<p>程序在控制台上输出了编码后的字符与解码后的字符：</p>
 <pre><code class="lang-bash">QmFzZTY0IGZpbmFsbHkgaW4gSmF2YSA4IQ==
 Base64 finally in Java 8!
 </code></pre>
-<p>Base64&#x7C7B;&#x540C;&#x65F6;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;URL&#x3001;MIME&#x53CB;&#x597D;&#x7684;&#x7F16;&#x7801;&#x5668;&#x4E0E;&#x89E3;&#x7801;&#x5668;&#xFF08;Base64.getUrlEncoder() / Base64.getUrlDecoder(), Base64.getMimeEncoder() / Base64.getMimeDecoder()&#xFF09;</p>
-<h3 id="&#x5E76;&#x884C;&#xFF08;parallel&#xFF09;&#x6570;&#x7EC4;"><a href="#&#x5E76;&#x884C;&#xFF08;parallel&#xFF09;&#x6570;&#x7EC4;" class="headerlink" title="&#x5E76;&#x884C;&#xFF08;parallel&#xFF09;&#x6570;&#x7EC4;"></a>&#x5E76;&#x884C;&#xFF08;parallel&#xFF09;&#x6570;&#x7EC4;</h3><p>Java 8&#x589E;&#x52A0;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x65B0;&#x65B9;&#x6CD5;&#x6765;&#x5BF9;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x5E76;&#x884C;&#x5904;&#x7406;&#x3002;&#x53EF;&#x4EE5;&#x8BF4;&#xFF0C;&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F;parallelSort()&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x53EF;&#x4EE5;&#x5728;&#x591A;&#x6838;&#x673A;&#x5668;&#x4E0A;&#x6781;&#x5927;&#x63D0;&#x9AD8;&#x6570;&#x7EC4;&#x6392;&#x5E8F;&#x7684;&#x901F;&#x5EA6;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5C55;&#x793A;&#x4E86;&#x65B0;&#x65B9;&#x6CD5;&#xFF08;parallelXxx&#xFF09;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<p>Base64类同时还提供了对URL、MIME友好的编码器与解码器（Base64.getUrlEncoder() / Base64.getUrlDecoder(), Base64.getMimeEncoder() / Base64.getMimeDecoder()）</p>
+<h3 id="并行（parallel）数组"><a href="#并行（parallel）数组" class="headerlink" title="并行（parallel）数组"></a>并行（parallel）数组</h3><p>Java 8增加了大量的新方法来对数组进行并行处理。可以说，最重要的是parallelSort()方法，因为它可以在多核机器上极大提高数组排序的速度。下面的例子展示了新方法（parallelXxx）的使用。</p>
 <pre><code class="lang-java">package com.javacodegeeks.java8.parallel.arrays;
 
 import java.util.Arrays;
@@ -632,39 +632,39 @@ public class ParallelArrays {
     }
 }
 </code></pre>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x4F7F;&#x7528;&#x4E86;parallelSetAll()&#x65B9;&#x6CD5;&#x6765;&#x5BF9;&#x4E00;&#x4E2A;&#x6709;20000&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x8D4B;&#x503C;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x8C03;&#x7528;parallelSort&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x6253;&#x5370;&#x51FA;&#x524D;10&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x503C;&#xFF0C;&#x4E4B;&#x540E;&#x5BF9;&#x6574;&#x4E2A;&#x6570;&#x7EC4;&#x6392;&#x5E8F;&#x3002;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF08;&#x8BF7;&#x6CE8;&#x610F;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x662F;&#x968F;&#x673A;&#x751F;&#x4EA7;&#x7684;&#xFF09;&#xFF1A;</p>
+<p>上面的代码片段使用了parallelSetAll()方法来对一个有20000个元素的数组进行随机赋值。然后，调用parallelSort方法。这个程序首先打印出前10个元素的值，之后对整个数组排序。这个程序在控制台上的输出如下（请注意数组元素是随机生产的）：</p>
 <pre><code class="lang-bash">Unsorted: 591217 891976 443951 424479 766825 351964 242997 642839 119108 552378
 Sorted: 39 220 263 268 325 607 655 678 723 793
 </code></pre>
-<h3 id="&#x5E76;&#x53D1;&#xFF08;Concurrency&#xFF09;"><a href="#&#x5E76;&#x53D1;&#xFF08;Concurrency&#xFF09;" class="headerlink" title="&#x5E76;&#x53D1;&#xFF08;Concurrency&#xFF09;"></a>&#x5E76;&#x53D1;&#xFF08;Concurrency&#xFF09;</h3><p>&#x5728;&#x65B0;&#x589E;Stream&#x673A;&#x5236;&#x4E0E;lambda&#x7684;&#x57FA;&#x7840;&#x4E4B;&#x4E0A;&#xFF0C;&#x5728;java.util.concurrent.ConcurrentHashMap&#x4E2D;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x65B0;&#x65B9;&#x6CD5;&#x6765;&#x652F;&#x6301;&#x805A;&#x96C6;&#x64CD;&#x4F5C;&#x3002;&#x540C;&#x65F6;&#x4E5F;&#x5728;java.util.concurrent.ForkJoinPool&#x7C7B;&#x4E2D;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x65B0;&#x65B9;&#x6CD5;&#x6765;&#x652F;&#x6301;&#x5171;&#x6709;&#x8D44;&#x6E90;&#x6C60;&#xFF08;common pool&#xFF09;&#xFF08;&#x8BF7;&#x67E5;&#x770B;&#x6211;&#x4EEC;&#x5173;&#x4E8E;Java &#x5E76;&#x53D1;&#x7684;&#x514D;&#x8D39;&#x8BFE;&#x7A0B;&#xFF09;&#x3002;</p>
-<p>&#x65B0;&#x589E;&#x7684;java.util.concurrent.locks.StampedLock&#x7C7B;&#x63D0;&#x4F9B;&#x4E00;&#x76F4;&#x57FA;&#x4E8E;&#x5BB9;&#x91CF;&#x7684;&#x9501;&#xFF0C;&#x8FD9;&#x79CD;&#x9501;&#x6709;&#x4E09;&#x4E2A;&#x6A21;&#x578B;&#x6765;&#x63A7;&#x5236;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#xFF08;&#x5B83;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x4E0D;&#x592A;&#x6709;&#x540D;&#x7684;java.util.concurrent.locks.ReadWriteLock&#x7C7B;&#x7684;&#x66FF;&#x4EE3;&#x8005;&#xFF09;&#x3002;</p>
-<p>&#x5728;java.util.concurrent.atomic&#x5305;&#x4E2D;&#x8FD8;&#x589E;&#x52A0;&#x4E86;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x7C7B;&#xFF1A;</p>
+<h3 id="并发（Concurrency）"><a href="#并发（Concurrency）" class="headerlink" title="并发（Concurrency）"></a>并发（Concurrency）</h3><p>在新增Stream机制与lambda的基础之上，在java.util.concurrent.ConcurrentHashMap中加入了一些新方法来支持聚集操作。同时也在java.util.concurrent.ForkJoinPool类中加入了一些新方法来支持共有资源池（common pool）（请查看我们关于Java 并发的免费课程）。</p>
+<p>新增的java.util.concurrent.locks.StampedLock类提供一直基于容量的锁，这种锁有三个模型来控制读写操作（它被认为是不太有名的java.util.concurrent.locks.ReadWriteLock类的替代者）。</p>
+<p>在java.util.concurrent.atomic包中还增加了下面这些类：</p>
 <ul>
 <li>DoubleAccumulator</li>
 <li>DoubleAdder</li>
 <li>LongAccumulator</li>
 <li>LongAdder</li>
 </ul>
-<h2 id="&#x65B0;&#x7684;Java&#x5DE5;&#x5177;"><a href="#&#x65B0;&#x7684;Java&#x5DE5;&#x5177;" class="headerlink" title="&#x65B0;&#x7684;Java&#x5DE5;&#x5177;"></a>&#x65B0;&#x7684;Java&#x5DE5;&#x5177;</h2><p>Java 8&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002;&#x5728;&#x8FD9;&#x8282;&#x91CC;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x4ECB;&#x7ECD;&#x5B83;&#x4EEC;&#x4E2D;&#x6700;&#x6709;&#x8DA3;&#x7684;&#x90E8;&#x5206;&#x3002;</p>
-<h3 id="Nashorn&#x5F15;&#x64CE;-jjs"><a href="#Nashorn&#x5F15;&#x64CE;-jjs" class="headerlink" title="Nashorn&#x5F15;&#x64CE;: jjs"></a>Nashorn&#x5F15;&#x64CE;: jjs</h3><p>jjs&#x662F;&#x4E2A;&#x57FA;&#x4E8E;Nashorn&#x5F15;&#x64CE;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x63A5;&#x53D7;&#x4E00;&#x4E9B;JavaScript&#x6E90;&#x4EE3;&#x7801;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x6E90;&#x4EE3;&#x7801;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x5982;&#x4E0B;&#x5185;&#x5BB9;&#x7684;func.js&#x6587;&#x4EF6;&#xFF1A;</p>
+<h2 id="新的Java工具"><a href="#新的Java工具" class="headerlink" title="新的Java工具"></a>新的Java工具</h2><p>Java 8也带来了一些新的命令行工具。在这节里我们将会介绍它们中最有趣的部分。</p>
+<h3 id="Nashorn引擎-jjs"><a href="#Nashorn引擎-jjs" class="headerlink" title="Nashorn引擎: jjs"></a>Nashorn引擎: jjs</h3><p>jjs是个基于Nashorn引擎的命令行工具。它接受一些JavaScript源代码为参数，并且执行这些源代码。例如，我们创建一个具有如下内容的func.js文件：</p>
 <pre><code class="lang-javascript">function f() {
      return 1;
 };
 
 print( f() + 1 );
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;jjs&#x4F7F;&#x5F97;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x6267;&#x884C;&#xFF1A;</p>
+<p>我们可以把这个文件作为参数传递给jjs使得这个文件可以在命令行中执行：</p>
 <pre><code class="lang-bash">jjs func.js
 </code></pre>
-<p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<p>下面是程序在控制台上的输出：</p>
 <pre><code class="lang-bash">2
 </code></pre>
-<p>&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/jjs.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a></p>
-<h3 id="&#x7C7B;&#x4F9D;&#x8D56;&#x5206;&#x6790;&#x5668;jdeps"><a href="#&#x7C7B;&#x4F9D;&#x8D56;&#x5206;&#x6790;&#x5668;jdeps" class="headerlink" title="&#x7C7B;&#x4F9D;&#x8D56;&#x5206;&#x6790;&#x5668;jdeps"></a>&#x7C7B;&#x4F9D;&#x8D56;&#x5206;&#x6790;&#x5668;jdeps</h3><p>jdeps&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x6709;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x663E;&#x793A;Java&#x7C7B;&#x7684;&#x5305;&#x7EA7;&#x522B;&#x6216;&#x7C7B;&#x7EA7;&#x522B;&#x7684;&#x4F9D;&#x8D56;&#x3002;&#x5B83;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;.class&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x6216;&#x8005;&#x4E00;&#x4E2A;jar&#x6587;&#x4EF6;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x3002;jdeps&#x9ED8;&#x8BA4;&#x628A;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;&#x7CFB;&#x7EDF;&#x8F93;&#x51FA;&#xFF08;&#x63A7;&#x5236;&#x53F0;&#xFF09;&#x4E0A;&#x3002;</p>
-<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x73B0;&#x9636;&#x6BB5;&#x8F83;&#x6D41;&#x884C;&#x7684;Spring&#x6846;&#x67B6;&#x7C7B;&#x5E93;&#x7684;&#x4F9D;&#x8D56;&#x62A5;&#x544A;&#xFF0C;&#x4E3A;&#x4E86;&#x7B80;&#x5316;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x5206;&#x6790;&#x4E00;&#x4E2A;jar&#x6587;&#x4EF6;&#xFF1A;org.springframework.core-3.0.5.RELEASE.jar</p>
+<p>更多详情请参考<a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/jjs.html" target="_blank" rel="external">官方文档</a></p>
+<h3 id="类依赖分析器jdeps"><a href="#类依赖分析器jdeps" class="headerlink" title="类依赖分析器jdeps"></a>类依赖分析器jdeps</h3><p>jdeps是一个很有用的命令行工具。它可以显示Java类的包级别或类级别的依赖。它接受一个.class文件，一个目录，或者一个jar文件作为输入。jdeps默认把结果输出到系统输出（控制台）上。</p>
+<p>下面我们查看现阶段较流行的Spring框架类库的依赖报告，为了简化这个例子，我们只分析一个jar文件：org.springframework.core-3.0.5.RELEASE.jar</p>
 <pre><code class="lang-bash">jdeps org.springframework.core-3.0.5.RELEASE.jar
 </code></pre>
-<p>&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x8F93;&#x51FA;&#x7684;&#x5185;&#x5BB9;&#x5F88;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x9009;&#x53D6;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x3002;&#x4F9D;&#x8D56;&#x4FE1;&#x606F;&#x6309;&#x7167;&#x5305;&#x540D;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x3002;&#x5982;&#x679C;&#x4F9D;&#x8D56;&#x4E0D;&#x5728;classpath&#x4E2D;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x663E;&#x793A;not found&#x3002;</p>
+<p>这个命令输出的内容很多，所以这里我们只选取一小部分。依赖信息按照包名进行分组。如果依赖不在classpath中，那么就会显示not found。</p>
 <pre><code class="lang-bash">org.springframework.core-3.0.5.RELEASE.jar -&gt; C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar
    org.springframework.core (org.springframework.core-3.0.5.RELEASE.jar)
       -&gt; java.io
@@ -683,15 +683,15 @@ print( f() + 1 );
       -&gt; java.lang.reflect
       -&gt; java.util
 </code></pre>
-<p>&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a></p>
-<h2 id="Java&#x865A;&#x62DF;&#x673A;&#xFF08;JVM&#xFF09;&#x7684;&#x65B0;&#x7279;&#x6027;"><a href="#Java&#x865A;&#x62DF;&#x673A;&#xFF08;JVM&#xFF09;&#x7684;&#x65B0;&#x7279;&#x6027;" class="headerlink" title="Java&#x865A;&#x62DF;&#x673A;&#xFF08;JVM&#xFF09;&#x7684;&#x65B0;&#x7279;&#x6027;"></a>Java&#x865A;&#x62DF;&#x673A;&#xFF08;JVM&#xFF09;&#x7684;&#x65B0;&#x7279;&#x6027;</h2><p>PermGen&#x7A7A;&#x95F4;&#x88AB;&#x79FB;&#x9664;&#x4E86;&#xFF0C;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x7684;&#x662F;<a href="https://www.javacodegeeks.com/2013/02/java-8-from-permgen-to-metaspace.html" target="_blank" rel="external">Metaspace&#xFF08;JEP 122&#xFF09;</a>&#x3002;JVM&#x9009;&#x9879;-XX:PermSize&#x4E0E;-XX:MaxPermSize&#x5206;&#x522B;&#x88AB;-XX:MetaSpaceSize&#x4E0E;-XX:MaxMetaspaceSize&#x6240;&#x4EE3;&#x66FF;&#x3002;</p>
-<h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><p>&#x66F4;&#x591A;&#x5C55;&#x671B;&#xFF1A;Java 8&#x901A;&#x8FC7;&#x53D1;&#x5E03;&#x4E00;&#x4E9B;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x7A0B;&#x5E8F;&#x5458;&#x751F;&#x4EA7;&#x529B;&#x7684;&#x7279;&#x6027;&#x6765;&#x63A8;&#x8FDB;&#x8FD9;&#x4E2A;&#x4F1F;&#x5927;&#x7684;&#x5E73;&#x53F0;&#x7684;&#x8FDB;&#x6B65;&#x3002;&#x73B0;&#x5728;&#x628A;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x8FC1;&#x79FB;&#x5230;Java 8&#x8FD8;&#x4E3A;&#x65F6;&#x5C1A;&#x65E9;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x51E0;&#x4E2A;&#x6708;&#x91CC;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x5927;&#x4F17;&#x6162;&#x6162;&#x7684;&#x63A5;&#x53D7;&#x3002;&#x6BEB;&#x65E0;&#x7591;&#x95EE;&#xFF0C;&#x73B0;&#x5728;&#x662F;&#x65F6;&#x5019;&#x8BA9;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x4E0E;Java 8&#x517C;&#x5BB9;&#xFF0C;&#x5E76;&#x4E14;&#x5728;Java 8&#x8DB3;&#x591F;&#x5B89;&#x5168;&#x7A33;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#x8FC1;&#x79FB;&#x5230;Java 8&#x3002;</p>
-<p>&#x4F5C;&#x4E3A;&#x793E;&#x533A;&#x5BF9;Java 8&#x7684;&#x8BA4;&#x53EF;&#xFF0C;&#x6700;&#x8FD1;Pivotal&#x53D1;&#x5E03;&#x4E86;&#x53EF;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#x652F;&#x6301;Java 8&#x7684;<a href="https://spring.io/blog/2014/03/27/spring-framework-4-0-3-released-with-java-8-support-now-production-ready" target="_blank" rel="external">Spring Framework 4.0.3</a>&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x6B22;&#x8FCE;&#x4F60;&#x5BF9;Java 8&#x4E2D;&#x6FC0;&#x52A8;&#x4EBA;&#x5FC3;&#x7684;&#x7279;&#x6027;&#x8FDB;&#x884C;&#x8BC4;&#x8BBA;&#xFF01;</p>
-<h2 id="&#x66F4;&#x591A;&#x8D44;&#x6E90;"><a href="#&#x66F4;&#x591A;&#x8D44;&#x6E90;" class="headerlink" title="&#x66F4;&#x591A;&#x8D44;&#x6E90;"></a>&#x66F4;&#x591A;&#x8D44;&#x6E90;</h2><p>&#x4E0B;&#x9762;&#x4E00;&#x4E9B;&#x6587;&#x7AE0;&#x4ECE;&#x4E0D;&#x540C;&#x5C42;&#x9762;&#x4E0A;&#x6DF1;&#x5EA6;&#x8BA8;&#x8BBA;&#x4E86;Java 8&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
+<p>更多详情请参考<a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html" target="_blank" rel="external">官方文档</a></p>
+<h2 id="Java虚拟机（JVM）的新特性"><a href="#Java虚拟机（JVM）的新特性" class="headerlink" title="Java虚拟机（JVM）的新特性"></a>Java虚拟机（JVM）的新特性</h2><p>PermGen空间被移除了，取而代之的是<a href="https://www.javacodegeeks.com/2013/02/java-8-from-permgen-to-metaspace.html" target="_blank" rel="external">Metaspace（JEP 122）</a>。JVM选项-XX:PermSize与-XX:MaxPermSize分别被-XX:MetaSpaceSize与-XX:MaxMetaspaceSize所代替。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>更多展望：Java 8通过发布一些可以增加程序员生产力的特性来推进这个伟大的平台的进步。现在把生产环境迁移到Java 8还为时尚早，但是在接下来的几个月里，它会被大众慢慢的接受。毫无疑问，现在是时候让你的代码与Java 8兼容，并且在Java 8足够安全稳定的时候迁移到Java 8。</p>
+<p>作为社区对Java 8的认可，最近Pivotal发布了可在生产环境下支持Java 8的<a href="https://spring.io/blog/2014/03/27/spring-framework-4-0-3-released-with-java-8-support-now-production-ready" target="_blank" rel="external">Spring Framework 4.0.3</a>。</p>
+<p>我们欢迎你对Java 8中激动人心的特性进行评论！</p>
+<h2 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a>更多资源</h2><p>下面一些文章从不同层面上深度讨论了Java 8的特性：</p>
 <ul>
 <li><a href="https://examples.javacodegeeks.com/?s=java+8" target="_blank" rel="external">Java 8 Tutorials on JCG Examples</a></li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html" target="_blank" rel="external">What&#x2019;s New in JDK 8</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html" target="_blank" rel="external">What’s New in JDK 8</a></li>
 <li><a href="http://docs.oracle.com/javase/tutorial/" target="_blank" rel="external">The Java Tutorials:</a></li>
 <li><a href="http://blog.arungupta.me/2014/03/wildfly8-jdk8-netbeans8-javaee7-excellent-combo-enterprise-java/" target="_blank" rel="external">WildFly 8, JDK 8, NetBeans 8, Java EE 7</a></li>
 <li><a href="http://winterbe.com/posts/2014/03/16/java-8-tutorial/" target="_blank" rel="external">Java 8 Tutorial</a></li>
@@ -747,7 +747,7 @@ print( f() + 1 );
   
     <li><a href="/categories/pri/">PRI-文章</a><small>2</small></li>
   
-    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+    <li><a href="/categories/tec/">TEC-技术</a><small>15</small></li>
   
   </ul>
 </div>
@@ -762,9 +762,11 @@ print( f() + 1 );
   
     <li><a href="/tags/JVM/">JVM</a><small>10</small></li>
   
-    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+    <li><a href="/tags/Java/">Java</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>1</small></li>
   
     <li><a href="/tags/Team/">Team</a><small>1</small></li>
   
@@ -775,7 +777,7 @@ print( f() + 1 );
   
   <div class="widget tag">
     <h3 class="title">归档</h3>
-	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -822,7 +824,7 @@ print( f() + 1 );
           <br/>
           <div class="text-center">
   
-  &copy; 2016 DeleiGuo
+  &copy; 2017 DeleiGuo
   
   &nbsp;&nbsp;
   湘ICP备16012107号-1

@@ -86,113 +86,113 @@
       
         <p>[TOC]</p>
 <blockquote>
-<p>&#x53C2;&#x8003;&#x4E66;&#x7C4D;&#xFF1A;<a href="https://book.douban.com/subject/25953851/" target="_blank" rel="external">&#x6DF1;&#x5165;&#x5206;&#x6790;Java Web&#x6280;&#x672F;&#x5185;&#x5E55;&#xFF08;&#x4FEE;&#x8BA2;&#x7248;&#xFF09;</a></p>
+<p>参考书籍：<a href="https://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析Java Web技术内幕（修订版）</a></p>
 </blockquote>
-<h2 id="&#x7EC4;&#x5408;&#x4F7F;&#x7528;"><a href="#&#x7EC4;&#x5408;&#x4F7F;&#x7528;" class="headerlink" title="&#x7EC4;&#x5408;&#x4F7F;&#x7528;"></a>&#x7EC4;&#x5408;&#x4F7F;&#x7528;</h2><div class="table-container">
+<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th>GC&#x7EC4;&#x5408;</th>
-<th>Young&#x533A;</th>
-<th>Old&#x533A;</th>
+<th>GC组合</th>
+<th>Young区</th>
+<th>Old区</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>-XX:+UseSerialGC</td>
-<td>&#x4E32;&#x884C;GC</td>
-<td>&#x4E32;&#x884C;GC</td>
+<td>串行GC</td>
+<td>串行GC</td>
 </tr>
 <tr>
 <td>-XX:+UseParallelGC</td>
 <td>PSGC</td>
-<td>&#x5E76;&#x884C;MSCGC</td>
+<td>并行MSCGC</td>
 </tr>
 <tr>
 <td>-XX:+UseParNewGC</td>
-<td>&#x5E76;&#x884C;GC</td>
-<td>&#x4E32;&#x884C;GC</td>
+<td>并行GC</td>
+<td>串行GC</td>
 </tr>
 <tr>
 <td>-XX:+UseParallelOldGC</td>
 <td>PSGC</td>
-<td>&#x5E76;&#x884C;CompactingGC</td>
+<td>并行CompactingGC</td>
 </tr>
 <tr>
 <td>-XX:+UseConcMarkSweepGC</td>
 <td>ParNewGC</td>
-<td>&#x5E76;&#x884C;GC<br>&#x5F53;&#x51FA;&#x73B0;concurrentMOde failure&#x65F6;&#x91C7;&#x7528;&#x4E32;&#x884C;GC</td>
+<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
 </tr>
 <tr>
 <td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
-<td>&#x4E32;&#x884C;GC</td>
-<td>&#x5E76;&#x884C;GC<br>&#x5F53;&#x51FA;&#x73B0;concurrentMOde failure&#x6216;promotionfailed&#x91C7;&#x7528;&#x4E32;&#x884C;GC</td>
+<td>串行GC</td>
+<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>&#x4E0D;&#x652F;&#x6301;&#x7684;&#x7EC4;&#x5408;&#x65B9;&#x5F0F;&#xFF1A;<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
+<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
 <a id="more"></a>
-<h2 id="&#x53C2;&#x6570;&#x5217;&#x8868;&#x96C6;&#x5408;"><a href="#&#x53C2;&#x6570;&#x5217;&#x8868;&#x96C6;&#x5408;" class="headerlink" title="&#x53C2;&#x6570;&#x5217;&#x8868;&#x96C6;&#x5408;"></a>&#x53C2;&#x6570;&#x5217;&#x8868;&#x96C6;&#x5408;</h2><div class="table-container">
+<h2 id="参数列表集合"><a href="#参数列表集合" class="headerlink" title="参数列表集合"></a>参数列表集合</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th>GC&#x65B9;&#x5F0F;</th>
-<th>&#x53C2;&#x6570;&#x96C6;&#x5408;</th>
+<th>GC方式</th>
+<th>参数集合</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Heep&#x5806;&#x914D;&#x7F6E;</td>
-<td><ul><li>-Xms &#x5806;&#x521D;&#x59CB;&#x5927;&#x5C0F;</li><li>-Xmx &#x5806;&#x6700;&#x5927;&#x503C;</li><li>-Xmn Young&#x533A;&#x5927;&#x5C0F;</li><li>-XX:PermSize Perm&#x533A;&#x5927;&#x5C0F;</li><li>-XX:MaxPermSize Perm&#x533A;&#x6700;&#x5927;&#x503C;</li></ul></td>
+<td>Heep堆配置</td>
+<td><ul><li>-Xms 堆初始大小</li><li>-Xmx 堆最大值</li><li>-Xmn Young区大小</li><li>-XX:PermSize Perm区大小</li><li>-XX:MaxPermSize Perm区最大值</li></ul></td>
 </tr>
 <tr>
-<td>Serial Collector(&#x4E32;&#x884C;)</td>
-<td><ul><li>-XX:+UseSerialGC GC&#x65B9;&#x5F0F;</li><li>-XX:+SurvivorRatio &#x9ED8;&#x8BA4;&#x4E3A;8,&#x4EE3;&#x8868;eden:s0</li><li>-XX:MaxTenuringThreshold &#x9ED8;&#x8BA4;&#x4E3A;15,&#x4EE3;&#x8868;&#x5BF9;&#x8C61;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x7ECF;&#x5386;&#x591A;&#x5C11;&#x6B21;MinorGC&#x540E;&#x624D;&#x664B;&#x5347;&#x5230;Old&#x533A;,&#x6548;&#x7387;&#x9AD8;,&#x5F53;Heap&#x8FC7;&#x5927;&#x65F6;,&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6682;&#x505C;&#x65F6;&#x95F4;&#x8F83;&#x957F;</li></ul></td>
+<td>Serial Collector(串行)</td>
+<td><ul><li>-XX:+UseSerialGC GC方式</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15,代表对象在新生代经历多少次MinorGC后才晋升到Old区,效率高,当Heap过大时,应用程序暂停时间较长</li></ul></td>
 </tr>
 <tr>
-<td>(&#x5E76;&#x884C;)Parallel Collector-ParNewGC</td>
-<td><ul><li>-XX:+UseParNewGC</li><li>-XX:+SurvivorRatio &#x9ED8;&#x8BA4;&#x4E3A;8,&#x4EE3;&#x8868;eden:s0</li><li>-XX:MaxTenuringThreshold &#x9ED8;&#x8BA4;&#x4E3A;15</li><li>-XX:+UseAdaptiveSizePolicy</li></ul></td>
+<td>(并行)Parallel Collector-ParNewGC</td>
+<td><ul><li>-XX:+UseParNewGC</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+UseAdaptiveSizePolicy</li></ul></td>
 </tr>
 <tr>
-<td>(&#x5E76;&#x884C;)Parallel Collector-ParallelGC</td>
-<td><ul><li>-XX:+UseParallelGC</li><li>-XX:+ParallelGCThreads &#x5E76;&#x53D1;&#x7EBF;&#x7A0B;&#x6570;</li><li>-XX:InitialSurivivorRatio &#x9ED8;&#x8BA4;&#x4E3A;8,Young:s0&#x7684;&#x6BD4;</li><li>-XX:+UseAdaptiveSizePolicy</li><li>-XX:MaxTenuringThreshold &#x9ED8;&#x8BA4;&#x4E3A;15</li><li>-XX:+ScavengeBeforeFullGC FullGC&#x524D;&#x89E6;&#x53D1;MinorGC</li></ul></td>
+<td>(并行)Parallel Collector-ParallelGC</td>
+<td><ul><li>-XX:+UseParallelGC</li><li>-XX:+ParallelGCThreads 并发线程数</li><li>-XX:InitialSurivivorRatio 默认为8,Young:s0的比</li><li>-XX:+UseAdaptiveSizePolicy</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+ScavengeBeforeFullGC FullGC前触发MinorGC</li></ul></td>
 </tr>
 <tr>
-<td>(&#x5E76;&#x884C;)Parallel Collector-ParallelOldGC</td>
+<td>(并行)Parallel Collector-ParallelOldGC</td>
 <td><ul><li>-XX:+UseParallelOldGC </li></ul></td>
 </tr>
 <tr>
-<td>(&#x5E76;&#x53D1;)CMS Collector</td>
-<td><ul><li>-XX:+UseConcMarkSweepGC</li><li>-XX:ParallelCMSThreads &#x8BBE;&#x7F6E;&#x5E76;&#x53D1;CMS GC&#x65F6;&#x7684;&#x7EBF;&#x7A0B;&#x6570;</li><li>-XX:CMSInitiatingOccupancyFraction &#x5F53;&#x65E7;&#x751F;&#x4EE3;&#x4F7F;&#x7528;&#x5360;&#x5230;&#x591A;&#x5C11;&#x767E;&#x5206;&#x6BD4;&#x65F6;&#x89E6;&#x53D1;CMS GC</li><li>-XX:+UseCMSInitiatingOccupancyOnly &#x9ED8;&#x8BA4;&#x4E3A;false,&#x4EE3;&#x8868;&#x5141;&#x8BB8;hotspot&#x6839;&#x636E;&#x6210;&#x672C;&#x6765;&#x51B3;&#x5B9A;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6267;&#x884C;CMS GC</li><li>-XX:+UseCMSCompactAtFullCollection &#x5F53;Full GC&#x65F6;&#x6267;&#x884C;&#x538B;&#x7F29;</li><li>-XX:CMSMaxAbortablePrecleanTime=5000 &#x8BBE;&#x7F6E;preclean&#x6B65;&#x9AA4;&#x7684;&#x8D85;&#x65F6;&#x4E8B;&#x4EF6;,&#x5355;&#x4F4D;&#x4E3A;&#x6BEB;&#x79D2;</li><li>-XX:+CMSClassUnloadingEnabled PermGen&#x91C7;&#x7528;CMS GC</li></ul></td>
+<td>(并发)CMS Collector</td>
+<td><ul><li>-XX:+UseConcMarkSweepGC</li><li>-XX:ParallelCMSThreads 设置并发CMS GC时的线程数</li><li>-XX:CMSInitiatingOccupancyFraction 当旧生代使用占到多少百分比时触发CMS GC</li><li>-XX:+UseCMSInitiatingOccupancyOnly 默认为false,代表允许hotspot根据成本来决定什么时候执行CMS GC</li><li>-XX:+UseCMSCompactAtFullCollection 当Full GC时执行压缩</li><li>-XX:CMSMaxAbortablePrecleanTime=5000 设置preclean步骤的超时事件,单位为毫秒</li><li>-XX:+CMSClassUnloadingEnabled PermGen采用CMS GC</li></ul></td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="&#x4E09;&#x79CD;GC&#x4F18;&#x7F3A;&#x5BF9;&#x6BD4;"><a href="#&#x4E09;&#x79CD;GC&#x4F18;&#x7F3A;&#x5BF9;&#x6BD4;" class="headerlink" title="&#x4E09;&#x79CD;GC&#x4F18;&#x7F3A;&#x5BF9;&#x6BD4;"></a>&#x4E09;&#x79CD;GC&#x4F18;&#x7F3A;&#x5BF9;&#x6BD4;</h2><div class="table-container">
+<h2 id="三种GC优缺对比"><a href="#三种GC优缺对比" class="headerlink" title="三种GC优缺对比"></a>三种GC优缺对比</h2><div class="table-container">
 <table>
 <thead>
 <tr>
 <th>GC</th>
-<th>&#x4F18;&#x70B9;</th>
-<th>&#x7F3A;&#x70B9;</th>
+<th>优点</th>
+<th>缺点</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Serial Collector(&#x4E32;&#x884C;)</td>
-<td>&#x5728;&#x9002;&#x5408;&#x5185;&#x5B58;&#x6709;&#x9650;&#x7684;&#x60C5;&#x51B5;&#x4E0B;</td>
-<td>&#x56DE;&#x6536;&#x6162;</td>
+<td>Serial Collector(串行)</td>
+<td>在适合内存有限的情况下</td>
+<td>回收慢</td>
 </tr>
 <tr>
-<td>Parallel Collector(&#x5E76;&#x53D1;)</td>
-<td>&#x6548;&#x7387;&#x9AD8;</td>
-<td>&#x5F53;Heap&#x8FC7;&#x5927;&#x65F6;,&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6682;&#x505C;&#x65F6;&#x95F4;&#x8F83;&#x957F;</td>
+<td>Parallel Collector(并发)</td>
+<td>效率高</td>
+<td>当Heap过大时,应用程序暂停时间较长</td>
 </tr>
 <tr>
-<td>CMS Collector(&#x5E76;&#x53D1;)</td>
-<td>Old&#x533A;&#x56DE;&#x6536;&#x6682;&#x505C;&#x65F6;&#x95F4;&#x77ED;</td>
-<td>&#x4EA7;&#x751F;&#x5185;&#x5B58;&#x788E;&#x7247;&#x3001;&#x6574;&#x4E2A;GC&#x8017;&#x65F6;&#x8F83;&#x957F;,&#x6BD4;&#x8F83;&#x8017;CPU</td>
+<td>CMS Collector(并发)</td>
+<td>Old区回收暂停时间短</td>
+<td>产生内存碎片、整个GC耗时较长,比较耗CPU</td>
 </tr>
 </tbody>
 </table>
@@ -243,7 +243,7 @@
   
     <li><a href="/categories/pri/">PRI-文章</a><small>2</small></li>
   
-    <li><a href="/categories/tec/">TEC-技术</a><small>13</small></li>
+    <li><a href="/categories/tec/">TEC-技术</a><small>15</small></li>
   
   </ul>
 </div>
@@ -258,9 +258,11 @@
   
     <li><a href="/tags/JVM/">JVM</a><small>10</small></li>
   
-    <li><a href="/tags/Java/">Java</a><small>2</small></li>
+    <li><a href="/tags/Java/">Java</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>1</small></li>
   
     <li><a href="/tags/Team/">Team</a><small>1</small></li>
   
@@ -271,7 +273,7 @@
   
   <div class="widget tag">
     <h3 class="title">归档</h3>
-	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -318,7 +320,7 @@
           <br/>
           <div class="text-center">
   
-  &copy; 2016 DeleiGuo
+  &copy; 2017 DeleiGuo
   
   &nbsp;&nbsp;
   湘ICP备16012107号-1
