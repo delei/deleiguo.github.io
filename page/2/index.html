@@ -36,6 +36,7 @@
   <h1 class="site-title animated zoomIn">DeleiGuo</h1>
   <h2 class="site-title-description animated zoomInLeft">Target、Focus、Patient</h2>
 </a>
+<li> <a href="/atom.xml">RSS</a> </li>
 <div class="clearfix"></div>
 
         </div>
@@ -241,11 +242,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/java-8-features-tutorial/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/"><strong>JVM实用参数（七）CMS收集器</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/java-8-features-tutorial/"><strong>Java 8新特性终极指南</strong></a></h1>
   
 
 
@@ -253,18 +254,20 @@
     <div class="entry">
       
         <blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
+<p>转载自importnew本文链接地址: <a href="http://www.importnew.com/11908.html">Java 8新特性终极指南</a><br>本文为译文，推荐看原文：<a href="https://www.javacodegeeks.com/2014/05/java-8-features-tutorial.html">Java 8 Features Tutorial – The ULTIMATE Guide</a></p>
+<p>ps:原文可能要翻墙.</p>
+<p>JDK8其实已问世很久了。JDK9也即将到来，截止该文章发布时，JDK8也还没有在大部分的环境中大量使用。在本人当前所在公司,JDK7还是主流，部分老框架项目还在用着JDK6</p>
 </blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+<p>[TOC]</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>毫无疑问，Java 8发行版是自Java 5（发行于2004，已经过了相当一段时间了）以来最具革命性的版本。Java 8 为Java语言、编译器、类库、开发工具与JVM（Java虚拟机）带来了大量新特性。在这篇教程中，我们将一一探索这些变化，并用真实的例子说明它们适用的场景。</p>
+<p>这篇教程由以下几部分组成，它们分别涉及到Java平台某一特定方面的内容：</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/java-8-features-tutorial/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -283,11 +286,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-command-help/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-gc/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/linux-command-help/"><strong>Linux Command：命令帮助</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/jvm-gc/"><strong>JVM GC</strong></a></h1>
   
 
 
@@ -295,25 +298,59 @@
     <div class="entry">
       
         <blockquote>
-<p>指导环境：CentOS7</p>
+<p>参考书籍：<a href="https://book.douban.com/subject/25953851/">深入分析Java Web技术内幕（修订版）</a></p>
 </blockquote>
-<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
-<pre><code class="lang-bash">[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-</code></pre>
-<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
-<pre><code class="lang-bash">[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-</code></pre>
+<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC组合</th>
+<th>Young区</th>
+<th>Old区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:+UseSerialGC</td>
+<td>串行GC</td>
+<td>串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelGC</td>
+<td>PSGC</td>
+<td>并行MSCGC</td>
+</tr>
+<tr>
+<td>-XX:+UseParNewGC</td>
+<td>并行GC</td>
+<td>串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelOldGC</td>
+<td>PSGC</td>
+<td>并行CompactingGC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC</td>
+<td>ParNewGC</td>
+<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
+<td>串行GC</td>
+<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/linux-command-help/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/jvm-gc/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -404,6 +441,8 @@ Display all 199 possibilities? (y or n)
         <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://ifeve.com" target="_blank" nofollow>并发编程网-ifeve.com</a>
         </li>
         <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://www.kuqin.com" target="_blank" nofollow>酷勤网</a>
+        </li>
+        <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="https://www.javacodegeeks.com/" target="_blank" nofollow>Java Code Geeks</a>
         </li>
         <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://grepcode.com" target="_blank" nofollow>grepcode.com</a>
         </li>

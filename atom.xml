@@ -58,133 +58,6 @@
   </entry>
   
   <entry>
-    <title>Mac/Linux Tree命令</title>
-    <link href="https://www.deleiguo.com/2017/02/09/linux-tree/"/>
-    <id>https://www.deleiguo.com/2017/02/09/linux-tree/</id>
-    <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T05:37:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-<a id="more"></a>
-<h2 id="tree命令行参数（只适用于安装了tree命令行工具）："><a href="#tree命令行参数（只适用于安装了tree命令行工具）：" class="headerlink" title="tree命令行参数（只适用于安装了tree命令行工具）："></a>tree命令行参数（只适用于安装了tree命令行工具）：</h2><p>实例：</p>
-<pre><code class="lang-bash">[deleiguo@test config]$ tree
-.
-|-- context.xml
-|-- server.xml
-`-- v1.0
-    |-- conf.properties
-    `-- log4j.properties
-
-1 directory, 4 files
-</code></pre>
-<p>以下为主要的参数译文：</p>
-<pre><code class="lang-bash">-a 显示所有文件和目录。
--A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
--C 在文件和目录清单加上色彩，便于区分各种类型。
--d 显示目录名称而非内容。
--D 列出文件或目录的更改时间。
--f 在每个文件或目录之前，显示完整的相对路径名称。
--F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;,&quot;/&quot;,&quot;=&quot;,&quot;@&quot;,&quot;|&quot;号。
--g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
--i 不以阶梯状列出文件或目录名称。
--I 不显示符合范本样式的文件或目录名称。
--l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
--n 不在文件和目录清单加上色彩。
--N 直接列出文件和目录名称，包括控制字符。
--p 列出权限标示。
--P 只显示符合范本样式的文件或目录名称。
--q 用&quot;?&quot;号取代控制字符，列出文件和目录名称。
--s 列出文件或目录大小。
--t 用文件和目录的更改时间排序。
--u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
--x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
-</code></pre>
-<blockquote>
-<p>Linux中可以用<code>man tree</code>来查看更加详细的帮助说明</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>不是所有的linux系统中都有tree命令，例如CentOS，其次类Unix系统Mac中也没有</p>
-<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>CentOS默认也没有tree命令，可以使用如下命令安装后使用</p>
-<pre><code class="lang-bash">sudo yum install tree
-</code></pre>
-<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac中并没有tree,有几种方法实现tree</p>
-<h5 id="模拟Tree命令"><a href="#模拟Tree命令" class="headerlink" title="模拟Tree命令"></a>模拟Tree命令</h5><blockquote>
-<p>这其实是用find来模拟的。无法实现linux tree命令的所有功能和参数</p>
-</blockquote>
-<p>在用户目录中，在<code>.bash_profeile</code>中添加</p>
-<pre><code class="lang-bash">alias tree=&quot;find . -print | sed -e &#39;s;[^/]*/;|____;g;s;____|; |;g&#39;&quot;
-</code></pre>
-<p>然后<code>source .bash_profile</code>即可生效</p>
-<h5 id="安装Tree命令-推荐"><a href="#安装Tree命令-推荐" class="headerlink" title="安装Tree命令(推荐)"></a>安装Tree命令(推荐)</h5><p>现在mac上安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>:</p>
-<pre><code class="lang-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-<p>然后</p>
-<pre><code class="lang-bash">sudo brew install tree
-</code></pre>
-<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
-<li><a href="http://www.runoob.com/linux/linux-comm-tree.html" target="_blank" rel="external">菜鸟教程-Linux tree命令</a></li>
-<li>博客园：破男孩<a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">mac tree命令</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h1&gt;&lt;p&gt;在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。&lt;br&gt;执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
-    
-      <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务架构的设计模式</title>
-    <link href="https://www.deleiguo.com/2017/02/09/microservice-design-pattern/"/>
-    <id>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</id>
-    <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T09:58:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自InfoQ – <a href="http://www.infoq.com/本文链接地址:[微服务架构的设计模式](http://www.infoq.com/cn/news/2015/04/micro-service-architecture" target="_blank" rel="external">http://www.infoq.com/本文链接地址:[微服务架构的设计模式](http://www.infoq.com/cn/news/2015/04/micro-service-architecture</a>)</p>
-</blockquote>
-<p>前不久，Java Code Geeks发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。</p>
-<h2 id="聚合器微服务设计模式"><a href="#聚合器微服务设计模式" class="headerlink" title="聚合器微服务设计模式"></a>聚合器微服务设计模式</h2><p>这是一种最常用也最简单的设计模式，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/1.png" alt=""></p>
-<p>聚合器调用多个服务实现应用程序所需的功能。它可以是一个简单的Web页面，将检索到的数据进行处理展示。它也可以是一个更高层次的组合微服务，对检索到的数据增加业务逻辑后进一步发布成一个新的微服务，这符合DRY原则。另外，每个服务都有自己的缓存和数据库。如果聚合器是一个组合服务，那么它也有自己的缓存和数据库。聚合器可以沿X轴和Z轴独立扩展。</p>
-<h2 id="代理微服务设计模式"><a href="#代理微服务设计模式" class="headerlink" title="代理微服务设计模式"></a>代理微服务设计模式</h2><p>这是聚合器模式的一个变种，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/2.png" alt=""></p>
-<p>在这种情况下，客户端并不聚合数据，但会根据业务需求的差别调用不同的微服务。代理可以仅仅委派请求，也可以进行数据转换工作。</p>
-<h2 id="链式微服务设计模式"><a href="#链式微服务设计模式" class="headerlink" title="链式微服务设计模式"></a>链式微服务设计模式</h2><p>这种模式在接收到请求后会产生一个经过合并的响应，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/3.png" alt=""></p>
-<p>在这种情况下，服务A接收到请求后会与服务B进行通信，类似地，服务B会同服务C进行通信。所有服务都使用同步消息传递。在整个链式调用完成之前，客户端会一直阻塞。因此，服务调用链不宜过长，以免客户端长时间等待。</p>
-<h2 id="分支微服务设计模式"><a href="#分支微服务设计模式" class="headerlink" title="分支微服务设计模式"></a>分支微服务设计模式</h2><p>这种模式是聚合器模式的扩展，允许同时调用两个微服务链，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/4.png" alt=""></p>
-<h2 id="数据共享微服务设计模式"><a href="#数据共享微服务设计模式" class="headerlink" title="数据共享微服务设计模式"></a>数据共享微服务设计模式</h2><p>自治是微服务的设计原则之一，就是说微服务是全栈式服务。但在重构现有的“单体应用（monolithic application）”时，SQL数据库反规范化可能会导致数据重复和不一致。因此，在单体应用到微服务架构的过渡阶段，可以使用这种设计模式，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/5.png" alt=""></p>
-<p>在这种情况下，部分微服务可能会共享缓存和数据库存储。不过，这只有在两个服务之间存在强耦合关系时才可以。对于基于微服务的新建应用程序而言，这是一种反模式。</p>
-<h2 id="异步消息传递微服务设计模式"><a href="#异步消息传递微服务设计模式" class="headerlink" title="异步消息传递微服务设计模式"></a>异步消息传递微服务设计模式</h2><p>虽然REST设计模式非常流行，但它是同步的，会造成阻塞。因此部分基于微服务的架构可能会选择使用消息队列代替REST请求/响应，如下图所示:</p>
-<p><img src="/2017/02/09/microservice-design-pattern/6.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自InfoQ – &lt;a href=&quot;http://www.infoq.com/本文链接地址:[微服务架构的设计模式](http://www.infoq.com/cn/news/2015/04/micro-service-architecture
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Web" scheme="https://www.deleiguo.com/tags/Web/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【转】阿里巴巴集团Java代码规范</title>
     <link href="https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/"/>
     <id>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</id>
@@ -616,6 +489,136 @@ tomcat-redis-session-manage-tomcat7.jar
   </entry>
   
   <entry>
+    <title>微服务架构的设计模式</title>
+    <link href="https://www.deleiguo.com/2017/02/09/microservice-design-pattern/"/>
+    <id>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</id>
+    <published>2017-02-08T16:00:00.000Z</published>
+    <updated>2017-02-09T10:36:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自InfoQ – 原文地址:<a href="http://www.infoq.com/cn/news/2015/04/micro-service-architecture" target="_blank" rel="external">微服务架构的设计模式</a></p>
+</blockquote>
+<p>前不久，<a href="www.javacodegeeks.com">Java Code Geeks</a>发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。</p>
+<a id="more"></a>
+<h2 id="聚合器微服务设计模式"><a href="#聚合器微服务设计模式" class="headerlink" title="聚合器微服务设计模式"></a>聚合器微服务设计模式</h2><p>这是一种最常用也最简单的设计模式，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/1.png" alt=""></p>
+<p>聚合器调用多个服务实现应用程序所需的功能。它可以是一个简单的Web页面，将检索到的数据进行处理展示。它也可以是一个更高层次的组合微服务，对检索到的数据增加业务逻辑后进一步发布成一个新的微服务，这符合DRY原则。另外，每个服务都有自己的缓存和数据库。如果聚合器是一个组合服务，那么它也有自己的缓存和数据库。聚合器可以沿X轴和Z轴独立扩展。</p>
+<h2 id="代理微服务设计模式"><a href="#代理微服务设计模式" class="headerlink" title="代理微服务设计模式"></a>代理微服务设计模式</h2><p>这是聚合器模式的一个变种，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/2.png" alt=""></p>
+<p>在这种情况下，客户端并不聚合数据，但会根据业务需求的差别调用不同的微服务。代理可以仅仅委派请求，也可以进行数据转换工作。</p>
+<h2 id="链式微服务设计模式"><a href="#链式微服务设计模式" class="headerlink" title="链式微服务设计模式"></a>链式微服务设计模式</h2><p>这种模式在接收到请求后会产生一个经过合并的响应，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/3.png" alt=""></p>
+<p>在这种情况下，服务A接收到请求后会与服务B进行通信，类似地，服务B会同服务C进行通信。所有服务都使用同步消息传递。在整个链式调用完成之前，客户端会一直阻塞。因此，服务调用链不宜过长，以免客户端长时间等待。</p>
+<h2 id="分支微服务设计模式"><a href="#分支微服务设计模式" class="headerlink" title="分支微服务设计模式"></a>分支微服务设计模式</h2><p>这种模式是聚合器模式的扩展，允许同时调用两个微服务链，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/4.png" alt=""></p>
+<h2 id="数据共享微服务设计模式"><a href="#数据共享微服务设计模式" class="headerlink" title="数据共享微服务设计模式"></a>数据共享微服务设计模式</h2><p>自治是微服务的设计原则之一，就是说微服务是全栈式服务。但在重构现有的“单体应用（monolithic application）”时，SQL数据库反规范化可能会导致数据重复和不一致。因此，在单体应用到微服务架构的过渡阶段，可以使用这种设计模式，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/5.png" alt=""></p>
+<p>在这种情况下，部分微服务可能会共享缓存和数据库存储。不过，这只有在两个服务之间存在强耦合关系时才可以。对于基于微服务的新建应用程序而言，这是一种反模式。</p>
+<h2 id="异步消息传递微服务设计模式"><a href="#异步消息传递微服务设计模式" class="headerlink" title="异步消息传递微服务设计模式"></a>异步消息传递微服务设计模式</h2><p>虽然REST设计模式非常流行，但它是同步的，会造成阻塞。因此部分基于微服务的架构可能会选择使用消息队列代替REST请求/响应，如下图所示:</p>
+<p><img src="/2017/02/09/microservice-design-pattern/6.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自InfoQ – 原文地址:&lt;a href=&quot;http://www.infoq.com/cn/news/2015/04/micro-service-architecture&quot;&gt;微服务架构的设计模式&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;前不久，&lt;a href=&quot;www.javacodegeeks.com&quot;&gt;Java Code Geeks&lt;/a&gt;发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Web" scheme="https://www.deleiguo.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac/Linux Tree命令</title>
+    <link href="https://www.deleiguo.com/2017/02/09/linux-tree/"/>
+    <id>https://www.deleiguo.com/2017/02/09/linux-tree/</id>
+    <published>2017-02-08T16:00:00.000Z</published>
+    <updated>2017-02-09T05:37:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+<a id="more"></a>
+<h2 id="tree命令行参数（只适用于安装了tree命令行工具）："><a href="#tree命令行参数（只适用于安装了tree命令行工具）：" class="headerlink" title="tree命令行参数（只适用于安装了tree命令行工具）："></a>tree命令行参数（只适用于安装了tree命令行工具）：</h2><p>实例：</p>
+<pre><code class="lang-bash">[deleiguo@test config]$ tree
+.
+|-- context.xml
+|-- server.xml
+`-- v1.0
+    |-- conf.properties
+    `-- log4j.properties
+
+1 directory, 4 files
+</code></pre>
+<p>以下为主要的参数译文：</p>
+<pre><code class="lang-bash">-a 显示所有文件和目录。
+-A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
+-C 在文件和目录清单加上色彩，便于区分各种类型。
+-d 显示目录名称而非内容。
+-D 列出文件或目录的更改时间。
+-f 在每个文件或目录之前，显示完整的相对路径名称。
+-F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;,&quot;/&quot;,&quot;=&quot;,&quot;@&quot;,&quot;|&quot;号。
+-g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
+-i 不以阶梯状列出文件或目录名称。
+-I 不显示符合范本样式的文件或目录名称。
+-l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
+-n 不在文件和目录清单加上色彩。
+-N 直接列出文件和目录名称，包括控制字符。
+-p 列出权限标示。
+-P 只显示符合范本样式的文件或目录名称。
+-q 用&quot;?&quot;号取代控制字符，列出文件和目录名称。
+-s 列出文件或目录大小。
+-t 用文件和目录的更改时间排序。
+-u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
+-x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
+</code></pre>
+<blockquote>
+<p>Linux中可以用<code>man tree</code>来查看更加详细的帮助说明</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>不是所有的linux系统中都有tree命令，例如CentOS，其次类Unix系统Mac中也没有</p>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>CentOS默认也没有tree命令，可以使用如下命令安装后使用</p>
+<pre><code class="lang-bash">sudo yum install tree
+</code></pre>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac中并没有tree,有几种方法实现tree</p>
+<h5 id="模拟Tree命令"><a href="#模拟Tree命令" class="headerlink" title="模拟Tree命令"></a>模拟Tree命令</h5><blockquote>
+<p>这其实是用find来模拟的。无法实现linux tree命令的所有功能和参数</p>
+</blockquote>
+<p>在用户目录中，在<code>.bash_profeile</code>中添加</p>
+<pre><code class="lang-bash">alias tree=&quot;find . -print | sed -e &#39;s;[^/]*/;|____;g;s;____|; |;g&#39;&quot;
+</code></pre>
+<p>然后<code>source .bash_profile</code>即可生效</p>
+<h5 id="安装Tree命令-推荐"><a href="#安装Tree命令-推荐" class="headerlink" title="安装Tree命令(推荐)"></a>安装Tree命令(推荐)</h5><p>现在mac上安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>:</p>
+<pre><code class="lang-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+<p>然后</p>
+<pre><code class="lang-bash">sudo brew install tree
+</code></pre>
+<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
+<li><a href="http://www.runoob.com/linux/linux-comm-tree.html" target="_blank" rel="external">菜鸟教程-Linux tree命令</a></li>
+<li>博客园：破男孩<a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">mac tree命令</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h1&gt;&lt;p&gt;在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。&lt;br&gt;执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM GC个人小抄</title>
     <link href="https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/"/>
     <id>https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/</id>
@@ -959,481 +962,6 @@ Compiled  Size  Type Method
     
     
       <category term="Team" scheme="https://www.deleiguo.com/tags/Team/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（七）CMS收集器</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
-<a id="more"></a>
-<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
-<ol>
-<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
-<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
-<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
-<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
-<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
-<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
-</ol>
-<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
-<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
-<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
-<ol>
-<li>堆碎片</li>
-<li>对象分配率高</li>
-</ol>
-<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
-<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
-<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
-<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
-<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
-<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
-<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
-<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
-<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
-<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
-<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
-<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
-<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
-<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
-<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
-<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
-<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
-<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
-&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux Command：命令帮助</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:50:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>指导环境：CentOS7</p>
-</blockquote>
-<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
-<pre><code class="lang-bash">[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-</code></pre>
-<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
-<pre><code class="lang-bash">[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-</code></pre>
-<a id="more"></a>
-<p>那么，我们可以在不输入任何字的情况下，直接按下两次tab键，则可以统计下当前用户下可用的命令有多少个.</p>
-<blockquote>
-<p>但是经过实际尝试，在CenOS7下，该方法无效,Mac下有效</p>
-</blockquote>
-<pre><code class="lang-bash">delei@DeleitekiMBP:~$
-Display all 1473 possibilities? (y or n)
-</code></pre>
-<blockquote>
-<p>每个人的操作系统所用的命令数都是不一样的。<br>不同的linux版本，用户安装的软件命令，用户设置的环境变量等都是不一样的。</p>
-</blockquote>
-<p>虽然经常常用的命令数量不多，但是在有些情况下，很多命令的详细参数和选项用法不一定都能记得住。而若在无网络，无参考手册情况下，更会遇到不知道如何使用命令的情况。Linux上开发的软件大多数是自由性软件，而这些软件开发者一般都会有相应的命令使用方法。<br>在上述情况下，其实Linux已提供了几种方式能够提供帮助。</p>
-<h2 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h2><p>该命令获得索引的简短信息,如果有多个匹配(不同版本，多个同样的软件等)则会列出多个</p>
-<pre><code class="lang-bash">[root@delei-server ~]# whatis cd
-cd (1)               - bash built-in commands, see bash(1)
-cd (1p)              - change the working directory
-[root@delei-server ~]# whatis wget
-wget (1)             - The non-interactive network downloader.
-</code></pre>
-<p>但不是所有命令在所有的Linux上均可使用</p>
-<pre><code class="lang-bash">[root@delei-server ~]# whatis ll
-ll：没有 appropriate。
-</code></pre>
-<h2 id="help、-help"><a href="#help、-help" class="headerlink" title="help、-help"></a>help、-help</h2><p>—help该命令显示使用摘要和参数列表，可以查看大多数命令的用法</p>
-<pre><code class="lang-bash">[root@delei-server ~]# date --help
-用法：date [选项]... [+格式]
-　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
-Display the current time in the given FORMAT, or set the system date.
-
-Mandatory arguments to long options are mandatory for short options too.
-  -d, --date=STRING         display time described by STRING, not &#39;now&#39;
-  -f, --file=DATEFILE       like --date once for each line of DATEFILE
-  -I[TIMESPEC], --iso-8601[=TIMESPEC]  output date/time in ISO 8601 format.
-                            TIMESPEC=&#39;date&#39; for date only (the default),
-                            &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or &#39;ns&#39; for date
-                            and time to the indicated precision.
-  -r, --reference=文件        显示文件指定文件的最后修改时间
-  -R, --rfc-2822        以RFC 2822格式输出日期和时间
-                例如：2006年8月7日，星期一 12:34:56 -0600
-      --rfc-3339=TIMESPEC   output date and time in RFC 3339 format.
-                            TIMESPEC=&#39;date&#39;, &#39;seconds&#39;, or &#39;ns&#39; for
-                            date and time to the indicated precision.
-                            Date and time components are separated by
-                            a single space: 2006-08-07 12:34:56-06:00
-  -s, --set=STRING          set time described by STRING
-  -u, --utc, --universal    print or set Coordinated Universal Time (UTC)
-      --help        显示此帮助信息并退出
-      --version        显示版本信息并退出
-
-给定的格式FORMAT 控制着输出，解释序列如下：
-
-  %%    一个文字的 %
-  %a    当前locale 的星期名缩写(例如： 日，代表星期日)
-  %A    当前locale 的星期名全称 (如：星期日)
-  %b    当前locale 的月名缩写 (如：一，代表一月)
-  %B    当前locale 的月名全称 (如：一月)
-  ...
-
-默认情况下，日期的数字区域以0 填充。
-The following optional flags may follow &#39;%&#39;:
-
-  -  (hyphen) do not pad the field
-  _  (underscore) pad with spaces
-  0  (zero) pad with zeros
-  ^  use upper case if possible
-  #  use opposite case if possible
-
-在任何标记之后还允许一个可选的域宽度指定，它是一个十进制数字。
-作为一个可选的修饰声明，它可以是E，在可能的情况下使用本地环境关联的
-表示方式；或者是O，在可能的情况下使用本地环境关联的数字符号。
-
-Examples:
-Convert seconds since the epoch (1970-01-01 UTC) to a date
-  $ date --date=&#39;@2147483647&#39;
-
-Show the time on the west coast of the US (use tzselect(1) to find TZ)
-  $ TZ=&#39;America/Los_Angeles&#39; date
-
-Show the local time for 9AM next Friday on the west coast of the US
-  $ date --date=&#39;TZ=&quot;America/Los_Angeles&quot; 09:00 next Fri&#39;
-
-GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
-请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告date 的翻译错误
-要获取完整文档，请运行：info coreutils &#39;date invocation&#39;
-</code></pre>
-<p>—help只能对外部命令使用，对内部命令无效当我们要求内部命令的帮助时使用help+命令</p>
-<pre><code class="lang-bash">[root@delei-server bin]# help pwd
-pwd: pwd [-LP]
-    打印当前工作目录的名字。
-
-    选项：
-      -L    打印 $PWD 变量的值，如果它命名了当前的
-        工作目录
-      -P    打印当前的物理路径，不带有任何的符号链接
-
-    默认情况下，`pwd&#39; 的行为和带 `-L&#39; 选项一致
-
-    退出状态：
-    除非使用了无效选项或者当前目录不可读，否则
-    返回状态为0。
-</code></pre>
-<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man是manual的简写，命令使用手册／说明<br>同样是pwd,man提供的内容较多(内容过长，部分已省略…)</p>
-<pre><code class="lang-bash">[root@delei-server bin]# man date
-DATE(1)                       User Commands                      DATE(1)
-
-NAME
-       date - print or set the system date and time
-
-SYNOPSIS
-       date [OPTION]... [+FORMAT]
-       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
-
-DESCRIPTION
-       Display  the  current time in the given FORMAT, or set the system
-       date.
-
-       Mandatory arguments to  long  options  are  mandatory  for  short
-       options too.
-
-       -d, --date=STRING
-              display time described by STRING, not &#39;now&#39;
-
-       -f, --file=DATEFILE
-              like --date once for each line of DATEFILE
-
-       -I[TIMESPEC], --iso-8601[=TIMESPEC]
-              output  date/time in ISO 8601 format.  TIMESPEC=&#39;date&#39; for
-              date only (the default), &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or
-              &#39;ns&#39; for date and time to the indicated precision.
-
-       ...
-       #      use opposite case if possible
-
-       After any flags comes an optional field width, as a decimal  num‐
-       ber;  then  an  optional  modifier,  which is either E to use the
-       locale&#39;s alternate representations if available, or O to use  the
-       locale&#39;s alternate numeric symbols if available.
-
-ENVIRONMENT
-       TZ     Specifies  the timezone, unless overridden by command line
-              parameters.  If neither is  specified,  the  setting  from
-              /etc/localtime is used.
-
-EXAMPLES
-       Convert seconds since the epoch (1970-01-01 UTC) to a date
-
-              $ date --date=&#39;@2147483647&#39;
-
-       Show  the  time  on  the west coast of the US (use tzselect(1) to
-       find TZ)
-
-              $ TZ=&#39;America/Los_Angeles&#39; date
-    ...
-
-DATE STRING
-       The  --date=STRING  is  a  mostly free format human readable date
-       string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot;  or  &quot;2004-02-29
-       16:21:42&quot;  or  even  &quot;next  Thursday&quot;.  A date string may contain
-       items indicating calendar date, time of day, time  zone,  day  of
-       week, relative time, relative date, and numbers.  An empty string
-       indicates the beginning of the day.  The date  string  format  is
-       more  complex  than  is  easily  documented  here  but  is  fully
-       described in the info documentation.
-
-AUTHOR
-       Written by David MacKenzie.
-
-COPYRIGHT
-       Copyright © 2013 Free Software Foundation, Inc.  License  GPLv3+:
-       GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
-       This  is  free  software: you are free to change and redistribute
-       it.  There is NO WARRANTY, to the extent permitted by law.
-
-SEE ALSO
-       The full documentation for date is maintained as a  Texinfo  man‐
-       ual.   If  the  info  and date programs are properly installed at
-       your site, the command
-
-              info coreutils &#39;date invocation&#39;
-
-       should give you access to the complete manual.
-
-GNU coreutils 8.22            February 2016                      DATE(1)
- Manual page date(1) line 159/222 (END) (press h for help or q to quit)
-</code></pre>
-<blockquote>
-<p>当内容较多时，使用page up和page down上下翻页，空格也可向下翻页;<br>按q退出</p>
-</blockquote>
-<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
-<h4 id="man页面所属的分类标识-常用的是1、3、5、8"><a href="#man页面所属的分类标识-常用的是1、3、5、8" class="headerlink" title="man页面所属的分类标识(常用的是1、3、5、8)"></a>man页面所属的分类标识(常用的是1、3、5、8)</h4><ol>
-<li>用户可以操作的命令或者是可执行文件</li>
-<li>系统核心可调用的函数与工具等</li>
-<li>一些常用的函数与数据库</li>
-<li>设备文件的说明</li>
-<li>设置文件或者某些文件的格式</li>
-<li>游戏</li>
-<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
-<li>系统管理员可用的管理条令</li>
-<li>与内核有关的文件</li>
-</ol>
-<h4 id="man-page的常见部分"><a href="#man-page的常见部分" class="headerlink" title="man page的常见部分"></a>man page的常见部分</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>内容说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NAME</td>
-<td>简短的指令、资料名称说明</td>
-</tr>
-<tr>
-<td>SYNOPSIS</td>
-<td>简短的指令下达语法简介</td>
-</tr>
-<tr>
-<td>DESCRIPTION</td>
-<td>较为完整的说明</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>针对SYNOPSI部分，有列举的所有可用的选项说明</td>
-</tr>
-<tr>
-<td>COMMANDS</td>
-<td>当该命令在运行的时候，可以下达的命令</td>
-</tr>
-<tr>
-<td>FILES</td>
-<td>使用或链接到的某些档案／文件</td>
-</tr>
-<tr>
-<td>SEE ALSO</td>
-<td>可以参考的，跟该命令或资料有相关的其他说明</td>
-</tr>
-<tr>
-<td>EXAMPLE</td>
-<td>可以参考的范例</td>
-</tr>
-<tr>
-<td>AUTHORS</td>
-<td>作者</td>
-</tr>
-<tr>
-<td>COPYRIGHT</td>
-<td>版权说明</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>这是常见的内容，实际上还有其他部分<br>在某些命令中这些内容不全都有</p>
-</blockquote>
-<h4 id="man常用命令参数"><a href="#man常用命令参数" class="headerlink" title="man常用命令参数"></a>man常用命令参数</h4><ul>
-<li><p>man -a：<br>搜索并打开所有man中同名帮助，例如 man passwd ，你首先会进入一个PASSWD(1) section用户命令类的帮助手册，你再按q键退出当前正在显示的帮助手册，就会进入PASSWD(5) section文件格式类的帮助手册。</p>
-</li>
-<li><p>man -aw：<br>显示所有手册文件的路径。</p>
-</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -aw passwd
-/usr/share/man/man1/passwd.1.gz
-/usr/share/man/man1/sslpasswd.1ssl.gz
-/usr/share/man/man5/passwd.5.gz
-</code></pre>
-<ul>
-<li><p>man -M：<br>指定手册文件的搜索路径，有的时候我们自己安装的软件是带有自己的帮助文件的，通常不在我们的MANPATH里面，那么我们就可以手动指定man搜索的文件路径。如 man -M /home/mysql/man mysql显示的就是你安装的mysql的帮助，而不是系统默认的旧版mysql的帮助。</p>
-</li>
-<li><p>man -k：<br>根据关键字搜索联机帮助，是一种模糊搜索。例如要查找”passwd”相关的信息，使用man -k passwd会找到很多和passwd相关的帮助页。如：我忘记了iptables命令就只能记住ipta则可以使用man -k ipta ，系统会把包括ipta的命令显示在屏幕上。</p>
-</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -k passwd
-chpasswd (8)         - 批量更新密码
-gpasswd (1)          - 管理员 /etc/group 和 /etc/gshadow
-fgetpwent_r (3)      - get passwd file entry reentrantly
-getpwent_r (3)       - get passwd file entry reentrantly
-grub2-mkpasswd-pbkdf2 (1) - Generate a PBKDF2 password hash.
-htpasswd (1)         - Manage user files for basic authentication
-kpasswd (1)          - change a user&#39;s Kerberos password
-ldappasswd (1)       - change the password of an LDAP entry
-lpasswd (1)          - Change group or user password
-lppasswd (1)         - add, change, or delete digest passwords.
-pam_localuser (8)    - require users to be listed in /etc/passwd
-passwd (1)           - update user&#39;s authentication tokens
-sslpasswd (1ssl)     - compute password hashes
-passwd (5)           - password file
-passwd2des (3)       - RFS password encryption
-pwhistory_helper (8) - Helper binary that transfers password hashes fro...
-saslpasswd2 (8)      - set a user&#39;s sasl password
-smbpasswd (5)        - The Samba encrypted password file
-smbpasswd (8)        - change a user&#39;s SMB password
-vncpasswd (1)        - change the VNC password
-</code></pre>
-<ul>
-<li>man -f：<br>关键字精确搜索，与-k不同，它只搜索与关键字完全匹配的帮助页。</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -f passwd
-sslpasswd (1ssl)     - compute password hashes
-passwd (1)           - update user&#39;s authentication tokens
-passwd (5)           - password file
-</code></pre>
-<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>info与man类似，也是一种帮助说明,指令的文件预设放在<code>/usr/share/info/</code>目录中。<br>与man不同的是，info不是都在一个页面显示，而是将文件资料拆成了多个段落，每个段落有自己的页面，并且在各个页面还有类似链接的方式可以跳转，每个页面被称为一个node.</p>
-<pre><code class="lang-bash">[root@delei-server bin]# info info
-File: info.info,  Node: Top,  Next: Getting Started,  Up: (dir)
-
-Info: An Introduction
-*********************
-
-The GNU Project distributes most of its on-line manuals in the &quot;Info
-format&quot;, which you read using an &quot;Info reader&quot;.  You are probably using
-an Info reader to read this now.
-
-   ...
-
-* Menu:
-
-* Getting Started::             Getting started using an Info reader.
-* Advanced::                    Advanced Info commands.
-* Expert Info::                 Info commands for experts.
-* Index::                       An index of topics, commands, and variabl\
-es.
-</code></pre>
-<p>第一行:</p>
-<ul>
-<li>File：表示该info的内容是由info.info提供</li>
-<li>Node：代表当前的这个页面是top</li>
-<li>Next：下一个页面</li>
-<li>Up：上一个页面</li>
-</ul>
-<p>将光标移动到该页面最下面”Menu”的列表部分，在每一个种，按下回车即可进入到相应的Node(类似于网页的链接跳转)</p>
-<pre><code class="lang-bash">File: info.info,  Node: Advanced,  Next: Expert Info,  Prev: Getting Star\
-ted,  Up: Top
-
-2 Advanced Info Commands
-************************
-
-This chapter describes various advanced Info commands.  (If you are
-using a stand-alone Info reader, there are additional commands specific
-to it, which are documented in several chapters of *note GNU Info:
-(info-stnd)Top.)
-
-   ...
-
-* Menu:
-
-* Search Text::          How to search Info documents.
-* Search Index::         How to search the indices for specific subjects.
-* Go to node::           How to go to a node by name.
-* Choose menu subtopic:: How to choose a menu subtopic by its number.
-* Create Info buffer::   How to create a new Info buffer in Emacs.
-* Emacs Info Variables:: Variables modifying the behavior of Emacs Info.
-</code></pre>
-<p>依照Menu可以进行node间的跳转，比起man来说，阅读更加方便</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="http://linux.vbird.org/linux_basic/0160startlinux.php#manual" target="_blank" rel="external">鸟哥的私房菜</a></li>
-<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux命令查询</a></li>
-<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html" target="_blank" rel="external">Linux Tools Quick Tutorial</a></li>
-<li><a href="http://www.dabu.info/linux-get-help-man-whatis-info-apropos.html" target="_blank" rel="external">大步’s Blog</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;指导环境：CentOS7&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Linux命令数量&quot;&gt;&lt;a href=&quot;#Linux命令数量&quot; class=&quot;headerlink&quot; title=&quot;Linux命令数量&quot;&gt;&lt;/a&gt;Linux命令数量&lt;/h2&gt;&lt;p&gt;在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;而当匹配的数量过多，会先先统计有多少数量，询问是否显示&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -2084,104 +1612,6 @@ print( f() + 1 );
   </entry>
   
   <entry>
-    <title>Linux 跟踪域名解析过程</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:49:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
-<p>linux and windows</p>
-</blockquote>
-<pre><code>delei@XXX:~$ nslookup
-&gt; www.deleiguo.com
-Server:        192.168.1.1
-Address:    192.168.1.1#53
-
-Non-authoritative answer:
-www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
-Name:    ew-2l6hqh9le.aliapp.com
-Address: 121.199.250.133
-</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
-<p>linux</p>
-</blockquote>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;www.deleiguo.com.        IN    A
-
-;; ANSWER SECTION:
-www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
-
-;; Query time: 39 msec
-;; SERVER: 192.168.1.1#53(192.168.1.1)
-;; WHEN: Sat Oct  8 19:15:18 2016
-;; MSG SIZE  rcvd: 87
-</code></pre><p>增加+trace参数跟踪过程：</p>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
-;; global options: +cmd
-.            89065    IN    NS    c.root-servers.net.
-.            89065    IN    NS    j.root-servers.net.
-.            89065    IN    NS    g.root-servers.net.
-.            89065    IN    NS    d.root-servers.net.
-.            89065    IN    NS    h.root-servers.net.
-.            89065    IN    NS    f.root-servers.net.
-.            89065    IN    NS    b.root-servers.net.
-.            89065    IN    NS    l.root-servers.net.
-.            89065    IN    NS    k.root-servers.net.
-.            89065    IN    NS    a.root-servers.net.
-.            89065    IN    NS    e.root-servers.net.
-.            89065    IN    NS    m.root-servers.net.
-.            89065    IN    NS    i.root-servers.net.
-;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
-
-com.            172800    IN    NS    j.gtld-servers.net.
-com.            172800    IN    NS    i.gtld-servers.net.
-com.            172800    IN    NS    c.gtld-servers.net.
-com.            172800    IN    NS    l.gtld-servers.net.
-com.            172800    IN    NS    g.gtld-servers.net.
-com.            172800    IN    NS    h.gtld-servers.net.
-com.            172800    IN    NS    m.gtld-servers.net.
-com.            172800    IN    NS    d.gtld-servers.net.
-com.            172800    IN    NS    a.gtld-servers.net.
-com.            172800    IN    NS    b.gtld-servers.net.
-com.            172800    IN    NS    e.gtld-servers.net.
-com.            172800    IN    NS    k.gtld-servers.net.
-com.            172800    IN    NS    f.gtld-servers.net.
-;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
-
-deleiguo.com.        172800    IN    NS    dns9.hichina.com.
-deleiguo.com.        172800    IN    NS    dns10.hichina.com.
-;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
-
-www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;linux and windows
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM GC</title>
     <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
     <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
@@ -2362,6 +1792,63 @@ www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
   </entry>
   
   <entry>
+    <title>JVM实用参数（四）内存调优</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p><strong>译者：</strong> 郑旭东<br><strong>校对：</strong> 梁海舰</p>
+<p>理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。</p>
+<a id="more"></a>
+<p>所有已制定的HotSpot内存管理和垃圾回收算法都基于一个相同的堆内存划分：新生代（young generation）里存储着新分配的和较年轻的对象，老年代（old generation）里存储着长寿的对象。在此之外，永久代（permanent generation）存储着那些需要伴随整个JVM生命周期的对象，比如，已加载的对象的类定义或者String对象内部Cache。接下来，我们将假设堆内存是按照新生代、老年代和永久代这一经典策略划分的。然而，其他的一些堆内存划分策略也是可行的，一个突出的例子就是新的G1垃圾回收器，它模糊了新生代和老年代之间的区别。此外，目前的开发进程似乎表明在未来的HotSpot JVM版本中，将不会区分老年代和永久代。</p>
+<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
+<p>-Xms和-Xmx可以说是最流行的JVM参数，它们可以允许我们指定JVM的初始和最大堆内存大小。一般来说，这两个参数的数值单位是Byte，但同时它们也支持使用速记符号，比如“k”或者“K”代表“kilo”，“m”或者“M”代表“mega”，“g”或者“G”代表“giga”。举个例子，下面的命令启动了一个初始化堆内存为128M，最大堆内存为2G，名叫“MyApp”的Java应用程序。</p>
+<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
+</code></pre>
+<p>在实际使用过程中，初始化堆内存的大小通常被视为堆内存大小的下界。然而JVM可以在运行时动态的调整堆内存的大小，所以理论上来说我们有可能会看到堆内存的大小小于初始化堆内存的大小。但是即使在非常低的堆内存使用下，我也从来没有遇到过这种情况。这种行为将会方便开发者和系统管理员，因为我们可以通过将“-Xms”和“-Xmx”设置为相同大小来获得一个固定大小的堆内存。 -Xms和-Xmx实际上是-XX:InitialHeapSize和-XX:MaxHeapSize的缩写。我们也可以直接使用这两个参数，它们所起得效果是一样的：</p>
+<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
+</code></pre>
+<p>需要注意的是，所有JVM关于初始\最大堆内存大小的输出都是使用它们的完整名称：“InitialHeapSize”和“InitialHeapSize”。所以当你查询一个正在运行的JVM的堆内存大小时，如使用-XX:+PrintCommandLineFlags参数或者通过JMX查询，你应该寻找“InitialHeapSize”和“InitialHeapSize”标志而不是“Xms”和“Xmx”。</p>
+<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
+<p>如果我们没法为-Xmx（最大堆内存）设置一个合适的大小，那么就有可能面临内存溢出（OutOfMemoryError）的风险，这可能是我们使用JVM时面临的最可怕的猛兽之一。就同<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">另外一篇</a>关于这个主题的博文说的一样，导致内存溢出的根本原因需要仔细的定位。通常来说，分析堆内存快照（Heap Dump）是一个很好的定位手段，如果发生内存溢出时没有生成内存快照那就实在是太糟了，特别是对于那种JVM已经崩溃或者错误只出现在顺利运行了数小时甚至数天的生产系统上的情况。</p>
+<p>幸运的是，我们可以通过设置-XX:+HeapDumpOnOutOfMemoryError 让JVM在发生内存溢出时自动的生成堆内存快照。有了这个参数，当我们不得不面对内存溢出异常的时候会节约大量的时间。默认情况下，堆内存快照会保存在JVM的启动目录下名为java_pid<code>&lt;pid&gt;</code>.hprof 的文件里（在这里<code>&lt;pid&gt;</code>就是JVM进程的进程号）。也可以通过设置-XX:HeapDumpPath=<code>&lt;path&gt;</code>来改变默认的堆内存快照生成路径，<code>&lt;path&gt;</code>可以是相对或者绝对路径。</p>
+<p>虽然这一切听起来很不错，但有一点我们需要牢记。堆内存快照文件有可能很庞大，特别是当内存溢出错误发生的时候。因此，我们推荐将堆内存快照生成路径指定到一个拥有足够磁盘空间的地方。</p>
+<p><strong>-XX:OnOutOfMemoryError</strong></p>
+<p>当内存溢发生时，我们甚至可以可以执行一些指令，比如发个E-mail通知管理员或者执行一些清理工作。通过-XX:OnOutOfMemoryError 这个参数我们可以做到这一点，这个参数可以接受一串指令和它们的参数。在这里，我们将不会深入它的细节，但我们提供了它的一个例子。在下面的例子中，当内存溢出错误发生的时候，我们会将堆内存快照写到/tmp/heapdump.hprof 文件并且在JVM的运行目录执行脚本cleanup.sh</p>
+<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
+</code></pre>
+<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>永久代在堆内存中是一块独立的区域，它包含了所有JVM加载的类的对象表示。为了成功运行应用程序，JVM会加载很多类（因为它们依赖于大量的第三方库，而这又依赖于更多的库并且需要从里面将类加载进来）这就需要增加永久代的大小。我们可以使用-XX:PermSize 和-XX:MaxPermSize 来达到这个目的。其中-XX:MaxPermSize 用于设置永久代大小的最大值，-XX:PermSize 用于设置永久代初始大小。下面是一个简单的例子：</p>
+<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
+</code></pre>
+<p>请注意，这里设置的永久代大小并不会被包括在使用参数-XX:MaxHeapSize 设置的堆内存大小中。也就是说，通过-XX:MaxPermSize设置的永久代内存可能会需要由参数-XX:MaxHeapSize 设置的堆内存以外的更多的一些堆内存。</p>
+<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
+<p>JVM一个有趣的，但往往被忽视的内存区域是“代码缓存”，它是用来存储已编译方法生成的本地代码。代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。就像其他内存区域一样，我们可以自定义代码缓存的大小。相关的参数是-XX:InitialCodeCacheSize 和-XX:ReservedCodeCacheSize，它们的参数和上面介绍的参数一样，都是字节值。</p>
+<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
+<p>如果代码缓存不断增长，例如，因为热部署引起的内存泄漏，那么提高代码的缓存大小只会延缓其发生溢出。为了避免这种情况的发生，我们可以尝试一个有趣的新参数：当代码缓存被填满时让JVM放弃一些编译代码。通过使用-XX:+UseCodeCacheFlushing 这个参数，我们至少可以避免当代码缓存被填满的时候JVM切换到interpreted-only 模式。不过，我仍建议尽快解决代码缓存问题发生的根本原因，如找出内存泄漏并修复它。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/&quot;&gt;JVM实用参数（四）内存调优&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 郑旭东&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM实用参数（一）JVM类型以及编译器模式</title>
     <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
     <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
@@ -2425,6 +1912,413 @@ Average time: 7.622285 seconds
     
     
       <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command：命令帮助</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:50:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>指导环境：CentOS7</p>
+</blockquote>
+<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
+<pre><code class="lang-bash">[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+</code></pre>
+<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
+<pre><code class="lang-bash">[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+</code></pre>
+<a id="more"></a>
+<p>那么，我们可以在不输入任何字的情况下，直接按下两次tab键，则可以统计下当前用户下可用的命令有多少个.</p>
+<blockquote>
+<p>但是经过实际尝试，在CenOS7下，该方法无效,Mac下有效</p>
+</blockquote>
+<pre><code class="lang-bash">delei@DeleitekiMBP:~$
+Display all 1473 possibilities? (y or n)
+</code></pre>
+<blockquote>
+<p>每个人的操作系统所用的命令数都是不一样的。<br>不同的linux版本，用户安装的软件命令，用户设置的环境变量等都是不一样的。</p>
+</blockquote>
+<p>虽然经常常用的命令数量不多，但是在有些情况下，很多命令的详细参数和选项用法不一定都能记得住。而若在无网络，无参考手册情况下，更会遇到不知道如何使用命令的情况。Linux上开发的软件大多数是自由性软件，而这些软件开发者一般都会有相应的命令使用方法。<br>在上述情况下，其实Linux已提供了几种方式能够提供帮助。</p>
+<h2 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h2><p>该命令获得索引的简短信息,如果有多个匹配(不同版本，多个同样的软件等)则会列出多个</p>
+<pre><code class="lang-bash">[root@delei-server ~]# whatis cd
+cd (1)               - bash built-in commands, see bash(1)
+cd (1p)              - change the working directory
+[root@delei-server ~]# whatis wget
+wget (1)             - The non-interactive network downloader.
+</code></pre>
+<p>但不是所有命令在所有的Linux上均可使用</p>
+<pre><code class="lang-bash">[root@delei-server ~]# whatis ll
+ll：没有 appropriate。
+</code></pre>
+<h2 id="help、-help"><a href="#help、-help" class="headerlink" title="help、-help"></a>help、-help</h2><p>—help该命令显示使用摘要和参数列表，可以查看大多数命令的用法</p>
+<pre><code class="lang-bash">[root@delei-server ~]# date --help
+用法：date [选项]... [+格式]
+　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+Display the current time in the given FORMAT, or set the system date.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -d, --date=STRING         display time described by STRING, not &#39;now&#39;
+  -f, --file=DATEFILE       like --date once for each line of DATEFILE
+  -I[TIMESPEC], --iso-8601[=TIMESPEC]  output date/time in ISO 8601 format.
+                            TIMESPEC=&#39;date&#39; for date only (the default),
+                            &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or &#39;ns&#39; for date
+                            and time to the indicated precision.
+  -r, --reference=文件        显示文件指定文件的最后修改时间
+  -R, --rfc-2822        以RFC 2822格式输出日期和时间
+                例如：2006年8月7日，星期一 12:34:56 -0600
+      --rfc-3339=TIMESPEC   output date and time in RFC 3339 format.
+                            TIMESPEC=&#39;date&#39;, &#39;seconds&#39;, or &#39;ns&#39; for
+                            date and time to the indicated precision.
+                            Date and time components are separated by
+                            a single space: 2006-08-07 12:34:56-06:00
+  -s, --set=STRING          set time described by STRING
+  -u, --utc, --universal    print or set Coordinated Universal Time (UTC)
+      --help        显示此帮助信息并退出
+      --version        显示版本信息并退出
+
+给定的格式FORMAT 控制着输出，解释序列如下：
+
+  %%    一个文字的 %
+  %a    当前locale 的星期名缩写(例如： 日，代表星期日)
+  %A    当前locale 的星期名全称 (如：星期日)
+  %b    当前locale 的月名缩写 (如：一，代表一月)
+  %B    当前locale 的月名全称 (如：一月)
+  ...
+
+默认情况下，日期的数字区域以0 填充。
+The following optional flags may follow &#39;%&#39;:
+
+  -  (hyphen) do not pad the field
+  _  (underscore) pad with spaces
+  0  (zero) pad with zeros
+  ^  use upper case if possible
+  #  use opposite case if possible
+
+在任何标记之后还允许一个可选的域宽度指定，它是一个十进制数字。
+作为一个可选的修饰声明，它可以是E，在可能的情况下使用本地环境关联的
+表示方式；或者是O，在可能的情况下使用本地环境关联的数字符号。
+
+Examples:
+Convert seconds since the epoch (1970-01-01 UTC) to a date
+  $ date --date=&#39;@2147483647&#39;
+
+Show the time on the west coast of the US (use tzselect(1) to find TZ)
+  $ TZ=&#39;America/Los_Angeles&#39; date
+
+Show the local time for 9AM next Friday on the west coast of the US
+  $ date --date=&#39;TZ=&quot;America/Los_Angeles&quot; 09:00 next Fri&#39;
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告date 的翻译错误
+要获取完整文档，请运行：info coreutils &#39;date invocation&#39;
+</code></pre>
+<p>—help只能对外部命令使用，对内部命令无效当我们要求内部命令的帮助时使用help+命令</p>
+<pre><code class="lang-bash">[root@delei-server bin]# help pwd
+pwd: pwd [-LP]
+    打印当前工作目录的名字。
+
+    选项：
+      -L    打印 $PWD 变量的值，如果它命名了当前的
+        工作目录
+      -P    打印当前的物理路径，不带有任何的符号链接
+
+    默认情况下，`pwd&#39; 的行为和带 `-L&#39; 选项一致
+
+    退出状态：
+    除非使用了无效选项或者当前目录不可读，否则
+    返回状态为0。
+</code></pre>
+<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man是manual的简写，命令使用手册／说明<br>同样是pwd,man提供的内容较多(内容过长，部分已省略…)</p>
+<pre><code class="lang-bash">[root@delei-server bin]# man date
+DATE(1)                       User Commands                      DATE(1)
+
+NAME
+       date - print or set the system date and time
+
+SYNOPSIS
+       date [OPTION]... [+FORMAT]
+       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+
+DESCRIPTION
+       Display  the  current time in the given FORMAT, or set the system
+       date.
+
+       Mandatory arguments to  long  options  are  mandatory  for  short
+       options too.
+
+       -d, --date=STRING
+              display time described by STRING, not &#39;now&#39;
+
+       -f, --file=DATEFILE
+              like --date once for each line of DATEFILE
+
+       -I[TIMESPEC], --iso-8601[=TIMESPEC]
+              output  date/time in ISO 8601 format.  TIMESPEC=&#39;date&#39; for
+              date only (the default), &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or
+              &#39;ns&#39; for date and time to the indicated precision.
+
+       ...
+       #      use opposite case if possible
+
+       After any flags comes an optional field width, as a decimal  num‐
+       ber;  then  an  optional  modifier,  which is either E to use the
+       locale&#39;s alternate representations if available, or O to use  the
+       locale&#39;s alternate numeric symbols if available.
+
+ENVIRONMENT
+       TZ     Specifies  the timezone, unless overridden by command line
+              parameters.  If neither is  specified,  the  setting  from
+              /etc/localtime is used.
+
+EXAMPLES
+       Convert seconds since the epoch (1970-01-01 UTC) to a date
+
+              $ date --date=&#39;@2147483647&#39;
+
+       Show  the  time  on  the west coast of the US (use tzselect(1) to
+       find TZ)
+
+              $ TZ=&#39;America/Los_Angeles&#39; date
+    ...
+
+DATE STRING
+       The  --date=STRING  is  a  mostly free format human readable date
+       string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot;  or  &quot;2004-02-29
+       16:21:42&quot;  or  even  &quot;next  Thursday&quot;.  A date string may contain
+       items indicating calendar date, time of day, time  zone,  day  of
+       week, relative time, relative date, and numbers.  An empty string
+       indicates the beginning of the day.  The date  string  format  is
+       more  complex  than  is  easily  documented  here  but  is  fully
+       described in the info documentation.
+
+AUTHOR
+       Written by David MacKenzie.
+
+COPYRIGHT
+       Copyright © 2013 Free Software Foundation, Inc.  License  GPLv3+:
+       GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
+       This  is  free  software: you are free to change and redistribute
+       it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       The full documentation for date is maintained as a  Texinfo  man‐
+       ual.   If  the  info  and date programs are properly installed at
+       your site, the command
+
+              info coreutils &#39;date invocation&#39;
+
+       should give you access to the complete manual.
+
+GNU coreutils 8.22            February 2016                      DATE(1)
+ Manual page date(1) line 159/222 (END) (press h for help or q to quit)
+</code></pre>
+<blockquote>
+<p>当内容较多时，使用page up和page down上下翻页，空格也可向下翻页;<br>按q退出</p>
+</blockquote>
+<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
+<h4 id="man页面所属的分类标识-常用的是1、3、5、8"><a href="#man页面所属的分类标识-常用的是1、3、5、8" class="headerlink" title="man页面所属的分类标识(常用的是1、3、5、8)"></a>man页面所属的分类标识(常用的是1、3、5、8)</h4><ol>
+<li>用户可以操作的命令或者是可执行文件</li>
+<li>系统核心可调用的函数与工具等</li>
+<li>一些常用的函数与数据库</li>
+<li>设备文件的说明</li>
+<li>设置文件或者某些文件的格式</li>
+<li>游戏</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
+<li>系统管理员可用的管理条令</li>
+<li>与内核有关的文件</li>
+</ol>
+<h4 id="man-page的常见部分"><a href="#man-page的常见部分" class="headerlink" title="man page的常见部分"></a>man page的常见部分</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>内容说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAME</td>
+<td>简短的指令、资料名称说明</td>
+</tr>
+<tr>
+<td>SYNOPSIS</td>
+<td>简短的指令下达语法简介</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>较为完整的说明</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>针对SYNOPSI部分，有列举的所有可用的选项说明</td>
+</tr>
+<tr>
+<td>COMMANDS</td>
+<td>当该命令在运行的时候，可以下达的命令</td>
+</tr>
+<tr>
+<td>FILES</td>
+<td>使用或链接到的某些档案／文件</td>
+</tr>
+<tr>
+<td>SEE ALSO</td>
+<td>可以参考的，跟该命令或资料有相关的其他说明</td>
+</tr>
+<tr>
+<td>EXAMPLE</td>
+<td>可以参考的范例</td>
+</tr>
+<tr>
+<td>AUTHORS</td>
+<td>作者</td>
+</tr>
+<tr>
+<td>COPYRIGHT</td>
+<td>版权说明</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>这是常见的内容，实际上还有其他部分<br>在某些命令中这些内容不全都有</p>
+</blockquote>
+<h4 id="man常用命令参数"><a href="#man常用命令参数" class="headerlink" title="man常用命令参数"></a>man常用命令参数</h4><ul>
+<li><p>man -a：<br>搜索并打开所有man中同名帮助，例如 man passwd ，你首先会进入一个PASSWD(1) section用户命令类的帮助手册，你再按q键退出当前正在显示的帮助手册，就会进入PASSWD(5) section文件格式类的帮助手册。</p>
+</li>
+<li><p>man -aw：<br>显示所有手册文件的路径。</p>
+</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -aw passwd
+/usr/share/man/man1/passwd.1.gz
+/usr/share/man/man1/sslpasswd.1ssl.gz
+/usr/share/man/man5/passwd.5.gz
+</code></pre>
+<ul>
+<li><p>man -M：<br>指定手册文件的搜索路径，有的时候我们自己安装的软件是带有自己的帮助文件的，通常不在我们的MANPATH里面，那么我们就可以手动指定man搜索的文件路径。如 man -M /home/mysql/man mysql显示的就是你安装的mysql的帮助，而不是系统默认的旧版mysql的帮助。</p>
+</li>
+<li><p>man -k：<br>根据关键字搜索联机帮助，是一种模糊搜索。例如要查找”passwd”相关的信息，使用man -k passwd会找到很多和passwd相关的帮助页。如：我忘记了iptables命令就只能记住ipta则可以使用man -k ipta ，系统会把包括ipta的命令显示在屏幕上。</p>
+</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -k passwd
+chpasswd (8)         - 批量更新密码
+gpasswd (1)          - 管理员 /etc/group 和 /etc/gshadow
+fgetpwent_r (3)      - get passwd file entry reentrantly
+getpwent_r (3)       - get passwd file entry reentrantly
+grub2-mkpasswd-pbkdf2 (1) - Generate a PBKDF2 password hash.
+htpasswd (1)         - Manage user files for basic authentication
+kpasswd (1)          - change a user&#39;s Kerberos password
+ldappasswd (1)       - change the password of an LDAP entry
+lpasswd (1)          - Change group or user password
+lppasswd (1)         - add, change, or delete digest passwords.
+pam_localuser (8)    - require users to be listed in /etc/passwd
+passwd (1)           - update user&#39;s authentication tokens
+sslpasswd (1ssl)     - compute password hashes
+passwd (5)           - password file
+passwd2des (3)       - RFS password encryption
+pwhistory_helper (8) - Helper binary that transfers password hashes fro...
+saslpasswd2 (8)      - set a user&#39;s sasl password
+smbpasswd (5)        - The Samba encrypted password file
+smbpasswd (8)        - change a user&#39;s SMB password
+vncpasswd (1)        - change the VNC password
+</code></pre>
+<ul>
+<li>man -f：<br>关键字精确搜索，与-k不同，它只搜索与关键字完全匹配的帮助页。</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -f passwd
+sslpasswd (1ssl)     - compute password hashes
+passwd (1)           - update user&#39;s authentication tokens
+passwd (5)           - password file
+</code></pre>
+<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>info与man类似，也是一种帮助说明,指令的文件预设放在<code>/usr/share/info/</code>目录中。<br>与man不同的是，info不是都在一个页面显示，而是将文件资料拆成了多个段落，每个段落有自己的页面，并且在各个页面还有类似链接的方式可以跳转，每个页面被称为一个node.</p>
+<pre><code class="lang-bash">[root@delei-server bin]# info info
+File: info.info,  Node: Top,  Next: Getting Started,  Up: (dir)
+
+Info: An Introduction
+*********************
+
+The GNU Project distributes most of its on-line manuals in the &quot;Info
+format&quot;, which you read using an &quot;Info reader&quot;.  You are probably using
+an Info reader to read this now.
+
+   ...
+
+* Menu:
+
+* Getting Started::             Getting started using an Info reader.
+* Advanced::                    Advanced Info commands.
+* Expert Info::                 Info commands for experts.
+* Index::                       An index of topics, commands, and variabl\
+es.
+</code></pre>
+<p>第一行:</p>
+<ul>
+<li>File：表示该info的内容是由info.info提供</li>
+<li>Node：代表当前的这个页面是top</li>
+<li>Next：下一个页面</li>
+<li>Up：上一个页面</li>
+</ul>
+<p>将光标移动到该页面最下面”Menu”的列表部分，在每一个种，按下回车即可进入到相应的Node(类似于网页的链接跳转)</p>
+<pre><code class="lang-bash">File: info.info,  Node: Advanced,  Next: Expert Info,  Prev: Getting Star\
+ted,  Up: Top
+
+2 Advanced Info Commands
+************************
+
+This chapter describes various advanced Info commands.  (If you are
+using a stand-alone Info reader, there are additional commands specific
+to it, which are documented in several chapters of *note GNU Info:
+(info-stnd)Top.)
+
+   ...
+
+* Menu:
+
+* Search Text::          How to search Info documents.
+* Search Index::         How to search the indices for specific subjects.
+* Go to node::           How to go to a node by name.
+* Choose menu subtopic:: How to choose a menu subtopic by its number.
+* Create Info buffer::   How to create a new Info buffer in Emacs.
+* Emacs Info Variables:: Variables modifying the behavior of Emacs Info.
+</code></pre>
+<p>依照Menu可以进行node间的跳转，比起man来说，阅读更加方便</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://linux.vbird.org/linux_basic/0160startlinux.php#manual" target="_blank" rel="external">鸟哥的私房菜</a></li>
+<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux命令查询</a></li>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html" target="_blank" rel="external">Linux Tools Quick Tutorial</a></li>
+<li><a href="http://www.dabu.info/linux-get-help-man-whatis-info-apropos.html" target="_blank" rel="external">大步’s Blog</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;指导环境：CentOS7&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Linux命令数量&quot;&gt;&lt;a href=&quot;#Linux命令数量&quot; class=&quot;headerlink&quot; title=&quot;Linux命令数量&quot;&gt;&lt;/a&gt;Linux命令数量&lt;/h2&gt;&lt;p&gt;在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而当匹配的数量过多，会先先统计有多少数量，询问是否显示&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -2531,133 +2425,100 @@ Accumulated compiler times (for compiled methods only)
   </entry>
   
   <entry>
-    <title>JVM实用参数（三）打印所有XX参数及值</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/</id>
+    <title>Linux 跟踪域名解析过程</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
     <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:20:43.000Z</updated>
+    <updated>2016-12-08T10:49:40.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
+<p>linux and windows</p>
 </blockquote>
-<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">blog.codecentric.de</a></p>
-<p><strong>译者：</strong>李洪柱，iDestiny<br><strong>校对：</strong>方腾飞</p>
-<p>本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。</p>
-<a id="more"></a>
-<pre><code class="lang-bash">-XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial
-</code></pre>
-<p>让我们现在就了解一下新参数的输出。以 -client 作为参数的 -XX:+PrintFlagsFinal   的结果是一个按字母排序的590个参数表格（注意，每个release版本参数的数量会不一样）</p>
-<pre><code class="lang-bash">$ java -client -XX:+PrintFlagsFinal
-[Global flags]
-    uintx AdaptivePermSizeWeight                    = 20              {product}           
-    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}           
-    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}           
-    uintx AdaptiveSizePausePolicy                   = 0               {product}           
-    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}           
-     ...
-</code></pre>
-<p>(校对注：你可以尝试在命令行输入上面的命令，亲自实现下)</p>
-<p>表格的每一行包括五列，来表示一个XX参数。第一列表示参数的数据类型，第二列是名称，第四列为值，第五列是参数的类别。第三列”=”表示第四列是参数的默认值，而”:=” 表明了参数被用户或者JVM赋值了。</p>
-<p>注意对于这个例子我只是用了Benchmark类，因为这个系列前面的章节也是用的这个类。甚至没有一个主类的情况下你能得到相同的输出，通过运行java 带另外的参数 -version.现在让我们检查下 server VM提供了多少个参数。我们也能指定参数-XX:+UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。</p>
-<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal
-</code></pre>
-<p>724个参数，让我们看一眼那些已经被赋值的参数</p>
-<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal Benchmark | grep &quot;:&quot;
-uintx InitialHeapSize                     := 57505088         {product}
-uintx MaxHeapSize                         := 920649728        {product}
-uintx ParallelGCThreads                   := 4                {product}
- bool PrintFlagsFinal                     := true             {product}
- bool UseParallelGC                       := true             {product}
-</code></pre>
-<p>校对注：这个命令非常有用）我们仅设置一个自己的参数 -XX:+PrintFlagsFinal。其他参数通过server VM基于系统设置的，以便以合适的堆大小和GC设置运行。</p>
-<p>如果我们只想看下所有XX参数的默认值，能够用一个相关的参数，-XX:+PrintFlagsInitial  。 用 -XX:+PrintFlagsInitial, 只是展示了第三列为“=”的数据（也包括那些被设置其他值的参数）。</p>
-<p>然而，注意当与-XX:+PrintFlagsFinal 对比的时候，一些参数会丢失，大概因为这些参数是动态创建的。</p>
-<p>研究表格的内容是很有意思的，通过比较client和server VM的行为，很明显了解哪些参数会影响其他的参数。有兴趣的读者，可以看一下这篇不错文章<a href="http://q-redux.blogspot.com/2011/01/inspecting-hotspot-jvm-options.html" target="_blank" rel="external">Inspecting HotSpot JVM Options</a>。这个文章主要解释了第五列的参数类别。</p>
-<p>-XX:+PrintCommandLineFlags<br>让我们看下另外一个参数，事实上这个参数非常有用: -XX:+PrintCommandLineFlags。这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值。</p>
-<p>换句话说，它列举出 -XX:+PrintFlagsFinal的结果中第三列有”:=”的参数。以这种方式，我们可以用-XX:+PrintCommandLineFlags作为快捷方式来查看修改过的参数。看下面的例子。</p>
-<pre><code class="lang-bash">$ java -server -XX:+PrintCommandLineFlags Benchmark
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
 
--XX:InitialHeapSize=57505088 -XX:MaxHeapSize=920081408 -XX:ParallelGCThreads=4 -XX:+PrintCommandLineFlags -XX:+UseParallelGC
-</code></pre>
-<p>现在如果我们每次启动java 程序的时候设置 -XX:+PrintCommandLineFlags 并且输出到日志文件上，这样会记录下我们设置的JVM 参数对应用程序性能的影响。类似于 -showversion(见 Part1)，我建议 –XX:+PrintCommandLineFlags 这个参数应该总是设置在JVM启动的配置项里。因为你从不知道你什么时候会需要这些信息。</p>
-<p>奇怪的是在这个例子中，通过 -XX:+PrintCommandLineFlags 列出堆的最大值会比通过-XX:+PrintFlagsFinal列举出的相应值小一点。如果谁知道两者之间不同的原因，请告诉我。</p>
-<blockquote>
-<p>文中提到的问题，网友在原文中给的答案，仅供参考<br><a href="http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM" target="_blank" rel="external">http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM</a></p>
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
+<p>linux</p>
 </blockquote>
-]]></content>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>增加+trace参数跟踪过程：</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
+</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;JVM实用参数（三）打印所有XX参数及值&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt;李洪柱，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt;方腾飞&lt;/p&gt;
-&lt;p&gt;本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。&lt;/p&gt;
+      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;linux and windows
     
     </summary>
     
       <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
     
     
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（四）内存调优</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者：</strong> 郑旭东<br><strong>校对：</strong> 梁海舰</p>
-<p>理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。</p>
-<a id="more"></a>
-<p>所有已制定的HotSpot内存管理和垃圾回收算法都基于一个相同的堆内存划分：新生代（young generation）里存储着新分配的和较年轻的对象，老年代（old generation）里存储着长寿的对象。在此之外，永久代（permanent generation）存储着那些需要伴随整个JVM生命周期的对象，比如，已加载的对象的类定义或者String对象内部Cache。接下来，我们将假设堆内存是按照新生代、老年代和永久代这一经典策略划分的。然而，其他的一些堆内存划分策略也是可行的，一个突出的例子就是新的G1垃圾回收器，它模糊了新生代和老年代之间的区别。此外，目前的开发进程似乎表明在未来的HotSpot JVM版本中，将不会区分老年代和永久代。</p>
-<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
-<p>-Xms和-Xmx可以说是最流行的JVM参数，它们可以允许我们指定JVM的初始和最大堆内存大小。一般来说，这两个参数的数值单位是Byte，但同时它们也支持使用速记符号，比如“k”或者“K”代表“kilo”，“m”或者“M”代表“mega”，“g”或者“G”代表“giga”。举个例子，下面的命令启动了一个初始化堆内存为128M，最大堆内存为2G，名叫“MyApp”的Java应用程序。</p>
-<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
-</code></pre>
-<p>在实际使用过程中，初始化堆内存的大小通常被视为堆内存大小的下界。然而JVM可以在运行时动态的调整堆内存的大小，所以理论上来说我们有可能会看到堆内存的大小小于初始化堆内存的大小。但是即使在非常低的堆内存使用下，我也从来没有遇到过这种情况。这种行为将会方便开发者和系统管理员，因为我们可以通过将“-Xms”和“-Xmx”设置为相同大小来获得一个固定大小的堆内存。 -Xms和-Xmx实际上是-XX:InitialHeapSize和-XX:MaxHeapSize的缩写。我们也可以直接使用这两个参数，它们所起得效果是一样的：</p>
-<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
-</code></pre>
-<p>需要注意的是，所有JVM关于初始\最大堆内存大小的输出都是使用它们的完整名称：“InitialHeapSize”和“InitialHeapSize”。所以当你查询一个正在运行的JVM的堆内存大小时，如使用-XX:+PrintCommandLineFlags参数或者通过JMX查询，你应该寻找“InitialHeapSize”和“InitialHeapSize”标志而不是“Xms”和“Xmx”。</p>
-<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
-<p>如果我们没法为-Xmx（最大堆内存）设置一个合适的大小，那么就有可能面临内存溢出（OutOfMemoryError）的风险，这可能是我们使用JVM时面临的最可怕的猛兽之一。就同<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">另外一篇</a>关于这个主题的博文说的一样，导致内存溢出的根本原因需要仔细的定位。通常来说，分析堆内存快照（Heap Dump）是一个很好的定位手段，如果发生内存溢出时没有生成内存快照那就实在是太糟了，特别是对于那种JVM已经崩溃或者错误只出现在顺利运行了数小时甚至数天的生产系统上的情况。</p>
-<p>幸运的是，我们可以通过设置-XX:+HeapDumpOnOutOfMemoryError 让JVM在发生内存溢出时自动的生成堆内存快照。有了这个参数，当我们不得不面对内存溢出异常的时候会节约大量的时间。默认情况下，堆内存快照会保存在JVM的启动目录下名为java_pid<code>&lt;pid&gt;</code>.hprof 的文件里（在这里<code>&lt;pid&gt;</code>就是JVM进程的进程号）。也可以通过设置-XX:HeapDumpPath=<code>&lt;path&gt;</code>来改变默认的堆内存快照生成路径，<code>&lt;path&gt;</code>可以是相对或者绝对路径。</p>
-<p>虽然这一切听起来很不错，但有一点我们需要牢记。堆内存快照文件有可能很庞大，特别是当内存溢出错误发生的时候。因此，我们推荐将堆内存快照生成路径指定到一个拥有足够磁盘空间的地方。</p>
-<p><strong>-XX:OnOutOfMemoryError</strong></p>
-<p>当内存溢发生时，我们甚至可以可以执行一些指令，比如发个E-mail通知管理员或者执行一些清理工作。通过-XX:OnOutOfMemoryError 这个参数我们可以做到这一点，这个参数可以接受一串指令和它们的参数。在这里，我们将不会深入它的细节，但我们提供了它的一个例子。在下面的例子中，当内存溢出错误发生的时候，我们会将堆内存快照写到/tmp/heapdump.hprof 文件并且在JVM的运行目录执行脚本cleanup.sh</p>
-<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
-</code></pre>
-<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>永久代在堆内存中是一块独立的区域，它包含了所有JVM加载的类的对象表示。为了成功运行应用程序，JVM会加载很多类（因为它们依赖于大量的第三方库，而这又依赖于更多的库并且需要从里面将类加载进来）这就需要增加永久代的大小。我们可以使用-XX:PermSize 和-XX:MaxPermSize 来达到这个目的。其中-XX:MaxPermSize 用于设置永久代大小的最大值，-XX:PermSize 用于设置永久代初始大小。下面是一个简单的例子：</p>
-<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
-</code></pre>
-<p>请注意，这里设置的永久代大小并不会被包括在使用参数-XX:MaxHeapSize 设置的堆内存大小中。也就是说，通过-XX:MaxPermSize设置的永久代内存可能会需要由参数-XX:MaxHeapSize 设置的堆内存以外的更多的一些堆内存。</p>
-<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
-<p>JVM一个有趣的，但往往被忽视的内存区域是“代码缓存”，它是用来存储已编译方法生成的本地代码。代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。就像其他内存区域一样，我们可以自定义代码缓存的大小。相关的参数是-XX:InitialCodeCacheSize 和-XX:ReservedCodeCacheSize，它们的参数和上面介绍的参数一样，都是字节值。</p>
-<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
-<p>如果代码缓存不断增长，例如，因为热部署引起的内存泄漏，那么提高代码的缓存大小只会延缓其发生溢出。为了避免这种情况的发生，我们可以尝试一个有趣的新参数：当代码缓存被填满时让JVM放弃一些编译代码。通过使用-XX:+UseCodeCacheFlushing 这个参数，我们至少可以避免当代码缓存被填满的时候JVM切换到interpreted-only 模式。不过，我仍建议尽快解决代码缓存问题发生的根本原因，如找出内存泄漏并修复它。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/&quot;&gt;JVM实用参数（四）内存调优&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 郑旭东&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -2723,6 +2584,74 @@ uintx ParallelGCThreads                   := 4                {product}
 &lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 严亮&lt;br&gt;本部分，我们将关注堆(heap) 中一个主要区域，新生代(young generation)。首先我们会讨论为什么调整新生代的参数会对应用的性能如此重要，接着我们将学习新生代相关的JVM参数。&lt;/p&gt;
 &lt;p&gt;单纯从JVM的功能考虑，并不需要新生代，完全可以针对整个堆进行操作。新生代存在的唯一理由是优化垃圾回收(GC)的性能。更具体说，把堆划分为新生代和老年代有2个好处：简化了新对象的分配(只在新生代分配内存),可以更有效的清除不再需要的对象(即死对象)(新生代和老年代使用不同的GC算法)&lt;/p&gt;
 &lt;p&gt;通过广泛研究面向对象实现的应用，发现一个共同特点：很多对象的生存时间都很短。同时研究发现，新生对象很少引用生存时间长的对象。结合这2个特点，很明显 GC 会频繁访问新生对象，例如在堆中一个单独的区域，称之为新生代。在新生代中，GC可以快速标记回收”死对象”，而不需要扫描整个Heap中的存活一段时间的”老对象”。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM实用参数（七）CMS收集器</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
+<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
+<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+<a id="more"></a>
+<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
+<ol>
+<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
+<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
+<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
+<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
+<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
+<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
+</ol>
+<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
+<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
+<ol>
+<li>堆碎片</li>
+<li>对象分配率高</li>
+</ol>
+<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
+<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
+<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
+<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
+<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
+<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
+<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
+<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
+<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
+<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
+<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
+<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
+<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
+<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
+<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
+<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
+<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
+<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
+&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
     
     </summary>
     
@@ -2802,6 +2731,80 @@ uintx ParallelGCThreads                   := 4                {product}
 [Full GC 243120K-&amp;gt;241951K(629760K), 1.5589690 secs]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM实用参数（三）打印所有XX参数及值</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:20:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>译者：</strong>李洪柱，iDestiny<br><strong>校对：</strong>方腾飞</p>
+<p>本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。</p>
+<a id="more"></a>
+<pre><code class="lang-bash">-XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial
+</code></pre>
+<p>让我们现在就了解一下新参数的输出。以 -client 作为参数的 -XX:+PrintFlagsFinal   的结果是一个按字母排序的590个参数表格（注意，每个release版本参数的数量会不一样）</p>
+<pre><code class="lang-bash">$ java -client -XX:+PrintFlagsFinal
+[Global flags]
+    uintx AdaptivePermSizeWeight                    = 20              {product}           
+    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}           
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}           
+    uintx AdaptiveSizePausePolicy                   = 0               {product}           
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}           
+     ...
+</code></pre>
+<p>(校对注：你可以尝试在命令行输入上面的命令，亲自实现下)</p>
+<p>表格的每一行包括五列，来表示一个XX参数。第一列表示参数的数据类型，第二列是名称，第四列为值，第五列是参数的类别。第三列”=”表示第四列是参数的默认值，而”:=” 表明了参数被用户或者JVM赋值了。</p>
+<p>注意对于这个例子我只是用了Benchmark类，因为这个系列前面的章节也是用的这个类。甚至没有一个主类的情况下你能得到相同的输出，通过运行java 带另外的参数 -version.现在让我们检查下 server VM提供了多少个参数。我们也能指定参数-XX:+UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。</p>
+<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal
+</code></pre>
+<p>724个参数，让我们看一眼那些已经被赋值的参数</p>
+<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal Benchmark | grep &quot;:&quot;
+uintx InitialHeapSize                     := 57505088         {product}
+uintx MaxHeapSize                         := 920649728        {product}
+uintx ParallelGCThreads                   := 4                {product}
+ bool PrintFlagsFinal                     := true             {product}
+ bool UseParallelGC                       := true             {product}
+</code></pre>
+<p>校对注：这个命令非常有用）我们仅设置一个自己的参数 -XX:+PrintFlagsFinal。其他参数通过server VM基于系统设置的，以便以合适的堆大小和GC设置运行。</p>
+<p>如果我们只想看下所有XX参数的默认值，能够用一个相关的参数，-XX:+PrintFlagsInitial  。 用 -XX:+PrintFlagsInitial, 只是展示了第三列为“=”的数据（也包括那些被设置其他值的参数）。</p>
+<p>然而，注意当与-XX:+PrintFlagsFinal 对比的时候，一些参数会丢失，大概因为这些参数是动态创建的。</p>
+<p>研究表格的内容是很有意思的，通过比较client和server VM的行为，很明显了解哪些参数会影响其他的参数。有兴趣的读者，可以看一下这篇不错文章<a href="http://q-redux.blogspot.com/2011/01/inspecting-hotspot-jvm-options.html" target="_blank" rel="external">Inspecting HotSpot JVM Options</a>。这个文章主要解释了第五列的参数类别。</p>
+<p>-XX:+PrintCommandLineFlags<br>让我们看下另外一个参数，事实上这个参数非常有用: -XX:+PrintCommandLineFlags。这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值。</p>
+<p>换句话说，它列举出 -XX:+PrintFlagsFinal的结果中第三列有”:=”的参数。以这种方式，我们可以用-XX:+PrintCommandLineFlags作为快捷方式来查看修改过的参数。看下面的例子。</p>
+<pre><code class="lang-bash">$ java -server -XX:+PrintCommandLineFlags Benchmark
+
+-XX:InitialHeapSize=57505088 -XX:MaxHeapSize=920081408 -XX:ParallelGCThreads=4 -XX:+PrintCommandLineFlags -XX:+UseParallelGC
+</code></pre>
+<p>现在如果我们每次启动java 程序的时候设置 -XX:+PrintCommandLineFlags 并且输出到日志文件上，这样会记录下我们设置的JVM 参数对应用程序性能的影响。类似于 -showversion(见 Part1)，我建议 –XX:+PrintCommandLineFlags 这个参数应该总是设置在JVM启动的配置项里。因为你从不知道你什么时候会需要这些信息。</p>
+<p>奇怪的是在这个例子中，通过 -XX:+PrintCommandLineFlags 列出堆的最大值会比通过-XX:+PrintFlagsFinal列举出的相应值小一点。如果谁知道两者之间不同的原因，请告诉我。</p>
+<blockquote>
+<p>文中提到的问题，网友在原文中给的答案，仅供参考<br><a href="http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM" target="_blank" rel="external">http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;JVM实用参数（三）打印所有XX参数及值&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt;李洪柱，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt;方腾飞&lt;/p&gt;
+&lt;p&gt;本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。&lt;/p&gt;
     
     </summary>
     
