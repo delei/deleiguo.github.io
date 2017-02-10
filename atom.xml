@@ -58,40 +58,86 @@
   </entry>
   
   <entry>
-    <title>【转】阿里巴巴集团Java代码规范</title>
-    <link href="https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/"/>
-    <id>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</id>
+    <title>Mac/Linux Tree命令</title>
+    <link href="https://www.deleiguo.com/2017/02/09/linux-tree/"/>
+    <id>https://www.deleiguo.com/2017/02/09/linux-tree/</id>
     <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T05:43:57.000Z</updated>
+    <updated>2017-02-10T05:05:36.000Z</updated>
     
-    <content type="html"><![CDATA[<p>众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:</p>
-<p>【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。<br>【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。<br>【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。<br><a id="more"></a></p>
-<p><img src="/2017/02/09/alibaba-java-develop-norm/alibaba-java-develop-norm.jpg" alt="阿里巴巴Java开发手册"></p>
-<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">点击下载开发手册(PDF)</a></p>
-<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2>
+    <content type="html"><![CDATA[<h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+<a id="more"></a>
+<h2 id="tree命令行参数（只适用于安装了tree命令行工具）："><a href="#tree命令行参数（只适用于安装了tree命令行工具）：" class="headerlink" title="tree命令行参数（只适用于安装了tree命令行工具）："></a>tree命令行参数（只适用于安装了tree命令行工具）：</h2><p>实例：</p>
+<pre><code class="lang-bash">[deleiguo@test config]$ tree
+.
+|-- context.xml
+|-- server.xml
+`-- v1.0
+    |-- conf.properties
+    `-- log4j.properties
 
-	<div class="row">
-    <embed src="./alibaba-java-develop-norm.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
+1 directory, 4 files
+</code></pre>
+<p>以下为主要的参数译文：</p>
+<pre><code class="lang-bash">-a 显示所有文件和目录。
+-A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
+-C 在文件和目录清单加上色彩，便于区分各种类型。
+-d 显示目录名称而非内容。
+-D 列出文件或目录的更改时间。
+-f 在每个文件或目录之前，显示完整的相对路径名称。
+-F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;,&quot;/&quot;,&quot;=&quot;,&quot;@&quot;,&quot;|&quot;号。
+-g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
+-i 不以阶梯状列出文件或目录名称。
+-I 不显示符合范本样式的文件或目录名称。
+-l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
+-n 不在文件和目录清单加上色彩。
+-N 直接列出文件和目录名称，包括控制字符。
+-p 列出权限标示。
+-P 只显示符合范本样式的文件或目录名称。
+-q 用&quot;?&quot;号取代控制字符，列出文件和目录名称。
+-s 列出文件或目录大小。
+-t 用文件和目录的更改时间排序。
+-u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
+-x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
+</code></pre>
+<blockquote>
+<p>Linux中可以用<code>man tree</code>来查看更加详细的帮助说明</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>不是所有的linux系统中都有tree命令，例如CentOS，其次类Unix系统Mac中也没有</p>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>CentOS默认也没有tree命令，可以使用如下命令安装后使用</p>
+<pre><code class="lang-bash">sudo yum install tree
+</code></pre>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac中并没有tree,有几种方法实现tree</p>
+<h5 id="模拟Tree命令"><a href="#模拟Tree命令" class="headerlink" title="模拟Tree命令"></a>模拟Tree命令</h5><blockquote>
+<p>这其实是用find来模拟的。无法实现linux tree命令的所有功能和参数</p>
+</blockquote>
+<p>在用户目录中，在<code>.bash_profeile</code>中添加</p>
+<pre><code class="lang-bash">alias tree=&quot;find . -print | sed -e &#39;s;[^/]*/;|____;g;s;____|; |;g&#39;&quot;
+</code></pre>
+<p>然后<code>source .bash_profile</code>即可生效</p>
+<h5 id="安装Tree命令-推荐"><a href="#安装Tree命令-推荐" class="headerlink" title="安装Tree命令(推荐)"></a>安装Tree命令(推荐)</h5><p>首先在mac上安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>:</p>
+<pre><code class="lang-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+<p>然后</p>
+<pre><code class="lang-bash">sudo brew install tree
+</code></pre>
 <h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
-<li><a href="https://102.alibaba.com/newsInfo.htm?newsId=6" target="_blank" rel="external">阿里巴巴集团Java代码规范</a></li>
+<li><a href="http://www.runoob.com/linux/linux-comm-tree.html" target="_blank" rel="external">菜鸟教程-Linux tree命令</a></li>
+<li>博客园：破男孩<a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">mac tree命令</a></li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:&lt;/p&gt;
-&lt;p&gt;【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。&lt;br&gt;【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。&lt;br&gt;【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。&lt;br&gt;&lt;/p&gt;
+      &lt;h1 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h1&gt;&lt;p&gt;在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。&lt;br&gt;执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。&lt;/p&gt;
     
     </summary>
     
       <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
     
     
-      <category term="Java" scheme="https://www.deleiguo.com/tags/Java/"/>
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+    
+      <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
     
   </entry>
   
@@ -100,11 +146,11 @@
     <link href="https://www.deleiguo.com/2017/02/09/easy-saas/"/>
     <id>https://www.deleiguo.com/2017/02/09/easy-saas/</id>
     <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T07:33:42.000Z</updated>
+    <updated>2017-02-10T05:05:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p>前端时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
+    <content type="html"><![CDATA[<p>前段时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
 <blockquote>
-<p>到目前为止，算是蹒跚起步，没有SAAS经验给的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+<p>到目前为止，算是蹒跚起步，没有SAAS经验的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
 </blockquote>
 <h2 id="1-服务架构"><a href="#1-服务架构" class="headerlink" title="1. 服务架构"></a>1. 服务架构</h2><h3 id="1-1-硬件环境"><a href="#1-1-硬件环境" class="headerlink" title="1.1 硬件环境"></a>1.1 硬件环境</h3><p><img src="/2017/02/09/easy-saas/001.png" alt=""></p>
 <a id="more"></a>
@@ -194,15 +240,16 @@
 <p>独立数据库是一个租户独享一个数据库实例，它提供了最强的分离度，租户的数据彼此物理不可见，备份与恢复都很灵活；共享数据库、独立 Schema 将每个租户关联到同一个数据库的不同 Schema，租户间数据彼此逻辑不可见，上层应用程序的实现和独立数据库一样简单，但备份恢复稍显复杂； 最后一种模式则是租户数据在数据表级别实现共享，它提供了最低的成本，但引入了额外的编程复杂性（程序的数据访问需要用 tenantId 来区分不同租户），备份与恢复也更复杂。这三种模式的特点可以用一张图来概括：<br><img src="/2017/02/09/easy-saas/004.jpg" alt=""></p>
 <p>我们的数据库设计：</p>
 <p><img src="/2017/02/09/easy-saas/002.png" alt=""></p>
+<p>总体来说，我们目前采用的是“共享数据库、独立 Schema”的整体方案：</p>
 <ul>
 <li>每一个公司(租户)是一个单独的mysql database；</li>
-<li>每一个公司(租户)通过唯一的公司代码用于登录</li>
-<li>每一个公司(租户)都有各自的用户表，可以有该公司的admin用户来独立管理系统</li>
+<li>每一个公司(租户)通过唯一的公司代码用于登录和区分；</li>
+<li>每一个公司(租户)都有各自的用户表，可以有该公司的admin用户来独立管理系统；</li>
 </ul>
 <p>其他：</p>
 <ul>
 <li>有一个单独的数据库实例(company)来管理公司(租户)信息，以及公司(租户)的数据源datasource信息；</li>
-<li>用户在登录时访问的是company datasource,然后将(租户)的数据源信息放入当前session中；</li>
+<li>用户在登录时访问的是company datasource,然后将(租户)的数据源信息获取后生成数据库连接池，company code放入当前session中；</li>
 <li>当公司(租户)数量增加时，可通过增加mysql实例来实现无缝水平扩展(程序无需配置或重启)；</li>
 </ul>
 <h3 id="1-3-应用设计"><a href="#1-3-应用设计" class="headerlink" title="1.3 应用设计"></a>1.3 应用设计</h3><h4 id="缓存改造"><a href="#缓存改造" class="headerlink" title="缓存改造"></a>缓存改造</h4><p>不同的应用服务器部署的是同一份代码，所有的应用连接的都是同一份数据库。Tomcat集群可通过tomcat本身支持的session持久化相关保证session同步（目前采用的是redis方案）。<br>除此外，程序考虑和改造如下部分：</p>
@@ -473,9 +520,9 @@ tomcat-redis-session-manage-tomcat7.jar
     
     <summary type="html">
     
-      &lt;p&gt;前端时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。&lt;/p&gt;
+      &lt;p&gt;前段时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;到目前为止，算是蹒跚起步，没有SAAS经验给的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导&lt;br&gt;&lt;br&gt;在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较&lt;/p&gt;
+&lt;p&gt;到目前为止，算是蹒跚起步，没有SAAS经验的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导&lt;br&gt;&lt;br&gt;在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;1-服务架构&quot;&gt;&lt;a href=&quot;#1-服务架构&quot; class=&quot;headerlink&quot; title=&quot;1. 服务架构&quot;&gt;&lt;/a&gt;1. 服务架构&lt;/h2&gt;&lt;h3 id=&quot;1-1-硬件环境&quot;&gt;&lt;a href=&quot;#1-1-硬件环境&quot; class=&quot;headerlink&quot; title=&quot;1.1 硬件环境&quot;&gt;&lt;/a&gt;1.1 硬件环境&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/2017/02/09/easy-saas/001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
@@ -535,86 +582,40 @@ tomcat-redis-session-manage-tomcat7.jar
   </entry>
   
   <entry>
-    <title>Mac/Linux Tree命令</title>
-    <link href="https://www.deleiguo.com/2017/02/09/linux-tree/"/>
-    <id>https://www.deleiguo.com/2017/02/09/linux-tree/</id>
+    <title>【转】阿里巴巴集团Java代码规范</title>
+    <link href="https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/"/>
+    <id>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</id>
     <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T05:37:29.000Z</updated>
+    <updated>2017-02-09T05:43:57.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-<a id="more"></a>
-<h2 id="tree命令行参数（只适用于安装了tree命令行工具）："><a href="#tree命令行参数（只适用于安装了tree命令行工具）：" class="headerlink" title="tree命令行参数（只适用于安装了tree命令行工具）："></a>tree命令行参数（只适用于安装了tree命令行工具）：</h2><p>实例：</p>
-<pre><code class="lang-bash">[deleiguo@test config]$ tree
-.
-|-- context.xml
-|-- server.xml
-`-- v1.0
-    |-- conf.properties
-    `-- log4j.properties
+    <content type="html"><![CDATA[<p>众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:</p>
+<p>【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。<br>【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。<br>【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。<br><a id="more"></a></p>
+<p><img src="/2017/02/09/alibaba-java-develop-norm/alibaba-java-develop-norm.jpg" alt="阿里巴巴Java开发手册"></p>
+<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">点击下载开发手册(PDF)</a></p>
+<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2>
 
-1 directory, 4 files
-</code></pre>
-<p>以下为主要的参数译文：</p>
-<pre><code class="lang-bash">-a 显示所有文件和目录。
--A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
--C 在文件和目录清单加上色彩，便于区分各种类型。
--d 显示目录名称而非内容。
--D 列出文件或目录的更改时间。
--f 在每个文件或目录之前，显示完整的相对路径名称。
--F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上&quot;*&quot;,&quot;/&quot;,&quot;=&quot;,&quot;@&quot;,&quot;|&quot;号。
--g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
--i 不以阶梯状列出文件或目录名称。
--I 不显示符合范本样式的文件或目录名称。
--l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
--n 不在文件和目录清单加上色彩。
--N 直接列出文件和目录名称，包括控制字符。
--p 列出权限标示。
--P 只显示符合范本样式的文件或目录名称。
--q 用&quot;?&quot;号取代控制字符，列出文件和目录名称。
--s 列出文件或目录大小。
--t 用文件和目录的更改时间排序。
--u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
--x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
-</code></pre>
-<blockquote>
-<p>Linux中可以用<code>man tree</code>来查看更加详细的帮助说明</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>不是所有的linux系统中都有tree命令，例如CentOS，其次类Unix系统Mac中也没有</p>
-<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>CentOS默认也没有tree命令，可以使用如下命令安装后使用</p>
-<pre><code class="lang-bash">sudo yum install tree
-</code></pre>
-<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac中并没有tree,有几种方法实现tree</p>
-<h5 id="模拟Tree命令"><a href="#模拟Tree命令" class="headerlink" title="模拟Tree命令"></a>模拟Tree命令</h5><blockquote>
-<p>这其实是用find来模拟的。无法实现linux tree命令的所有功能和参数</p>
-</blockquote>
-<p>在用户目录中，在<code>.bash_profeile</code>中添加</p>
-<pre><code class="lang-bash">alias tree=&quot;find . -print | sed -e &#39;s;[^/]*/;|____;g;s;____|; |;g&#39;&quot;
-</code></pre>
-<p>然后<code>source .bash_profile</code>即可生效</p>
-<h5 id="安装Tree命令-推荐"><a href="#安装Tree命令-推荐" class="headerlink" title="安装Tree命令(推荐)"></a>安装Tree命令(推荐)</h5><p>现在mac上安装<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a>:</p>
-<pre><code class="lang-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-<p>然后</p>
-<pre><code class="lang-bash">sudo brew install tree
-</code></pre>
+	<div class="row">
+    <embed src="./alibaba-java-develop-norm.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
 <h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
-<li><a href="http://www.runoob.com/linux/linux-comm-tree.html" target="_blank" rel="external">菜鸟教程-Linux tree命令</a></li>
-<li>博客园：破男孩<a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">mac tree命令</a></li>
+<li><a href="https://102.alibaba.com/newsInfo.htm?newsId=6" target="_blank" rel="external">阿里巴巴集团Java代码规范</a></li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h1&gt;&lt;p&gt;在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。&lt;br&gt;执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。&lt;/p&gt;
+      &lt;p&gt;众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:&lt;/p&gt;
+&lt;p&gt;【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。&lt;br&gt;【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。&lt;br&gt;【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
     
     
-      <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+      <category term="Java" scheme="https://www.deleiguo.com/tags/Java/"/>
     
   </entry>
   
@@ -962,6 +963,515 @@ Compiled  Size  Type Method
     
     
       <category term="Team" scheme="https://www.deleiguo.com/tags/Team/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM实用参数（二）参数分类和即时（JIT）编译器诊断</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-2-flag/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-2-flag/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-2-flag/" target="_blank" rel="external">JVM实用参数（二）参数分类和即时（JIT）编译器诊断</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 许巧辉</p>
+<p>在这个系列的第二部分，我来介绍一下HotSpot JVM提供的不同类别的参数。我同样会讨论一些关于JIT编译器诊断的有趣参数。</p>
+<h2 id="JVM-参数分类"><a href="#JVM-参数分类" class="headerlink" title="JVM 参数分类"></a>JVM 参数分类</h2><p>HotSpot JVM 提供了三类参数。第一类包括了标准参数。顾名思义，标准参数中包括功能和输出的参数都是很稳定的，很可能在将来的JVM版本中不会改变。你可以用java命令（或者是用 java -help）检索出所有标准参数。我们在第一部分中已经见到过一些标准参数，例如：-server。</p>
+<p>第二类是X参数，非标准化的参数在将来的版本中可能会改变。所有的这类参数都以-X开始，并且可以用java -X来检索。注意，不能保证所有参数都可以被检索出来，其中就没有-Xcomp。</p>
+<p>第三类是包含XX参数（到目前为止最多的），它们同样不是标准的，甚至很长一段时间内不被列出来（最近，这种情况有改变 ，我们将在本系列的第三部分中讨论它们）。然而，在实际情况中X参数和XX参数并没有什么不同。X参数的功能是十分稳定的，然而很多XX参数仍在实验当中（主要是JVM的开发者用于debugging和调优JVM自身的实现）。值的一读的介绍非标准参数的文档 <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html" target="_blank" rel="external">HotSpot JVM documentation</a>，其中明确的指出XX参数不应该在不了解的情况下使用。这是真的，并且我认为这个建议同样适用于X参数（同样一些标准参数也是）。不管类别是什么，在使用参数之前应该先了解它可能产生的影响。</p>
+<p>用一句话来说明XX参数的语法。所有的XX参数都以”-XX:”开始，但是随后的语法不同，取决于参数的类型。</p>
+<p>对于布尔类型的参数，我们有”+”或”-“，然后才设置JVM选项的实际名称。例如，-XX:+<name>用于激活<name>选项，而-XX:-<name>用于注销选项。<br>对于需要非布尔值的参数，如string或者integer，我们先写参数的名称，后面加上”=”，最后赋值。例如，  -XX:<name>=<value>给<name>赋值<value>。<br>现在让我们来看看JIT编译方面的一些XX参数。</value></name></value></name></name></name></name></p>
+<p><strong>-XX:+PrintCompilation and -XX:+CITime</strong></p>
+<a id="more"></a>
+<p>当一个Java应用运行时，非常容易查看JIT编译工作。通过设置-XX:+PrintCompilation，我们可以简单的输出一些关于从字节码转化成本地代码的编译过程。我们来看一个服务端VM运行的例子：</p>
+<pre><code class="lang-bash">$ java -server -XX:+PrintCompilation Benchmark
+  1       java.lang.String::hashCode (64 bytes)
+  2       java.lang.AbstractStringBuilder::stringSizeOfInt (21 bytes)
+  3       java.lang.Integer::getChars (131 bytes)
+  4       java.lang.Object::&lt;init&gt; (1 bytes)
+---   n   java.lang.System::arraycopy (static)
+  5       java.util.HashMap::indexFor (6 bytes)
+  6       java.lang.Math::min (11 bytes)
+  7       java.lang.String::getChars (66 bytes)
+  8       java.lang.AbstractStringBuilder::append (60 bytes)
+  9       java.lang.String::&lt;init&gt; (72 bytes)
+ 10       java.util.Arrays::copyOfRange (63 bytes)
+ 11       java.lang.StringBuilder::append (8 bytes)
+ 12       java.lang.AbstractStringBuilder::&lt;init&gt; (12 bytes)
+ 13       java.lang.StringBuilder::toString (17 bytes)
+ 14       java.lang.StringBuilder::&lt;init&gt; (18 bytes)
+ 15       java.lang.StringBuilder::append (8 bytes)
+[...]
+ 29       java.util.regex.Matcher::reset (83 bytes)
+</code></pre>
+<p>每当一个方法被编译，就输出一行-XX:+PrintCompilation。每行都包含顺序号（唯一的编译任务ID）和已编译方法的名称和大小。因此，顺序号1，代表编译String类中的hashCode方法到原生代码的信息。根据方法的类型和编译任务打印额外的信息。例如，本地的包装方法前方会有”n”参数，像上面的System::arraycopy一样。注意这样的方法不会包含顺序号和方法占用的大小，因为它不需要编译为本地代码。同样可以看到被重复编译的方法，例如StringBuilder::append顺序号为11和15。输出在顺序号29时停止 ，这表明在这个Java应用运行时总共需要编译29个方法。</p>
+<p>没有官方的文档关于-XX:+PrintCompilation，但是<a href="https://gist.github.com/rednaxelafx/1165804#file_notes.md" target="_blank" rel="external">这个描述</a>是对于此参数比较好的。我推荐更深入学习一下。</p>
+<p>JIT编译器输出帮助我们理解客户端VM与服务端VM的一些区别。用服务端VM，我们的应用例子输出了29行，同样用客户端VM，我们会得到55行。这看起来可能很怪，因为服务端VM应该比客户端VM做了”更多”的编译。然而，由于它们各自的默认设置，服务端VM在判断方法是不是热点和需不需要编译时比客户端VM观察方法的时间更长。因此，在使用服务端VM时，一些潜在的方法会稍后编译就不奇怪了。</p>
+<p>通过另外设置-XX:+CITime，我们可以在JVM关闭时得到各种编译的统计信息。让我们看一下一个特定部分的统计：</p>
+<pre><code class="lang-bash">$ java -server -XX:+CITime Benchmark
+[...]
+Accumulated compiler times (for compiled methods only)
+------------------------------------------------
+  Total compilation time   :  0.178 s
+    Standard compilation   :  0.129 s, Average : 0.004
+    On stack replacement   :  0.049 s, Average : 0.024
+[...]
+</code></pre>
+<p>总共用了0.178s（在29个编译任务上）。这些，”on stack replacement”占用了0.049s，即编译的方法目前在堆栈上用去的时间。这种技术并不是简单的实现性能显示，实际上它是非常重要的。没有”on stack replacement”，方法如果要执行很长时间（比如，它们包含了一个长时间运行的循环），它们运行时将不会被它们编译过的副本替换。</p>
+<p>再一次，客户端VM与服务端VM的比较是非常有趣的。客户端VM相应的数据表明，即使有55个方法被编译了，但这些编译总共用了只有0.021s。服务端VM做的编译少但是用的时间却比客户端VM多。这个原因是，使用服务端VM在生成本地代码时执行了更多的优化。</p>
+<p>在本系列的第一部分，我们已经学了-Xint和-Xcomp参数。结合使用-XX:+PrintCompilation和-XX:+CITime，在这两个情况下（校对者注，客户端VM与服务端VM），我们能对JIT编译器的行为有更好的了解。使用-Xint，-XX:+PrintCompilation在这两种情况下会产生0行输出。同样的，使用-XX:+CITime时，证实在编译上没有花费时间。现在换用-Xcomp，输出就完全不同了。在使用客户端VM时会产生726行输出，然后没有更多的，这是因为每个相关的方法都被编译了。使用服务端VM，我们甚至能得到993行输出，这告诉我们更积极的优化被执行了。同样，JVM 拆机(JVM teardown)时打印出的统计显示了两个VM的巨大不同。考虑服务端VM的运行：</p>
+<pre><code class="lang-bash">$ java -server -Xcomp -XX:+CITime Benchmark
+[...]
+Accumulated compiler times (for compiled methods only)
+------------------------------------------------
+  Total compilation time   :  1.567 s
+    Standard compilation   :  1.567 s, Average : 0.002
+    On stack replacement   :  0.000 s, Average : -1.#IO
+[...]
+</code></pre>
+<p>使用-Xcomp编译用了1.567s，这是使用默认设置（即，混合模式）的10倍。同样，应用程序的运行速度要比用混合模式的慢。相比较之下，客户端VM使用-Xcomp编译726个方法只用了0.208s，甚至低于使用-Xcomp的服务端VM。</p>
+<p>补充一点，这里没有”on stack replacement”发生，因为每一个方法在第一次调用时被编译了。损坏的输出“Average: -1.#IO”（正确的是:0）再一次表明了，非标准化的输出参数不是非常可靠。</p>
+<p><strong>-XX:+UnlockExperimentalVMOptions</strong></p>
+<p>有些时候当设置一个特定的JVM参数时，JVM会在输出“Unrecognized VM option”后终止。如果发生了这种情况，你应该首先检查你是否输错了参数。然而，如果参数输入是正确的，并且JVM并不识别，你或许需要设置-XX:+UnlockExperimentalVMOptions 来解锁参数。我不是非常清楚这个安全机制的作用，但我猜想这个参数如果不正确使用可能会对JVM的稳定性有影响（例如，他们可能会过多的写入debug输出的一些日志文件）。</p>
+<p>有一些参数只是在JVM开发时用，并不实际用于Java应用。如果一个参数不能被 -XX:+UnlockExperimentalVMOptions 开启，但是你真的需要使用它，此时你可以尝试使用debug版本的JVM。对于Java 6 HotSpot JVM你可以从这里找到。</p>
+<p><strong>-XX:+LogCompilation and -XX:+PrintOptoAssembly</strong></p>
+<p>如果你在一个场景中发现使用 -XX:+PrintCompilation，不能够给你足够详细的信息，你可以使用 -XX:+LogCompilation把扩展的编译输出写到“hotspot.log”文件中。除了编译方法的很多细节之外，你也可以看到编译器线程启动的任务。注意-XX:+LogCompilation 需要使用-XX:+UnlockExperimentalVMOptions来解锁。</p>
+<p>JVM甚至允许我们看到从字节码编译生成到本地代码。使用-XX:+PrintOptoAssembly，由编译器线程生成的本地代码被输出并写到“hotspot.log”文件中。使用这个参数要求运行的服务端VM是debug版本。我们可以研究-XX:+PrintOptoAssembly的输出，以至于了解JVM实际执行什么样的优化，例如，关于死代码的消除。一个非常有趣的文章提供了一个例子。</p>
+<p>关于XX参数的更多信息</p>
+<p>如果这篇文章勾起了你的兴趣，你可以自己看一下HotSpot JVM的XX 参数。<a href="http://stas-blogspot.blogspot.de/2011/07/most-complete-list-of-xx-options-for.html" target="_blank" rel="external">这里</a>是一个很好的起点。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-2-flag/&quot;&gt;JVM实用参数（二）参数分类和即时（JIT）编译器诊断&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 赵峰，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 许巧辉&lt;/p&gt;
+&lt;p&gt;在这个系列的第二部分，我来介绍一下HotSpot JVM提供的不同类别的参数。我同样会讨论一些关于JIT编译器诊断的有趣参数。&lt;/p&gt;
+&lt;h2 id=&quot;JVM-参数分类&quot;&gt;&lt;a href=&quot;#JVM-参数分类&quot; class=&quot;headerlink&quot; title=&quot;JVM 参数分类&quot;&gt;&lt;/a&gt;JVM 参数分类&lt;/h2&gt;&lt;p&gt;HotSpot JVM 提供了三类参数。第一类包括了标准参数。顾名思义，标准参数中包括功能和输出的参数都是很稳定的，很可能在将来的JVM版本中不会改变。你可以用java命令（或者是用 java -help）检索出所有标准参数。我们在第一部分中已经见到过一些标准参数，例如：-server。&lt;/p&gt;
+&lt;p&gt;第二类是X参数，非标准化的参数在将来的版本中可能会改变。所有的这类参数都以-X开始，并且可以用java -X来检索。注意，不能保证所有参数都可以被检索出来，其中就没有-Xcomp。&lt;/p&gt;
+&lt;p&gt;第三类是包含XX参数（到目前为止最多的），它们同样不是标准的，甚至很长一段时间内不被列出来（最近，这种情况有改变 ，我们将在本系列的第三部分中讨论它们）。然而，在实际情况中X参数和XX参数并没有什么不同。X参数的功能是十分稳定的，然而很多XX参数仍在实验当中（主要是JVM的开发者用于debugging和调优JVM自身的实现）。值的一读的介绍非标准参数的文档 &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html&quot;&gt;HotSpot JVM documentation&lt;/a&gt;，其中明确的指出XX参数不应该在不了解的情况下使用。这是真的，并且我认为这个建议同样适用于X参数（同样一些标准参数也是）。不管类别是什么，在使用参数之前应该先了解它可能产生的影响。&lt;/p&gt;
+&lt;p&gt;用一句话来说明XX参数的语法。所有的XX参数都以”-XX:”开始，但是随后的语法不同，取决于参数的类型。&lt;/p&gt;
+&lt;p&gt;对于布尔类型的参数，我们有”+”或”-“，然后才设置JVM选项的实际名称。例如，-XX:+&lt;name&gt;用于激活&lt;name&gt;选项，而-XX:-&lt;name&gt;用于注销选项。&lt;br&gt;对于需要非布尔值的参数，如string或者integer，我们先写参数的名称，后面加上”=”，最后赋值。例如，  -XX:&lt;name&gt;=&lt;value&gt;给&lt;name&gt;赋值&lt;value&gt;。&lt;br&gt;现在让我们来看看JIT编译方面的一些XX参数。&lt;/value&gt;&lt;/name&gt;&lt;/value&gt;&lt;/name&gt;&lt;/name&gt;&lt;/name&gt;&lt;/name&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-XX:+PrintCompilation and -XX:+CITime&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command：命令帮助</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:50:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>指导环境：CentOS7</p>
+</blockquote>
+<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
+<pre><code class="lang-bash">[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+</code></pre>
+<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
+<pre><code class="lang-bash">[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+</code></pre>
+<a id="more"></a>
+<p>那么，我们可以在不输入任何字的情况下，直接按下两次tab键，则可以统计下当前用户下可用的命令有多少个.</p>
+<blockquote>
+<p>但是经过实际尝试，在CenOS7下，该方法无效,Mac下有效</p>
+</blockquote>
+<pre><code class="lang-bash">delei@DeleitekiMBP:~$
+Display all 1473 possibilities? (y or n)
+</code></pre>
+<blockquote>
+<p>每个人的操作系统所用的命令数都是不一样的。<br>不同的linux版本，用户安装的软件命令，用户设置的环境变量等都是不一样的。</p>
+</blockquote>
+<p>虽然经常常用的命令数量不多，但是在有些情况下，很多命令的详细参数和选项用法不一定都能记得住。而若在无网络，无参考手册情况下，更会遇到不知道如何使用命令的情况。Linux上开发的软件大多数是自由性软件，而这些软件开发者一般都会有相应的命令使用方法。<br>在上述情况下，其实Linux已提供了几种方式能够提供帮助。</p>
+<h2 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h2><p>该命令获得索引的简短信息,如果有多个匹配(不同版本，多个同样的软件等)则会列出多个</p>
+<pre><code class="lang-bash">[root@delei-server ~]# whatis cd
+cd (1)               - bash built-in commands, see bash(1)
+cd (1p)              - change the working directory
+[root@delei-server ~]# whatis wget
+wget (1)             - The non-interactive network downloader.
+</code></pre>
+<p>但不是所有命令在所有的Linux上均可使用</p>
+<pre><code class="lang-bash">[root@delei-server ~]# whatis ll
+ll：没有 appropriate。
+</code></pre>
+<h2 id="help、-help"><a href="#help、-help" class="headerlink" title="help、-help"></a>help、-help</h2><p>—help该命令显示使用摘要和参数列表，可以查看大多数命令的用法</p>
+<pre><code class="lang-bash">[root@delei-server ~]# date --help
+用法：date [选项]... [+格式]
+　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+Display the current time in the given FORMAT, or set the system date.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -d, --date=STRING         display time described by STRING, not &#39;now&#39;
+  -f, --file=DATEFILE       like --date once for each line of DATEFILE
+  -I[TIMESPEC], --iso-8601[=TIMESPEC]  output date/time in ISO 8601 format.
+                            TIMESPEC=&#39;date&#39; for date only (the default),
+                            &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or &#39;ns&#39; for date
+                            and time to the indicated precision.
+  -r, --reference=文件        显示文件指定文件的最后修改时间
+  -R, --rfc-2822        以RFC 2822格式输出日期和时间
+                例如：2006年8月7日，星期一 12:34:56 -0600
+      --rfc-3339=TIMESPEC   output date and time in RFC 3339 format.
+                            TIMESPEC=&#39;date&#39;, &#39;seconds&#39;, or &#39;ns&#39; for
+                            date and time to the indicated precision.
+                            Date and time components are separated by
+                            a single space: 2006-08-07 12:34:56-06:00
+  -s, --set=STRING          set time described by STRING
+  -u, --utc, --universal    print or set Coordinated Universal Time (UTC)
+      --help        显示此帮助信息并退出
+      --version        显示版本信息并退出
+
+给定的格式FORMAT 控制着输出，解释序列如下：
+
+  %%    一个文字的 %
+  %a    当前locale 的星期名缩写(例如： 日，代表星期日)
+  %A    当前locale 的星期名全称 (如：星期日)
+  %b    当前locale 的月名缩写 (如：一，代表一月)
+  %B    当前locale 的月名全称 (如：一月)
+  ...
+
+默认情况下，日期的数字区域以0 填充。
+The following optional flags may follow &#39;%&#39;:
+
+  -  (hyphen) do not pad the field
+  _  (underscore) pad with spaces
+  0  (zero) pad with zeros
+  ^  use upper case if possible
+  #  use opposite case if possible
+
+在任何标记之后还允许一个可选的域宽度指定，它是一个十进制数字。
+作为一个可选的修饰声明，它可以是E，在可能的情况下使用本地环境关联的
+表示方式；或者是O，在可能的情况下使用本地环境关联的数字符号。
+
+Examples:
+Convert seconds since the epoch (1970-01-01 UTC) to a date
+  $ date --date=&#39;@2147483647&#39;
+
+Show the time on the west coast of the US (use tzselect(1) to find TZ)
+  $ TZ=&#39;America/Los_Angeles&#39; date
+
+Show the local time for 9AM next Friday on the west coast of the US
+  $ date --date=&#39;TZ=&quot;America/Los_Angeles&quot; 09:00 next Fri&#39;
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告date 的翻译错误
+要获取完整文档，请运行：info coreutils &#39;date invocation&#39;
+</code></pre>
+<p>—help只能对外部命令使用，对内部命令无效当我们要求内部命令的帮助时使用help+命令</p>
+<pre><code class="lang-bash">[root@delei-server bin]# help pwd
+pwd: pwd [-LP]
+    打印当前工作目录的名字。
+
+    选项：
+      -L    打印 $PWD 变量的值，如果它命名了当前的
+        工作目录
+      -P    打印当前的物理路径，不带有任何的符号链接
+
+    默认情况下，`pwd&#39; 的行为和带 `-L&#39; 选项一致
+
+    退出状态：
+    除非使用了无效选项或者当前目录不可读，否则
+    返回状态为0。
+</code></pre>
+<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man是manual的简写，命令使用手册／说明<br>同样是pwd,man提供的内容较多(内容过长，部分已省略…)</p>
+<pre><code class="lang-bash">[root@delei-server bin]# man date
+DATE(1)                       User Commands                      DATE(1)
+
+NAME
+       date - print or set the system date and time
+
+SYNOPSIS
+       date [OPTION]... [+FORMAT]
+       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+
+DESCRIPTION
+       Display  the  current time in the given FORMAT, or set the system
+       date.
+
+       Mandatory arguments to  long  options  are  mandatory  for  short
+       options too.
+
+       -d, --date=STRING
+              display time described by STRING, not &#39;now&#39;
+
+       -f, --file=DATEFILE
+              like --date once for each line of DATEFILE
+
+       -I[TIMESPEC], --iso-8601[=TIMESPEC]
+              output  date/time in ISO 8601 format.  TIMESPEC=&#39;date&#39; for
+              date only (the default), &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or
+              &#39;ns&#39; for date and time to the indicated precision.
+
+       ...
+       #      use opposite case if possible
+
+       After any flags comes an optional field width, as a decimal  num‐
+       ber;  then  an  optional  modifier,  which is either E to use the
+       locale&#39;s alternate representations if available, or O to use  the
+       locale&#39;s alternate numeric symbols if available.
+
+ENVIRONMENT
+       TZ     Specifies  the timezone, unless overridden by command line
+              parameters.  If neither is  specified,  the  setting  from
+              /etc/localtime is used.
+
+EXAMPLES
+       Convert seconds since the epoch (1970-01-01 UTC) to a date
+
+              $ date --date=&#39;@2147483647&#39;
+
+       Show  the  time  on  the west coast of the US (use tzselect(1) to
+       find TZ)
+
+              $ TZ=&#39;America/Los_Angeles&#39; date
+    ...
+
+DATE STRING
+       The  --date=STRING  is  a  mostly free format human readable date
+       string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot;  or  &quot;2004-02-29
+       16:21:42&quot;  or  even  &quot;next  Thursday&quot;.  A date string may contain
+       items indicating calendar date, time of day, time  zone,  day  of
+       week, relative time, relative date, and numbers.  An empty string
+       indicates the beginning of the day.  The date  string  format  is
+       more  complex  than  is  easily  documented  here  but  is  fully
+       described in the info documentation.
+
+AUTHOR
+       Written by David MacKenzie.
+
+COPYRIGHT
+       Copyright © 2013 Free Software Foundation, Inc.  License  GPLv3+:
+       GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
+       This  is  free  software: you are free to change and redistribute
+       it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       The full documentation for date is maintained as a  Texinfo  man‐
+       ual.   If  the  info  and date programs are properly installed at
+       your site, the command
+
+              info coreutils &#39;date invocation&#39;
+
+       should give you access to the complete manual.
+
+GNU coreutils 8.22            February 2016                      DATE(1)
+ Manual page date(1) line 159/222 (END) (press h for help or q to quit)
+</code></pre>
+<blockquote>
+<p>当内容较多时，使用page up和page down上下翻页，空格也可向下翻页;<br>按q退出</p>
+</blockquote>
+<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
+<h4 id="man页面所属的分类标识-常用的是1、3、5、8"><a href="#man页面所属的分类标识-常用的是1、3、5、8" class="headerlink" title="man页面所属的分类标识(常用的是1、3、5、8)"></a>man页面所属的分类标识(常用的是1、3、5、8)</h4><ol>
+<li>用户可以操作的命令或者是可执行文件</li>
+<li>系统核心可调用的函数与工具等</li>
+<li>一些常用的函数与数据库</li>
+<li>设备文件的说明</li>
+<li>设置文件或者某些文件的格式</li>
+<li>游戏</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
+<li>系统管理员可用的管理条令</li>
+<li>与内核有关的文件</li>
+</ol>
+<h4 id="man-page的常见部分"><a href="#man-page的常见部分" class="headerlink" title="man page的常见部分"></a>man page的常见部分</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>内容说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAME</td>
+<td>简短的指令、资料名称说明</td>
+</tr>
+<tr>
+<td>SYNOPSIS</td>
+<td>简短的指令下达语法简介</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>较为完整的说明</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>针对SYNOPSI部分，有列举的所有可用的选项说明</td>
+</tr>
+<tr>
+<td>COMMANDS</td>
+<td>当该命令在运行的时候，可以下达的命令</td>
+</tr>
+<tr>
+<td>FILES</td>
+<td>使用或链接到的某些档案／文件</td>
+</tr>
+<tr>
+<td>SEE ALSO</td>
+<td>可以参考的，跟该命令或资料有相关的其他说明</td>
+</tr>
+<tr>
+<td>EXAMPLE</td>
+<td>可以参考的范例</td>
+</tr>
+<tr>
+<td>AUTHORS</td>
+<td>作者</td>
+</tr>
+<tr>
+<td>COPYRIGHT</td>
+<td>版权说明</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>这是常见的内容，实际上还有其他部分<br>在某些命令中这些内容不全都有</p>
+</blockquote>
+<h4 id="man常用命令参数"><a href="#man常用命令参数" class="headerlink" title="man常用命令参数"></a>man常用命令参数</h4><ul>
+<li><p>man -a：<br>搜索并打开所有man中同名帮助，例如 man passwd ，你首先会进入一个PASSWD(1) section用户命令类的帮助手册，你再按q键退出当前正在显示的帮助手册，就会进入PASSWD(5) section文件格式类的帮助手册。</p>
+</li>
+<li><p>man -aw：<br>显示所有手册文件的路径。</p>
+</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -aw passwd
+/usr/share/man/man1/passwd.1.gz
+/usr/share/man/man1/sslpasswd.1ssl.gz
+/usr/share/man/man5/passwd.5.gz
+</code></pre>
+<ul>
+<li><p>man -M：<br>指定手册文件的搜索路径，有的时候我们自己安装的软件是带有自己的帮助文件的，通常不在我们的MANPATH里面，那么我们就可以手动指定man搜索的文件路径。如 man -M /home/mysql/man mysql显示的就是你安装的mysql的帮助，而不是系统默认的旧版mysql的帮助。</p>
+</li>
+<li><p>man -k：<br>根据关键字搜索联机帮助，是一种模糊搜索。例如要查找”passwd”相关的信息，使用man -k passwd会找到很多和passwd相关的帮助页。如：我忘记了iptables命令就只能记住ipta则可以使用man -k ipta ，系统会把包括ipta的命令显示在屏幕上。</p>
+</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -k passwd
+chpasswd (8)         - 批量更新密码
+gpasswd (1)          - 管理员 /etc/group 和 /etc/gshadow
+fgetpwent_r (3)      - get passwd file entry reentrantly
+getpwent_r (3)       - get passwd file entry reentrantly
+grub2-mkpasswd-pbkdf2 (1) - Generate a PBKDF2 password hash.
+htpasswd (1)         - Manage user files for basic authentication
+kpasswd (1)          - change a user&#39;s Kerberos password
+ldappasswd (1)       - change the password of an LDAP entry
+lpasswd (1)          - Change group or user password
+lppasswd (1)         - add, change, or delete digest passwords.
+pam_localuser (8)    - require users to be listed in /etc/passwd
+passwd (1)           - update user&#39;s authentication tokens
+sslpasswd (1ssl)     - compute password hashes
+passwd (5)           - password file
+passwd2des (3)       - RFS password encryption
+pwhistory_helper (8) - Helper binary that transfers password hashes fro...
+saslpasswd2 (8)      - set a user&#39;s sasl password
+smbpasswd (5)        - The Samba encrypted password file
+smbpasswd (8)        - change a user&#39;s SMB password
+vncpasswd (1)        - change the VNC password
+</code></pre>
+<ul>
+<li>man -f：<br>关键字精确搜索，与-k不同，它只搜索与关键字完全匹配的帮助页。</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -f passwd
+sslpasswd (1ssl)     - compute password hashes
+passwd (1)           - update user&#39;s authentication tokens
+passwd (5)           - password file
+</code></pre>
+<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>info与man类似，也是一种帮助说明,指令的文件预设放在<code>/usr/share/info/</code>目录中。<br>与man不同的是，info不是都在一个页面显示，而是将文件资料拆成了多个段落，每个段落有自己的页面，并且在各个页面还有类似链接的方式可以跳转，每个页面被称为一个node.</p>
+<pre><code class="lang-bash">[root@delei-server bin]# info info
+File: info.info,  Node: Top,  Next: Getting Started,  Up: (dir)
+
+Info: An Introduction
+*********************
+
+The GNU Project distributes most of its on-line manuals in the &quot;Info
+format&quot;, which you read using an &quot;Info reader&quot;.  You are probably using
+an Info reader to read this now.
+
+   ...
+
+* Menu:
+
+* Getting Started::             Getting started using an Info reader.
+* Advanced::                    Advanced Info commands.
+* Expert Info::                 Info commands for experts.
+* Index::                       An index of topics, commands, and variabl\
+es.
+</code></pre>
+<p>第一行:</p>
+<ul>
+<li>File：表示该info的内容是由info.info提供</li>
+<li>Node：代表当前的这个页面是top</li>
+<li>Next：下一个页面</li>
+<li>Up：上一个页面</li>
+</ul>
+<p>将光标移动到该页面最下面”Menu”的列表部分，在每一个种，按下回车即可进入到相应的Node(类似于网页的链接跳转)</p>
+<pre><code class="lang-bash">File: info.info,  Node: Advanced,  Next: Expert Info,  Prev: Getting Star\
+ted,  Up: Top
+
+2 Advanced Info Commands
+************************
+
+This chapter describes various advanced Info commands.  (If you are
+using a stand-alone Info reader, there are additional commands specific
+to it, which are documented in several chapters of *note GNU Info:
+(info-stnd)Top.)
+
+   ...
+
+* Menu:
+
+* Search Text::          How to search Info documents.
+* Search Index::         How to search the indices for specific subjects.
+* Go to node::           How to go to a node by name.
+* Choose menu subtopic:: How to choose a menu subtopic by its number.
+* Create Info buffer::   How to create a new Info buffer in Emacs.
+* Emacs Info Variables:: Variables modifying the behavior of Emacs Info.
+</code></pre>
+<p>依照Menu可以进行node间的跳转，比起man来说，阅读更加方便</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://linux.vbird.org/linux_basic/0160startlinux.php#manual" target="_blank" rel="external">鸟哥的私房菜</a></li>
+<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux命令查询</a></li>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html" target="_blank" rel="external">Linux Tools Quick Tutorial</a></li>
+<li><a href="http://www.dabu.info/linux-get-help-man-whatis-info-apropos.html" target="_blank" rel="external">大步’s Blog</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;指导环境：CentOS7&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Linux命令数量&quot;&gt;&lt;a href=&quot;#Linux命令数量&quot; class=&quot;headerlink&quot; title=&quot;Linux命令数量&quot;&gt;&lt;/a&gt;Linux命令数量&lt;/h2&gt;&lt;p&gt;在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而当匹配的数量过多，会先先统计有多少数量，询问是否显示&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -1612,6 +2122,104 @@ print( f() + 1 );
   </entry>
   
   <entry>
+    <title>Linux 跟踪域名解析过程</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:49:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
+<p>linux and windows</p>
+</blockquote>
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>增加+trace参数跟踪过程：</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;linux and windows
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM GC</title>
     <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
     <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
@@ -1792,63 +2400,6 @@ print( f() + 1 );
   </entry>
   
   <entry>
-    <title>JVM实用参数（四）内存调优</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者：</strong> 郑旭东<br><strong>校对：</strong> 梁海舰</p>
-<p>理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。</p>
-<a id="more"></a>
-<p>所有已制定的HotSpot内存管理和垃圾回收算法都基于一个相同的堆内存划分：新生代（young generation）里存储着新分配的和较年轻的对象，老年代（old generation）里存储着长寿的对象。在此之外，永久代（permanent generation）存储着那些需要伴随整个JVM生命周期的对象，比如，已加载的对象的类定义或者String对象内部Cache。接下来，我们将假设堆内存是按照新生代、老年代和永久代这一经典策略划分的。然而，其他的一些堆内存划分策略也是可行的，一个突出的例子就是新的G1垃圾回收器，它模糊了新生代和老年代之间的区别。此外，目前的开发进程似乎表明在未来的HotSpot JVM版本中，将不会区分老年代和永久代。</p>
-<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
-<p>-Xms和-Xmx可以说是最流行的JVM参数，它们可以允许我们指定JVM的初始和最大堆内存大小。一般来说，这两个参数的数值单位是Byte，但同时它们也支持使用速记符号，比如“k”或者“K”代表“kilo”，“m”或者“M”代表“mega”，“g”或者“G”代表“giga”。举个例子，下面的命令启动了一个初始化堆内存为128M，最大堆内存为2G，名叫“MyApp”的Java应用程序。</p>
-<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
-</code></pre>
-<p>在实际使用过程中，初始化堆内存的大小通常被视为堆内存大小的下界。然而JVM可以在运行时动态的调整堆内存的大小，所以理论上来说我们有可能会看到堆内存的大小小于初始化堆内存的大小。但是即使在非常低的堆内存使用下，我也从来没有遇到过这种情况。这种行为将会方便开发者和系统管理员，因为我们可以通过将“-Xms”和“-Xmx”设置为相同大小来获得一个固定大小的堆内存。 -Xms和-Xmx实际上是-XX:InitialHeapSize和-XX:MaxHeapSize的缩写。我们也可以直接使用这两个参数，它们所起得效果是一样的：</p>
-<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
-</code></pre>
-<p>需要注意的是，所有JVM关于初始\最大堆内存大小的输出都是使用它们的完整名称：“InitialHeapSize”和“InitialHeapSize”。所以当你查询一个正在运行的JVM的堆内存大小时，如使用-XX:+PrintCommandLineFlags参数或者通过JMX查询，你应该寻找“InitialHeapSize”和“InitialHeapSize”标志而不是“Xms”和“Xmx”。</p>
-<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
-<p>如果我们没法为-Xmx（最大堆内存）设置一个合适的大小，那么就有可能面临内存溢出（OutOfMemoryError）的风险，这可能是我们使用JVM时面临的最可怕的猛兽之一。就同<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">另外一篇</a>关于这个主题的博文说的一样，导致内存溢出的根本原因需要仔细的定位。通常来说，分析堆内存快照（Heap Dump）是一个很好的定位手段，如果发生内存溢出时没有生成内存快照那就实在是太糟了，特别是对于那种JVM已经崩溃或者错误只出现在顺利运行了数小时甚至数天的生产系统上的情况。</p>
-<p>幸运的是，我们可以通过设置-XX:+HeapDumpOnOutOfMemoryError 让JVM在发生内存溢出时自动的生成堆内存快照。有了这个参数，当我们不得不面对内存溢出异常的时候会节约大量的时间。默认情况下，堆内存快照会保存在JVM的启动目录下名为java_pid<code>&lt;pid&gt;</code>.hprof 的文件里（在这里<code>&lt;pid&gt;</code>就是JVM进程的进程号）。也可以通过设置-XX:HeapDumpPath=<code>&lt;path&gt;</code>来改变默认的堆内存快照生成路径，<code>&lt;path&gt;</code>可以是相对或者绝对路径。</p>
-<p>虽然这一切听起来很不错，但有一点我们需要牢记。堆内存快照文件有可能很庞大，特别是当内存溢出错误发生的时候。因此，我们推荐将堆内存快照生成路径指定到一个拥有足够磁盘空间的地方。</p>
-<p><strong>-XX:OnOutOfMemoryError</strong></p>
-<p>当内存溢发生时，我们甚至可以可以执行一些指令，比如发个E-mail通知管理员或者执行一些清理工作。通过-XX:OnOutOfMemoryError 这个参数我们可以做到这一点，这个参数可以接受一串指令和它们的参数。在这里，我们将不会深入它的细节，但我们提供了它的一个例子。在下面的例子中，当内存溢出错误发生的时候，我们会将堆内存快照写到/tmp/heapdump.hprof 文件并且在JVM的运行目录执行脚本cleanup.sh</p>
-<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
-</code></pre>
-<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>永久代在堆内存中是一块独立的区域，它包含了所有JVM加载的类的对象表示。为了成功运行应用程序，JVM会加载很多类（因为它们依赖于大量的第三方库，而这又依赖于更多的库并且需要从里面将类加载进来）这就需要增加永久代的大小。我们可以使用-XX:PermSize 和-XX:MaxPermSize 来达到这个目的。其中-XX:MaxPermSize 用于设置永久代大小的最大值，-XX:PermSize 用于设置永久代初始大小。下面是一个简单的例子：</p>
-<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
-</code></pre>
-<p>请注意，这里设置的永久代大小并不会被包括在使用参数-XX:MaxHeapSize 设置的堆内存大小中。也就是说，通过-XX:MaxPermSize设置的永久代内存可能会需要由参数-XX:MaxHeapSize 设置的堆内存以外的更多的一些堆内存。</p>
-<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
-<p>JVM一个有趣的，但往往被忽视的内存区域是“代码缓存”，它是用来存储已编译方法生成的本地代码。代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。就像其他内存区域一样，我们可以自定义代码缓存的大小。相关的参数是-XX:InitialCodeCacheSize 和-XX:ReservedCodeCacheSize，它们的参数和上面介绍的参数一样，都是字节值。</p>
-<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
-<p>如果代码缓存不断增长，例如，因为热部署引起的内存泄漏，那么提高代码的缓存大小只会延缓其发生溢出。为了避免这种情况的发生，我们可以尝试一个有趣的新参数：当代码缓存被填满时让JVM放弃一些编译代码。通过使用-XX:+UseCodeCacheFlushing 这个参数，我们至少可以避免当代码缓存被填满的时候JVM切换到interpreted-only 模式。不过，我仍建议尽快解决代码缓存问题发生的根本原因，如找出内存泄漏并修复它。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/&quot;&gt;JVM实用参数（四）内存调优&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 郑旭东&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM实用参数（一）JVM类型以及编译器模式</title>
     <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
     <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
@@ -1916,613 +2467,6 @@ Average time: 7.622285 seconds
   </entry>
   
   <entry>
-    <title>Linux Command：命令帮助</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:50:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>指导环境：CentOS7</p>
-</blockquote>
-<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
-<pre><code class="lang-bash">[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-</code></pre>
-<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
-<pre><code class="lang-bash">[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-</code></pre>
-<a id="more"></a>
-<p>那么，我们可以在不输入任何字的情况下，直接按下两次tab键，则可以统计下当前用户下可用的命令有多少个.</p>
-<blockquote>
-<p>但是经过实际尝试，在CenOS7下，该方法无效,Mac下有效</p>
-</blockquote>
-<pre><code class="lang-bash">delei@DeleitekiMBP:~$
-Display all 1473 possibilities? (y or n)
-</code></pre>
-<blockquote>
-<p>每个人的操作系统所用的命令数都是不一样的。<br>不同的linux版本，用户安装的软件命令，用户设置的环境变量等都是不一样的。</p>
-</blockquote>
-<p>虽然经常常用的命令数量不多，但是在有些情况下，很多命令的详细参数和选项用法不一定都能记得住。而若在无网络，无参考手册情况下，更会遇到不知道如何使用命令的情况。Linux上开发的软件大多数是自由性软件，而这些软件开发者一般都会有相应的命令使用方法。<br>在上述情况下，其实Linux已提供了几种方式能够提供帮助。</p>
-<h2 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h2><p>该命令获得索引的简短信息,如果有多个匹配(不同版本，多个同样的软件等)则会列出多个</p>
-<pre><code class="lang-bash">[root@delei-server ~]# whatis cd
-cd (1)               - bash built-in commands, see bash(1)
-cd (1p)              - change the working directory
-[root@delei-server ~]# whatis wget
-wget (1)             - The non-interactive network downloader.
-</code></pre>
-<p>但不是所有命令在所有的Linux上均可使用</p>
-<pre><code class="lang-bash">[root@delei-server ~]# whatis ll
-ll：没有 appropriate。
-</code></pre>
-<h2 id="help、-help"><a href="#help、-help" class="headerlink" title="help、-help"></a>help、-help</h2><p>—help该命令显示使用摘要和参数列表，可以查看大多数命令的用法</p>
-<pre><code class="lang-bash">[root@delei-server ~]# date --help
-用法：date [选项]... [+格式]
-　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
-Display the current time in the given FORMAT, or set the system date.
-
-Mandatory arguments to long options are mandatory for short options too.
-  -d, --date=STRING         display time described by STRING, not &#39;now&#39;
-  -f, --file=DATEFILE       like --date once for each line of DATEFILE
-  -I[TIMESPEC], --iso-8601[=TIMESPEC]  output date/time in ISO 8601 format.
-                            TIMESPEC=&#39;date&#39; for date only (the default),
-                            &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or &#39;ns&#39; for date
-                            and time to the indicated precision.
-  -r, --reference=文件        显示文件指定文件的最后修改时间
-  -R, --rfc-2822        以RFC 2822格式输出日期和时间
-                例如：2006年8月7日，星期一 12:34:56 -0600
-      --rfc-3339=TIMESPEC   output date and time in RFC 3339 format.
-                            TIMESPEC=&#39;date&#39;, &#39;seconds&#39;, or &#39;ns&#39; for
-                            date and time to the indicated precision.
-                            Date and time components are separated by
-                            a single space: 2006-08-07 12:34:56-06:00
-  -s, --set=STRING          set time described by STRING
-  -u, --utc, --universal    print or set Coordinated Universal Time (UTC)
-      --help        显示此帮助信息并退出
-      --version        显示版本信息并退出
-
-给定的格式FORMAT 控制着输出，解释序列如下：
-
-  %%    一个文字的 %
-  %a    当前locale 的星期名缩写(例如： 日，代表星期日)
-  %A    当前locale 的星期名全称 (如：星期日)
-  %b    当前locale 的月名缩写 (如：一，代表一月)
-  %B    当前locale 的月名全称 (如：一月)
-  ...
-
-默认情况下，日期的数字区域以0 填充。
-The following optional flags may follow &#39;%&#39;:
-
-  -  (hyphen) do not pad the field
-  _  (underscore) pad with spaces
-  0  (zero) pad with zeros
-  ^  use upper case if possible
-  #  use opposite case if possible
-
-在任何标记之后还允许一个可选的域宽度指定，它是一个十进制数字。
-作为一个可选的修饰声明，它可以是E，在可能的情况下使用本地环境关联的
-表示方式；或者是O，在可能的情况下使用本地环境关联的数字符号。
-
-Examples:
-Convert seconds since the epoch (1970-01-01 UTC) to a date
-  $ date --date=&#39;@2147483647&#39;
-
-Show the time on the west coast of the US (use tzselect(1) to find TZ)
-  $ TZ=&#39;America/Los_Angeles&#39; date
-
-Show the local time for 9AM next Friday on the west coast of the US
-  $ date --date=&#39;TZ=&quot;America/Los_Angeles&quot; 09:00 next Fri&#39;
-
-GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
-请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告date 的翻译错误
-要获取完整文档，请运行：info coreutils &#39;date invocation&#39;
-</code></pre>
-<p>—help只能对外部命令使用，对内部命令无效当我们要求内部命令的帮助时使用help+命令</p>
-<pre><code class="lang-bash">[root@delei-server bin]# help pwd
-pwd: pwd [-LP]
-    打印当前工作目录的名字。
-
-    选项：
-      -L    打印 $PWD 变量的值，如果它命名了当前的
-        工作目录
-      -P    打印当前的物理路径，不带有任何的符号链接
-
-    默认情况下，`pwd&#39; 的行为和带 `-L&#39; 选项一致
-
-    退出状态：
-    除非使用了无效选项或者当前目录不可读，否则
-    返回状态为0。
-</code></pre>
-<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man是manual的简写，命令使用手册／说明<br>同样是pwd,man提供的内容较多(内容过长，部分已省略…)</p>
-<pre><code class="lang-bash">[root@delei-server bin]# man date
-DATE(1)                       User Commands                      DATE(1)
-
-NAME
-       date - print or set the system date and time
-
-SYNOPSIS
-       date [OPTION]... [+FORMAT]
-       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
-
-DESCRIPTION
-       Display  the  current time in the given FORMAT, or set the system
-       date.
-
-       Mandatory arguments to  long  options  are  mandatory  for  short
-       options too.
-
-       -d, --date=STRING
-              display time described by STRING, not &#39;now&#39;
-
-       -f, --file=DATEFILE
-              like --date once for each line of DATEFILE
-
-       -I[TIMESPEC], --iso-8601[=TIMESPEC]
-              output  date/time in ISO 8601 format.  TIMESPEC=&#39;date&#39; for
-              date only (the default), &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or
-              &#39;ns&#39; for date and time to the indicated precision.
-
-       ...
-       #      use opposite case if possible
-
-       After any flags comes an optional field width, as a decimal  num‐
-       ber;  then  an  optional  modifier,  which is either E to use the
-       locale&#39;s alternate representations if available, or O to use  the
-       locale&#39;s alternate numeric symbols if available.
-
-ENVIRONMENT
-       TZ     Specifies  the timezone, unless overridden by command line
-              parameters.  If neither is  specified,  the  setting  from
-              /etc/localtime is used.
-
-EXAMPLES
-       Convert seconds since the epoch (1970-01-01 UTC) to a date
-
-              $ date --date=&#39;@2147483647&#39;
-
-       Show  the  time  on  the west coast of the US (use tzselect(1) to
-       find TZ)
-
-              $ TZ=&#39;America/Los_Angeles&#39; date
-    ...
-
-DATE STRING
-       The  --date=STRING  is  a  mostly free format human readable date
-       string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot;  or  &quot;2004-02-29
-       16:21:42&quot;  or  even  &quot;next  Thursday&quot;.  A date string may contain
-       items indicating calendar date, time of day, time  zone,  day  of
-       week, relative time, relative date, and numbers.  An empty string
-       indicates the beginning of the day.  The date  string  format  is
-       more  complex  than  is  easily  documented  here  but  is  fully
-       described in the info documentation.
-
-AUTHOR
-       Written by David MacKenzie.
-
-COPYRIGHT
-       Copyright © 2013 Free Software Foundation, Inc.  License  GPLv3+:
-       GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
-       This  is  free  software: you are free to change and redistribute
-       it.  There is NO WARRANTY, to the extent permitted by law.
-
-SEE ALSO
-       The full documentation for date is maintained as a  Texinfo  man‐
-       ual.   If  the  info  and date programs are properly installed at
-       your site, the command
-
-              info coreutils &#39;date invocation&#39;
-
-       should give you access to the complete manual.
-
-GNU coreutils 8.22            February 2016                      DATE(1)
- Manual page date(1) line 159/222 (END) (press h for help or q to quit)
-</code></pre>
-<blockquote>
-<p>当内容较多时，使用page up和page down上下翻页，空格也可向下翻页;<br>按q退出</p>
-</blockquote>
-<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
-<h4 id="man页面所属的分类标识-常用的是1、3、5、8"><a href="#man页面所属的分类标识-常用的是1、3、5、8" class="headerlink" title="man页面所属的分类标识(常用的是1、3、5、8)"></a>man页面所属的分类标识(常用的是1、3、5、8)</h4><ol>
-<li>用户可以操作的命令或者是可执行文件</li>
-<li>系统核心可调用的函数与工具等</li>
-<li>一些常用的函数与数据库</li>
-<li>设备文件的说明</li>
-<li>设置文件或者某些文件的格式</li>
-<li>游戏</li>
-<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
-<li>系统管理员可用的管理条令</li>
-<li>与内核有关的文件</li>
-</ol>
-<h4 id="man-page的常见部分"><a href="#man-page的常见部分" class="headerlink" title="man page的常见部分"></a>man page的常见部分</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>内容说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NAME</td>
-<td>简短的指令、资料名称说明</td>
-</tr>
-<tr>
-<td>SYNOPSIS</td>
-<td>简短的指令下达语法简介</td>
-</tr>
-<tr>
-<td>DESCRIPTION</td>
-<td>较为完整的说明</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>针对SYNOPSI部分，有列举的所有可用的选项说明</td>
-</tr>
-<tr>
-<td>COMMANDS</td>
-<td>当该命令在运行的时候，可以下达的命令</td>
-</tr>
-<tr>
-<td>FILES</td>
-<td>使用或链接到的某些档案／文件</td>
-</tr>
-<tr>
-<td>SEE ALSO</td>
-<td>可以参考的，跟该命令或资料有相关的其他说明</td>
-</tr>
-<tr>
-<td>EXAMPLE</td>
-<td>可以参考的范例</td>
-</tr>
-<tr>
-<td>AUTHORS</td>
-<td>作者</td>
-</tr>
-<tr>
-<td>COPYRIGHT</td>
-<td>版权说明</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>这是常见的内容，实际上还有其他部分<br>在某些命令中这些内容不全都有</p>
-</blockquote>
-<h4 id="man常用命令参数"><a href="#man常用命令参数" class="headerlink" title="man常用命令参数"></a>man常用命令参数</h4><ul>
-<li><p>man -a：<br>搜索并打开所有man中同名帮助，例如 man passwd ，你首先会进入一个PASSWD(1) section用户命令类的帮助手册，你再按q键退出当前正在显示的帮助手册，就会进入PASSWD(5) section文件格式类的帮助手册。</p>
-</li>
-<li><p>man -aw：<br>显示所有手册文件的路径。</p>
-</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -aw passwd
-/usr/share/man/man1/passwd.1.gz
-/usr/share/man/man1/sslpasswd.1ssl.gz
-/usr/share/man/man5/passwd.5.gz
-</code></pre>
-<ul>
-<li><p>man -M：<br>指定手册文件的搜索路径，有的时候我们自己安装的软件是带有自己的帮助文件的，通常不在我们的MANPATH里面，那么我们就可以手动指定man搜索的文件路径。如 man -M /home/mysql/man mysql显示的就是你安装的mysql的帮助，而不是系统默认的旧版mysql的帮助。</p>
-</li>
-<li><p>man -k：<br>根据关键字搜索联机帮助，是一种模糊搜索。例如要查找”passwd”相关的信息，使用man -k passwd会找到很多和passwd相关的帮助页。如：我忘记了iptables命令就只能记住ipta则可以使用man -k ipta ，系统会把包括ipta的命令显示在屏幕上。</p>
-</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -k passwd
-chpasswd (8)         - 批量更新密码
-gpasswd (1)          - 管理员 /etc/group 和 /etc/gshadow
-fgetpwent_r (3)      - get passwd file entry reentrantly
-getpwent_r (3)       - get passwd file entry reentrantly
-grub2-mkpasswd-pbkdf2 (1) - Generate a PBKDF2 password hash.
-htpasswd (1)         - Manage user files for basic authentication
-kpasswd (1)          - change a user&#39;s Kerberos password
-ldappasswd (1)       - change the password of an LDAP entry
-lpasswd (1)          - Change group or user password
-lppasswd (1)         - add, change, or delete digest passwords.
-pam_localuser (8)    - require users to be listed in /etc/passwd
-passwd (1)           - update user&#39;s authentication tokens
-sslpasswd (1ssl)     - compute password hashes
-passwd (5)           - password file
-passwd2des (3)       - RFS password encryption
-pwhistory_helper (8) - Helper binary that transfers password hashes fro...
-saslpasswd2 (8)      - set a user&#39;s sasl password
-smbpasswd (5)        - The Samba encrypted password file
-smbpasswd (8)        - change a user&#39;s SMB password
-vncpasswd (1)        - change the VNC password
-</code></pre>
-<ul>
-<li>man -f：<br>关键字精确搜索，与-k不同，它只搜索与关键字完全匹配的帮助页。</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -f passwd
-sslpasswd (1ssl)     - compute password hashes
-passwd (1)           - update user&#39;s authentication tokens
-passwd (5)           - password file
-</code></pre>
-<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>info与man类似，也是一种帮助说明,指令的文件预设放在<code>/usr/share/info/</code>目录中。<br>与man不同的是，info不是都在一个页面显示，而是将文件资料拆成了多个段落，每个段落有自己的页面，并且在各个页面还有类似链接的方式可以跳转，每个页面被称为一个node.</p>
-<pre><code class="lang-bash">[root@delei-server bin]# info info
-File: info.info,  Node: Top,  Next: Getting Started,  Up: (dir)
-
-Info: An Introduction
-*********************
-
-The GNU Project distributes most of its on-line manuals in the &quot;Info
-format&quot;, which you read using an &quot;Info reader&quot;.  You are probably using
-an Info reader to read this now.
-
-   ...
-
-* Menu:
-
-* Getting Started::             Getting started using an Info reader.
-* Advanced::                    Advanced Info commands.
-* Expert Info::                 Info commands for experts.
-* Index::                       An index of topics, commands, and variabl\
-es.
-</code></pre>
-<p>第一行:</p>
-<ul>
-<li>File：表示该info的内容是由info.info提供</li>
-<li>Node：代表当前的这个页面是top</li>
-<li>Next：下一个页面</li>
-<li>Up：上一个页面</li>
-</ul>
-<p>将光标移动到该页面最下面”Menu”的列表部分，在每一个种，按下回车即可进入到相应的Node(类似于网页的链接跳转)</p>
-<pre><code class="lang-bash">File: info.info,  Node: Advanced,  Next: Expert Info,  Prev: Getting Star\
-ted,  Up: Top
-
-2 Advanced Info Commands
-************************
-
-This chapter describes various advanced Info commands.  (If you are
-using a stand-alone Info reader, there are additional commands specific
-to it, which are documented in several chapters of *note GNU Info:
-(info-stnd)Top.)
-
-   ...
-
-* Menu:
-
-* Search Text::          How to search Info documents.
-* Search Index::         How to search the indices for specific subjects.
-* Go to node::           How to go to a node by name.
-* Choose menu subtopic:: How to choose a menu subtopic by its number.
-* Create Info buffer::   How to create a new Info buffer in Emacs.
-* Emacs Info Variables:: Variables modifying the behavior of Emacs Info.
-</code></pre>
-<p>依照Menu可以进行node间的跳转，比起man来说，阅读更加方便</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="http://linux.vbird.org/linux_basic/0160startlinux.php#manual" target="_blank" rel="external">鸟哥的私房菜</a></li>
-<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux命令查询</a></li>
-<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html" target="_blank" rel="external">Linux Tools Quick Tutorial</a></li>
-<li><a href="http://www.dabu.info/linux-get-help-man-whatis-info-apropos.html" target="_blank" rel="external">大步’s Blog</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;指导环境：CentOS7&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Linux命令数量&quot;&gt;&lt;a href=&quot;#Linux命令数量&quot; class=&quot;headerlink&quot; title=&quot;Linux命令数量&quot;&gt;&lt;/a&gt;Linux命令数量&lt;/h2&gt;&lt;p&gt;在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;而当匹配的数量过多，会先先统计有多少数量，询问是否显示&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（二）参数分类和即时（JIT）编译器诊断</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-2-flag/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-2-flag/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-2-flag/" target="_blank" rel="external">JVM实用参数（二）参数分类和即时（JIT）编译器诊断</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics" target="_blank" rel="external">blog.codecentric.de</a></p>
-<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 许巧辉</p>
-<p>在这个系列的第二部分，我来介绍一下HotSpot JVM提供的不同类别的参数。我同样会讨论一些关于JIT编译器诊断的有趣参数。</p>
-<h2 id="JVM-参数分类"><a href="#JVM-参数分类" class="headerlink" title="JVM 参数分类"></a>JVM 参数分类</h2><p>HotSpot JVM 提供了三类参数。第一类包括了标准参数。顾名思义，标准参数中包括功能和输出的参数都是很稳定的，很可能在将来的JVM版本中不会改变。你可以用java命令（或者是用 java -help）检索出所有标准参数。我们在第一部分中已经见到过一些标准参数，例如：-server。</p>
-<p>第二类是X参数，非标准化的参数在将来的版本中可能会改变。所有的这类参数都以-X开始，并且可以用java -X来检索。注意，不能保证所有参数都可以被检索出来，其中就没有-Xcomp。</p>
-<p>第三类是包含XX参数（到目前为止最多的），它们同样不是标准的，甚至很长一段时间内不被列出来（最近，这种情况有改变 ，我们将在本系列的第三部分中讨论它们）。然而，在实际情况中X参数和XX参数并没有什么不同。X参数的功能是十分稳定的，然而很多XX参数仍在实验当中（主要是JVM的开发者用于debugging和调优JVM自身的实现）。值的一读的介绍非标准参数的文档 <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html" target="_blank" rel="external">HotSpot JVM documentation</a>，其中明确的指出XX参数不应该在不了解的情况下使用。这是真的，并且我认为这个建议同样适用于X参数（同样一些标准参数也是）。不管类别是什么，在使用参数之前应该先了解它可能产生的影响。</p>
-<p>用一句话来说明XX参数的语法。所有的XX参数都以”-XX:”开始，但是随后的语法不同，取决于参数的类型。</p>
-<p>对于布尔类型的参数，我们有”+”或”-“，然后才设置JVM选项的实际名称。例如，-XX:+<name>用于激活<name>选项，而-XX:-<name>用于注销选项。<br>对于需要非布尔值的参数，如string或者integer，我们先写参数的名称，后面加上”=”，最后赋值。例如，  -XX:<name>=<value>给<name>赋值<value>。<br>现在让我们来看看JIT编译方面的一些XX参数。</value></name></value></name></name></name></name></p>
-<p><strong>-XX:+PrintCompilation and -XX:+CITime</strong></p>
-<a id="more"></a>
-<p>当一个Java应用运行时，非常容易查看JIT编译工作。通过设置-XX:+PrintCompilation，我们可以简单的输出一些关于从字节码转化成本地代码的编译过程。我们来看一个服务端VM运行的例子：</p>
-<pre><code class="lang-bash">$ java -server -XX:+PrintCompilation Benchmark
-  1       java.lang.String::hashCode (64 bytes)
-  2       java.lang.AbstractStringBuilder::stringSizeOfInt (21 bytes)
-  3       java.lang.Integer::getChars (131 bytes)
-  4       java.lang.Object::&lt;init&gt; (1 bytes)
----   n   java.lang.System::arraycopy (static)
-  5       java.util.HashMap::indexFor (6 bytes)
-  6       java.lang.Math::min (11 bytes)
-  7       java.lang.String::getChars (66 bytes)
-  8       java.lang.AbstractStringBuilder::append (60 bytes)
-  9       java.lang.String::&lt;init&gt; (72 bytes)
- 10       java.util.Arrays::copyOfRange (63 bytes)
- 11       java.lang.StringBuilder::append (8 bytes)
- 12       java.lang.AbstractStringBuilder::&lt;init&gt; (12 bytes)
- 13       java.lang.StringBuilder::toString (17 bytes)
- 14       java.lang.StringBuilder::&lt;init&gt; (18 bytes)
- 15       java.lang.StringBuilder::append (8 bytes)
-[...]
- 29       java.util.regex.Matcher::reset (83 bytes)
-</code></pre>
-<p>每当一个方法被编译，就输出一行-XX:+PrintCompilation。每行都包含顺序号（唯一的编译任务ID）和已编译方法的名称和大小。因此，顺序号1，代表编译String类中的hashCode方法到原生代码的信息。根据方法的类型和编译任务打印额外的信息。例如，本地的包装方法前方会有”n”参数，像上面的System::arraycopy一样。注意这样的方法不会包含顺序号和方法占用的大小，因为它不需要编译为本地代码。同样可以看到被重复编译的方法，例如StringBuilder::append顺序号为11和15。输出在顺序号29时停止 ，这表明在这个Java应用运行时总共需要编译29个方法。</p>
-<p>没有官方的文档关于-XX:+PrintCompilation，但是<a href="https://gist.github.com/rednaxelafx/1165804#file_notes.md" target="_blank" rel="external">这个描述</a>是对于此参数比较好的。我推荐更深入学习一下。</p>
-<p>JIT编译器输出帮助我们理解客户端VM与服务端VM的一些区别。用服务端VM，我们的应用例子输出了29行，同样用客户端VM，我们会得到55行。这看起来可能很怪，因为服务端VM应该比客户端VM做了”更多”的编译。然而，由于它们各自的默认设置，服务端VM在判断方法是不是热点和需不需要编译时比客户端VM观察方法的时间更长。因此，在使用服务端VM时，一些潜在的方法会稍后编译就不奇怪了。</p>
-<p>通过另外设置-XX:+CITime，我们可以在JVM关闭时得到各种编译的统计信息。让我们看一下一个特定部分的统计：</p>
-<pre><code class="lang-bash">$ java -server -XX:+CITime Benchmark
-[...]
-Accumulated compiler times (for compiled methods only)
-------------------------------------------------
-  Total compilation time   :  0.178 s
-    Standard compilation   :  0.129 s, Average : 0.004
-    On stack replacement   :  0.049 s, Average : 0.024
-[...]
-</code></pre>
-<p>总共用了0.178s（在29个编译任务上）。这些，”on stack replacement”占用了0.049s，即编译的方法目前在堆栈上用去的时间。这种技术并不是简单的实现性能显示，实际上它是非常重要的。没有”on stack replacement”，方法如果要执行很长时间（比如，它们包含了一个长时间运行的循环），它们运行时将不会被它们编译过的副本替换。</p>
-<p>再一次，客户端VM与服务端VM的比较是非常有趣的。客户端VM相应的数据表明，即使有55个方法被编译了，但这些编译总共用了只有0.021s。服务端VM做的编译少但是用的时间却比客户端VM多。这个原因是，使用服务端VM在生成本地代码时执行了更多的优化。</p>
-<p>在本系列的第一部分，我们已经学了-Xint和-Xcomp参数。结合使用-XX:+PrintCompilation和-XX:+CITime，在这两个情况下（校对者注，客户端VM与服务端VM），我们能对JIT编译器的行为有更好的了解。使用-Xint，-XX:+PrintCompilation在这两种情况下会产生0行输出。同样的，使用-XX:+CITime时，证实在编译上没有花费时间。现在换用-Xcomp，输出就完全不同了。在使用客户端VM时会产生726行输出，然后没有更多的，这是因为每个相关的方法都被编译了。使用服务端VM，我们甚至能得到993行输出，这告诉我们更积极的优化被执行了。同样，JVM 拆机(JVM teardown)时打印出的统计显示了两个VM的巨大不同。考虑服务端VM的运行：</p>
-<pre><code class="lang-bash">$ java -server -Xcomp -XX:+CITime Benchmark
-[...]
-Accumulated compiler times (for compiled methods only)
-------------------------------------------------
-  Total compilation time   :  1.567 s
-    Standard compilation   :  1.567 s, Average : 0.002
-    On stack replacement   :  0.000 s, Average : -1.#IO
-[...]
-</code></pre>
-<p>使用-Xcomp编译用了1.567s，这是使用默认设置（即，混合模式）的10倍。同样，应用程序的运行速度要比用混合模式的慢。相比较之下，客户端VM使用-Xcomp编译726个方法只用了0.208s，甚至低于使用-Xcomp的服务端VM。</p>
-<p>补充一点，这里没有”on stack replacement”发生，因为每一个方法在第一次调用时被编译了。损坏的输出“Average: -1.#IO”（正确的是:0）再一次表明了，非标准化的输出参数不是非常可靠。</p>
-<p><strong>-XX:+UnlockExperimentalVMOptions</strong></p>
-<p>有些时候当设置一个特定的JVM参数时，JVM会在输出“Unrecognized VM option”后终止。如果发生了这种情况，你应该首先检查你是否输错了参数。然而，如果参数输入是正确的，并且JVM并不识别，你或许需要设置-XX:+UnlockExperimentalVMOptions 来解锁参数。我不是非常清楚这个安全机制的作用，但我猜想这个参数如果不正确使用可能会对JVM的稳定性有影响（例如，他们可能会过多的写入debug输出的一些日志文件）。</p>
-<p>有一些参数只是在JVM开发时用，并不实际用于Java应用。如果一个参数不能被 -XX:+UnlockExperimentalVMOptions 开启，但是你真的需要使用它，此时你可以尝试使用debug版本的JVM。对于Java 6 HotSpot JVM你可以从这里找到。</p>
-<p><strong>-XX:+LogCompilation and -XX:+PrintOptoAssembly</strong></p>
-<p>如果你在一个场景中发现使用 -XX:+PrintCompilation，不能够给你足够详细的信息，你可以使用 -XX:+LogCompilation把扩展的编译输出写到“hotspot.log”文件中。除了编译方法的很多细节之外，你也可以看到编译器线程启动的任务。注意-XX:+LogCompilation 需要使用-XX:+UnlockExperimentalVMOptions来解锁。</p>
-<p>JVM甚至允许我们看到从字节码编译生成到本地代码。使用-XX:+PrintOptoAssembly，由编译器线程生成的本地代码被输出并写到“hotspot.log”文件中。使用这个参数要求运行的服务端VM是debug版本。我们可以研究-XX:+PrintOptoAssembly的输出，以至于了解JVM实际执行什么样的优化，例如，关于死代码的消除。一个非常有趣的文章提供了一个例子。</p>
-<p>关于XX参数的更多信息</p>
-<p>如果这篇文章勾起了你的兴趣，你可以自己看一下HotSpot JVM的XX 参数。<a href="http://stas-blogspot.blogspot.de/2011/07/most-complete-list-of-xx-options-for.html" target="_blank" rel="external">这里</a>是一个很好的起点。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-2-flag/&quot;&gt;JVM实用参数（二）参数分类和即时（JIT）编译器诊断&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 赵峰，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 许巧辉&lt;/p&gt;
-&lt;p&gt;在这个系列的第二部分，我来介绍一下HotSpot JVM提供的不同类别的参数。我同样会讨论一些关于JIT编译器诊断的有趣参数。&lt;/p&gt;
-&lt;h2 id=&quot;JVM-参数分类&quot;&gt;&lt;a href=&quot;#JVM-参数分类&quot; class=&quot;headerlink&quot; title=&quot;JVM 参数分类&quot;&gt;&lt;/a&gt;JVM 参数分类&lt;/h2&gt;&lt;p&gt;HotSpot JVM 提供了三类参数。第一类包括了标准参数。顾名思义，标准参数中包括功能和输出的参数都是很稳定的，很可能在将来的JVM版本中不会改变。你可以用java命令（或者是用 java -help）检索出所有标准参数。我们在第一部分中已经见到过一些标准参数，例如：-server。&lt;/p&gt;
-&lt;p&gt;第二类是X参数，非标准化的参数在将来的版本中可能会改变。所有的这类参数都以-X开始，并且可以用java -X来检索。注意，不能保证所有参数都可以被检索出来，其中就没有-Xcomp。&lt;/p&gt;
-&lt;p&gt;第三类是包含XX参数（到目前为止最多的），它们同样不是标准的，甚至很长一段时间内不被列出来（最近，这种情况有改变 ，我们将在本系列的第三部分中讨论它们）。然而，在实际情况中X参数和XX参数并没有什么不同。X参数的功能是十分稳定的，然而很多XX参数仍在实验当中（主要是JVM的开发者用于debugging和调优JVM自身的实现）。值的一读的介绍非标准参数的文档 &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html&quot;&gt;HotSpot JVM documentation&lt;/a&gt;，其中明确的指出XX参数不应该在不了解的情况下使用。这是真的，并且我认为这个建议同样适用于X参数（同样一些标准参数也是）。不管类别是什么，在使用参数之前应该先了解它可能产生的影响。&lt;/p&gt;
-&lt;p&gt;用一句话来说明XX参数的语法。所有的XX参数都以”-XX:”开始，但是随后的语法不同，取决于参数的类型。&lt;/p&gt;
-&lt;p&gt;对于布尔类型的参数，我们有”+”或”-“，然后才设置JVM选项的实际名称。例如，-XX:+&lt;name&gt;用于激活&lt;name&gt;选项，而-XX:-&lt;name&gt;用于注销选项。&lt;br&gt;对于需要非布尔值的参数，如string或者integer，我们先写参数的名称，后面加上”=”，最后赋值。例如，  -XX:&lt;name&gt;=&lt;value&gt;给&lt;name&gt;赋值&lt;value&gt;。&lt;br&gt;现在让我们来看看JIT编译方面的一些XX参数。&lt;/value&gt;&lt;/name&gt;&lt;/value&gt;&lt;/name&gt;&lt;/name&gt;&lt;/name&gt;&lt;/name&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;-XX:+PrintCompilation and -XX:+CITime&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 跟踪域名解析过程</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:49:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
-<p>linux and windows</p>
-</blockquote>
-<pre><code>delei@XXX:~$ nslookup
-&gt; www.deleiguo.com
-Server:        192.168.1.1
-Address:    192.168.1.1#53
-
-Non-authoritative answer:
-www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
-Name:    ew-2l6hqh9le.aliapp.com
-Address: 121.199.250.133
-</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
-<p>linux</p>
-</blockquote>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;www.deleiguo.com.        IN    A
-
-;; ANSWER SECTION:
-www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
-
-;; Query time: 39 msec
-;; SERVER: 192.168.1.1#53(192.168.1.1)
-;; WHEN: Sat Oct  8 19:15:18 2016
-;; MSG SIZE  rcvd: 87
-</code></pre><p>增加+trace参数跟踪过程：</p>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
-;; global options: +cmd
-.            89065    IN    NS    c.root-servers.net.
-.            89065    IN    NS    j.root-servers.net.
-.            89065    IN    NS    g.root-servers.net.
-.            89065    IN    NS    d.root-servers.net.
-.            89065    IN    NS    h.root-servers.net.
-.            89065    IN    NS    f.root-servers.net.
-.            89065    IN    NS    b.root-servers.net.
-.            89065    IN    NS    l.root-servers.net.
-.            89065    IN    NS    k.root-servers.net.
-.            89065    IN    NS    a.root-servers.net.
-.            89065    IN    NS    e.root-servers.net.
-.            89065    IN    NS    m.root-servers.net.
-.            89065    IN    NS    i.root-servers.net.
-;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
-
-com.            172800    IN    NS    j.gtld-servers.net.
-com.            172800    IN    NS    i.gtld-servers.net.
-com.            172800    IN    NS    c.gtld-servers.net.
-com.            172800    IN    NS    l.gtld-servers.net.
-com.            172800    IN    NS    g.gtld-servers.net.
-com.            172800    IN    NS    h.gtld-servers.net.
-com.            172800    IN    NS    m.gtld-servers.net.
-com.            172800    IN    NS    d.gtld-servers.net.
-com.            172800    IN    NS    a.gtld-servers.net.
-com.            172800    IN    NS    b.gtld-servers.net.
-com.            172800    IN    NS    e.gtld-servers.net.
-com.            172800    IN    NS    k.gtld-servers.net.
-com.            172800    IN    NS    f.gtld-servers.net.
-;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
-
-deleiguo.com.        172800    IN    NS    dns9.hichina.com.
-deleiguo.com.        172800    IN    NS    dns10.hichina.com.
-;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
-
-www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;linux and windows
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM实用参数（五）新生代垃圾回收</title>
     <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/"/>
     <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/</id>
@@ -2584,6 +2528,137 @@ www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
 &lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 严亮&lt;br&gt;本部分，我们将关注堆(heap) 中一个主要区域，新生代(young generation)。首先我们会讨论为什么调整新生代的参数会对应用的性能如此重要，接着我们将学习新生代相关的JVM参数。&lt;/p&gt;
 &lt;p&gt;单纯从JVM的功能考虑，并不需要新生代，完全可以针对整个堆进行操作。新生代存在的唯一理由是优化垃圾回收(GC)的性能。更具体说，把堆划分为新生代和老年代有2个好处：简化了新对象的分配(只在新生代分配内存),可以更有效的清除不再需要的对象(即死对象)(新生代和老年代使用不同的GC算法)&lt;/p&gt;
 &lt;p&gt;通过广泛研究面向对象实现的应用，发现一个共同特点：很多对象的生存时间都很短。同时研究发现，新生对象很少引用生存时间长的对象。结合这2个特点，很明显 GC 会频繁访问新生对象，例如在堆中一个单独的区域，称之为新生代。在新生代中，GC可以快速标记回收”死对象”，而不需要扫描整个Heap中的存活一段时间的”老对象”。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM实用参数（四）内存调优</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-4-heap-tuning/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/" target="_blank" rel="external">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p><strong>译者：</strong> 郑旭东<br><strong>校对：</strong> 梁海舰</p>
+<p>理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。</p>
+<a id="more"></a>
+<p>所有已制定的HotSpot内存管理和垃圾回收算法都基于一个相同的堆内存划分：新生代（young generation）里存储着新分配的和较年轻的对象，老年代（old generation）里存储着长寿的对象。在此之外，永久代（permanent generation）存储着那些需要伴随整个JVM生命周期的对象，比如，已加载的对象的类定义或者String对象内部Cache。接下来，我们将假设堆内存是按照新生代、老年代和永久代这一经典策略划分的。然而，其他的一些堆内存划分策略也是可行的，一个突出的例子就是新的G1垃圾回收器，它模糊了新生代和老年代之间的区别。此外，目前的开发进程似乎表明在未来的HotSpot JVM版本中，将不会区分老年代和永久代。</p>
+<p><strong>-Xms and -Xmx (or: -XX:InitialHeapSize and -XX:MaxHeapSize)</strong></p>
+<p>-Xms和-Xmx可以说是最流行的JVM参数，它们可以允许我们指定JVM的初始和最大堆内存大小。一般来说，这两个参数的数值单位是Byte，但同时它们也支持使用速记符号，比如“k”或者“K”代表“kilo”，“m”或者“M”代表“mega”，“g”或者“G”代表“giga”。举个例子，下面的命令启动了一个初始化堆内存为128M，最大堆内存为2G，名叫“MyApp”的Java应用程序。</p>
+<pre><code class="lang-bash">$ java -Xms128m -Xmx2g MyApp
+</code></pre>
+<p>在实际使用过程中，初始化堆内存的大小通常被视为堆内存大小的下界。然而JVM可以在运行时动态的调整堆内存的大小，所以理论上来说我们有可能会看到堆内存的大小小于初始化堆内存的大小。但是即使在非常低的堆内存使用下，我也从来没有遇到过这种情况。这种行为将会方便开发者和系统管理员，因为我们可以通过将“-Xms”和“-Xmx”设置为相同大小来获得一个固定大小的堆内存。 -Xms和-Xmx实际上是-XX:InitialHeapSize和-XX:MaxHeapSize的缩写。我们也可以直接使用这两个参数，它们所起得效果是一样的：</p>
+<pre><code class="lang-bash">$ java -XX:InitialHeapSize=128m -XX:MaxHeapSize=2g MyApp
+</code></pre>
+<p>需要注意的是，所有JVM关于初始\最大堆内存大小的输出都是使用它们的完整名称：“InitialHeapSize”和“InitialHeapSize”。所以当你查询一个正在运行的JVM的堆内存大小时，如使用-XX:+PrintCommandLineFlags参数或者通过JMX查询，你应该寻找“InitialHeapSize”和“InitialHeapSize”标志而不是“Xms”和“Xmx”。</p>
+<p><strong>-XX:+HeapDumpOnOutOfMemoryError and -XX:HeapDumpPath</strong></p>
+<p>如果我们没法为-Xmx（最大堆内存）设置一个合适的大小，那么就有可能面临内存溢出（OutOfMemoryError）的风险，这可能是我们使用JVM时面临的最可怕的猛兽之一。就同<a href="http://blog.codecentric.de/en/2011/03/java-memory-configuration-and-monitoring-3rd-act/" target="_blank" rel="external">另外一篇</a>关于这个主题的博文说的一样，导致内存溢出的根本原因需要仔细的定位。通常来说，分析堆内存快照（Heap Dump）是一个很好的定位手段，如果发生内存溢出时没有生成内存快照那就实在是太糟了，特别是对于那种JVM已经崩溃或者错误只出现在顺利运行了数小时甚至数天的生产系统上的情况。</p>
+<p>幸运的是，我们可以通过设置-XX:+HeapDumpOnOutOfMemoryError 让JVM在发生内存溢出时自动的生成堆内存快照。有了这个参数，当我们不得不面对内存溢出异常的时候会节约大量的时间。默认情况下，堆内存快照会保存在JVM的启动目录下名为java_pid<code>&lt;pid&gt;</code>.hprof 的文件里（在这里<code>&lt;pid&gt;</code>就是JVM进程的进程号）。也可以通过设置-XX:HeapDumpPath=<code>&lt;path&gt;</code>来改变默认的堆内存快照生成路径，<code>&lt;path&gt;</code>可以是相对或者绝对路径。</p>
+<p>虽然这一切听起来很不错，但有一点我们需要牢记。堆内存快照文件有可能很庞大，特别是当内存溢出错误发生的时候。因此，我们推荐将堆内存快照生成路径指定到一个拥有足够磁盘空间的地方。</p>
+<p><strong>-XX:OnOutOfMemoryError</strong></p>
+<p>当内存溢发生时，我们甚至可以可以执行一些指令，比如发个E-mail通知管理员或者执行一些清理工作。通过-XX:OnOutOfMemoryError 这个参数我们可以做到这一点，这个参数可以接受一串指令和它们的参数。在这里，我们将不会深入它的细节，但我们提供了它的一个例子。在下面的例子中，当内存溢出错误发生的时候，我们会将堆内存快照写到/tmp/heapdump.hprof 文件并且在JVM的运行目录执行脚本cleanup.sh</p>
+<pre><code class="lang-bash">$ java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.hprof -XX:OnOutOfMemoryError =&quot;sh ~/cleanup.sh&quot; MyApp
+</code></pre>
+<p><strong>-XX:PermSize and -XX:MaxPermSize</strong><br>永久代在堆内存中是一块独立的区域，它包含了所有JVM加载的类的对象表示。为了成功运行应用程序，JVM会加载很多类（因为它们依赖于大量的第三方库，而这又依赖于更多的库并且需要从里面将类加载进来）这就需要增加永久代的大小。我们可以使用-XX:PermSize 和-XX:MaxPermSize 来达到这个目的。其中-XX:MaxPermSize 用于设置永久代大小的最大值，-XX:PermSize 用于设置永久代初始大小。下面是一个简单的例子：</p>
+<pre><code class="lang-bash">$ java -XX:PermSize=128m -XX:MaxPermSize=256m MyApp
+</code></pre>
+<p>请注意，这里设置的永久代大小并不会被包括在使用参数-XX:MaxHeapSize 设置的堆内存大小中。也就是说，通过-XX:MaxPermSize设置的永久代内存可能会需要由参数-XX:MaxHeapSize 设置的堆内存以外的更多的一些堆内存。</p>
+<p><strong>-XX:InitialCodeCacheSize and -XX:ReservedCodeCacheSize</strong></p>
+<p>JVM一个有趣的，但往往被忽视的内存区域是“代码缓存”，它是用来存储已编译方法生成的本地代码。代码缓存确实很少引起性能问题，但是一旦发生其影响可能是毁灭性的。如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。就像其他内存区域一样，我们可以自定义代码缓存的大小。相关的参数是-XX:InitialCodeCacheSize 和-XX:ReservedCodeCacheSize，它们的参数和上面介绍的参数一样，都是字节值。</p>
+<p><strong>-XX:+UseCodeCacheFlushing</strong></p>
+<p>如果代码缓存不断增长，例如，因为热部署引起的内存泄漏，那么提高代码的缓存大小只会延缓其发生溢出。为了避免这种情况的发生，我们可以尝试一个有趣的新参数：当代码缓存被填满时让JVM放弃一些编译代码。通过使用-XX:+UseCodeCacheFlushing 这个参数，我们至少可以避免当代码缓存被填满的时候JVM切换到interpreted-only 模式。不过，我仍建议尽快解决代码缓存问题发生的根本原因，如找出内存泄漏并修复它。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/&quot;&gt;JVM实用参数（四）内存调优&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 郑旭东&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;理想的情况下，一个Java程序使用JVM的默认设置也可以运行得很好，所以一般来说，没有必要设置任何JVM参数。然而，由于一些性能问题（很不幸的是，这些问题经常出现），一些相关的JVM参数知识会是我们工作中得好伙伴。在这篇文章中，我们将介绍一些关于JVM内存管理的参数。知道并理解这些参数，将对开发者和运维人员很有帮助。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM实用参数（三）打印所有XX参数及值</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:20:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>译者：</strong>李洪柱，iDestiny<br><strong>校对：</strong>方腾飞</p>
+<p>本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。</p>
+<a id="more"></a>
+<pre><code class="lang-bash">-XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial
+</code></pre>
+<p>让我们现在就了解一下新参数的输出。以 -client 作为参数的 -XX:+PrintFlagsFinal   的结果是一个按字母排序的590个参数表格（注意，每个release版本参数的数量会不一样）</p>
+<pre><code class="lang-bash">$ java -client -XX:+PrintFlagsFinal
+[Global flags]
+    uintx AdaptivePermSizeWeight                    = 20              {product}           
+    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}           
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}           
+    uintx AdaptiveSizePausePolicy                   = 0               {product}           
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}           
+     ...
+</code></pre>
+<p>(校对注：你可以尝试在命令行输入上面的命令，亲自实现下)</p>
+<p>表格的每一行包括五列，来表示一个XX参数。第一列表示参数的数据类型，第二列是名称，第四列为值，第五列是参数的类别。第三列”=”表示第四列是参数的默认值，而”:=” 表明了参数被用户或者JVM赋值了。</p>
+<p>注意对于这个例子我只是用了Benchmark类，因为这个系列前面的章节也是用的这个类。甚至没有一个主类的情况下你能得到相同的输出，通过运行java 带另外的参数 -version.现在让我们检查下 server VM提供了多少个参数。我们也能指定参数-XX:+UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。</p>
+<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal
+</code></pre>
+<p>724个参数，让我们看一眼那些已经被赋值的参数</p>
+<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal Benchmark | grep &quot;:&quot;
+uintx InitialHeapSize                     := 57505088         {product}
+uintx MaxHeapSize                         := 920649728        {product}
+uintx ParallelGCThreads                   := 4                {product}
+ bool PrintFlagsFinal                     := true             {product}
+ bool UseParallelGC                       := true             {product}
+</code></pre>
+<p>校对注：这个命令非常有用）我们仅设置一个自己的参数 -XX:+PrintFlagsFinal。其他参数通过server VM基于系统设置的，以便以合适的堆大小和GC设置运行。</p>
+<p>如果我们只想看下所有XX参数的默认值，能够用一个相关的参数，-XX:+PrintFlagsInitial  。 用 -XX:+PrintFlagsInitial, 只是展示了第三列为“=”的数据（也包括那些被设置其他值的参数）。</p>
+<p>然而，注意当与-XX:+PrintFlagsFinal 对比的时候，一些参数会丢失，大概因为这些参数是动态创建的。</p>
+<p>研究表格的内容是很有意思的，通过比较client和server VM的行为，很明显了解哪些参数会影响其他的参数。有兴趣的读者，可以看一下这篇不错文章<a href="http://q-redux.blogspot.com/2011/01/inspecting-hotspot-jvm-options.html" target="_blank" rel="external">Inspecting HotSpot JVM Options</a>。这个文章主要解释了第五列的参数类别。</p>
+<p>-XX:+PrintCommandLineFlags<br>让我们看下另外一个参数，事实上这个参数非常有用: -XX:+PrintCommandLineFlags。这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值。</p>
+<p>换句话说，它列举出 -XX:+PrintFlagsFinal的结果中第三列有”:=”的参数。以这种方式，我们可以用-XX:+PrintCommandLineFlags作为快捷方式来查看修改过的参数。看下面的例子。</p>
+<pre><code class="lang-bash">$ java -server -XX:+PrintCommandLineFlags Benchmark
+
+-XX:InitialHeapSize=57505088 -XX:MaxHeapSize=920081408 -XX:ParallelGCThreads=4 -XX:+PrintCommandLineFlags -XX:+UseParallelGC
+</code></pre>
+<p>现在如果我们每次启动java 程序的时候设置 -XX:+PrintCommandLineFlags 并且输出到日志文件上，这样会记录下我们设置的JVM 参数对应用程序性能的影响。类似于 -showversion(见 Part1)，我建议 –XX:+PrintCommandLineFlags 这个参数应该总是设置在JVM启动的配置项里。因为你从不知道你什么时候会需要这些信息。</p>
+<p>奇怪的是在这个例子中，通过 -XX:+PrintCommandLineFlags 列出堆的最大值会比通过-XX:+PrintFlagsFinal列举出的相应值小一点。如果谁知道两者之间不同的原因，请告诉我。</p>
+<blockquote>
+<p>文中提到的问题，网友在原文中给的答案，仅供参考<br><a href="http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM" target="_blank" rel="external">http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;JVM实用参数（三）打印所有XX参数及值&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt;李洪柱，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt;方腾飞&lt;/p&gt;
+&lt;p&gt;本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。&lt;/p&gt;
     
     </summary>
     
@@ -2731,80 +2806,6 @@ www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
 [Full GC 243120K-&amp;gt;241951K(629760K), 1.5589690 secs]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（三）打印所有XX参数及值</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:20:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/" target="_blank" rel="external">blog.codecentric.de</a></p>
-<p><strong>译者：</strong>李洪柱，iDestiny<br><strong>校对：</strong>方腾飞</p>
-<p>本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。</p>
-<a id="more"></a>
-<pre><code class="lang-bash">-XX:+PrintFlagsFinal and -XX:+PrintFlagsInitial
-</code></pre>
-<p>让我们现在就了解一下新参数的输出。以 -client 作为参数的 -XX:+PrintFlagsFinal   的结果是一个按字母排序的590个参数表格（注意，每个release版本参数的数量会不一样）</p>
-<pre><code class="lang-bash">$ java -client -XX:+PrintFlagsFinal
-[Global flags]
-    uintx AdaptivePermSizeWeight                    = 20              {product}           
-    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}           
-    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}           
-    uintx AdaptiveSizePausePolicy                   = 0               {product}           
-    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}           
-     ...
-</code></pre>
-<p>(校对注：你可以尝试在命令行输入上面的命令，亲自实现下)</p>
-<p>表格的每一行包括五列，来表示一个XX参数。第一列表示参数的数据类型，第二列是名称，第四列为值，第五列是参数的类别。第三列”=”表示第四列是参数的默认值，而”:=” 表明了参数被用户或者JVM赋值了。</p>
-<p>注意对于这个例子我只是用了Benchmark类，因为这个系列前面的章节也是用的这个类。甚至没有一个主类的情况下你能得到相同的输出，通过运行java 带另外的参数 -version.现在让我们检查下 server VM提供了多少个参数。我们也能指定参数-XX:+UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。</p>
-<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal
-</code></pre>
-<p>724个参数，让我们看一眼那些已经被赋值的参数</p>
-<pre><code class="lang-bash">$ java -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+PrintFlagsFinal Benchmark | grep &quot;:&quot;
-uintx InitialHeapSize                     := 57505088         {product}
-uintx MaxHeapSize                         := 920649728        {product}
-uintx ParallelGCThreads                   := 4                {product}
- bool PrintFlagsFinal                     := true             {product}
- bool UseParallelGC                       := true             {product}
-</code></pre>
-<p>校对注：这个命令非常有用）我们仅设置一个自己的参数 -XX:+PrintFlagsFinal。其他参数通过server VM基于系统设置的，以便以合适的堆大小和GC设置运行。</p>
-<p>如果我们只想看下所有XX参数的默认值，能够用一个相关的参数，-XX:+PrintFlagsInitial  。 用 -XX:+PrintFlagsInitial, 只是展示了第三列为“=”的数据（也包括那些被设置其他值的参数）。</p>
-<p>然而，注意当与-XX:+PrintFlagsFinal 对比的时候，一些参数会丢失，大概因为这些参数是动态创建的。</p>
-<p>研究表格的内容是很有意思的，通过比较client和server VM的行为，很明显了解哪些参数会影响其他的参数。有兴趣的读者，可以看一下这篇不错文章<a href="http://q-redux.blogspot.com/2011/01/inspecting-hotspot-jvm-options.html" target="_blank" rel="external">Inspecting HotSpot JVM Options</a>。这个文章主要解释了第五列的参数类别。</p>
-<p>-XX:+PrintCommandLineFlags<br>让我们看下另外一个参数，事实上这个参数非常有用: -XX:+PrintCommandLineFlags。这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值。</p>
-<p>换句话说，它列举出 -XX:+PrintFlagsFinal的结果中第三列有”:=”的参数。以这种方式，我们可以用-XX:+PrintCommandLineFlags作为快捷方式来查看修改过的参数。看下面的例子。</p>
-<pre><code class="lang-bash">$ java -server -XX:+PrintCommandLineFlags Benchmark
-
--XX:InitialHeapSize=57505088 -XX:MaxHeapSize=920081408 -XX:ParallelGCThreads=4 -XX:+PrintCommandLineFlags -XX:+UseParallelGC
-</code></pre>
-<p>现在如果我们每次启动java 程序的时候设置 -XX:+PrintCommandLineFlags 并且输出到日志文件上，这样会记录下我们设置的JVM 参数对应用程序性能的影响。类似于 -showversion(见 Part1)，我建议 –XX:+PrintCommandLineFlags 这个参数应该总是设置在JVM启动的配置项里。因为你从不知道你什么时候会需要这些信息。</p>
-<p>奇怪的是在这个例子中，通过 -XX:+PrintCommandLineFlags 列出堆的最大值会比通过-XX:+PrintFlagsFinal列举出的相应值小一点。如果谁知道两者之间不同的原因，请告诉我。</p>
-<blockquote>
-<p>文中提到的问题，网友在原文中给的答案，仅供参考<br><a href="http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM" target="_blank" rel="external">http://www.pixelstech.net/article/1403006488-MaxHeapSize-in-JVM</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;JVM实用参数（三）打印所有XX参数及值&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt;李洪柱，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt;方腾飞&lt;/p&gt;
-&lt;p&gt;本篇文章基于Java 6（update 21oder 21之后）版本， HotSpot JVM 提供给了两个新的参数，在JVM启动后，在命令行中可以输出所有XX参数和值。&lt;/p&gt;
     
     </summary>
     
