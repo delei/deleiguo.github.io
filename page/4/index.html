@@ -22,7 +22,7 @@
   <link href="/favicon.png" rel="icon">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/plugins/highlight/styles/github.css">
+  <link rel="stylesheet" href="/plugins/highlight/styles/atom-one-dark.css">
   <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="/plugins/bootstrap-3.3.0/css/bootstrap.min.css">
   <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
@@ -76,71 +76,38 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-gc/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/jvm-gc/"><strong>JVM GC</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/"><strong>JVM实用参数（二）参数分类和即时（JIT）编译器诊断</strong></a></h1>
   
 
 
     </header>
     <div class="entry">
+      <!-- Table of Contents -->
+      
       
         <blockquote>
-<p>参考书籍：<a href="https://book.douban.com/subject/25953851/">深入分析Java Web技术内幕（修订版）</a></p>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-2-flag/">JVM实用参数（二）参数分类和即时（JIT）编译器诊断</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC组合</th>
-<th>Young区</th>
-<th>Old区</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-XX:+UseSerialGC</td>
-<td>串行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelGC</td>
-<td>PSGC</td>
-<td>并行MSCGC</td>
-</tr>
-<tr>
-<td>-XX:+UseParNewGC</td>
-<td>并行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelOldGC</td>
-<td>PSGC</td>
-<td>并行CompactingGC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC</td>
-<td>ParNewGC</td>
-<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
-<td>串行GC</td>
-<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics">blog.codecentric.de</a></p>
+<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 许巧辉</p>
+<p>在这个系列的第二部分，我来介绍一下HotSpot JVM提供的不同类别的参数。我同样会讨论一些关于JIT编译器诊断的有趣参数。</p>
+<h2 id="JVM-参数分类"><a href="#JVM-参数分类" class="headerlink" title="JVM 参数分类"></a>JVM 参数分类</h2><p>HotSpot JVM 提供了三类参数。第一类包括了标准参数。顾名思义，标准参数中包括功能和输出的参数都是很稳定的，很可能在将来的JVM版本中不会改变。你可以用java命令（或者是用 java -help）检索出所有标准参数。我们在第一部分中已经见到过一些标准参数，例如：-server。</p>
+<p>第二类是X参数，非标准化的参数在将来的版本中可能会改变。所有的这类参数都以-X开始，并且可以用java -X来检索。注意，不能保证所有参数都可以被检索出来，其中就没有-Xcomp。</p>
+<p>第三类是包含XX参数（到目前为止最多的），它们同样不是标准的，甚至很长一段时间内不被列出来（最近，这种情况有改变 ，我们将在本系列的第三部分中讨论它们）。然而，在实际情况中X参数和XX参数并没有什么不同。X参数的功能是十分稳定的，然而很多XX参数仍在实验当中（主要是JVM的开发者用于debugging和调优JVM自身的实现）。值的一读的介绍非标准参数的文档 <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">HotSpot JVM documentation</a>，其中明确的指出XX参数不应该在不了解的情况下使用。这是真的，并且我认为这个建议同样适用于X参数（同样一些标准参数也是）。不管类别是什么，在使用参数之前应该先了解它可能产生的影响。</p>
+<p>用一句话来说明XX参数的语法。所有的XX参数都以”-XX:”开始，但是随后的语法不同，取决于参数的类型。</p>
+<p>对于布尔类型的参数，我们有”+”或”-“，然后才设置JVM选项的实际名称。例如，-XX:+<name>用于激活<name>选项，而-XX:-<name>用于注销选项。<br>对于需要非布尔值的参数，如string或者integer，我们先写参数的名称，后面加上”=”，最后赋值。例如，  -XX:<name>=<value>给<name>赋值<value>。<br>现在让我们来看看JIT编译方面的一些XX参数。</value></name></value></name></name></name></name></p>
+<p><strong>-XX:+PrintCompilation and -XX:+CITime</strong></p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/jvm-gc/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-2-flag/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -169,6 +136,8 @@
 
     </header>
     <div class="entry">
+      <!-- Table of Contents -->
+      
       
         <blockquote>
 <p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">JVM实用参数（三）打印所有XX参数及值</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
@@ -211,6 +180,8 @@
 
     </header>
     <div class="entry">
+      <!-- Table of Contents -->
+      
       
         <blockquote>
 <p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-4-heap-tuning/">JVM实用参数（四）内存调优</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
@@ -252,6 +223,8 @@
 
     </header>
     <div class="entry">
+      <!-- Table of Contents -->
+      
       
         <blockquote>
 <p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM实用参数（五）新生代垃圾回收</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
@@ -284,34 +257,99 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-follow-dns/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/"><strong>JVM实用参数（八）GC日志</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/linux-follow-dns/"><strong>Linux 跟踪域名解析过程</strong></a></h1>
   
 
 
     </header>
     <div class="entry">
+      <!-- Table of Contents -->
       
-        <blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/">JVM实用参数（八）GC日志</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
+      
+        <h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
+<p>linux and windows</p>
 </blockquote>
-<p><strong>译者:</strong> Greenster<br><strong>校对:</strong> 梁海舰<br>本系列的最后一部分是有关垃圾收集（GC）日志的JVM参数。GC日志是一个很重要的工具，它准确记录了每一次的GC的执行时间和执行结果，通过分析GC日志可以优化堆设置和GC设置，或者改进应用程序的对象分配模式。</p>
-<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>参数-XX:+PrintGC（或者-verbose:gc）开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息。下面举例说明：</p>
-<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
-[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>增加+trace参数跟踪过程：</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
 </code></pre>
-<p>每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。</p>
       
     </div>
     <footer>
       
-        
-          <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读更多</a>
-          </div>
         
         
       
