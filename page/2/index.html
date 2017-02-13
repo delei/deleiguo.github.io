@@ -76,6 +76,47 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/easy-saas/">2017-02-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/09/easy-saas/"><strong>简单的SAAS软件开发与设计</strong></a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        <p>前段时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
+<blockquote>
+<p>到目前为止，算是蹒跚起步，没有SAAS经验的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
+</blockquote>
+<h2 id="1-服务架构"><a href="#1-服务架构" class="headerlink" title="1. 服务架构"></a>1. 服务架构</h2><h3 id="1-1-硬件环境"><a href="#1-1-硬件环境" class="headerlink" title="1.1 硬件环境"></a>1.1 硬件环境</h3><p><img src="/2017/02/09/easy-saas/001.png" alt=""></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2017/02/09/easy-saas/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-12-25T16:00:00.000Z"><a href="/2016/12/26/jvm-gc-xiaochao/">2016-12-26</a></time>
       
       
@@ -95,51 +136,14 @@
 <li>新生代GC（Minor GC）：指发生在新生代的垃圾收集动作，因为Java对象大多都具备朝生夕灭的特性，所以Minor GC非常频繁，一般回收速度也比较快”</li>
 <li>老年代GC（Major GC/Full GC）：指发生在老年代的GC，出现了Major GC，经常会伴随至少一次的Minor GC（但非绝对的，在Parallel Scavenge收集器的收集策略里就有直接进行Major GC的策略选择过程）。Major GC的速度一般会比Minor GC慢10倍以上</li>
 </ul>
-<h4 id="永久代-JVM方法区"><a href="#永久代-JVM方法区" class="headerlink" title="永久代(JVM方法区)"></a>永久代(JVM方法区)</h4><p>各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据<br>JDK8</p>
-<h1 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h1><h2 id="判定回收"><a href="#判定回收" class="headerlink" title="判定回收"></a>判定回收</h2><p>GC ROOTs起始，向下找引用链，如果找不到任何引用，则对象不可用(类似树结构)</p>
-<p>该类的所有实例对象都已经被回收<br>加载该类的ClassLoader已经被回收<br>该类对应的反射类java.lang.Class对象没有被任何地方引用</p>
-<h2 id="GC-方式"><a href="#GC-方式" class="headerlink" title="GC 方式"></a>GC 方式</h2><p>在启动参数中增加-XX:+DisableExplicitGC来避免程序中调用 System.gc 触发 GC</p>
-<p>新生代主要基于 Copying 算法(将存活的对象复制到一块未使用的空间，然后将剩余的空间清空)。Eden 中存放新创建的对象，S0或S1用来复制，当其中一块为复制的目标空间，另一块的内容则被清空。</p>
-<p>主要有串行 GC、并行回收 GC 、并行 GC</p>
-<ul>
-<li><p>串行 GC(Serial GC)<br>采用单线程方式，也是 client 级别下默认采用的GC的方式，可以用过-XX:+UserSerialGC来强制指定</p>
-</li>
-<li><p>并行回收 GC(ParalleclGC)<br>  在启动时，Eden S0 S1的比例划分可以用过-XX：SurvivorRadio来调整，但在运行一段时间后，并行回收GC会根据 Minor GC 的频率、消耗时间等来动态调整Eden S0 S1的大小。也可通过-XX:UserAdaptiveSizePolicy来固定Eden S0 S1的大小</p>
-<p>  在扫描和复制时采用多线程方式。适合多 CPU、对暂停时间要求较短的应用。也是 Sever 级别上默认采用的 GC 方式，也可以通过-XX:UserParalleclGC来强制指定。</p>
-<p>  默认的线程数根据 CPU 的核数来计算:</p>
-<ul>
-<li>CPU 核数小于8时，并行的线程数即为CPU核数;</li>
-<li>CPU 核数大于8时，并行的线程数即为3+(CPU核数*5)/8,也可以通过-XX:ParallelGCThreads=4来强制指定线程数；</li>
-</ul>
-</li>
-<li><p>并行 GC(ParNew)<br>  需配合旧生代使用CMS GC,CMS GC在老年代 GC 时，有些是并发执行的，如此时发生Minor GC,需要进行相应的处理，而并行回收GC是没有这些处理。<br>  在配置 CMS GC 下，新生代默认采用并行 GC，也可通过-XX:UserParNewGC强制指定<br>  使用-XX:ParallelGCThreads参数来限制垃圾收集的线程数</p>
-</li>
-<li><p>Parallel Scavenge<br>  CMS等收集器的关注点是尽可能地缩短垃圾收集时用户线程的停顿时间，而Parallel Scavenge收集器的目标则是达到一个可控制的吞吐量（Throughput）。所谓吞吐量就是CPU用于运行用户代码的时间与CPU总消耗时间的比值，即吞吐量=运行用户代码时间/（运行用户代码时间+垃圾收集时间），虚拟机总共运行了100分钟，其中垃圾收集花掉1分钟，那吞吐量就是99%”<br>  控制最大垃圾收集停顿时间的-XX：MaxGCPauseMillis参数以及直接设置吞吐量大小的-XX：GCTimeRatio参数</p>
-</li>
-<li><p>Parallel Old<br>  Parallel Scavenge的老年代版，使用多线程和”标记-整理”算法。</p>
-</li>
-<li><p>CMS<br>  最短回收停顿时间，基于”标记-清除”算法，并发收集，收集结束会产生空间碎片，不连续空间。可能出现的情况：老年代有很大空间剩余，但是无法找到足够大的连续空间来分配，不得不提前触发一次Full GC.CMS GC 提供-XX:+UserCMSCompactAtFullCollection开发(默认开启)，开启内存碎片的合并整理过程，另外-XX:CMSFullGCsBeforeCompaction，用于设置执行多少次不亚索的 Full GC 后，紧接着进行压缩整理碎片<br>  对 CPU 资源很敏感，并发会占用一部分线程(或 CPU)而导致应用程序变慢，总吞吐量降低</p>
-</li>
-<li><p>G1<br>  面向服务端应用。并行与并发，可以不需要其他收集器配合就能独立管理整个 GC 堆。主要基于”标记-整理”算法。<br>  使用 G1，是将Java 堆划分为多个大小星等的独立区域(Region)，新生代和老年代不再物理隔离，它们都是一部分 Region集合</p>
-</li>
-</ul>
-<h2 id="查看-GC"><a href="#查看-GC" class="headerlink" title="查看 GC"></a>查看 GC</h2><h4 id="输出-GC-日志"><a href="#输出-GC-日志" class="headerlink" title="输出 GC 日志"></a>输出 GC 日志</h4><ul>
-<li><p>控制台<br>JVM 启动参数-XX:+PrintGC -XX:+PrincGCDetails </p>
-</li>
-<li><p>输出到文件<br>JVM启动参数加入-Xloggc:gc.log</p>
-</li>
-</ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li>强引用：new Ojbect,只要该引用存在，则永不会回收该类对象，需要在程序中主动处理</li>
-<li>软引用：SofeReference，在 JVM 内存不足时才会被回收，可以用来实现缓存，当 GC 扫描到的该类对象不经常使用，也会进行回收。存活的时间可以同-XX:SofeRefLRUpolicyMSPerM来进行控制，默认为1秒</li>
-<li>弱引用：WeakReference，这类对象只能存活到下一次回收(没有强引用)</li>
-<li>虚引用：PhantomReference，</li>
-</ul>
-
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2016/12/26/jvm-gc-xiaochao/#more" class="more-link">阅读更多</a>
+          </div>
         
         
       
@@ -243,60 +247,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-command-help/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/linux-command-help/"><strong>Linux Command：命令帮助</strong></a></h1>
-  
-
-
-    </header>
-    <div class="entry">
-      
-        <blockquote>
-<p>指导环境：CentOS7</p>
-</blockquote>
-<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
-<pre><code class="lang-bash">[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-</code></pre>
-<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
-<pre><code class="lang-bash">[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2016/10/08/linux-command-help/#more" class="more-link">阅读更多</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-gc/">2016-10-08</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/10/08/jvm-gc/"><strong>JVM GC</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-2-flag/"><strong>JVM实用参数（二）参数分类和即时（JIT）编译器诊断</strong></a></h1>
   
 
 
@@ -304,59 +259,24 @@ Display all 199 possibilities? (y or n)
     <div class="entry">
       
         <blockquote>
-<p>参考书籍：<a href="https://book.douban.com/subject/25953851/">深入分析Java Web技术内幕（修订版）</a></p>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-2-flag/">JVM实用参数（二）参数分类和即时（JIT）编译器诊断</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC组合</th>
-<th>Young区</th>
-<th>Old区</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-XX:+UseSerialGC</td>
-<td>串行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelGC</td>
-<td>PSGC</td>
-<td>并行MSCGC</td>
-</tr>
-<tr>
-<td>-XX:+UseParNewGC</td>
-<td>并行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelOldGC</td>
-<td>PSGC</td>
-<td>并行CompactingGC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC</td>
-<td>ParNewGC</td>
-<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
-<td>串行GC</td>
-<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-2-flag-categories-and-jit-compiler-diagnostics">blog.codecentric.de</a></p>
+<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 许巧辉</p>
+<p>在这个系列的第二部分，我来介绍一下HotSpot JVM提供的不同类别的参数。我同样会讨论一些关于JIT编译器诊断的有趣参数。</p>
+<h2 id="JVM-参数分类"><a href="#JVM-参数分类" class="headerlink" title="JVM 参数分类"></a>JVM 参数分类</h2><p>HotSpot JVM 提供了三类参数。第一类包括了标准参数。顾名思义，标准参数中包括功能和输出的参数都是很稳定的，很可能在将来的JVM版本中不会改变。你可以用java命令（或者是用 java -help）检索出所有标准参数。我们在第一部分中已经见到过一些标准参数，例如：-server。</p>
+<p>第二类是X参数，非标准化的参数在将来的版本中可能会改变。所有的这类参数都以-X开始，并且可以用java -X来检索。注意，不能保证所有参数都可以被检索出来，其中就没有-Xcomp。</p>
+<p>第三类是包含XX参数（到目前为止最多的），它们同样不是标准的，甚至很长一段时间内不被列出来（最近，这种情况有改变 ，我们将在本系列的第三部分中讨论它们）。然而，在实际情况中X参数和XX参数并没有什么不同。X参数的功能是十分稳定的，然而很多XX参数仍在实验当中（主要是JVM的开发者用于debugging和调优JVM自身的实现）。值的一读的介绍非标准参数的文档 <a href="http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html">HotSpot JVM documentation</a>，其中明确的指出XX参数不应该在不了解的情况下使用。这是真的，并且我认为这个建议同样适用于X参数（同样一些标准参数也是）。不管类别是什么，在使用参数之前应该先了解它可能产生的影响。</p>
+<p>用一句话来说明XX参数的语法。所有的XX参数都以”-XX:”开始，但是随后的语法不同，取决于参数的类型。</p>
+<p>对于布尔类型的参数，我们有”+”或”-“，然后才设置JVM选项的实际名称。例如，-XX:+<name>用于激活<name>选项，而-XX:-<name>用于注销选项。<br>对于需要非布尔值的参数，如string或者integer，我们先写参数的名称，后面加上”=”，最后赋值。例如，  -XX:<name>=<value>给<name>赋值<value>。<br>现在让我们来看看JIT编译方面的一些XX参数。</value></name></value></name></name></name></name></p>
+<p><strong>-XX:+PrintCompilation and -XX:+CITime</strong></p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/jvm-gc/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-2-flag/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -396,7 +316,7 @@ Display all 199 possibilities? (y or n)
   
     <li><a href="/categories/pri/">PRI-文章</a><small>2</small></li>
   
-    <li><a href="/categories/tec/">TEC-技术</a><small>18</small></li>
+    <li><a href="/categories/tec/">TEC-技术</a><small>19</small></li>
   
   </ul>
 </div>
@@ -409,9 +329,9 @@ Display all 199 possibilities? (y or n)
   
     <li><a href="/tags/DeleiGuo/">DeleiGuo</a><small>1</small></li>
   
-    <li><a href="/tags/JVM/">JVM</a><small>11</small></li>
+    <li><a href="/tags/JVM/">JVM</a><small>12</small></li>
   
-    <li><a href="/tags/Java/">Java</a><small>4</small></li>
+    <li><a href="/tags/Java/">Java</a><small>5</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
   
@@ -428,7 +348,7 @@ Display all 199 possibilities? (y or n)
   
   <div class="widget tag">
     <h3 class="title">归档</h3>
-	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
@@ -512,18 +432,6 @@ Display all 199 possibilities? (y or n)
 })(jQuery);
 </script>
 
-
-    <script type="text/javascript">
-    var disqus_shortname = 'deleiguo';
-
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-    </script>
 
 
 

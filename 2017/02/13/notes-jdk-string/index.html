@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档 | DeleiGuo</title>
+  <title>【小抄】JDK-String相关 | DeleiGuo</title>
   <meta name="author" content="DeleiGuo">
   
   <meta name="description" content="deleiguo,DeleiGuo,裤子_Delei,裤子_DeleiGuo,个人博客,技术博客,Java">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="【小抄】JDK-String相关"/>
   <meta property="og:site_name" content="DeleiGuo"/>
 
   
@@ -69,124 +69,99 @@
     <div class="clearfix"></div>
   </nav>
   <div id="content">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-
-<h2 class="archive-title fa-calendar">归档</h2>
-<div class="archive">
-   
-    <article class="post">
-      <div class="post-content">
-        <header>
-          <div class="icon"></div>
-          <time datetime="2999-10-09T16:00:00.000Z"><a href="/2999/10/10/hellow-word/">2999-10-10</a></time>
-          
-            <h1 class="title"><a href="/2999/10/10/hellow-word/"><strong>【置顶】博客内容说明</a></strong></h1>
-          
-        </header>
-        <div class='archive-tags'>
-          
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
-  <div class="tags">
-    <a href="/tags/DeleiGuo/"># DeleiGuo</a>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-12T16:00:00.000Z"><a href="/2017/02/13/notes-jdk-string/">2017-02-13</a></time>
+      
+      
+  
+    <h1 class="title"><strong>【小抄】JDK-String相关</strong></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="String基本定义与不可变"><a href="#String基本定义与不可变" class="headerlink" title="String基本定义与不可变"></a>String基本定义与不可变</h2><h3 id="String定义"><a href="#String定义" class="headerlink" title="String定义"></a>String定义</h3><p>在JDK源码的java.lang.String中，已对String类进行了说明</p>
+<pre><code class="lang-java">The String class represents character strings. All string literals in Java programs, such as &quot;abc&quot;, are implemented as instances of this class.
+&gt;String表示字符串，Java中所有字符串的字面值都是String类的实例，例如“ABC”。
+
+Strings are constant; their values cannot be changed after they are created. String buffers support mutable strings. Because String objects are immutable they can be shared.
+&gt;字符串是常量，在定义之后不能被改变，字符串缓冲区支持可变的字符串。因为 String 对象是不可变的，所以可以共享它们
+</code></pre>
+<a id="more"></a>
+<p>在其中，<code>常量</code>和<code>定义后不可改变</code>这两点非常明确也很重要。<br>String定义的<code>值</code>在源码中定义：</p>
+<pre><code class="lang-java">
+public final class String
+    implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence {
+    /** The value is used for character storage. */
+    private final char value[];
+
+...
+</code></pre>
+<p>String 的值是用一个final 的字符数组来存储的，final修饰正说明了”String不可变”的事实；String的内容一旦被初始化了是不能被更改的。<br>虽然有这样的例子：</p>
+<pre><code class="lang-java">String s = &quot;a&quot;;
+s = &quot;b&quot;;
+</code></pre>
+<p>以上这样写，这并不是对s的修改，而是重新指向了新的字符串， 从这里我们也能知道，String其实就是用char[]实现的。</p>
+<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性"></a>不可变性</h3><blockquote>
+<p>原文：<a href="http://www.programcreek.com/2013/09/string-is-passed-by-reference-in-java/" target="_blank" rel="external">String is passed by “reference” in Java</a><br>国内：HollisChuang’s Blog&gt;&gt;<a href="http://www.hollischuang.com/archives/1230" target="_blank" rel="external">三张图彻底了解Java中字符串的不变性</a></p>
+</blockquote>
+<h3 id="为什么设计成不可变"><a href="#为什么设计成不可变" class="headerlink" title="为什么设计成不可变"></a>为什么设计成不可变</h3><blockquote>
+<p>原文：<a href="http://www.programcreek.com/2013/04/why-string-is-immutable-in-java/" target="_blank" rel="external">Why String is immutable in Java ?</a><br>国内：HollisChuang’s Blog&gt;&gt;<a href="http://www.hollischuang.com/archives/1246" target="_blank" rel="external">为什么Java要把字符串设计成不可变的</a></p>
+</blockquote>
+<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
+<li>HollisChuang’s Blog &gt;&gt;<a href="http://www.hollischuang.com/archives/99" target="_blank" rel="external">Java 7 源码学习系列（一）——String</a></li>
+<li>grepcode:<a href="http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/7-b147/java/lang/String.java?av=f" target="_blank" rel="external"> 7-b147 / java.lang.String</a></li>
+<li><a href="http://www.programcreek.com" target="_blank" rel="external">programcreek</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/tec/">TEC-技术</a>
   </div>
 
-
-        </div>
-      </div>
-    </article>
-   
-    <article class="post">
-      <div class="post-content">
-        <header>
-          <div class="icon"></div>
-          <time datetime="2017-02-12T16:00:00.000Z"><a href="/2017/02/13/notes-jdk-string/">2017-02-13</a></time>
-          
-            <h1 class="title"><a href="/2017/02/13/notes-jdk-string/"><strong>【小抄】JDK-String相关</a></strong></h1>
-          
-        </header>
-        <div class='archive-tags'>
-          
+        
   
   <div class="tags">
     <a href="/tags/Java/"># Java</a> , <a href="/tags/JVM/"># JVM</a>
   </div>
 
 
-        </div>
-      </div>
-    </article>
-   
-    <article class="post">
-      <div class="post-content">
-        <header>
-          <div class="icon"></div>
-          <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/linux-tree/">2017-02-09</a></time>
-          
-            <h1 class="title"><a href="/2017/02/09/linux-tree/"><strong>Mac/Linux Tree命令</a></strong></h1>
-          
-        </header>
-        <div class='archive-tags'>
-          
-  
-  <div class="tags">
-    <a href="/tags/Linux/"># Linux</a> , <a href="/tags/Mac/"># Mac</a>
+        <br/>
+<pre><code><b>*版权声明</b>:如未特殊标注说明，本文为原创,如需转载请注明来自,本文链接为<b><a href="/2017/02/13/notes-jdk-string/" target="_blank" title="【小抄】JDK-String相关">DeleiGuo:【小抄】JDK-String相关</a></b>.</code></pre>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
   </div>
+</article>
 
 
-        </div>
-      </div>
-    </article>
-   
-    <article class="post">
-      <div class="post-content">
-        <header>
-          <div class="icon"></div>
-          <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/alibaba-java-develop-norm/">2017-02-09</a></time>
-          
-            <h1 class="title"><a href="/2017/02/09/alibaba-java-develop-norm/"><strong>【转】阿里巴巴集团Java代码规范</a></strong></h1>
-          
-        </header>
-        <div class='archive-tags'>
-          
-  
-  <div class="tags">
-    <a href="/tags/Java/"># Java</a>
-  </div>
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <div class="comments" id="comments">
+    <!--PC版-->
+    <div id="SOHUCS" ></div>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({
+    appid: 'cysQz2Qts',
+    conf: 'prod_5acaa35e106aef237971aea1fde5e4f8'
+    });
+    </script>
+</section>
 
-
-        </div>
-      </div>
-    </article>
-   
-    <article class="post">
-      <div class="post-content">
-        <header>
-          <div class="icon"></div>
-          <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/microservice-design-pattern/">2017-02-09</a></time>
-          
-            <h1 class="title"><a href="/2017/02/09/microservice-design-pattern/"><strong>微服务架构的设计模式</a></strong></h1>
-          
-        </header>
-        <div class='archive-tags'>
-          
-  
-  <div class="tags">
-    <a href="/tags/Web/"># Web</a>
-  </div>
-
-
-        </div>
-      </div>
-    </article>
-   
-</div>
-<nav id="pagination">
-  
-  
-    <a href="/archives/page/2/" class="alignright next">下一页</a>
-  
-  <div class="clearfix"></div>
-</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   <!-- <div class="search">
