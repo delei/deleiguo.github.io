@@ -139,11 +139,70 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-02-12T16:00:00.000Z"><a href="/2017/02/13/notes-jdk-string/">2017-02-13</a></time>
+        <time datetime="2017-02-12T16:00:00.000Z"><a href="/2017/02/13/notes-jdk-string-2/">2017-02-13</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/02/13/notes-jdk-string/"><strong>【小抄】JDK-String相关</strong></a></h1>
+    <h1 class="title"><a href="/2017/02/13/notes-jdk-string-2/"><strong>【小抄】JDK-String与StringBuffer与StringBuilder</strong></a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      <!-- Table of Contents -->
+      
+      
+        <h2 id="java-lang-String相关"><a href="#java-lang-String相关" class="headerlink" title="java.lang.String相关"></a>java.lang.String相关</h2><p><a href="https://www.deleiguo.com/2017/02/13/notes-jdk-string-1/">【小抄】JDK-String不可变</a></p>
+<p>Java中String不是基本数据类型，而是一个final类。</p>
+<p>实质为一个final char的数组，既然是final类型，那个该数组引用value就不允许再指向其他对象了，因此只从类的设计角度讲：如果jdk源码中并没有提供对value本身的修改，那么理论上来讲String是不可变的。</p>
+<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><p>咋一看,StringBuffer也是final修饰的类</p>
+<p><code>java.lang.StringBuffer</code>源码:</p>
+<pre><code class="lang-java">/**
+* A thread-safe, mutable sequence of characters.
+* 一个线程安全的可变序列字符
+* A string buffer is like a {@link String}, but can be modified.
+*一个StringBuffer可以像是String，但是是可以修改
+.....
+**/
+
+public final class StringBuffer
+    extends AbstractStringBuilder
+    implements java.io.Serializable, CharSequence
+{
+    ......
+}
+</code></pre>
+<p>StringBuffer也是final修饰的类<br>实质得去看抽象类AbstractStringBuilder<br>String的char[]是final的。但是AbstractStringBuilder类的不是</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2017/02/13/notes-jdk-string-2/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-12T16:00:00.000Z"><a href="/2017/02/13/notes-jdk-string-1/">2017-02-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/13/notes-jdk-string-1/"><strong>【小抄】JDK-String不可变</strong></a></h1>
   
 
 
@@ -165,7 +224,46 @@ Strings are constant; their values cannot be changed after they are created. Str
       
         
           <div class="alignleft">
-            <a href="/2017/02/13/notes-jdk-string/#more" class="more-link">阅读更多</a>
+            <a href="/2017/02/13/notes-jdk-string-1/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/linux-tree/">2017-02-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/09/linux-tree/"><strong>Mac/Linux Tree命令</strong></a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      <!-- Table of Contents -->
+      
+      
+        <h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2017/02/09/linux-tree/#more" class="more-link">阅读更多</a>
           </div>
         
         
@@ -218,88 +316,6 @@ Strings are constant; their values cannot be changed after they are created. Str
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/easy-saas/">2017-02-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/02/09/easy-saas/"><strong>简单的SAAS软件开发与设计</strong></a></h1>
-  
-
-
-    </header>
-    <div class="entry">
-      <!-- Table of Contents -->
-      
-      
-        <p>前段时间结合公司业务，主导的试推出了业务系统SAAS版本，没有采用大型的架构，只是结合业务要求，又有成本和项目进度考虑而已。</p>
-<blockquote>
-<p>到目前为止，算是蹒跚起步，没有SAAS经验的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导<br><br>在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较</p>
-</blockquote>
-<h2 id="1-服务架构"><a href="#1-服务架构" class="headerlink" title="1. 服务架构"></a>1. 服务架构</h2><h3 id="1-1-硬件环境"><a href="#1-1-硬件环境" class="headerlink" title="1.1 硬件环境"></a>1.1 硬件环境</h3><p><img src="/2017/02/09/easy-saas/001.png" alt=""></p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2017/02/09/easy-saas/#more" class="more-link">阅读更多</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-02-08T16:00:00.000Z"><a href="/2017/02/09/linux-tree/">2017-02-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/02/09/linux-tree/"><strong>Mac/Linux Tree命令</strong></a></h1>
-  
-
-
-    </header>
-    <div class="entry">
-      <!-- Table of Contents -->
-      
-      
-        <h1 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h1><p>在Linux系统中有tree命令，tree命令以树状图列出文件目录结构。<br>执行tree指令，它会列出指定目录下的所有文件，包括子目录里的文件。</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2017/02/09/linux-tree/#more" class="more-link">阅读更多</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -325,7 +341,7 @@ Strings are constant; their values cannot be changed after they are created. Str
   
     <li><a href="/categories/pri/">PRI-文章</a><small>2</small></li>
   
-    <li><a href="/categories/tec/">TEC-技术</a><small>19</small></li>
+    <li><a href="/categories/tec/">TEC-技术</a><small>20</small></li>
   
   </ul>
 </div>
@@ -338,9 +354,9 @@ Strings are constant; their values cannot be changed after they are created. Str
   
     <li><a href="/tags/DeleiGuo/">DeleiGuo</a><small>1</small></li>
   
-    <li><a href="/tags/JVM/">JVM</a><small>12</small></li>
+    <li><a href="/tags/JVM/">JVM</a><small>13</small></li>
   
-    <li><a href="/tags/Java/">Java</a><small>5</small></li>
+    <li><a href="/tags/Java/">Java</a><small>6</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>3</small></li>
   
@@ -357,7 +373,7 @@ Strings are constant; their values cannot be changed after they are created. Str
   
   <div class="widget tag">
     <h3 class="title">归档</h3>
-	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2999/10/">2999年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017年02月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年08月</a><span class="archive-list-count">1</span></li></ul>
   </div>
 
 
