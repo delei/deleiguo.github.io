@@ -120,6 +120,55 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-command-help/">2016-10-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/10/08/linux-command-help/"><strong>Linux Command：命令帮助</strong></a></h1>
+  
+
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>指导环境：CentOS7</p>
+</blockquote>
+<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
+<pre><code class="lang-bash">[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+</code></pre>
+<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
+<pre><code class="lang-bash">[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/linux-command-help/#more" class="more-link">阅读更多</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/java-8-features-tutorial/">2016-10-08</a></time>
       
       
@@ -146,89 +195,6 @@
         
           <div class="alignleft">
             <a href="/2016/10/08/java-8-features-tutorial/#more" class="more-link">阅读更多</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/jvm-gc/">2016-10-08</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/10/08/jvm-gc/"><strong>JVM GC</strong></a></h1>
-  
-
-
-    </header>
-    <div class="entry">
-      
-        <blockquote>
-<p>参考书籍：<a href="https://book.douban.com/subject/25953851/">深入分析Java Web技术内幕（修订版）</a></p>
-</blockquote>
-<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC组合</th>
-<th>Young区</th>
-<th>Old区</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-XX:+UseSerialGC</td>
-<td>串行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelGC</td>
-<td>PSGC</td>
-<td>并行MSCGC</td>
-</tr>
-<tr>
-<td>-XX:+UseParNewGC</td>
-<td>并行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelOldGC</td>
-<td>PSGC</td>
-<td>并行CompactingGC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC</td>
-<td>ParNewGC</td>
-<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
-<td>串行GC</td>
-<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2016/10/08/jvm-gc/#more" class="more-link">阅读更多</a>
           </div>
         
         

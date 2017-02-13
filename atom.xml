@@ -967,74 +967,6 @@ Compiled  Size  Type Method
   </entry>
   
   <entry>
-    <title>JVM实用参数（七）CMS收集器</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
-<a id="more"></a>
-<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
-<ol>
-<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
-<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
-<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
-<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
-<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
-<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
-</ol>
-<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
-<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
-<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
-<ol>
-<li>堆碎片</li>
-<li>对象分配率高</li>
-</ol>
-<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
-<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
-<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
-<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
-<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
-<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
-<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
-<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
-<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
-<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
-<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
-<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
-<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
-<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
-<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
-<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
-<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
-<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
-&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux 跟踪域名解析过程</title>
     <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
     <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
@@ -1133,6 +1065,186 @@ www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
   </entry>
   
   <entry>
+    <title>JVM GC</title>
+    <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
+    <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2017-02-09T09:21:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>参考书籍：<a href="https://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析Java Web技术内幕（修订版）</a></p>
+</blockquote>
+<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC组合</th>
+<th>Young区</th>
+<th>Old区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:+UseSerialGC</td>
+<td>串行GC</td>
+<td>串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelGC</td>
+<td>PSGC</td>
+<td>并行MSCGC</td>
+</tr>
+<tr>
+<td>-XX:+UseParNewGC</td>
+<td>并行GC</td>
+<td>串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseParallelOldGC</td>
+<td>PSGC</td>
+<td>并行CompactingGC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC</td>
+<td>ParNewGC</td>
+<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
+<td>串行GC</td>
+<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
+<a id="more"></a>
+<h2 id="参数列表集合"><a href="#参数列表集合" class="headerlink" title="参数列表集合"></a>参数列表集合</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC方式</th>
+<th>参数集合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heep堆配置</td>
+<td><ul><li>-Xms 堆初始大小</li><li>-Xmx 堆最大值</li><li>-Xmn Young区大小</li><li>-XX:PermSize Perm区大小</li><li>-XX:MaxPermSize Perm区最大值</li></ul></td>
+</tr>
+<tr>
+<td>Serial Collector(串行)</td>
+<td><ul><li>-XX:+UseSerialGC GC方式</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15,代表对象在新生代经历多少次MinorGC后才晋升到Old区,效率高,当Heap过大时,应用程序暂停时间较长</li></ul></td>
+</tr>
+<tr>
+<td>(并行)Parallel Collector-ParNewGC</td>
+<td><ul><li>-XX:+UseParNewGC</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+UseAdaptiveSizePolicy</li></ul></td>
+</tr>
+<tr>
+<td>(并行)Parallel Collector-ParallelGC</td>
+<td><ul><li>-XX:+UseParallelGC</li><li>-XX:+ParallelGCThreads 并发线程数</li><li>-XX:InitialSurivivorRatio 默认为8,Young:s0的比</li><li>-XX:+UseAdaptiveSizePolicy</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+ScavengeBeforeFullGC FullGC前触发MinorGC</li></ul></td>
+</tr>
+<tr>
+<td>(并行)Parallel Collector-ParallelOldGC</td>
+<td><ul><li>-XX:+UseParallelOldGC </li></ul></td>
+</tr>
+<tr>
+<td>(并发)CMS Collector</td>
+<td><ul><li>-XX:+UseConcMarkSweepGC</li><li>-XX:ParallelCMSThreads 设置并发CMS GC时的线程数</li><li>-XX:CMSInitiatingOccupancyFraction 当旧生代使用占到多少百分比时触发CMS GC</li><li>-XX:+UseCMSInitiatingOccupancyOnly 默认为false,代表允许hotspot根据成本来决定什么时候执行CMS GC</li><li>-XX:+UseCMSCompactAtFullCollection 当Full GC时执行压缩</li><li>-XX:CMSMaxAbortablePrecleanTime=5000 设置preclean步骤的超时事件,单位为毫秒</li><li>-XX:+CMSClassUnloadingEnabled PermGen采用CMS GC</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="三种GC优缺对比"><a href="#三种GC优缺对比" class="headerlink" title="三种GC优缺对比"></a>三种GC优缺对比</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>GC</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serial Collector(串行)</td>
+<td>在适合内存有限的情况下</td>
+<td>回收慢</td>
+</tr>
+<tr>
+<td>Parallel Collector(并发)</td>
+<td>效率高</td>
+<td>当Heap过大时,应用程序暂停时间较长</td>
+</tr>
+<tr>
+<td>CMS Collector(并发)</td>
+<td>Old区回收暂停时间短</td>
+<td>产生内存碎片、整个GC耗时较长,比较耗CPU</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;参考书籍：&lt;a href=&quot;https://book.douban.com/subject/25953851/&quot;&gt;深入分析Java Web技术内幕（修订版）&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;组合使用&quot;&gt;&lt;a href=&quot;#组合使用&quot; class=&quot;headerlink&quot; title=&quot;组合使用&quot;&gt;&lt;/a&gt;组合使用&lt;/h2&gt;&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;GC组合&lt;/th&gt;
+&lt;th&gt;Young区&lt;/th&gt;
+&lt;th&gt;Old区&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseSerialGC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseParallelGC&lt;/td&gt;
+&lt;td&gt;PSGC&lt;/td&gt;
+&lt;td&gt;并行MSCGC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseParNewGC&lt;/td&gt;
+&lt;td&gt;并行GC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseParallelOldGC&lt;/td&gt;
+&lt;td&gt;PSGC&lt;/td&gt;
+&lt;td&gt;并行CompactingGC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;/td&gt;
+&lt;td&gt;ParNewGC&lt;/td&gt;
+&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure时采用串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;br&gt;-XX:+UseParNewGC&lt;/td&gt;
+&lt;td&gt;串行GC&lt;/td&gt;
+&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure或promotionfailed采用串行GC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;不支持的组合方式：&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseParallelOldGC&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseSerialGC&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM实用参数（八）GC日志</title>
     <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-8-gc-logging/"/>
     <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-8-gc-logging/</id>
@@ -1208,6 +1320,413 @@ www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
     
     
       <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command：命令帮助</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:50:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>指导环境：CentOS7</p>
+</blockquote>
+<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
+<pre><code class="lang-bash">[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+</code></pre>
+<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
+<pre><code class="lang-bash">[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+</code></pre>
+<a id="more"></a>
+<p>那么，我们可以在不输入任何字的情况下，直接按下两次tab键，则可以统计下当前用户下可用的命令有多少个.</p>
+<blockquote>
+<p>但是经过实际尝试，在CenOS7下，该方法无效,Mac下有效</p>
+</blockquote>
+<pre><code class="lang-bash">delei@DeleitekiMBP:~$
+Display all 1473 possibilities? (y or n)
+</code></pre>
+<blockquote>
+<p>每个人的操作系统所用的命令数都是不一样的。<br>不同的linux版本，用户安装的软件命令，用户设置的环境变量等都是不一样的。</p>
+</blockquote>
+<p>虽然经常常用的命令数量不多，但是在有些情况下，很多命令的详细参数和选项用法不一定都能记得住。而若在无网络，无参考手册情况下，更会遇到不知道如何使用命令的情况。Linux上开发的软件大多数是自由性软件，而这些软件开发者一般都会有相应的命令使用方法。<br>在上述情况下，其实Linux已提供了几种方式能够提供帮助。</p>
+<h2 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h2><p>该命令获得索引的简短信息,如果有多个匹配(不同版本，多个同样的软件等)则会列出多个</p>
+<pre><code class="lang-bash">[root@delei-server ~]# whatis cd
+cd (1)               - bash built-in commands, see bash(1)
+cd (1p)              - change the working directory
+[root@delei-server ~]# whatis wget
+wget (1)             - The non-interactive network downloader.
+</code></pre>
+<p>但不是所有命令在所有的Linux上均可使用</p>
+<pre><code class="lang-bash">[root@delei-server ~]# whatis ll
+ll：没有 appropriate。
+</code></pre>
+<h2 id="help、-help"><a href="#help、-help" class="headerlink" title="help、-help"></a>help、-help</h2><p>—help该命令显示使用摘要和参数列表，可以查看大多数命令的用法</p>
+<pre><code class="lang-bash">[root@delei-server ~]# date --help
+用法：date [选项]... [+格式]
+　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+Display the current time in the given FORMAT, or set the system date.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -d, --date=STRING         display time described by STRING, not &#39;now&#39;
+  -f, --file=DATEFILE       like --date once for each line of DATEFILE
+  -I[TIMESPEC], --iso-8601[=TIMESPEC]  output date/time in ISO 8601 format.
+                            TIMESPEC=&#39;date&#39; for date only (the default),
+                            &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or &#39;ns&#39; for date
+                            and time to the indicated precision.
+  -r, --reference=文件        显示文件指定文件的最后修改时间
+  -R, --rfc-2822        以RFC 2822格式输出日期和时间
+                例如：2006年8月7日，星期一 12:34:56 -0600
+      --rfc-3339=TIMESPEC   output date and time in RFC 3339 format.
+                            TIMESPEC=&#39;date&#39;, &#39;seconds&#39;, or &#39;ns&#39; for
+                            date and time to the indicated precision.
+                            Date and time components are separated by
+                            a single space: 2006-08-07 12:34:56-06:00
+  -s, --set=STRING          set time described by STRING
+  -u, --utc, --universal    print or set Coordinated Universal Time (UTC)
+      --help        显示此帮助信息并退出
+      --version        显示版本信息并退出
+
+给定的格式FORMAT 控制着输出，解释序列如下：
+
+  %%    一个文字的 %
+  %a    当前locale 的星期名缩写(例如： 日，代表星期日)
+  %A    当前locale 的星期名全称 (如：星期日)
+  %b    当前locale 的月名缩写 (如：一，代表一月)
+  %B    当前locale 的月名全称 (如：一月)
+  ...
+
+默认情况下，日期的数字区域以0 填充。
+The following optional flags may follow &#39;%&#39;:
+
+  -  (hyphen) do not pad the field
+  _  (underscore) pad with spaces
+  0  (zero) pad with zeros
+  ^  use upper case if possible
+  #  use opposite case if possible
+
+在任何标记之后还允许一个可选的域宽度指定，它是一个十进制数字。
+作为一个可选的修饰声明，它可以是E，在可能的情况下使用本地环境关联的
+表示方式；或者是O，在可能的情况下使用本地环境关联的数字符号。
+
+Examples:
+Convert seconds since the epoch (1970-01-01 UTC) to a date
+  $ date --date=&#39;@2147483647&#39;
+
+Show the time on the west coast of the US (use tzselect(1) to find TZ)
+  $ TZ=&#39;America/Los_Angeles&#39; date
+
+Show the local time for 9AM next Friday on the west coast of the US
+  $ date --date=&#39;TZ=&quot;America/Los_Angeles&quot; 09:00 next Fri&#39;
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告date 的翻译错误
+要获取完整文档，请运行：info coreutils &#39;date invocation&#39;
+</code></pre>
+<p>—help只能对外部命令使用，对内部命令无效当我们要求内部命令的帮助时使用help+命令</p>
+<pre><code class="lang-bash">[root@delei-server bin]# help pwd
+pwd: pwd [-LP]
+    打印当前工作目录的名字。
+
+    选项：
+      -L    打印 $PWD 变量的值，如果它命名了当前的
+        工作目录
+      -P    打印当前的物理路径，不带有任何的符号链接
+
+    默认情况下，`pwd&#39; 的行为和带 `-L&#39; 选项一致
+
+    退出状态：
+    除非使用了无效选项或者当前目录不可读，否则
+    返回状态为0。
+</code></pre>
+<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man是manual的简写，命令使用手册／说明<br>同样是pwd,man提供的内容较多(内容过长，部分已省略…)</p>
+<pre><code class="lang-bash">[root@delei-server bin]# man date
+DATE(1)                       User Commands                      DATE(1)
+
+NAME
+       date - print or set the system date and time
+
+SYNOPSIS
+       date [OPTION]... [+FORMAT]
+       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+
+DESCRIPTION
+       Display  the  current time in the given FORMAT, or set the system
+       date.
+
+       Mandatory arguments to  long  options  are  mandatory  for  short
+       options too.
+
+       -d, --date=STRING
+              display time described by STRING, not &#39;now&#39;
+
+       -f, --file=DATEFILE
+              like --date once for each line of DATEFILE
+
+       -I[TIMESPEC], --iso-8601[=TIMESPEC]
+              output  date/time in ISO 8601 format.  TIMESPEC=&#39;date&#39; for
+              date only (the default), &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or
+              &#39;ns&#39; for date and time to the indicated precision.
+
+       ...
+       #      use opposite case if possible
+
+       After any flags comes an optional field width, as a decimal  num‐
+       ber;  then  an  optional  modifier,  which is either E to use the
+       locale&#39;s alternate representations if available, or O to use  the
+       locale&#39;s alternate numeric symbols if available.
+
+ENVIRONMENT
+       TZ     Specifies  the timezone, unless overridden by command line
+              parameters.  If neither is  specified,  the  setting  from
+              /etc/localtime is used.
+
+EXAMPLES
+       Convert seconds since the epoch (1970-01-01 UTC) to a date
+
+              $ date --date=&#39;@2147483647&#39;
+
+       Show  the  time  on  the west coast of the US (use tzselect(1) to
+       find TZ)
+
+              $ TZ=&#39;America/Los_Angeles&#39; date
+    ...
+
+DATE STRING
+       The  --date=STRING  is  a  mostly free format human readable date
+       string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot;  or  &quot;2004-02-29
+       16:21:42&quot;  or  even  &quot;next  Thursday&quot;.  A date string may contain
+       items indicating calendar date, time of day, time  zone,  day  of
+       week, relative time, relative date, and numbers.  An empty string
+       indicates the beginning of the day.  The date  string  format  is
+       more  complex  than  is  easily  documented  here  but  is  fully
+       described in the info documentation.
+
+AUTHOR
+       Written by David MacKenzie.
+
+COPYRIGHT
+       Copyright © 2013 Free Software Foundation, Inc.  License  GPLv3+:
+       GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
+       This  is  free  software: you are free to change and redistribute
+       it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       The full documentation for date is maintained as a  Texinfo  man‐
+       ual.   If  the  info  and date programs are properly installed at
+       your site, the command
+
+              info coreutils &#39;date invocation&#39;
+
+       should give you access to the complete manual.
+
+GNU coreutils 8.22            February 2016                      DATE(1)
+ Manual page date(1) line 159/222 (END) (press h for help or q to quit)
+</code></pre>
+<blockquote>
+<p>当内容较多时，使用page up和page down上下翻页，空格也可向下翻页;<br>按q退出</p>
+</blockquote>
+<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
+<h4 id="man页面所属的分类标识-常用的是1、3、5、8"><a href="#man页面所属的分类标识-常用的是1、3、5、8" class="headerlink" title="man页面所属的分类标识(常用的是1、3、5、8)"></a>man页面所属的分类标识(常用的是1、3、5、8)</h4><ol>
+<li>用户可以操作的命令或者是可执行文件</li>
+<li>系统核心可调用的函数与工具等</li>
+<li>一些常用的函数与数据库</li>
+<li>设备文件的说明</li>
+<li>设置文件或者某些文件的格式</li>
+<li>游戏</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
+<li>系统管理员可用的管理条令</li>
+<li>与内核有关的文件</li>
+</ol>
+<h4 id="man-page的常见部分"><a href="#man-page的常见部分" class="headerlink" title="man page的常见部分"></a>man page的常见部分</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>内容说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAME</td>
+<td>简短的指令、资料名称说明</td>
+</tr>
+<tr>
+<td>SYNOPSIS</td>
+<td>简短的指令下达语法简介</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>较为完整的说明</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>针对SYNOPSI部分，有列举的所有可用的选项说明</td>
+</tr>
+<tr>
+<td>COMMANDS</td>
+<td>当该命令在运行的时候，可以下达的命令</td>
+</tr>
+<tr>
+<td>FILES</td>
+<td>使用或链接到的某些档案／文件</td>
+</tr>
+<tr>
+<td>SEE ALSO</td>
+<td>可以参考的，跟该命令或资料有相关的其他说明</td>
+</tr>
+<tr>
+<td>EXAMPLE</td>
+<td>可以参考的范例</td>
+</tr>
+<tr>
+<td>AUTHORS</td>
+<td>作者</td>
+</tr>
+<tr>
+<td>COPYRIGHT</td>
+<td>版权说明</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>这是常见的内容，实际上还有其他部分<br>在某些命令中这些内容不全都有</p>
+</blockquote>
+<h4 id="man常用命令参数"><a href="#man常用命令参数" class="headerlink" title="man常用命令参数"></a>man常用命令参数</h4><ul>
+<li><p>man -a：<br>搜索并打开所有man中同名帮助，例如 man passwd ，你首先会进入一个PASSWD(1) section用户命令类的帮助手册，你再按q键退出当前正在显示的帮助手册，就会进入PASSWD(5) section文件格式类的帮助手册。</p>
+</li>
+<li><p>man -aw：<br>显示所有手册文件的路径。</p>
+</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -aw passwd
+/usr/share/man/man1/passwd.1.gz
+/usr/share/man/man1/sslpasswd.1ssl.gz
+/usr/share/man/man5/passwd.5.gz
+</code></pre>
+<ul>
+<li><p>man -M：<br>指定手册文件的搜索路径，有的时候我们自己安装的软件是带有自己的帮助文件的，通常不在我们的MANPATH里面，那么我们就可以手动指定man搜索的文件路径。如 man -M /home/mysql/man mysql显示的就是你安装的mysql的帮助，而不是系统默认的旧版mysql的帮助。</p>
+</li>
+<li><p>man -k：<br>根据关键字搜索联机帮助，是一种模糊搜索。例如要查找”passwd”相关的信息，使用man -k passwd会找到很多和passwd相关的帮助页。如：我忘记了iptables命令就只能记住ipta则可以使用man -k ipta ，系统会把包括ipta的命令显示在屏幕上。</p>
+</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -k passwd
+chpasswd (8)         - 批量更新密码
+gpasswd (1)          - 管理员 /etc/group 和 /etc/gshadow
+fgetpwent_r (3)      - get passwd file entry reentrantly
+getpwent_r (3)       - get passwd file entry reentrantly
+grub2-mkpasswd-pbkdf2 (1) - Generate a PBKDF2 password hash.
+htpasswd (1)         - Manage user files for basic authentication
+kpasswd (1)          - change a user&#39;s Kerberos password
+ldappasswd (1)       - change the password of an LDAP entry
+lpasswd (1)          - Change group or user password
+lppasswd (1)         - add, change, or delete digest passwords.
+pam_localuser (8)    - require users to be listed in /etc/passwd
+passwd (1)           - update user&#39;s authentication tokens
+sslpasswd (1ssl)     - compute password hashes
+passwd (5)           - password file
+passwd2des (3)       - RFS password encryption
+pwhistory_helper (8) - Helper binary that transfers password hashes fro...
+saslpasswd2 (8)      - set a user&#39;s sasl password
+smbpasswd (5)        - The Samba encrypted password file
+smbpasswd (8)        - change a user&#39;s SMB password
+vncpasswd (1)        - change the VNC password
+</code></pre>
+<ul>
+<li>man -f：<br>关键字精确搜索，与-k不同，它只搜索与关键字完全匹配的帮助页。</li>
+</ul>
+<pre><code class="lang-bash">[root@delei-server bin]# man -f passwd
+sslpasswd (1ssl)     - compute password hashes
+passwd (1)           - update user&#39;s authentication tokens
+passwd (5)           - password file
+</code></pre>
+<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>info与man类似，也是一种帮助说明,指令的文件预设放在<code>/usr/share/info/</code>目录中。<br>与man不同的是，info不是都在一个页面显示，而是将文件资料拆成了多个段落，每个段落有自己的页面，并且在各个页面还有类似链接的方式可以跳转，每个页面被称为一个node.</p>
+<pre><code class="lang-bash">[root@delei-server bin]# info info
+File: info.info,  Node: Top,  Next: Getting Started,  Up: (dir)
+
+Info: An Introduction
+*********************
+
+The GNU Project distributes most of its on-line manuals in the &quot;Info
+format&quot;, which you read using an &quot;Info reader&quot;.  You are probably using
+an Info reader to read this now.
+
+   ...
+
+* Menu:
+
+* Getting Started::             Getting started using an Info reader.
+* Advanced::                    Advanced Info commands.
+* Expert Info::                 Info commands for experts.
+* Index::                       An index of topics, commands, and variabl\
+es.
+</code></pre>
+<p>第一行:</p>
+<ul>
+<li>File：表示该info的内容是由info.info提供</li>
+<li>Node：代表当前的这个页面是top</li>
+<li>Next：下一个页面</li>
+<li>Up：上一个页面</li>
+</ul>
+<p>将光标移动到该页面最下面”Menu”的列表部分，在每一个种，按下回车即可进入到相应的Node(类似于网页的链接跳转)</p>
+<pre><code class="lang-bash">File: info.info,  Node: Advanced,  Next: Expert Info,  Prev: Getting Star\
+ted,  Up: Top
+
+2 Advanced Info Commands
+************************
+
+This chapter describes various advanced Info commands.  (If you are
+using a stand-alone Info reader, there are additional commands specific
+to it, which are documented in several chapters of *note GNU Info:
+(info-stnd)Top.)
+
+   ...
+
+* Menu:
+
+* Search Text::          How to search Info documents.
+* Search Index::         How to search the indices for specific subjects.
+* Go to node::           How to go to a node by name.
+* Choose menu subtopic:: How to choose a menu subtopic by its number.
+* Create Info buffer::   How to create a new Info buffer in Emacs.
+* Emacs Info Variables:: Variables modifying the behavior of Emacs Info.
+</code></pre>
+<p>依照Menu可以进行node间的跳转，比起man来说，阅读更加方便</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://linux.vbird.org/linux_basic/0160startlinux.php#manual" target="_blank" rel="external">鸟哥的私房菜</a></li>
+<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux命令查询</a></li>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html" target="_blank" rel="external">Linux Tools Quick Tutorial</a></li>
+<li><a href="http://www.dabu.info/linux-get-help-man-whatis-info-apropos.html" target="_blank" rel="external">大步’s Blog</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;指导环境：CentOS7&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Linux命令数量&quot;&gt;&lt;a href=&quot;#Linux命令数量&quot; class=&quot;headerlink&quot; title=&quot;Linux命令数量&quot;&gt;&lt;/a&gt;Linux命令数量&lt;/h2&gt;&lt;p&gt;在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而当匹配的数量过多，会先先统计有多少数量，询问是否显示&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
   </entry>
   
@@ -1858,186 +2377,6 @@ print( f() + 1 );
   </entry>
   
   <entry>
-    <title>JVM GC</title>
-    <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
-    <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2017-02-09T09:21:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>参考书籍：<a href="https://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析Java Web技术内幕（修订版）</a></p>
-</blockquote>
-<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC组合</th>
-<th>Young区</th>
-<th>Old区</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-XX:+UseSerialGC</td>
-<td>串行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelGC</td>
-<td>PSGC</td>
-<td>并行MSCGC</td>
-</tr>
-<tr>
-<td>-XX:+UseParNewGC</td>
-<td>并行GC</td>
-<td>串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseParallelOldGC</td>
-<td>PSGC</td>
-<td>并行CompactingGC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC</td>
-<td>ParNewGC</td>
-<td>并行GC<br>当出现concurrentMOde failure时采用串行GC</td>
-</tr>
-<tr>
-<td>-XX:+UseConcMarkSweepGC<br>-XX:+UseParNewGC</td>
-<td>串行GC</td>
-<td>并行GC<br>当出现concurrentMOde failure或promotionfailed采用串行GC</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>不支持的组合方式：<br>(1)-XX:+UseParNewGC -XX:+UseParallelOldGC<br>(1)-XX:+UseParNewGC -XX:+UseSerialGC</p>
-<a id="more"></a>
-<h2 id="参数列表集合"><a href="#参数列表集合" class="headerlink" title="参数列表集合"></a>参数列表集合</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC方式</th>
-<th>参数集合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Heep堆配置</td>
-<td><ul><li>-Xms 堆初始大小</li><li>-Xmx 堆最大值</li><li>-Xmn Young区大小</li><li>-XX:PermSize Perm区大小</li><li>-XX:MaxPermSize Perm区最大值</li></ul></td>
-</tr>
-<tr>
-<td>Serial Collector(串行)</td>
-<td><ul><li>-XX:+UseSerialGC GC方式</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15,代表对象在新生代经历多少次MinorGC后才晋升到Old区,效率高,当Heap过大时,应用程序暂停时间较长</li></ul></td>
-</tr>
-<tr>
-<td>(并行)Parallel Collector-ParNewGC</td>
-<td><ul><li>-XX:+UseParNewGC</li><li>-XX:+SurvivorRatio 默认为8,代表eden:s0</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+UseAdaptiveSizePolicy</li></ul></td>
-</tr>
-<tr>
-<td>(并行)Parallel Collector-ParallelGC</td>
-<td><ul><li>-XX:+UseParallelGC</li><li>-XX:+ParallelGCThreads 并发线程数</li><li>-XX:InitialSurivivorRatio 默认为8,Young:s0的比</li><li>-XX:+UseAdaptiveSizePolicy</li><li>-XX:MaxTenuringThreshold 默认为15</li><li>-XX:+ScavengeBeforeFullGC FullGC前触发MinorGC</li></ul></td>
-</tr>
-<tr>
-<td>(并行)Parallel Collector-ParallelOldGC</td>
-<td><ul><li>-XX:+UseParallelOldGC </li></ul></td>
-</tr>
-<tr>
-<td>(并发)CMS Collector</td>
-<td><ul><li>-XX:+UseConcMarkSweepGC</li><li>-XX:ParallelCMSThreads 设置并发CMS GC时的线程数</li><li>-XX:CMSInitiatingOccupancyFraction 当旧生代使用占到多少百分比时触发CMS GC</li><li>-XX:+UseCMSInitiatingOccupancyOnly 默认为false,代表允许hotspot根据成本来决定什么时候执行CMS GC</li><li>-XX:+UseCMSCompactAtFullCollection 当Full GC时执行压缩</li><li>-XX:CMSMaxAbortablePrecleanTime=5000 设置preclean步骤的超时事件,单位为毫秒</li><li>-XX:+CMSClassUnloadingEnabled PermGen采用CMS GC</li></ul></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="三种GC优缺对比"><a href="#三种GC优缺对比" class="headerlink" title="三种GC优缺对比"></a>三种GC优缺对比</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>GC</th>
-<th>优点</th>
-<th>缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Serial Collector(串行)</td>
-<td>在适合内存有限的情况下</td>
-<td>回收慢</td>
-</tr>
-<tr>
-<td>Parallel Collector(并发)</td>
-<td>效率高</td>
-<td>当Heap过大时,应用程序暂停时间较长</td>
-</tr>
-<tr>
-<td>CMS Collector(并发)</td>
-<td>Old区回收暂停时间短</td>
-<td>产生内存碎片、整个GC耗时较长,比较耗CPU</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;参考书籍：&lt;a href=&quot;https://book.douban.com/subject/25953851/&quot;&gt;深入分析Java Web技术内幕（修订版）&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;组合使用&quot;&gt;&lt;a href=&quot;#组合使用&quot; class=&quot;headerlink&quot; title=&quot;组合使用&quot;&gt;&lt;/a&gt;组合使用&lt;/h2&gt;&lt;div class=&quot;table-container&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;GC组合&lt;/th&gt;
-&lt;th&gt;Young区&lt;/th&gt;
-&lt;th&gt;Old区&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseSerialGC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseParallelGC&lt;/td&gt;
-&lt;td&gt;PSGC&lt;/td&gt;
-&lt;td&gt;并行MSCGC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseParNewGC&lt;/td&gt;
-&lt;td&gt;并行GC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseParallelOldGC&lt;/td&gt;
-&lt;td&gt;PSGC&lt;/td&gt;
-&lt;td&gt;并行CompactingGC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;/td&gt;
-&lt;td&gt;ParNewGC&lt;/td&gt;
-&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure时采用串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;-XX:+UseConcMarkSweepGC&lt;br&gt;-XX:+UseParNewGC&lt;/td&gt;
-&lt;td&gt;串行GC&lt;/td&gt;
-&lt;td&gt;并行GC&lt;br&gt;当出现concurrentMOde failure或promotionfailed采用串行GC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;p&gt;不支持的组合方式：&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseParallelOldGC&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseSerialGC&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JVM实用参数（一）JVM类型以及编译器模式</title>
     <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
     <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
@@ -2410,409 +2749,70 @@ uintx ParallelGCThreads                   := 4                {product}
   </entry>
   
   <entry>
-    <title>Linux Command：命令帮助</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
+    <title>JVM实用参数（七）CMS收集器</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
     <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:50:39.000Z</updated>
+    <updated>2016-12-08T10:21:35.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>指导环境：CentOS7</p>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
-<pre><code class="lang-bash">[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-</code></pre>
-<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
-<pre><code class="lang-bash">[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-</code></pre>
+<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
+<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
+<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
 <a id="more"></a>
-<p>那么，我们可以在不输入任何字的情况下，直接按下两次tab键，则可以统计下当前用户下可用的命令有多少个.</p>
-<blockquote>
-<p>但是经过实际尝试，在CenOS7下，该方法无效,Mac下有效</p>
-</blockquote>
-<pre><code class="lang-bash">delei@DeleitekiMBP:~$
-Display all 1473 possibilities? (y or n)
-</code></pre>
-<blockquote>
-<p>每个人的操作系统所用的命令数都是不一样的。<br>不同的linux版本，用户安装的软件命令，用户设置的环境变量等都是不一样的。</p>
-</blockquote>
-<p>虽然经常常用的命令数量不多，但是在有些情况下，很多命令的详细参数和选项用法不一定都能记得住。而若在无网络，无参考手册情况下，更会遇到不知道如何使用命令的情况。Linux上开发的软件大多数是自由性软件，而这些软件开发者一般都会有相应的命令使用方法。<br>在上述情况下，其实Linux已提供了几种方式能够提供帮助。</p>
-<h2 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h2><p>该命令获得索引的简短信息,如果有多个匹配(不同版本，多个同样的软件等)则会列出多个</p>
-<pre><code class="lang-bash">[root@delei-server ~]# whatis cd
-cd (1)               - bash built-in commands, see bash(1)
-cd (1p)              - change the working directory
-[root@delei-server ~]# whatis wget
-wget (1)             - The non-interactive network downloader.
-</code></pre>
-<p>但不是所有命令在所有的Linux上均可使用</p>
-<pre><code class="lang-bash">[root@delei-server ~]# whatis ll
-ll：没有 appropriate。
-</code></pre>
-<h2 id="help、-help"><a href="#help、-help" class="headerlink" title="help、-help"></a>help、-help</h2><p>—help该命令显示使用摘要和参数列表，可以查看大多数命令的用法</p>
-<pre><code class="lang-bash">[root@delei-server ~]# date --help
-用法：date [选项]... [+格式]
-　或：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
-Display the current time in the given FORMAT, or set the system date.
-
-Mandatory arguments to long options are mandatory for short options too.
-  -d, --date=STRING         display time described by STRING, not &#39;now&#39;
-  -f, --file=DATEFILE       like --date once for each line of DATEFILE
-  -I[TIMESPEC], --iso-8601[=TIMESPEC]  output date/time in ISO 8601 format.
-                            TIMESPEC=&#39;date&#39; for date only (the default),
-                            &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or &#39;ns&#39; for date
-                            and time to the indicated precision.
-  -r, --reference=文件        显示文件指定文件的最后修改时间
-  -R, --rfc-2822        以RFC 2822格式输出日期和时间
-                例如：2006年8月7日，星期一 12:34:56 -0600
-      --rfc-3339=TIMESPEC   output date and time in RFC 3339 format.
-                            TIMESPEC=&#39;date&#39;, &#39;seconds&#39;, or &#39;ns&#39; for
-                            date and time to the indicated precision.
-                            Date and time components are separated by
-                            a single space: 2006-08-07 12:34:56-06:00
-  -s, --set=STRING          set time described by STRING
-  -u, --utc, --universal    print or set Coordinated Universal Time (UTC)
-      --help        显示此帮助信息并退出
-      --version        显示版本信息并退出
-
-给定的格式FORMAT 控制着输出，解释序列如下：
-
-  %%    一个文字的 %
-  %a    当前locale 的星期名缩写(例如： 日，代表星期日)
-  %A    当前locale 的星期名全称 (如：星期日)
-  %b    当前locale 的月名缩写 (如：一，代表一月)
-  %B    当前locale 的月名全称 (如：一月)
-  ...
-
-默认情况下，日期的数字区域以0 填充。
-The following optional flags may follow &#39;%&#39;:
-
-  -  (hyphen) do not pad the field
-  _  (underscore) pad with spaces
-  0  (zero) pad with zeros
-  ^  use upper case if possible
-  #  use opposite case if possible
-
-在任何标记之后还允许一个可选的域宽度指定，它是一个十进制数字。
-作为一个可选的修饰声明，它可以是E，在可能的情况下使用本地环境关联的
-表示方式；或者是O，在可能的情况下使用本地环境关联的数字符号。
-
-Examples:
-Convert seconds since the epoch (1970-01-01 UTC) to a date
-  $ date --date=&#39;@2147483647&#39;
-
-Show the time on the west coast of the US (use tzselect(1) to find TZ)
-  $ TZ=&#39;America/Los_Angeles&#39; date
-
-Show the local time for 9AM next Friday on the west coast of the US
-  $ date --date=&#39;TZ=&quot;America/Los_Angeles&quot; 09:00 next Fri&#39;
-
-GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
-请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告date 的翻译错误
-要获取完整文档，请运行：info coreutils &#39;date invocation&#39;
-</code></pre>
-<p>—help只能对外部命令使用，对内部命令无效当我们要求内部命令的帮助时使用help+命令</p>
-<pre><code class="lang-bash">[root@delei-server bin]# help pwd
-pwd: pwd [-LP]
-    打印当前工作目录的名字。
-
-    选项：
-      -L    打印 $PWD 变量的值，如果它命名了当前的
-        工作目录
-      -P    打印当前的物理路径，不带有任何的符号链接
-
-    默认情况下，`pwd&#39; 的行为和带 `-L&#39; 选项一致
-
-    退出状态：
-    除非使用了无效选项或者当前目录不可读，否则
-    返回状态为0。
-</code></pre>
-<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man是manual的简写，命令使用手册／说明<br>同样是pwd,man提供的内容较多(内容过长，部分已省略…)</p>
-<pre><code class="lang-bash">[root@delei-server bin]# man date
-DATE(1)                       User Commands                      DATE(1)
-
-NAME
-       date - print or set the system date and time
-
-SYNOPSIS
-       date [OPTION]... [+FORMAT]
-       date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
-
-DESCRIPTION
-       Display  the  current time in the given FORMAT, or set the system
-       date.
-
-       Mandatory arguments to  long  options  are  mandatory  for  short
-       options too.
-
-       -d, --date=STRING
-              display time described by STRING, not &#39;now&#39;
-
-       -f, --file=DATEFILE
-              like --date once for each line of DATEFILE
-
-       -I[TIMESPEC], --iso-8601[=TIMESPEC]
-              output  date/time in ISO 8601 format.  TIMESPEC=&#39;date&#39; for
-              date only (the default), &#39;hours&#39;, &#39;minutes&#39;, &#39;seconds&#39;, or
-              &#39;ns&#39; for date and time to the indicated precision.
-
-       ...
-       #      use opposite case if possible
-
-       After any flags comes an optional field width, as a decimal  num‐
-       ber;  then  an  optional  modifier,  which is either E to use the
-       locale&#39;s alternate representations if available, or O to use  the
-       locale&#39;s alternate numeric symbols if available.
-
-ENVIRONMENT
-       TZ     Specifies  the timezone, unless overridden by command line
-              parameters.  If neither is  specified,  the  setting  from
-              /etc/localtime is used.
-
-EXAMPLES
-       Convert seconds since the epoch (1970-01-01 UTC) to a date
-
-              $ date --date=&#39;@2147483647&#39;
-
-       Show  the  time  on  the west coast of the US (use tzselect(1) to
-       find TZ)
-
-              $ TZ=&#39;America/Los_Angeles&#39; date
-    ...
-
-DATE STRING
-       The  --date=STRING  is  a  mostly free format human readable date
-       string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot;  or  &quot;2004-02-29
-       16:21:42&quot;  or  even  &quot;next  Thursday&quot;.  A date string may contain
-       items indicating calendar date, time of day, time  zone,  day  of
-       week, relative time, relative date, and numbers.  An empty string
-       indicates the beginning of the day.  The date  string  format  is
-       more  complex  than  is  easily  documented  here  but  is  fully
-       described in the info documentation.
-
-AUTHOR
-       Written by David MacKenzie.
-
-COPYRIGHT
-       Copyright © 2013 Free Software Foundation, Inc.  License  GPLv3+:
-       GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
-       This  is  free  software: you are free to change and redistribute
-       it.  There is NO WARRANTY, to the extent permitted by law.
-
-SEE ALSO
-       The full documentation for date is maintained as a  Texinfo  man‐
-       ual.   If  the  info  and date programs are properly installed at
-       your site, the command
-
-              info coreutils &#39;date invocation&#39;
-
-       should give you access to the complete manual.
-
-GNU coreutils 8.22            February 2016                      DATE(1)
- Manual page date(1) line 159/222 (END) (press h for help or q to quit)
-</code></pre>
-<blockquote>
-<p>当内容较多时，使用page up和page down上下翻页，空格也可向下翻页;<br>按q退出</p>
-</blockquote>
-<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
-<h4 id="man页面所属的分类标识-常用的是1、3、5、8"><a href="#man页面所属的分类标识-常用的是1、3、5、8" class="headerlink" title="man页面所属的分类标识(常用的是1、3、5、8)"></a>man页面所属的分类标识(常用的是1、3、5、8)</h4><ol>
-<li>用户可以操作的命令或者是可执行文件</li>
-<li>系统核心可调用的函数与工具等</li>
-<li>一些常用的函数与数据库</li>
-<li>设备文件的说明</li>
-<li>设置文件或者某些文件的格式</li>
-<li>游戏</li>
-<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
-<li>系统管理员可用的管理条令</li>
-<li>与内核有关的文件</li>
+<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
+<ol>
+<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
+<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
+<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
+<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
+<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
+<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
 </ol>
-<h4 id="man-page的常见部分"><a href="#man-page的常见部分" class="headerlink" title="man page的常见部分"></a>man page的常见部分</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>内容说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NAME</td>
-<td>简短的指令、资料名称说明</td>
-</tr>
-<tr>
-<td>SYNOPSIS</td>
-<td>简短的指令下达语法简介</td>
-</tr>
-<tr>
-<td>DESCRIPTION</td>
-<td>较为完整的说明</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td>针对SYNOPSI部分，有列举的所有可用的选项说明</td>
-</tr>
-<tr>
-<td>COMMANDS</td>
-<td>当该命令在运行的时候，可以下达的命令</td>
-</tr>
-<tr>
-<td>FILES</td>
-<td>使用或链接到的某些档案／文件</td>
-</tr>
-<tr>
-<td>SEE ALSO</td>
-<td>可以参考的，跟该命令或资料有相关的其他说明</td>
-</tr>
-<tr>
-<td>EXAMPLE</td>
-<td>可以参考的范例</td>
-</tr>
-<tr>
-<td>AUTHORS</td>
-<td>作者</td>
-</tr>
-<tr>
-<td>COPYRIGHT</td>
-<td>版权说明</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>这是常见的内容，实际上还有其他部分<br>在某些命令中这些内容不全都有</p>
-</blockquote>
-<h4 id="man常用命令参数"><a href="#man常用命令参数" class="headerlink" title="man常用命令参数"></a>man常用命令参数</h4><ul>
-<li><p>man -a：<br>搜索并打开所有man中同名帮助，例如 man passwd ，你首先会进入一个PASSWD(1) section用户命令类的帮助手册，你再按q键退出当前正在显示的帮助手册，就会进入PASSWD(5) section文件格式类的帮助手册。</p>
-</li>
-<li><p>man -aw：<br>显示所有手册文件的路径。</p>
-</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -aw passwd
-/usr/share/man/man1/passwd.1.gz
-/usr/share/man/man1/sslpasswd.1ssl.gz
-/usr/share/man/man5/passwd.5.gz
-</code></pre>
-<ul>
-<li><p>man -M：<br>指定手册文件的搜索路径，有的时候我们自己安装的软件是带有自己的帮助文件的，通常不在我们的MANPATH里面，那么我们就可以手动指定man搜索的文件路径。如 man -M /home/mysql/man mysql显示的就是你安装的mysql的帮助，而不是系统默认的旧版mysql的帮助。</p>
-</li>
-<li><p>man -k：<br>根据关键字搜索联机帮助，是一种模糊搜索。例如要查找”passwd”相关的信息，使用man -k passwd会找到很多和passwd相关的帮助页。如：我忘记了iptables命令就只能记住ipta则可以使用man -k ipta ，系统会把包括ipta的命令显示在屏幕上。</p>
-</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -k passwd
-chpasswd (8)         - 批量更新密码
-gpasswd (1)          - 管理员 /etc/group 和 /etc/gshadow
-fgetpwent_r (3)      - get passwd file entry reentrantly
-getpwent_r (3)       - get passwd file entry reentrantly
-grub2-mkpasswd-pbkdf2 (1) - Generate a PBKDF2 password hash.
-htpasswd (1)         - Manage user files for basic authentication
-kpasswd (1)          - change a user&#39;s Kerberos password
-ldappasswd (1)       - change the password of an LDAP entry
-lpasswd (1)          - Change group or user password
-lppasswd (1)         - add, change, or delete digest passwords.
-pam_localuser (8)    - require users to be listed in /etc/passwd
-passwd (1)           - update user&#39;s authentication tokens
-sslpasswd (1ssl)     - compute password hashes
-passwd (5)           - password file
-passwd2des (3)       - RFS password encryption
-pwhistory_helper (8) - Helper binary that transfers password hashes fro...
-saslpasswd2 (8)      - set a user&#39;s sasl password
-smbpasswd (5)        - The Samba encrypted password file
-smbpasswd (8)        - change a user&#39;s SMB password
-vncpasswd (1)        - change the VNC password
-</code></pre>
-<ul>
-<li>man -f：<br>关键字精确搜索，与-k不同，它只搜索与关键字完全匹配的帮助页。</li>
-</ul>
-<pre><code class="lang-bash">[root@delei-server bin]# man -f passwd
-sslpasswd (1ssl)     - compute password hashes
-passwd (1)           - update user&#39;s authentication tokens
-passwd (5)           - password file
-</code></pre>
-<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>info与man类似，也是一种帮助说明,指令的文件预设放在<code>/usr/share/info/</code>目录中。<br>与man不同的是，info不是都在一个页面显示，而是将文件资料拆成了多个段落，每个段落有自己的页面，并且在各个页面还有类似链接的方式可以跳转，每个页面被称为一个node.</p>
-<pre><code class="lang-bash">[root@delei-server bin]# info info
-File: info.info,  Node: Top,  Next: Getting Started,  Up: (dir)
-
-Info: An Introduction
-*********************
-
-The GNU Project distributes most of its on-line manuals in the &quot;Info
-format&quot;, which you read using an &quot;Info reader&quot;.  You are probably using
-an Info reader to read this now.
-
-   ...
-
-* Menu:
-
-* Getting Started::             Getting started using an Info reader.
-* Advanced::                    Advanced Info commands.
-* Expert Info::                 Info commands for experts.
-* Index::                       An index of topics, commands, and variabl\
-es.
-</code></pre>
-<p>第一行:</p>
-<ul>
-<li>File：表示该info的内容是由info.info提供</li>
-<li>Node：代表当前的这个页面是top</li>
-<li>Next：下一个页面</li>
-<li>Up：上一个页面</li>
-</ul>
-<p>将光标移动到该页面最下面”Menu”的列表部分，在每一个种，按下回车即可进入到相应的Node(类似于网页的链接跳转)</p>
-<pre><code class="lang-bash">File: info.info,  Node: Advanced,  Next: Expert Info,  Prev: Getting Star\
-ted,  Up: Top
-
-2 Advanced Info Commands
-************************
-
-This chapter describes various advanced Info commands.  (If you are
-using a stand-alone Info reader, there are additional commands specific
-to it, which are documented in several chapters of *note GNU Info:
-(info-stnd)Top.)
-
-   ...
-
-* Menu:
-
-* Search Text::          How to search Info documents.
-* Search Index::         How to search the indices for specific subjects.
-* Go to node::           How to go to a node by name.
-* Choose menu subtopic:: How to choose a menu subtopic by its number.
-* Create Info buffer::   How to create a new Info buffer in Emacs.
-* Emacs Info Variables:: Variables modifying the behavior of Emacs Info.
-</code></pre>
-<p>依照Menu可以进行node间的跳转，比起man来说，阅读更加方便</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="http://linux.vbird.org/linux_basic/0160startlinux.php#manual" target="_blank" rel="external">鸟哥的私房菜</a></li>
-<li><a href="http://man.linuxde.net/" target="_blank" rel="external">Linux命令查询</a></li>
-<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/01_use_man.html" target="_blank" rel="external">Linux Tools Quick Tutorial</a></li>
-<li><a href="http://www.dabu.info/linux-get-help-man-whatis-info-apropos.html" target="_blank" rel="external">大步’s Blog</a></li>
-</ul>
+<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
+<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
+<ol>
+<li>堆碎片</li>
+<li>对象分配率高</li>
+</ol>
+<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
+<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
+<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
+<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
+<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
+<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
+<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
+<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
+<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
+<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
+<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
+<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
+<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
+<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
+<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
+<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
+<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
+<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;指导环境：CentOS7&lt;/p&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;Linux命令数量&quot;&gt;&lt;a href=&quot;#Linux命令数量&quot; class=&quot;headerlink&quot; title=&quot;Linux命令数量&quot;&gt;&lt;/a&gt;Linux命令数量&lt;/h2&gt;&lt;p&gt;在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# ls
-ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
-lsattr    lscpu     lslocks   lsmd      lspci     lsusb
-lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;而当匹配的数量过多，会先先统计有多少数量，询问是否显示&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[root@delei-server ~]# c
-Display all 199 possibilities? (y or n)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
+&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
     
     </summary>
     
       <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
     
     
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
     
   </entry>
   
