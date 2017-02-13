@@ -18,6 +18,7 @@
     <meta property="og:image" content="undefined"/>
   
 
+  <meta name="baidu-site-verification" content="43mpkDscLP" />
   <link href="/favicon.png" rel="icon">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -200,11 +201,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-command-help/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/"><strong>JVM实用参数（七）CMS收集器</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/linux-command-help/"><strong>Linux Command：命令帮助</strong></a></h1>
   
 
 
@@ -212,18 +213,25 @@
     <div class="entry">
       
         <blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
+<p>指导环境：CentOS7</p>
 </blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+<h2 id="Linux命令数量"><a href="#Linux命令数量" class="headerlink" title="Linux命令数量"></a>Linux命令数量</h2><p>在Linux下，如果不记得命令的全称，但知道前面几个字母，可以通过tab自动补全，或按下两次tab列出相符的多个可选项；</p>
+<pre><code class="lang-bash">[root@delei-server ~]# ls
+ls        lscgroup  lsinitrd  lsmcli    lsof      lssubsys
+lsattr    lscpu     lslocks   lsmd      lspci     lsusb
+lsblk     lsdiff    lslogins  lsmod     lsscsi    lsusb.py
+</code></pre>
+<p>而当匹配的数量过多，会先先统计有多少数量，询问是否显示</p>
+<pre><code class="lang-bash">[root@delei-server ~]# c
+Display all 199 possibilities? (y or n)
+</code></pre>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/linux-command-help/#more" class="more-link">阅读更多</a>
           </div>
         
         
