@@ -4,8 +4,150 @@
 
     
   <url>
+    <loc>https://www.deleiguo.com/2017/02/09/easy-saas/</loc>
+    <lastmod>2017-02-13T10:33:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>简单的SAAS软件开发与设计</title>
+        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2016/10/08/java-8-features-tutorial/</loc>
+    <lastmod>2017-02-13T10:33:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java 8新特性终极指南</title>
+        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2016/12/10/java-comman/</loc>
+    <lastmod>2017-02-13T10:33:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java 命令</title>
+        <pubTime>2016-12-10T03:12:15.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/</loc>
+    <lastmod>2017-02-13T10:32:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM GC个人小抄</title>
+        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2016/10/08/jvm-gc/</loc>
+    <lastmod>2017-02-13T10:32:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>JVM GC</title>
+        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
+        
+        <tag>JVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</loc>
+    <lastmod>2017-02-13T10:32:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>微服务架构的设计模式</title>
+        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
+        
+        <tag>Web</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</loc>
+    <lastmod>2017-02-13T10:32:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 跟踪域名解析过程</title>
+        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.deleiguo.com/2017/02/13/notes-jdk-string-2/</loc>
-    <lastmod>2017-02-13T10:27:52.000Z</lastmod>
+    <lastmod>2017-02-13T10:32:06.000Z</lastmod>
     <data>
         <display>
         <title>【小抄】JDK-String与StringBuffer与StringBuilder</title>
@@ -48,26 +190,6 @@
 
     
   <url>
-    <loc>https://www.deleiguo.com/2016/12/26/jvm-gc-xiaochao/</loc>
-    <lastmod>2017-02-13T08:46:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>JVM GC个人小抄</title>
-        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
-        
-        <tag>JVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://www.deleiguo.com/2017/02/09/linux-tree/</loc>
     <lastmod>2017-02-10T05:05:36.000Z</lastmod>
     <data>
@@ -78,66 +200,6 @@
         <tag>Linux</tag>
          
         <tag>Mac</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2017/02/09/easy-saas/</loc>
-    <lastmod>2017-02-10T05:05:34.000Z</lastmod>
-    <data>
-        <display>
-        <title>简单的SAAS软件开发与设计</title>
-        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</loc>
-    <lastmod>2017-02-09T10:36:52.000Z</lastmod>
-    <data>
-        <display>
-        <title>微服务架构的设计模式</title>
-        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
-        
-        <tag>Web</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2016/10/08/jvm-gc/</loc>
-    <lastmod>2017-02-09T09:21:25.000Z</lastmod>
-    <data>
-        <display>
-        <title>JVM GC</title>
-        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
-        
-        <tag>JVM</tag>
          
          
            
@@ -169,49 +231,7 @@
     </url>
 
     
-  <url>
-    <loc>https://www.deleiguo.com/2016/12/10/java-comman/</loc>
-    <lastmod>2016-12-14T17:19:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java 命令</title>
-        <pubTime>2016-12-10T03:12:15.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>JVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-    
-    
-  <url>
-    <loc>https://www.deleiguo.com/2016/10/08/java-8-features-tutorial/</loc>
-    <lastmod>2016-12-12T09:40:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>Java 8新特性终极指南</title>
-        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://www.deleiguo.com/2999/10/10/hellow-word/</loc>
@@ -239,26 +259,6 @@
     <data>
         <display>
         <title>Linux Command：命令帮助</title>
-        <pubTime>2016-10-08T11:19:56.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</loc>
-    <lastmod>2016-12-08T10:49:40.000Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 跟踪域名解析过程</title>
         <pubTime>2016-10-08T11:19:56.000Z</pubTime>
         
         <tag>Linux</tag>

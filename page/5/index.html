@@ -76,11 +76,11 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/"><strong>JVM实用参数（五）新生代垃圾回收</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/"><strong>JVM实用参数（八）GC日志</strong></a></h1>
   
 
 
@@ -90,18 +90,21 @@
       
       
         <blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM实用参数（五）新生代垃圾回收</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-8-gc-logging/">JVM实用参数（八）GC日志</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<p><strong>译者：</strong> 严亮<br>本部分，我们将关注堆(heap) 中一个主要区域，新生代(young generation)。首先我们会讨论为什么调整新生代的参数会对应用的性能如此重要，接着我们将学习新生代相关的JVM参数。</p>
-<p>单纯从JVM的功能考虑，并不需要新生代，完全可以针对整个堆进行操作。新生代存在的唯一理由是优化垃圾回收(GC)的性能。更具体说，把堆划分为新生代和老年代有2个好处：简化了新对象的分配(只在新生代分配内存),可以更有效的清除不再需要的对象(即死对象)(新生代和老年代使用不同的GC算法)</p>
-<p>通过广泛研究面向对象实现的应用，发现一个共同特点：很多对象的生存时间都很短。同时研究发现，新生对象很少引用生存时间长的对象。结合这2个特点，很明显 GC 会频繁访问新生对象，例如在堆中一个单独的区域，称之为新生代。在新生代中，GC可以快速标记回收”死对象”，而不需要扫描整个Heap中的存活一段时间的”老对象”。</p>
+<p><strong>译者:</strong> Greenster<br><strong>校对:</strong> 梁海舰<br>本系列的最后一部分是有关垃圾收集（GC）日志的JVM参数。GC日志是一个很重要的工具，它准确记录了每一次的GC的执行时间和执行结果，通过分析GC日志可以优化堆设置和GC设置，或者改进应用程序的对象分配模式。</p>
+<h2 id="XX-PrintGC"><a href="#XX-PrintGC" class="headerlink" title="-XX:+PrintGC"></a>-XX:+PrintGC</h2><p>参数-XX:+PrintGC（或者-verbose:gc）开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息。下面举例说明：</p>
+<pre><code class="lang-bash">[GC 246656K-&gt;243120K(376320K), 0.0929090 secs]
+[Full GC 243120K-&gt;241951K(629760K), 1.5589690 secs]
+</code></pre>
+<p>每行开始首先是GC的类型（可以是“GC”或者“Full GC”），然后是在GC之前和GC之后已使用的堆空间，再然后是当前的堆容量，最后是GC持续的时间（以秒计）。</p>
       
     </div>
     <footer>
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读更多</a>
           </div>
         
         

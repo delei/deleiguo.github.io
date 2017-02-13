@@ -87,6 +87,11 @@
     <div class="entry">
       <!-- Table of Contents -->
       
+      <div id="toc" class="toc-article">
+      <strong class="toc-title">文章目录</strong>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#新生代、老年代"><span class="toc-number">1.</span> <span class="toc-text">新生代、老年代</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#永久代-JVM方法区"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">永久代(JVM方法区)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GC"><span class="toc-number">2.</span> <span class="toc-text">GC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#判定回收"><span class="toc-number">2.1.</span> <span class="toc-text">判定回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC-方式"><span class="toc-number">2.2.</span> <span class="toc-text">GC 方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看-GC"><span class="toc-number">2.3.</span> <span class="toc-text">查看 GC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#输出-GC-日志"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">输出 GC 日志</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">2.4.</span> <span class="toc-text">引用</span></a></li></ol></li></ol>
+      </div>
+      
       
         <h1 id="新生代、老年代"><a href="#新生代、老年代" class="headerlink" title="新生代、老年代"></a>新生代、老年代</h1><ul>
 <li>new 新的对象，当new 大的对象时，可以直接在老年代，大小可以通过参数 -XX:PretenureSizeThreshold 来设置</li>
