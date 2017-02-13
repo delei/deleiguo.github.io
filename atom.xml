@@ -62,7 +62,7 @@
     <link href="https://www.deleiguo.com/2017/02/13/notes-jdk-string/"/>
     <id>https://www.deleiguo.com/2017/02/13/notes-jdk-string/</id>
     <published>2017-02-12T16:00:00.000Z</published>
-    <updated>2017-02-13T08:46:16.000Z</updated>
+    <updated>2017-02-13T08:47:04.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="String基本定义与不可变"><a href="#String基本定义与不可变" class="headerlink" title="String基本定义与不可变"></a>String基本定义与不可变</h2><h3 id="String定义"><a href="#String定义" class="headerlink" title="String定义"></a>String定义</h3><p>在JDK源码的java.lang.String中，已对String类进行了说明</p>
 <pre><code class="lang-java">The String class represents character strings. All string literals in Java programs, such as &quot;abc&quot;, are implemented as instances of this class.
@@ -201,90 +201,6 @@ Strings are constant; their values cannot be changed after they are created. Str
       <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
     
       <category term="Mac" scheme="https://www.deleiguo.com/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【转】阿里巴巴集团Java代码规范</title>
-    <link href="https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/"/>
-    <id>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</id>
-    <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T05:43:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:</p>
-<p>【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。<br>【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。<br>【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。<br><a id="more"></a></p>
-<p><img src="/2017/02/09/alibaba-java-develop-norm/alibaba-java-develop-norm.jpg" alt="阿里巴巴Java开发手册"></p>
-<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">点击下载开发手册(PDF)</a></p>
-<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2>
-
-	<div class="row">
-    <embed src="./alibaba-java-develop-norm.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
-<li><a href="https://102.alibaba.com/newsInfo.htm?newsId=6" target="_blank" rel="external">阿里巴巴集团Java代码规范</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:&lt;/p&gt;
-&lt;p&gt;【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。&lt;br&gt;【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。&lt;br&gt;【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Java" scheme="https://www.deleiguo.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务架构的设计模式</title>
-    <link href="https://www.deleiguo.com/2017/02/09/microservice-design-pattern/"/>
-    <id>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</id>
-    <published>2017-02-08T16:00:00.000Z</published>
-    <updated>2017-02-09T10:36:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自InfoQ – 原文地址:<a href="http://www.infoq.com/cn/news/2015/04/micro-service-architecture" target="_blank" rel="external">微服务架构的设计模式</a></p>
-</blockquote>
-<p>前不久，<a href="www.javacodegeeks.com">Java Code Geeks</a>发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。</p>
-<a id="more"></a>
-<h2 id="聚合器微服务设计模式"><a href="#聚合器微服务设计模式" class="headerlink" title="聚合器微服务设计模式"></a>聚合器微服务设计模式</h2><p>这是一种最常用也最简单的设计模式，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/1.png" alt=""></p>
-<p>聚合器调用多个服务实现应用程序所需的功能。它可以是一个简单的Web页面，将检索到的数据进行处理展示。它也可以是一个更高层次的组合微服务，对检索到的数据增加业务逻辑后进一步发布成一个新的微服务，这符合DRY原则。另外，每个服务都有自己的缓存和数据库。如果聚合器是一个组合服务，那么它也有自己的缓存和数据库。聚合器可以沿X轴和Z轴独立扩展。</p>
-<h2 id="代理微服务设计模式"><a href="#代理微服务设计模式" class="headerlink" title="代理微服务设计模式"></a>代理微服务设计模式</h2><p>这是聚合器模式的一个变种，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/2.png" alt=""></p>
-<p>在这种情况下，客户端并不聚合数据，但会根据业务需求的差别调用不同的微服务。代理可以仅仅委派请求，也可以进行数据转换工作。</p>
-<h2 id="链式微服务设计模式"><a href="#链式微服务设计模式" class="headerlink" title="链式微服务设计模式"></a>链式微服务设计模式</h2><p>这种模式在接收到请求后会产生一个经过合并的响应，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/3.png" alt=""></p>
-<p>在这种情况下，服务A接收到请求后会与服务B进行通信，类似地，服务B会同服务C进行通信。所有服务都使用同步消息传递。在整个链式调用完成之前，客户端会一直阻塞。因此，服务调用链不宜过长，以免客户端长时间等待。</p>
-<h2 id="分支微服务设计模式"><a href="#分支微服务设计模式" class="headerlink" title="分支微服务设计模式"></a>分支微服务设计模式</h2><p>这种模式是聚合器模式的扩展，允许同时调用两个微服务链，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/4.png" alt=""></p>
-<h2 id="数据共享微服务设计模式"><a href="#数据共享微服务设计模式" class="headerlink" title="数据共享微服务设计模式"></a>数据共享微服务设计模式</h2><p>自治是微服务的设计原则之一，就是说微服务是全栈式服务。但在重构现有的“单体应用（monolithic application）”时，SQL数据库反规范化可能会导致数据重复和不一致。因此，在单体应用到微服务架构的过渡阶段，可以使用这种设计模式，如下图所示：</p>
-<p><img src="/2017/02/09/microservice-design-pattern/5.png" alt=""></p>
-<p>在这种情况下，部分微服务可能会共享缓存和数据库存储。不过，这只有在两个服务之间存在强耦合关系时才可以。对于基于微服务的新建应用程序而言，这是一种反模式。</p>
-<h2 id="异步消息传递微服务设计模式"><a href="#异步消息传递微服务设计模式" class="headerlink" title="异步消息传递微服务设计模式"></a>异步消息传递微服务设计模式</h2><p>虽然REST设计模式非常流行，但它是同步的，会造成阻塞。因此部分基于微服务的架构可能会选择使用消息队列代替REST请求/响应，如下图所示:</p>
-<p><img src="/2017/02/09/microservice-design-pattern/6.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自InfoQ – 原文地址:&lt;a href=&quot;http://www.infoq.com/cn/news/2015/04/micro-service-architecture&quot;&gt;微服务架构的设计模式&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;前不久，&lt;a href=&quot;www.javacodegeeks.com&quot;&gt;Java Code Geeks&lt;/a&gt;发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="Web" scheme="https://www.deleiguo.com/tags/Web/"/>
     
   </entry>
   
@@ -672,6 +588,90 @@ tomcat-redis-session-manage-tomcat7.jar
 &lt;p&gt;到目前为止，算是蹒跚起步，没有SAAS经验的小白，也没有人告诉我们团队应该怎么做,应该做成什么样子，没有技术指导&lt;br&gt;&lt;br&gt;在经过简单的技术实验后，也算是有个V0.1了，开始在阿里云部署并进行内部VIP客户内测，技术上肯定还是有很多没有想好和想到的地方，先记录一下，让以后的自己回头看和总结比较&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;1-服务架构&quot;&gt;&lt;a href=&quot;#1-服务架构&quot; class=&quot;headerlink&quot; title=&quot;1. 服务架构&quot;&gt;&lt;/a&gt;1. 服务架构&lt;/h2&gt;&lt;h3 id=&quot;1-1-硬件环境&quot;&gt;&lt;a href=&quot;#1-1-硬件环境&quot; class=&quot;headerlink&quot; title=&quot;1.1 硬件环境&quot;&gt;&lt;/a&gt;1.1 硬件环境&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/2017/02/09/easy-saas/001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Java" scheme="https://www.deleiguo.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务架构的设计模式</title>
+    <link href="https://www.deleiguo.com/2017/02/09/microservice-design-pattern/"/>
+    <id>https://www.deleiguo.com/2017/02/09/microservice-design-pattern/</id>
+    <published>2017-02-08T16:00:00.000Z</published>
+    <updated>2017-02-09T10:36:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自InfoQ – 原文地址:<a href="http://www.infoq.com/cn/news/2015/04/micro-service-architecture" target="_blank" rel="external">微服务架构的设计模式</a></p>
+</blockquote>
+<p>前不久，<a href="www.javacodegeeks.com">Java Code Geeks</a>发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。</p>
+<a id="more"></a>
+<h2 id="聚合器微服务设计模式"><a href="#聚合器微服务设计模式" class="headerlink" title="聚合器微服务设计模式"></a>聚合器微服务设计模式</h2><p>这是一种最常用也最简单的设计模式，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/1.png" alt=""></p>
+<p>聚合器调用多个服务实现应用程序所需的功能。它可以是一个简单的Web页面，将检索到的数据进行处理展示。它也可以是一个更高层次的组合微服务，对检索到的数据增加业务逻辑后进一步发布成一个新的微服务，这符合DRY原则。另外，每个服务都有自己的缓存和数据库。如果聚合器是一个组合服务，那么它也有自己的缓存和数据库。聚合器可以沿X轴和Z轴独立扩展。</p>
+<h2 id="代理微服务设计模式"><a href="#代理微服务设计模式" class="headerlink" title="代理微服务设计模式"></a>代理微服务设计模式</h2><p>这是聚合器模式的一个变种，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/2.png" alt=""></p>
+<p>在这种情况下，客户端并不聚合数据，但会根据业务需求的差别调用不同的微服务。代理可以仅仅委派请求，也可以进行数据转换工作。</p>
+<h2 id="链式微服务设计模式"><a href="#链式微服务设计模式" class="headerlink" title="链式微服务设计模式"></a>链式微服务设计模式</h2><p>这种模式在接收到请求后会产生一个经过合并的响应，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/3.png" alt=""></p>
+<p>在这种情况下，服务A接收到请求后会与服务B进行通信，类似地，服务B会同服务C进行通信。所有服务都使用同步消息传递。在整个链式调用完成之前，客户端会一直阻塞。因此，服务调用链不宜过长，以免客户端长时间等待。</p>
+<h2 id="分支微服务设计模式"><a href="#分支微服务设计模式" class="headerlink" title="分支微服务设计模式"></a>分支微服务设计模式</h2><p>这种模式是聚合器模式的扩展，允许同时调用两个微服务链，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/4.png" alt=""></p>
+<h2 id="数据共享微服务设计模式"><a href="#数据共享微服务设计模式" class="headerlink" title="数据共享微服务设计模式"></a>数据共享微服务设计模式</h2><p>自治是微服务的设计原则之一，就是说微服务是全栈式服务。但在重构现有的“单体应用（monolithic application）”时，SQL数据库反规范化可能会导致数据重复和不一致。因此，在单体应用到微服务架构的过渡阶段，可以使用这种设计模式，如下图所示：</p>
+<p><img src="/2017/02/09/microservice-design-pattern/5.png" alt=""></p>
+<p>在这种情况下，部分微服务可能会共享缓存和数据库存储。不过，这只有在两个服务之间存在强耦合关系时才可以。对于基于微服务的新建应用程序而言，这是一种反模式。</p>
+<h2 id="异步消息传递微服务设计模式"><a href="#异步消息传递微服务设计模式" class="headerlink" title="异步消息传递微服务设计模式"></a>异步消息传递微服务设计模式</h2><p>虽然REST设计模式非常流行，但它是同步的，会造成阻塞。因此部分基于微服务的架构可能会选择使用消息队列代替REST请求/响应，如下图所示:</p>
+<p><img src="/2017/02/09/microservice-design-pattern/6.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自InfoQ – 原文地址:&lt;a href=&quot;http://www.infoq.com/cn/news/2015/04/micro-service-architecture&quot;&gt;微服务架构的设计模式&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;前不久，&lt;a href=&quot;www.javacodegeeks.com&quot;&gt;Java Code Geeks&lt;/a&gt;发表了一篇文章，分析单体应用与微服务的优缺点。近日，该网站又发表了一篇文章，提供了六种微服务架构的设计模式。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Web" scheme="https://www.deleiguo.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【转】阿里巴巴集团Java代码规范</title>
+    <link href="https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/"/>
+    <id>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</id>
+    <published>2017-02-08T16:00:00.000Z</published>
+    <updated>2017-02-09T05:43:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:</p>
+<p>【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。<br>【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。<br>【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。<br><a id="more"></a></p>
+<p><img src="/2017/02/09/alibaba-java-develop-norm/alibaba-java-develop-norm.jpg" alt="阿里巴巴Java开发手册"></p>
+<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">点击下载开发手册(PDF)</a></p>
+<h2 id="在线预览"><a href="#在线预览" class="headerlink" title="在线预览"></a>在线预览</h2>
+
+	<div class="row">
+    <embed src="./alibaba-java-develop-norm.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+<h2 id="引用内容文章"><a href="#引用内容文章" class="headerlink" title="引用内容文章"></a>引用内容文章</h2><ul>
+<li><a href="https://102.alibaba.com/newsInfo.htm?newsId=6" target="_blank" rel="external">阿里巴巴集团Java代码规范</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;众所周知，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全。试想如果没有限速，没有红绿灯，没有规定靠右行驶，谁还敢上路。同理，对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的方式一起做事。阿里巴巴集团推出的Java开发手册是阿里巴巴近万名开发同学集体智慧的结晶，以开发视角为中心，详细列举如何开发更加高效，更加容错，更加有协作性，力求知其然，更知其不然，结合正反例，让Java开发者能够提升协作效率、提高代码质量。手册内容划分为编程规约、异常日志规约、MYSQL规约、工程规约、安全规约五大块，再根据内容特征，细分成若干二级子目录。根据约束力强弱，规约依次分为强制、推荐、参考三大类:&lt;/p&gt;
+&lt;p&gt;【强制】必须遵守。是不得不遵守的约定，违反本约定或将会引起严重的后果。&lt;br&gt;【推荐】尽量遵守。长期遵守这样的规定，有助于系统稳定性和合作效率的提升。&lt;br&gt;【参考】充分理解。技术意识的引导，是个人学习、团队沟通、项目合作的方向。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1139,6 +1139,104 @@ Accumulated compiler times (for compiled methods only)
   </entry>
   
   <entry>
+    <title>Linux 跟踪域名解析过程</title>
+    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
+    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:49:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
+<p>linux and windows</p>
+</blockquote>
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>增加+trace参数跟踪过程：</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;linux and windows
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux Command：命令帮助</title>
     <link href="https://www.deleiguo.com/2016/10/08/linux-command-help/"/>
     <id>https://www.deleiguo.com/2016/10/08/linux-command-help/</id>
@@ -1546,100 +1644,70 @@ Display all 199 possibilities? (y or n)
   </entry>
   
   <entry>
-    <title>Linux 跟踪域名解析过程</title>
-    <link href="https://www.deleiguo.com/2016/10/08/linux-follow-dns/"/>
-    <id>https://www.deleiguo.com/2016/10/08/linux-follow-dns/</id>
+    <title>JVM实用参数（七）CMS收集器</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
     <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:49:40.000Z</updated>
+    <updated>2016-12-08T10:21:35.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
-<p>linux and windows</p>
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
 </blockquote>
-<pre><code>delei@XXX:~$ nslookup
-&gt; www.deleiguo.com
-Server:        192.168.1.1
-Address:    192.168.1.1#53
-
-Non-authoritative answer:
-www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
-Name:    ew-2l6hqh9le.aliapp.com
-Address: 121.199.250.133
-</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
-<p>linux</p>
-</blockquote>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
-
-;; QUESTION SECTION:
-;www.deleiguo.com.        IN    A
-
-;; ANSWER SECTION:
-www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
-
-;; Query time: 39 msec
-;; SERVER: 192.168.1.1#53(192.168.1.1)
-;; WHEN: Sat Oct  8 19:15:18 2016
-;; MSG SIZE  rcvd: 87
-</code></pre><p>增加+trace参数跟踪过程：</p>
-<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
-
-; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
-;; global options: +cmd
-.            89065    IN    NS    c.root-servers.net.
-.            89065    IN    NS    j.root-servers.net.
-.            89065    IN    NS    g.root-servers.net.
-.            89065    IN    NS    d.root-servers.net.
-.            89065    IN    NS    h.root-servers.net.
-.            89065    IN    NS    f.root-servers.net.
-.            89065    IN    NS    b.root-servers.net.
-.            89065    IN    NS    l.root-servers.net.
-.            89065    IN    NS    k.root-servers.net.
-.            89065    IN    NS    a.root-servers.net.
-.            89065    IN    NS    e.root-servers.net.
-.            89065    IN    NS    m.root-servers.net.
-.            89065    IN    NS    i.root-servers.net.
-;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
-
-com.            172800    IN    NS    j.gtld-servers.net.
-com.            172800    IN    NS    i.gtld-servers.net.
-com.            172800    IN    NS    c.gtld-servers.net.
-com.            172800    IN    NS    l.gtld-servers.net.
-com.            172800    IN    NS    g.gtld-servers.net.
-com.            172800    IN    NS    h.gtld-servers.net.
-com.            172800    IN    NS    m.gtld-servers.net.
-com.            172800    IN    NS    d.gtld-servers.net.
-com.            172800    IN    NS    a.gtld-servers.net.
-com.            172800    IN    NS    b.gtld-servers.net.
-com.            172800    IN    NS    e.gtld-servers.net.
-com.            172800    IN    NS    k.gtld-servers.net.
-com.            172800    IN    NS    f.gtld-servers.net.
-;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
-
-deleiguo.com.        172800    IN    NS    dns9.hichina.com.
-deleiguo.com.        172800    IN    NS    dns10.hichina.com.
-;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
-
-www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
-;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
-</code></pre>]]></content>
+<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
+<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
+<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+<a id="more"></a>
+<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
+<ol>
+<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
+<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
+<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
+<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
+<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
+<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
+</ol>
+<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
+<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
+<ol>
+<li>堆碎片</li>
+<li>对象分配率高</li>
+</ol>
+<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
+<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
+<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
+<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
+<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
+<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
+<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
+<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
+<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
+<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
+<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
+<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
+<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
+<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
+<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
+<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
+<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
+<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;命令一-nslookup&quot;&gt;&lt;a href=&quot;#命令一-nslookup&quot; class=&quot;headerlink&quot; title=&quot;命令一:nslookup&quot;&gt;&lt;/a&gt;命令一:nslookup&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;linux and windows
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
+&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
+&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
     
     </summary>
     
       <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
     
     
-      <category term="Linux" scheme="https://www.deleiguo.com/tags/Linux/"/>
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
     
   </entry>
   
@@ -2290,6 +2358,73 @@ print( f() + 1 );
   </entry>
   
   <entry>
+    <title>JVM实用参数（一）JVM类型以及编译器模式</title>
+    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
+    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
+    <published>2016-10-08T11:19:56.000Z</published>
+    <updated>2016-12-08T10:21:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" rel="external">JVM实用参数（一）JVM类型以及编译器模式</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/" target="_blank" rel="external">blog.codecentric.de</a></p>
+<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 郭蕾</p>
+<p>现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。</p>
+<p>虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。</p>
+<p><strong>-server and -client</strong></p>
+<a id="more"></a>
+<p>有两种类型的 HotSpot JVM，即”server”和”client”。服务端的VM中的默认为堆提供了一个更大的空间以及一个并行的垃圾收集器，并且在运行时可以更大程度地优化代码。客户端的VM更加保守一些（校对注：这里作者指客户端虚拟机有较小的默认堆大小），这样可以缩短JVM的启动时间和占用更少的内存。有一个叫”JVM功效学”的概念，它会在JVM启动的时候根据可用的硬件和操作系统来自动的选择JVM的类型。具体的标准可以在这里找到。从标准表中，我们可以看到客户端的VM只在32位系统中可用。</p>
+<p>如果我们不喜欢预选（校对注：指JVM自动选择的JVM类型）的JVM，我们可以使用-server和-client参数来设置使用服务端或客户端的VM。虽然当初服务端VM的目标是长时间运行的服务进程，但是现在看来，在运行独立应用程序时它比客户端VM有更出色的性能。当应用的性能非常重要时，我推荐使用-server参数来选择服务端VM。一个常见的问题：在一个32位的系统上，HotSpot JDK可以运行服务端VM，但是32位的JRE只能运行客户端VM。</p>
+<p><strong>-version and -showversion</strong></p>
+<p>当我们调用“java”命令时，我们如何才能知道我们安装的是哪个版本的Java和JVM类型呢？在同一个系统中安装多个Java，如果不注意的话有运行错误JVM的风险。在不同的Linux版本上预装JVM这方面，我承认现在已经变的比以前好很多了。幸运的是，我们现在可以使用-version参数，它可以打印出正在使用的JVM的信息。例如：</p>
+<pre><code class="lang-bash">$ java -version
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Client VM (build 19.1-b02, mixed mode, sharing)
+</code></pre>
+<p>输出显示的是Java版本号(1.6.0_24)和JRE确切的build号(1.6.0_24-b07)。我们也可以看到JVM的名字(HotSpot)、类型(client)和build ID（19.1-b02) ）。除此之外，我们还知道JVM以混合模式(mixed mode)在运行，这是HotSpot默认的运行模式，意味着JVM在运行时可以动态的把字节码编译为本地代码。我们也可以看到类数据共享（class data sharing）是开启的，类数据共享（class data sharing）是一种在只读缓存（在jsa文件中，”Java Shared Archive”）中存储JRE的系统类，被所有Java进程的类加载器用来当做共享资源。类数据共享(Class data sharing)可能在经常从jar文档中读所有的类数据的情况下显示出性能优势。</p>
+<p>-version参数在打印完上述信息后立即终止JVM。还有一个类似的参数-showversion可以用来输出相同的信息，但是-showversion紧接着会处理并执行Java程序。因此，-showversion对几乎所有Java应用的命令行都是一个有效的补充。你永远不知道你什么时候，突然需要了解一个特定的Java应用（崩溃时）使用的JVM的一些信息。在启动时添加-showversion，我们就能保证当我们需要时可以得到这些信息。</p>
+<p><strong>-Xint, -Xcomp, 和 -Xmixed</strong></p>
+<p>-Xint和-Xcomp参数和我们的日常工作不是很相关，但是我非常有兴趣通过它来了解下JVM。在解释模式(interpreted mode)下，-Xint标记会强制JVM执行所有的字节码，当然这会降低运行速度，通常低10倍或更多。-Xcomp参数与它（-Xint）正好相反，JVM在第一次使用时会把所有的字节码编译成本地代码，从而带来最大程度的优化。这听起来不错，因为这完全绕开了缓慢的解释器。然而，很多应用在使用-Xcomp也会有一些性能损失，当然这比使用-Xint损失的少，原因是-xcomp没有让JVM启用JIT编译器的全部功能。JIT编译器在运行时创建方法使用文件，然后一步一步的优化每一个方法，有时候会主动的优化应用的行为。这些优化技术，比如，积极的分支预测（optimistic branch prediction），如果不先分析应用就不能有效的使用。另一方面方法只有证明它们与此相关时才会被编译，也就是，在应用中构建某种热点。被调用很少（甚至只有一次）的方法在解释模式下会继续执行，从而减少编译和优化成本。</p>
+<p>注意混合模式也有他自己的参数，-Xmixed。最新版本的HotSpot的默认模式是混合模式，所以我们不需要特别指定这个标记。我们来用对象填充HashMap然后检索它的结果做一个简单的用例。每一个例子，它的运行时间都是很多次运行的平均时间。</p>
+<pre><code class="lang-bash">$ java -server -showversion Benchmark
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Server VM (build 19.1-b02, mixed mode)
+
+Average time: 0.856449 seconds
+</code></pre>
+<pre><code class="lang-bash">$ java -server -showversion -Xint Benchmark
+java version &quot;1.6.0_24&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
+Java HotSpot(TM) Server VM (build 19.1-b02, interpreted mode)
+
+Average time: 7.622285 seconds
+</code></pre>
+<p>当然也有很多使-Xcomp表现很好的例子。特别是运行时间长的应用，我强烈建议大家使用JVM的默认设置,让JIT编译器充分发挥其动态潜力，毕竟JIT编译器是组成JVM最重要的组件之一。事实上，正是因为JVM在这方面的进展才让Java不再那么慢。<br>JVM类型以及编译器模式</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/&quot;&gt;JVM实用参数（一）JVM类型以及编译器模式&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 赵峰，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 郭蕾&lt;/p&gt;
+&lt;p&gt;现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。&lt;/p&gt;
+&lt;p&gt;虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;-server and -client&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
+    
+    
+      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM GC</title>
     <link href="https://www.deleiguo.com/2016/10/08/jvm-gc/"/>
     <id>https://www.deleiguo.com/2016/10/08/jvm-gc/</id>
@@ -2459,141 +2594,6 @@ print( f() + 1 );
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;p&gt;不支持的组合方式：&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseParallelOldGC&lt;br&gt;(1)-XX:+UseParNewGC -XX:+UseSerialGC&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（一）JVM类型以及编译器模式</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/" target="_blank" rel="external">JVM实用参数（一）JVM类型以及编译器模式</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p>原文地址:<a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/" target="_blank" rel="external">blog.codecentric.de</a></p>
-<p><strong>译者：</strong> 赵峰，iDestiny<br><strong>校对：</strong> 郭蕾</p>
-<p>现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。</p>
-<p>虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。</p>
-<p><strong>-server and -client</strong></p>
-<a id="more"></a>
-<p>有两种类型的 HotSpot JVM，即”server”和”client”。服务端的VM中的默认为堆提供了一个更大的空间以及一个并行的垃圾收集器，并且在运行时可以更大程度地优化代码。客户端的VM更加保守一些（校对注：这里作者指客户端虚拟机有较小的默认堆大小），这样可以缩短JVM的启动时间和占用更少的内存。有一个叫”JVM功效学”的概念，它会在JVM启动的时候根据可用的硬件和操作系统来自动的选择JVM的类型。具体的标准可以在这里找到。从标准表中，我们可以看到客户端的VM只在32位系统中可用。</p>
-<p>如果我们不喜欢预选（校对注：指JVM自动选择的JVM类型）的JVM，我们可以使用-server和-client参数来设置使用服务端或客户端的VM。虽然当初服务端VM的目标是长时间运行的服务进程，但是现在看来，在运行独立应用程序时它比客户端VM有更出色的性能。当应用的性能非常重要时，我推荐使用-server参数来选择服务端VM。一个常见的问题：在一个32位的系统上，HotSpot JDK可以运行服务端VM，但是32位的JRE只能运行客户端VM。</p>
-<p><strong>-version and -showversion</strong></p>
-<p>当我们调用“java”命令时，我们如何才能知道我们安装的是哪个版本的Java和JVM类型呢？在同一个系统中安装多个Java，如果不注意的话有运行错误JVM的风险。在不同的Linux版本上预装JVM这方面，我承认现在已经变的比以前好很多了。幸运的是，我们现在可以使用-version参数，它可以打印出正在使用的JVM的信息。例如：</p>
-<pre><code class="lang-bash">$ java -version
-java version &quot;1.6.0_24&quot;
-Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
-Java HotSpot(TM) Client VM (build 19.1-b02, mixed mode, sharing)
-</code></pre>
-<p>输出显示的是Java版本号(1.6.0_24)和JRE确切的build号(1.6.0_24-b07)。我们也可以看到JVM的名字(HotSpot)、类型(client)和build ID（19.1-b02) ）。除此之外，我们还知道JVM以混合模式(mixed mode)在运行，这是HotSpot默认的运行模式，意味着JVM在运行时可以动态的把字节码编译为本地代码。我们也可以看到类数据共享（class data sharing）是开启的，类数据共享（class data sharing）是一种在只读缓存（在jsa文件中，”Java Shared Archive”）中存储JRE的系统类，被所有Java进程的类加载器用来当做共享资源。类数据共享(Class data sharing)可能在经常从jar文档中读所有的类数据的情况下显示出性能优势。</p>
-<p>-version参数在打印完上述信息后立即终止JVM。还有一个类似的参数-showversion可以用来输出相同的信息，但是-showversion紧接着会处理并执行Java程序。因此，-showversion对几乎所有Java应用的命令行都是一个有效的补充。你永远不知道你什么时候，突然需要了解一个特定的Java应用（崩溃时）使用的JVM的一些信息。在启动时添加-showversion，我们就能保证当我们需要时可以得到这些信息。</p>
-<p><strong>-Xint, -Xcomp, 和 -Xmixed</strong></p>
-<p>-Xint和-Xcomp参数和我们的日常工作不是很相关，但是我非常有兴趣通过它来了解下JVM。在解释模式(interpreted mode)下，-Xint标记会强制JVM执行所有的字节码，当然这会降低运行速度，通常低10倍或更多。-Xcomp参数与它（-Xint）正好相反，JVM在第一次使用时会把所有的字节码编译成本地代码，从而带来最大程度的优化。这听起来不错，因为这完全绕开了缓慢的解释器。然而，很多应用在使用-Xcomp也会有一些性能损失，当然这比使用-Xint损失的少，原因是-xcomp没有让JVM启用JIT编译器的全部功能。JIT编译器在运行时创建方法使用文件，然后一步一步的优化每一个方法，有时候会主动的优化应用的行为。这些优化技术，比如，积极的分支预测（optimistic branch prediction），如果不先分析应用就不能有效的使用。另一方面方法只有证明它们与此相关时才会被编译，也就是，在应用中构建某种热点。被调用很少（甚至只有一次）的方法在解释模式下会继续执行，从而减少编译和优化成本。</p>
-<p>注意混合模式也有他自己的参数，-Xmixed。最新版本的HotSpot的默认模式是混合模式，所以我们不需要特别指定这个标记。我们来用对象填充HashMap然后检索它的结果做一个简单的用例。每一个例子，它的运行时间都是很多次运行的平均时间。</p>
-<pre><code class="lang-bash">$ java -server -showversion Benchmark
-java version &quot;1.6.0_24&quot;
-Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
-Java HotSpot(TM) Server VM (build 19.1-b02, mixed mode)
-
-Average time: 0.856449 seconds
-</code></pre>
-<pre><code class="lang-bash">$ java -server -showversion -Xint Benchmark
-java version &quot;1.6.0_24&quot;
-Java(TM) SE Runtime Environment (build 1.6.0_24-b07)
-Java HotSpot(TM) Server VM (build 19.1-b02, interpreted mode)
-
-Average time: 7.622285 seconds
-</code></pre>
-<p>当然也有很多使-Xcomp表现很好的例子。特别是运行时间长的应用，我强烈建议大家使用JVM的默认设置,让JIT编译器充分发挥其动态潜力，毕竟JIT编译器是组成JVM最重要的组件之一。事实上，正是因为JVM在这方面的进展才让Java不再那么慢。<br>JVM类型以及编译器模式</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/&quot;&gt;JVM实用参数（一）JVM类型以及编译器模式&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-1-jvm-types-and-compiler-modes/&quot;&gt;blog.codecentric.de&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;译者：&lt;/strong&gt; 赵峰，iDestiny&lt;br&gt;&lt;strong&gt;校对：&lt;/strong&gt; 郭蕾&lt;/p&gt;
-&lt;p&gt;现在的JVM运行Java程序（和其它的兼容性语言）时在高效性和稳定性方面做的非常出色。自适应内存管理、垃圾收集、及时编译、动态类加载、锁优化——这里仅仅列举了某些场景下会发生的神奇的事情，但他们几乎不会直接与普通的程序员相关。在运行时，JVM会不断的计算并优化应用或者应用的某些部分。&lt;/p&gt;
-&lt;p&gt;虽然有了这种程度的自动化（或者说有这么多自动化），但是JVM仍然提供了足够多的外部监控和手动调优工具。在有错误或低性能的情况下，JVM必须能够让专家调试。顺便说一句，除了这些隐藏在引擎中的神奇功能，允许大范围的手动调优也是现代JVM的优势之一。有趣的是，一些命令行参数可以在JVM启动时传入到JVM中。一些JVM提供了几百个这样的参数，所以如果没有这方面的知识很容易迷失。这系列博客的目标是着重讲解日常相关的一些参数以及他们的适用场合。我们将专注于Java6的Sun/Oracle HotSpot JVM，大多数情况下，这些参数也会适用于其他一些流行的JVM里。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;-server and -client&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="TEC-技术" scheme="https://www.deleiguo.com/categories/tec/"/>
-    
-    
-      <category term="JVM" scheme="https://www.deleiguo.com/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM实用参数（七）CMS收集器</title>
-    <link href="https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/"/>
-    <id>https://www.deleiguo.com/2016/10/08/useful-jvm-flags-part-7-cms-collector/</id>
-    <published>2016-10-08T11:19:56.000Z</published>
-    <updated>2016-12-08T10:21:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/" target="_blank" rel="external">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com" target="_blank" rel="external">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
-<a id="more"></a>
-<h2 id="CMS收集器的过程"><a href="#CMS收集器的过程" class="headerlink" title="CMS收集器的过程"></a>CMS收集器的过程</h2><p>CMS收集器的GC周期由6个阶段组成。其中4个阶段(名字以Concurrent开始的)与实际的应用程序是并发执行的，而其他2个阶段需要暂停应用程序线程。</p>
-<ol>
-<li>初始标记:为了收集应用程序的对象引用需要暂停应用程序线程，该阶段完成后，应用程序线程再次启动。</li>
-<li>并发标记:从第一阶段收集到的对象引用开始，遍历所有其他的对象引用。</li>
-<li>并发预清理:改变当运行第二阶段时，由应用程序线程产生的对象引用，以更新第二阶段的结果。</li>
-<li>重标记:由于第三阶段是并发的，对象引用可能会发生进一步改变。因此，应用程序线程会再一次被暂停以更新这些变化，并且在进行实际的清理之前确保一个正确的对象引用视图。这一阶段十分重要，因为必须避免收集到仍被引用的对象。</li>
-<li>并发清理:所有不再被应用的对象将从堆里清除掉。</li>
-<li>并发重置:收集器做一些收尾的工作，以便下一次GC周期能有一个干净的状态。</li>
-</ol>
-<p>一个常见的误解是,CMS收集器运行是完全与应用程序并发的。我们已经看到，事实并非如此，即使“stop-the-world”阶段相对于并发阶段的时间很短。</p>
-<p>应该指出，尽管CMS收集器为老年代垃圾回收提供了几乎完全并发的解决方案，然而年轻代仍然通过“stop-the-world”方法来进行收集。对于交互式应用，停顿也是可接受的，背后的原理是年轻带的垃圾回收时间通常是相当短的。</p>
-<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>当我们在真实的应用中使用CMS收集器时，我们会面临两个主要的挑战，可能需要进行调优:</p>
-<ol>
-<li>堆碎片</li>
-<li>对象分配率高</li>
-</ol>
-<p>堆碎片是有可能的，不像吞吐量收集器，CMS收集器并没有任何碎片整理的机制。因此，应用程序有可能出现这样的情形，即使总的堆大小远没有耗尽，但却不能分配对象——仅仅是因为没有足够连续的空间完全容纳对象。当这种事发生后，并发算法不会帮上任何忙，因此，万不得已JVM会触发Full GC。回想一下，Full GC 将运行吞吐量收集器的算法，从而解决碎片问题——但却暂停了应用程序线程。因此尽管CMS收集器带来完全的并发性，但仍然有可能发生长时间的“stop-the-world”的风险。这是“设计”，而不能避免的——我们只能通过调优收集器来它的可能性。想要100%保证避免”stop-the-world”，对于交互式应用是有问题的。</p>
-<p>第二个挑战就是应用的对象分配率高。如果获取对象实例的频率高于收集器清除堆里死对象的频率，并发算法将再次失败。从某种程度上说，老年代将没有足够的可用空间来容纳一个从年轻代提升过来的对象。这种情况被称为“并发模式失败”，并且JVM会执行堆碎片整理:触发Full GC。</p>
-<p>当这些情形之一出现在实践中时(经常会出现在生产系统中)，经常被证实是老年代有大量不必要的对象。一个可行的办法就是增加年轻代的堆大小，以防止年轻代短生命的对象提前进入老年代。另一个办法就似乎利用分析器，快照运行系统的堆转储，并且分析过度的对象分配，找出这些对象，最终减少这些对象的申请。</p>
-<p>下面我看看大多数与CMS收集器调优相关的JVM标志参数。</p>
-<h2 id="XX-UseConcMarkSweepGC"><a href="#XX-UseConcMarkSweepGC" class="headerlink" title="-XX:+UseConcMarkSweepGC"></a>-XX:+UseConcMarkSweepGC</h2><p>该标志首先是激活CMS收集器。默认HotSpot JVM使用的是并行收集器。</p>
-<h2 id="XX-UseParNewGC"><a href="#XX-UseParNewGC" class="headerlink" title="-XX:UseParNewGC"></a>-XX:UseParNewGC</h2><p>当使用CMS收集器时，该标志激活年轻代使用多线程并行执行垃圾回收。这令人很惊讶，我们不能简单在并行收集器中重用-XX:UserParNewGC标志，因为概念上年轻代用的算法是一样的。然而，对于CMS收集器，年轻代GC算法和老年代GC算法是不同的，因此年轻代GC有两种不同的实现，并且是两个不同的标志。</p>
-<p>注意最新的JVM版本，当使用-XX:+UseConcMarkSweepGC时，-XX:UseParNewGC会自动开启。因此，如果年轻代的并行GC不想开启，可以通过设置-XX:-UseParNewGC来关掉。</p>
-<h2 id="XX-CMSConcurrentMTEnabled"><a href="#XX-CMSConcurrentMTEnabled" class="headerlink" title="-XX:+CMSConcurrentMTEnabled"></a>-XX:+CMSConcurrentMTEnabled</h2><p>当该标志被启用时，并发的CMS阶段将以多线程执行(因此，多个GC线程会与所有的应用程序线程并行工作)。该标志已经默认开启，如果顺序执行更好，这取决于所使用的硬件，多线程执行可以通过-XX:-CMSConcurremntMTEnabled禁用。</p>
-<h2 id="XX-ConcGCThreads"><a href="#XX-ConcGCThreads" class="headerlink" title="-XX:ConcGCThreads"></a>-XX:ConcGCThreads</h2><p>标志-XX:ConcGCThreads=<value>(早期JVM版本也叫-XX:ParallelCMSThreads)定义并发CMS过程运行时的线程数。比如value=4意味着CMS周期的所有阶段都以4个线程来执行。尽管更多的线程会加快并发CMS过程，但其也会带来额外的同步开销。因此，对于特定的应用程序，应该通过测试来判断增加CMS线程数是否真的能够带来性能的提升。</value></p>
-<p>如果还标志未设置，JVM会根据并行收集器中的-XX:ParallelGCThreads参数的值来计算出默认的并行CMS线程数。该公式是ConcGCThreads = (ParallelGCThreads + 3)/4。因此，对于CMS收集器， -XX:ParallelGCThreads标志不仅影响“stop-the-world”垃圾收集阶段，还影响并发阶段。</p>
-<p>总之，有不少方法可以配置CMS收集器的多线程执行。正是由于这个原因,建议第一次运行CMS收集器时使用其默认设置, 然后如果需要调优再进行测试。只有在生产系统中测量(或类生产测试系统)发现应用程序的暂停时间的目标没有达到 , 就可以通过这些标志应该进行GC调优。</p>
-<h2 id="XX-CMSInitiatingOccupancyFraction"><a href="#XX-CMSInitiatingOccupancyFraction" class="headerlink" title="-XX:CMSInitiatingOccupancyFraction"></a>-XX:CMSInitiatingOccupancyFraction</h2><p>当堆满之后，并行收集器便开始进行垃圾收集，例如，当没有足够的空间来容纳新分配或提升的对象。对于CMS收集器，长时间等待是不可取的，因为在并发垃圾收集期间应用持续在运行(并且分配对象)。因此，为了在应用程序使用完内存之前完成垃圾收集周期，CMS收集器要比并行收集器更先启动。</p>
-<p>因为不同的应用会有不同对象分配模式，JVM会收集实际的对象分配(和释放)的运行时数据，并且分析这些数据，来决定什么时候启动一次CMS垃圾收集周期。为了引导这一过程， JVM会在一开始执行CMS周期前作一些线索查找。该线索由 -XX:CMSInitiatingOccupancyFraction=<value>来设置，该值代表老年代堆空间的使用率。比如，value=75意味着第一次CMS垃圾收集会在老年代被占用75%时被触发。通常CMSInitiatingOccupancyFraction的默认值为68(之前很长时间的经历来决定的)。</value></p>
-<h2 id="XX-UseCMSInitiatingOccupancyOnly"><a href="#XX-UseCMSInitiatingOccupancyOnly" class="headerlink" title="-XX:+UseCMSInitiatingOccupancyOnly"></a>-XX:+UseCMSInitiatingOccupancyOnly</h2><p>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</p>
-<h2 id="XX-CMSClassUnloadingEnabled"><a href="#XX-CMSClassUnloadingEnabled" class="headerlink" title="-XX:+CMSClassUnloadingEnabled"></a>-XX:+CMSClassUnloadingEnabled</h2><p>相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收。如果希望对永久代进行垃圾回收，可用设置标志-XX:+CMSClassUnloadingEnabled。在早期JVM版本中，要求设置额外的标志-XX:+CMSPermGenSweepingEnabled。注意，即使没有设置这个标志，一旦永久代耗尽空间也会尝试进行垃圾回收，但是收集不会是并行的，而再一次进行Full GC。</p>
-<h2 id="XX-CMSIncrementalMode"><a href="#XX-CMSIncrementalMode" class="headerlink" title="-XX:+CMSIncrementalMode"></a>-XX:+CMSIncrementalMode</h2><p>该标志将开启CMS收集器的增量模式。增量模式经常暂停CMS过程，以便对应用程序线程作出完全的让步。因此，收集器将花更长的时间完成整个收集周期。因此，只有通过测试后发现正常CMS周期对应用程序线程干扰太大时，才应该使用增量模式。由于现代服务器有足够的处理器来适应并发的垃圾收集，所以这种情况发生得很少。</p>
-<h2 id="XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses"><a href="#XX-ExplicitGCInvokesConcurrent-and-XX-ExplicitGCInvokesConcurrentAndUnloadsClasses" class="headerlink" title="-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses"></a>-XX:+ExplicitGCInvokesConcurrent and -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</h2><p>如今,被广泛接受的最佳实践是避免显式地调用GC(所谓的“系统GC”)，即在应用程序中调用system.gc()。然而，这个建议是不管使用的GC算法的，值得一提的是，当使用CMS收集器时，系统GC将是一件很不幸的事，因为它默认会触发一次Full GC。幸运的是，有一种方式可以改变默认设置。标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。</p>
-<h2 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h2><p>然而在这个问题上…这是一个很好提到- XX:+ DisableExplicitGC标志的机会，该标志将告诉JVM完全忽略系统的GC调用(不管使用的收集器是什么类型)。对于我而言，该标志属于默认的标志集合中，可以安全地定义在每个JVM上运行，而不需要进一步思考。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自并发编程网 – ifeve.com本文链接地址: &lt;a href=&quot;http://ifeve.com/useful-jvm-flags-part-7-cms-collector/&quot;&gt;JVM实用参数（七）CMS收集器&lt;/a&gt;&lt;br&gt;本文是&lt;a href=&quot;http://ifeve.com&quot;&gt;并发编程网&lt;/a&gt;经原国外blog作者授权的中文译文&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;译者:&lt;/strong&gt; iDestiny&lt;br&gt;&lt;strong&gt;校对:&lt;/strong&gt; 梁海舰&lt;/p&gt;
-&lt;p&gt;HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。&lt;/p&gt;
-&lt;p&gt;就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。&lt;/p&gt;
     
     </summary>
     
