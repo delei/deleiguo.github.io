@@ -200,31 +200,97 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/">2016-10-08</a></time>
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/linux-follow-dns/">2016-10-08</a></time>
       
       
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/"><strong>JVM实用参数（七）CMS收集器</strong></a></h1>
+    <h1 class="title"><a href="/2016/10/08/linux-follow-dns/"><strong>Linux 跟踪域名解析过程</strong></a></h1>
   
 
 
     </header>
     <div class="entry">
       
-        <blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
+        <h2 id="命令一-nslookup"><a href="#命令一-nslookup" class="headerlink" title="命令一:nslookup"></a>命令一:nslookup</h2><blockquote>
+<p>linux and windows</p>
 </blockquote>
-<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
-<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
-<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+<pre><code>delei@XXX:~$ nslookup
+&gt; www.deleiguo.com
+Server:        192.168.1.1
+Address:    192.168.1.1#53
+
+Non-authoritative answer:
+www.deleiguo.com    canonical name = ew-2l6hqh9le.aliapp.com.
+Name:    ew-2l6hqh9le.aliapp.com
+Address: 121.199.250.133
+</code></pre><h2 id="命令二-dig"><a href="#命令二-dig" class="headerlink" title="命令二:dig"></a>命令二:dig</h2><blockquote>
+<p>linux</p>
+</blockquote>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13977
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;www.deleiguo.com.        IN    A
+
+;; ANSWER SECTION:
+www.deleiguo.com.    222    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+ew-2l6hqh9le.aliapp.com. 222    IN    A    121.199.250.133
+
+;; Query time: 39 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Sat Oct  8 19:15:18 2016
+;; MSG SIZE  rcvd: 87
+</code></pre><p>增加+trace参数跟踪过程：</p>
+<pre><code>delei@XXX:~$ dig www.deleiguo.com +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; www.deleiguo.com +trace
+;; global options: +cmd
+.            89065    IN    NS    c.root-servers.net.
+.            89065    IN    NS    j.root-servers.net.
+.            89065    IN    NS    g.root-servers.net.
+.            89065    IN    NS    d.root-servers.net.
+.            89065    IN    NS    h.root-servers.net.
+.            89065    IN    NS    f.root-servers.net.
+.            89065    IN    NS    b.root-servers.net.
+.            89065    IN    NS    l.root-servers.net.
+.            89065    IN    NS    k.root-servers.net.
+.            89065    IN    NS    a.root-servers.net.
+.            89065    IN    NS    e.root-servers.net.
+.            89065    IN    NS    m.root-servers.net.
+.            89065    IN    NS    i.root-servers.net.
+;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 44 ms
+
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+;; Received 494 bytes from 192.5.5.241#53(192.5.5.241) in 62 ms
+
+deleiguo.com.        172800    IN    NS    dns9.hichina.com.
+deleiguo.com.        172800    IN    NS    dns10.hichina.com.
+;; Received 177 bytes from 192.35.51.30#53(192.35.51.30) in 198 ms
+
+www.deleiguo.com.    600    IN    CNAME    ew-2l6hqh9le.aliapp.com.
+;; Received 71 bytes from 140.205.81.13#53(140.205.81.13) in 7 ms
+</code></pre>
       
     </div>
     <footer>
       
-        
-          <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/#more" class="more-link">阅读更多</a>
-          </div>
         
         
       
@@ -423,6 +489,20 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
   hljs.initHighlightingOnLoad();
 })(jQuery);
 </script>
+
+
+    <script type="text/javascript">
+    var disqus_shortname = 'deleiguo';
+
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    </script>
+
 
 
 </body>
