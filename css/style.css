@@ -9,7 +9,7 @@
   padding: 0;
 }
 body {
-  background: #fff;
+  background: #efefef !important;
   color: #444;
   font-family: "Helvetica", Arial, sans-serif;
   font-size: 14px;
@@ -63,7 +63,7 @@ a:hover {
   clear: both;
 }
 .inner {
-  width: 1200px;
+  width: 1170px;
   margin: 0 auto;
 }
 @media screen and (max-width: 1260px) {
@@ -73,12 +73,12 @@ a:hover {
 }
 #content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1170px;
   margin: 0 auto;
   margin-top: 30px;
 }
 #main-col {
-  width: 900px;
+  width: 850px;
 }
 @media screen and (max-width: 1260px) {
   #main-col {
@@ -107,6 +107,13 @@ a:hover {
   #footer {
     padding: 0;
   }
+}
+#ddnavbar {
+  padding: 0px 0px !important;
+  margin-left: -15px;
+}
+#ddnavbar .nav a {
+  padding: 15px 25px 10px 0px;
 }
 #header {
   background: #000;
@@ -179,7 +186,8 @@ a:hover {
   letter-spacing: 2px;
 }
 article {
-  border: 1px solid #ddd;
+  border: 0px;
+  background-color: #fff;
   margin-top: 0px;
   margin-bottom: 30px;
 }
@@ -206,7 +214,7 @@ article.link .title a:after {
   vertical-align: super;
 }
 article .post-content {
-  padding: 20px 77px 15px 77px;
+  padding: 20px 30px;
   margin-bottom: 10px;
   position: relative;
 }
@@ -214,6 +222,9 @@ article .post-content {
   article .post-content {
     padding: 10px 20px;
   }
+}
+article .post-content pre {
+  padding: 0px 0px;
 }
 article .gallery {
   overflow: hidden;
@@ -277,6 +288,12 @@ article .gallery .next {
 article .gallery .next:before {
   content: '\f054';
   right: 10px;
+}
+article header {
+  text-align: center;
+  border-bottom: 2px solid #428bca;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 article header .icon {
   width: 32px;
@@ -345,7 +362,7 @@ article .entry table {
   border-collapse: collapse;
   border-spacing: 0;
   empty-cells: show;
-  border: 1px solid #f3f3f3;
+  border: 1px solid #e2e2e2;
   width: 100%;
 }
 article .entry table th {
@@ -356,14 +373,14 @@ article .entry table th {
 }
 article .entry table td,
 article .entry table th {
-  border: 1px solid #f3f3f3;
+  border: 1px solid #e2e2e2;
   padding: 2px 5px;
   text-align: left;
 }
 article .entry blockquote {
   background: #f6f6f6;
-  border-left: 4px solid #ddd;
-  padding: 0px 10px !important;
+  border-left: 4px solid #999;
+  padding: 8px 10px !important;
   font-size: 12px;
   text-align: left;
 }
@@ -398,7 +415,7 @@ article .entry dl dl {
 article .entry h1,
 article .entry h2 {
   font-weight: normal;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-top: 20px;
 }
@@ -460,10 +477,10 @@ article .entry .pullquote {
   font-size: 1.5em;
 }
 article .entry .toc-article {
-  background: #eee;
+  background: #f6f6f6;
   border: 1px solid #bbb;
   border-radius: 5px;
-  margin: 1.5em 0 0.3em 1.5em;
+  margin: 0;
   padding: 1.2em;
   max-width: 50%;
 }
@@ -488,7 +505,6 @@ article .entry .toc-child {
 article footer {
   margin-top: 15px;
   padding-top: 10px;
-  border-top: 1px solid #eee;
   color: #999;
   font-size: 0.9em;
   line-height: 16px;
@@ -554,10 +570,9 @@ article footer .addthis iframe {
 #pagination a {
   display: block;
   padding: 5px 10px;
-  background: #eee;
+  background: #fff;
   color: #999;
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
-  text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
 #pagination a:hover {
@@ -593,7 +608,7 @@ article footer .addthis iframe {
   content: '\f07b';
 }
 .archive {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 50px;
 }
 .archive article {
@@ -635,7 +650,7 @@ article footer .addthis iframe {
 #sidebar .widget .title {
   padding: 10px 5px;
   font-size: 1em;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   font-weight: bold;
 }
 #sidebar .widget .entry {
@@ -668,7 +683,7 @@ article footer .addthis iframe {
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -689,7 +704,7 @@ article footer .addthis iframe {
   content: ')';
 }
 #sidebar .twitter li {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   padding: 15px 20px;
   font-size: 0.9em;
 }
@@ -710,12 +725,11 @@ article footer .addthis iframe {
   display: inline-block;
 }
 #footer {
-  background: #eee;
+  background: #404040;
   height: 160px;
-  color: #999;
+  color: #fff;
   margin-bottom: 0px;
   font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
-  text-shadow: 0 0 1px #fff;
 }
 #footer .inner {
   padding-top: 30px;
@@ -727,7 +741,7 @@ article footer .addthis iframe {
 }
 .entry .gist {
   background: #eee;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   margin-top: 15px;
   padding: 7px 15px;
   border-radius: 2px;
@@ -765,7 +779,7 @@ article footer .addthis iframe {
 }
 figure.highlight {
   background: #eee;
-  border: 0px solid #eee;
+  border: 0px solid #ddd;
   margin-top: 15px;
   padding: 0px;
   border-radius: 2px;
@@ -796,7 +810,7 @@ figure.highlight table {
 figure.highlight .gutter {
   color: #999;
   padding-right: 15px;
-  border-right: 1px solid #eee;
+  border-right: 1px solid #ddd;
   text-align: right;
 }
 figure.highlight .code {

@@ -75,59 +75,14 @@
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/">2016-10-08</a></time>
-      
-      
   
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/"><strong>JVM实用参数（五）新生代垃圾回收</strong></a></h1>
+    <h2 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/"><strong>JVM实用参数（八）GC日志</strong></a></h2>
   
 
 
-    </header>
-    <div class="entry">
-      <!-- Table of Contents -->
       
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/"><i class="fa fa-calendar">&nbsp;</i>2016-10-08</a></time>
       
-        <blockquote>
-<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-5-young-generation-garbage-collection/">JVM实用参数（五）新生代垃圾回收</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
-</blockquote>
-<p><strong>译者：</strong> 严亮<br>本部分，我们将关注堆(heap) 中一个主要区域，新生代(young generation)。首先我们会讨论为什么调整新生代的参数会对应用的性能如此重要，接着我们将学习新生代相关的JVM参数。</p>
-<p>单纯从JVM的功能考虑，并不需要新生代，完全可以针对整个堆进行操作。新生代存在的唯一理由是优化垃圾回收(GC)的性能。更具体说，把堆划分为新生代和老年代有2个好处：简化了新对象的分配(只在新生代分配内存),可以更有效的清除不再需要的对象(即死对象)(新生代和老年代使用不同的GC算法)</p>
-<p>通过广泛研究面向对象实现的应用，发现一个共同特点：很多对象的生存时间都很短。同时研究发现，新生对象很少引用生存时间长的对象。结合这2个特点，很明显 GC 会频繁访问新生对象，例如在堆中一个单独的区域，称之为新生代。在新生代中，GC可以快速标记回收”死对象”，而不需要扫描整个Heap中的存活一段时间的”老对象”。</p>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-5-young-generation-garbage-collection/#more" class="more-link">阅读更多</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/">2016-10-08</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/"><strong>JVM实用参数（八）GC日志</strong></a></h1>
-  
-
-
     </header>
     <div class="entry">
       <!-- Table of Contents -->
@@ -148,7 +103,7 @@
       
         
           <div class="alignleft">
-            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读更多</a>
+            <a href="/2016/10/08/useful-jvm-flags-part-8-gc-logging/#more" class="more-link">阅读全文</a>
           </div>
         
         
@@ -166,15 +121,57 @@
   <div class="post-content">
     <header>
       
-        <div class="icon"></div>
-        <time datetime="2016-08-17T08:01:10.000Z"><a href="/2016/08/17/jvm-type-and-mode/">2016-08-17</a></time>
-      
-      
   
-    <h1 class="title"><a href="/2016/08/17/jvm-type-and-mode/"><strong>JVM类型与模式[JAVA -VERSION]</strong></a></h1>
+    <h2 class="title"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/"><strong>JVM实用参数（七）CMS收集器</strong></a></h2>
   
 
 
+      
+        <time datetime="2016-10-08T11:19:56.000Z"><a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/"><i class="fa fa-calendar">&nbsp;</i>2016-10-08</a></time>
+      
+    </header>
+    <div class="entry">
+      <!-- Table of Contents -->
+      
+      
+        <blockquote>
+<p>转载自并发编程网 – ifeve.com本文链接地址: <a href="http://ifeve.com/useful-jvm-flags-part-7-cms-collector/">JVM实用参数（七）CMS收集器</a><br>本文是<a href="http://ifeve.com">并发编程网</a>经原国外blog作者授权的中文译文</p>
+</blockquote>
+<p><strong>译者:</strong> iDestiny<br><strong>校对:</strong> 梁海舰</p>
+<p>HotSpot JVM的并发标记清理收集器(CMS收集器)的主要目标就是:低应用停顿时间。该目标对于大多数交互式应用很重要，比如web应用。在我们看一下有关JVM的参数之前,让我们简要回顾CMS收集器的操作和使用它时可能出现的主要挑战。</p>
+<p>就像吞吐量收集器(参见本系列的第6部分),CMS收集器处理老年代的对象,然而其操作要复杂得多。吞吐量收集器总是暂停应用程序线程，并且可能是相当长的一段时间，然而这能够使该算法安全地忽略应用程序。相比之下，CMS收集器被设计成在大多数时间能与应用程序线程并行执行，仅仅会有一点(短暂的)停顿时间。GC与应用程序并行的缺点就是，可能会出现各种同步和数据不一致的问题。为了实现安全且正确的并发执行，CMS收集器的GC周期被分为了好几个连续的阶段。</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/10/08/useful-jvm-flags-part-7-cms-collector/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h2 class="title"><a href="/2016/08/17/jvm-type-and-mode/"><strong>JVM类型与模式[JAVA -VERSION]</strong></a></h2>
+  
+
+
+      
+        <time datetime="2016-08-17T08:01:10.000Z"><a href="/2016/08/17/jvm-type-and-mode/"><i class="fa fa-calendar">&nbsp;</i>2016-08-17</a></time>
+      
     </header>
     <div class="entry">
       <!-- Table of Contents -->
@@ -201,7 +198,7 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
       
         
           <div class="alignleft">
-            <a href="/2016/08/17/jvm-type-and-mode/#more" class="more-link">阅读更多</a>
+            <a href="/2016/08/17/jvm-type-and-mode/#more" class="more-link">阅读全文</a>
           </div>
         
         
@@ -277,10 +274,8 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
 
 
   <div class="widget tag">
-    <h3 class="title">书签</h3>
+    <h3 class="title">外链</h3>
     <ul class="entry">
-        <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="https://my.myssvpn.com/aff.php?aff=255" target="_blank" nofollow>翻墙：ShadowsocksR</a>
-        </li>
         <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://calvin1978.blogcn.com" target="_blank" nofollow>江南白衣</a>
         </li>
         <li><i class="fa fa-link"></i>&nbsp;&nbsp;<a href="http://coolshell.cn" target="_blank" nofollow>酷壳–CoolShell.cn</a>
@@ -313,17 +308,17 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
   </div>
   <footer id="footer">
       <div class="container">
-          <h5 style="color:#333;padding-top:15px;">
+          <h5 style="color:#cccccc;padding-top:15px;">
               I know no such things as genius,it is nothing but labor and diligence.<br/>
               -哪有什么天才之说，不过是勤奋
           </h5>
           <br/>
           <div class="text-center">
   
-  &copy; 2017 DeleiGuo
+  &copy; 2020 DeleiGuo
   
   &nbsp;&nbsp;
-  湘ICP备16012107号-1
+  <a style="color:#fff" href="http://www.beian.miit.gov.cn" target="_blank">湘ICP备16012107号</a>
   <br/>
   Powered by <a href="https://hexo.io" target="_blank">Hexo</a>. Theme by <a href="https://hexo.io/hexo-theme-light/" target="_blank">Light</a>.
   <br>
