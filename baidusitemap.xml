@@ -4,6 +4,46 @@
 
     
     
+  <url>
+    <loc>https://www.deleiguo.com/2999/10/10/hellow-word/</loc>
+    <lastmod>2020-01-07T04:19:21.908Z</lastmod>
+    <data>
+        <display>
+        <title>【置顶】博客内容说明</title>
+        <pubTime>2999-10-09T16:00:00.000Z</pubTime>
+        
+        <tag>DeleiGuo</tag>
+         
+         
+           
+             
+              <breadCrumb title="PRI-文章" url="https://www.deleiguo.com/categories/pri/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</loc>
+    <lastmod>2020-01-07T04:01:15.202Z</lastmod>
+    <data>
+        <display>
+        <title>【转】阿里巴巴Java开发手册</title>
+        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://www.deleiguo.com/2017/02/14/notes-jdk-collection/</loc>
@@ -229,46 +269,6 @@
            
              
               <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2017/02/09/alibaba-java-develop-norm/</loc>
-    <lastmod>2017-02-09T05:43:57.000Z</lastmod>
-    <data>
-        <display>
-        <title>【转】阿里巴巴集团Java代码规范</title>
-        <pubTime>2017-02-08T16:00:00.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-         
-           
-             
-              <breadCrumb title="TEC-技术" url="https://www.deleiguo.com/categories/tec/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.deleiguo.com/2999/10/10/hellow-word/</loc>
-    <lastmod>2016-12-09T10:43:07.000Z</lastmod>
-    <data>
-        <display>
-        <title>【置顶】博客内容说明</title>
-        <pubTime>2999-10-09T16:00:00.000Z</pubTime>
-        
-        <tag>DeleiGuo</tag>
-         
-         
-           
-             
-              <breadCrumb title="PRI-文章" url="https://www.deleiguo.com/categories/pri/"/>
           
         </display>
     </data>
