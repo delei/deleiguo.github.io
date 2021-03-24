@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Harbore Plan Demo</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>DeleiGuo Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="" />
     <meta content="" name="deleiguo" />
     <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="bootstrap-grid.min.css" />
     <style type="text/css">
     @font-face {
         font-family: 'Lato';
@@ -31,15 +31,10 @@
         background-color: #f7f7f7;
     }
 
-    .dg-contanier {
-        width: 800px;
-        margin: 0 auto;
-    }
-
     .dg-site-name {
         color: #fff;
         font-family: 'Lato', sans-serif;
-        font-size: 50px;
+        font-size: 3rem;
         font-weight: 300;
         letter-spacing: 5px;
         line-height: 1;
@@ -63,18 +58,29 @@
         font-weight: 200;
         color: #FF1111;
         text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .dg-image {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: 0;
         margin: 0;
+        padding: 20px 0;
+        height: 400px;
         vertical-align: middle;
     }
 
     .dg-image img {
+        max-width: 100%;
+        max-height: 100%;
         width: auto;
-        max-height: 300px;
+        height: auto;
+        vertical-align: middle;
+        align-items: center;
     }
 
     .dg-header {
@@ -84,17 +90,10 @@
         background-position: center;
     }
 
-    .dg-content,
-    .dg-footer {
-        width: 800px;
-        margin: 0 auto;
-    }
-
     .dg-content {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 30px 40px;
+        margin-top: 15px;
+        padding: 15px 20px;
         text-align: center;
-        margin-top: 20px;
         border-radius: 12px;
         box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
     }
@@ -115,25 +114,29 @@
 </head>
 
 <body>
-    <div class="dg-header dg-bg-black">
+    <div class="container-fluid dg-header dg-bg-black">
         <div style="padding-top:50px">
             <h1 class="dg-site-name">DeleiGuo</h1>
             <h3 class="dg-site-desc">Target、Focus、Patient</h3>
         </div>
     </div>
-    <div class="dg-content dg-bg-grey">
-        <div class="dg-image">
-            <img src="office.png" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="dg-content dg-bg-grey">
+                    <div class="dg-image">
+                        <img src="office.png" />
+                    </div>
+                    <h1 class="dg-title"> 思考&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;整理&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;重构 </h1>
+                    <h1 class="dg-title">自2021年起始,小站将重新出发, 正在装潢中...</h1>
+                </div>
+            </div>
         </div>
-        <h1 class="dg-title"> 思考&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;整理&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;重构 </h1>
-        <h1 class="dg-title">自2021年起始,小站将重新出发, 正在装潢中...</h1>
     </div>
-    <div class="dg-footer">
+    <div class="container dg-footer">
         <span>© 2021 DeleiGuo<span>
                 <span style="margin-left:20px"><a href="https://beian.miit.gov.cn/" target=_blank>湘ICP备16012107号</a></span>
     </div>
-    <script type="text/javascript">
-    </script>
 </body>
 
 </html>
